@@ -6,6 +6,6 @@ A aplicação mobile do Observatório de Resíduos surgiu do projeto da Universi
 
 Software desenvolvido na liguangem Ruby On Rail e framework Ionic.
 
-###Licensa
+###Licença
 
 Licenciado sob GPL V3. Ver [LICENSE](https://github.com/fga-gpp-mds/2016.2-Observatorio-de-Residuos/blob/master/LICENSE)
