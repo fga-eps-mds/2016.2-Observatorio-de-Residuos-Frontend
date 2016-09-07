@@ -17,13 +17,13 @@ ActiveRecord::Schema.define(version: 20160907015755) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.string   "password"
+    t.string   "password_digest"
     t.date     "birth_date"
     t.string   "city"
     t.string   "gender"
     t.string   "profile_type"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
