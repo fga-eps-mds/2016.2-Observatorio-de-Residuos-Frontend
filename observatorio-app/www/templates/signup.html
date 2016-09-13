@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+  <ion-content class="has-header">
+  <h2>Cadastro</h2>
+  <div class="list">
+    <label class="item item-input item-floating-label">
+      <span class="input-label">Primeiro nome</span>
+      <input ng-model="user.first_name" type="text" placeholder="Primeiro nome">
+    </label>
+    <br>
+    <label class="item item-input">
+      <span class="input-label">Último nome</span>
+      <br>
+      <input ng-model="user.last_name" type="text" placeholder="Último nome">
+    </label>
+    <br>
+    <label class="item item-input">
+      <span class="input-label">E-mail</span>
+      <br>
+      <input ng-model="user.email" placeholder="E-mail"></textarea>
+    </label>
+    <br>
+    <label class="item item-input">
+      <span class="input-label">Senha</span>
+      <br>
+      <input ng-model="user.password" type="password" placeholder="Senha"></textarea>
+    </label>
+    <label class="item item-input">
+      <span class="input-label">Confirmação de Senha</span>
+      <br>
+      <input ng-model="user.password_confirmation" type="password" placeholder="Senha"></textarea>
+    </label>
+    <br>
+    <label class="item item-input">
+      <select ng-model="user.city" name="estado">
+        <option value="estado">Selecione o Estado</option>
+        <br>
+        <option value="ac">Acre</option>
+        <option value="al">Alagoas</option>
+        <option value="am">Amazonas</option>
+        <option value="ap">Amapá</option>
+        <option value="ba">Bahia</option>
+        <option value="ce">Ceará</option>
+        <option value="df">Distrito Federal</option>
+        <option value="es">Espírito Santo</option>
+        <option value="go">Goiás</option>
+        <option value="ma">Maranhão</option>
+        <option value="mt">Mato Grosso</option>
+        <option value="ms">Mato Grosso do Sul</option>
+        <option value="mg">Minas Gerais</option>
+        <option value="pa">Pará</option>
+        <option value="pb">Paraíba</option>
+        <option value="pr">Paraná</option>
+        <option value="pe">Pernambuco</option>
+        <option value="pi">Piauí</option>
+        <option value="rj">Rio de Janeiro</option>
+        <option value="rn">Rio Grande do Norte</option>
+        <option value="ro">Rondônia</option>
+        <option value="rs">Rio Grande do Sul</option>
+        <option value="rr">Roraima</option>
+        <option value="sc">Santa Catarina</option>
+        <option value="se">Sergipe</option>
+        <option value="sp">São Paulo</option>
+        <option value="to">Tocantins</option>
+      </select>
+    </label>
+    <br>
+    <label class="item item-input item-select">
+      <div class="input-label">
+        Gênero
+      </div>
+      <select ng-model="user.gender" name="gênero">
+        <option value="gênero">Selecione o Gênero</option>
+        <br>
+        <option value="fem">Feminino</option>
+        <option value="mas">Masculino</option>
+      </select>
+    </label>
+    <br>
+    <label class="item item-input item-select">
+      <div class="input-label">Tipo de Perfil</div>
+      <select ng-model="user.profile_type" name="profile type">
+        <option name="profile type">Selecione o tipo de perfil</option>
+        <option name="professor">Professor(a)</option>
+        <option name="cidadao">Cidadã(o)</option>
+        <option name="estudante">Estudante</option>
+        <option name="trabalhador">Trabalhador(a)</option>
+        <option name="Empresário">Empresário(a)</option>
+        <option name="Agricultor">Agricultor(a)</option>
+        <option name="Sindico">Síndico(a)/Líder comunitário</option>
+        <option name="Dirigente de associação">Dirigente de associação/Cooperativa de catadores de materiais recicláveis</option>
+      </select>
+    </label>
+  </div>
+  <div>
+    <button ui-sref="menu" class ="button button-calm"> Cadastrar</button>
+    <!--<button ng-click="registerEmail(user)" class="button button-calm">
+      Cadastrar
+    </button>-->
+  </div>
+</ion-content>
+</html>

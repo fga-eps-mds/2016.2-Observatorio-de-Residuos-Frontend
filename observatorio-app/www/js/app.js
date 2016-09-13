@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic', 'ngResource'])
+angular.module('starter', ['ionic', 'ngResource','app.controllers'])
 
 .constant('URL', 'http://localhost:3000')
 .run(function($ionicPlatform) {
@@ -28,18 +28,36 @@ angular.module('starter', ['ionic', 'ngResource'])
 
 .config(function($stateProvider, $urlRouterProvider){
   $stateProvider
-  .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html'
-  })
-  .state('app.home', {
-    url: '/home',
-    views: {'content': {
-      templateUrl: 'templates/signin.html',
-      controller: 'loginController'
+
+  .state('menu.home', {
+  url: '/home',
+  views: {
+    'side-menu': {
+      templateUrl: 'templates/home.html',
+      controller: 'homeCtrl'
     }
   }
-})
-  $urlRouterProvider.otherwise("app/home");
+  })
+
+  .state('menu', {
+  url: '/side-menu',
+  templateUrl: 'templates/menu.html',
+  controller: 'menuCtrl'
+  })
+
+  .state('signin', {
+  url: '/signin',
+  templateUrl: 'templates/signin.html',
+  controller: 'signinCtrl'
+  })
+
+  .state('signup', {
+  url: '/signup',
+  templateUrl: 'templates/signup.html',
+  controller: 'signupCtrl'
+  })
+
+  $urlRouterProvider.otherwise('/signin')
+
+  //$urlRouterProvider.otherwise("app/home");
 })
