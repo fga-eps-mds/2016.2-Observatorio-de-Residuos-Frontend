@@ -2,37 +2,64 @@
 <html>
   <ion-content class="has-header">
   <h2>Cadastro</h2>
+  <form name="userForm" ng-submit="registerEmail(userForm.$valid, user)" novalidate>
   <div class="list">
     <label class="item item-input item-floating-label">
+
       <span class="input-label">Primeiro nome</span>
-      <input ng-model="user.first_name" type="text" placeholder="Primeiro nome">
+      <p ng-show="userForm.first_name.$invalid && !userForm.first_name.$pristine" class="help-block">
+        Seu nome é obrigatório
+      </p>
+      <br />
+      <input name="first_name" ng-model="user.first_name" type="text" placeholder="Primeiro nome" required>
+
     </label>
-    <br>
+    <br />
+
     <label class="item item-input">
       <span class="input-label">Último nome</span>
-      <br>
-      <input ng-model="user.last_name" type="text" placeholder="Último nome">
+      <br/>
+      <p ng-show="userForm.last_name.$invalid && !userForm.last_name.$pristine" class="help-block">
+        Seu nome é obrigatório
+      </p>
+      <br />
+      <input name = "last_name" ng-model="user.last_name" type="text" placeholder="Último nome" required>
     </label>
-    <br>
+    <br />
+
     <label class="item item-input">
       <span class="input-label">E-mail</span>
-      <br>
-      <input ng-model="user.email" placeholder="E-mail"></textarea>
+      <br />
+      <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">
+        Seu e-mail é obrigatório
+      </p>
+      <br />
+      <input name="email" type="email" ng-model="user.email" placeholder="E-mail" required></textarea>
     </label>
-    <br>
+    <br />
+
     <label class="item item-input">
       <span class="input-label">Senha</span>
-      <br>
-      <input ng-model="user.password" type="password" placeholder="Senha"></textarea>
+      <br />
+      <p ng-show="userForm.password.$invalid && !userForm.password.$pristine" class="help-block">
+        A senha é obrigatória
+      </p>
+      <input name="password" ng-model="user.password" type="password" placeholder="Senha" required></textarea>
     </label>
+
     <label class="item item-input">
-      <span class="input-label">Confirmação de Senha</span>
-      <br>
-      <input ng-model="user.password_confirmation" type="password" placeholder="Senha"></textarea>
+      <span class="input-label" >Confirmação de Senha</span>
+      <br />
+      <p ng-show="userForm.password_confirmation.$invalid && !userForm.password_confirmation.$pristine" class="help-block">
+        Confirme sua senha!
+      </p>
+      <br />
+      <input name="password_confirmation" ng-model="user.password_confirmation" type="password" placeholder="Senha" required></textarea>
     </label>
-    <br>
+    <br />
+
     <label class="item item-input">
-      <select ng-model="user.city" name="estado">
+      <select ng-model="user.city" name="estado" required>
         <option value="estado">Selecione o Estado</option>
         <br>
         <option value="ac">Acre</option>
@@ -64,12 +91,16 @@
         <option value="to">Tocantins</option>
       </select>
     </label>
-    <br>
+    <br />
+
     <label class="item item-input item-select">
       <div class="input-label">
         Gênero
       </div>
-      <select ng-model="user.gender" name="gênero">
+      <p ng-show="userForm.genero.$invalid && !userForm.genero.$pristine" class="help-block">
+        Selecione seu genero
+      </p>
+      <select ng-model="user.gender" name="genero" required>
         <option value="gênero">Selecione o Gênero</option>
         <br>
         <option value="fem">Feminino</option>
@@ -77,9 +108,13 @@
       </select>
     </label>
     <br>
+
     <label class="item item-input item-select">
       <div class="input-label">Tipo de Perfil</div>
-      <select ng-model="user.profile_type" name="profile type">
+      <p ng-show="userForm.profile_type.$invalid && !userForm.profile_type.$pristine" class="help-block">
+        Selecione seu tipo de perfil!
+      </p>
+      <select ng-model="user.profile_type" name="profile_type" required>
         <option name="profile type">Selecione o tipo de perfil</option>
         <option name="professor">Professor(a)</option>
         <option name="cidadao">Cidadã(o)</option>
@@ -93,9 +128,10 @@
     </label>
   </div>
   <div>
-    <button ng-click="registerEmail(user)" ui-sref="menu" class="button button-calm">
+    <button type="submit" ng-disabled="userForm.$invalid"class="button button-calm">
       Cadastrar
-    </button>-->
+    </button>
   </div>
+</form>
 </ion-content>
 </html>

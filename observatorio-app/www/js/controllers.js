@@ -31,14 +31,18 @@ function ($scope, $stateParams) {
 .controller('signupCtrl', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, factoryRegister) {
-  $scope.registerEmail= function(user){
-    console.log(user);
-    factoryRegister.save(user, function(result){
-      console.log(result);
-    }, function(error){
-      console.log(error);
-    })
+function ($scope, factoryRegister, $window) {
+  $scope.registerEmail= function(isFormValid, user){
+
+    if(isFormValid){
+      console.log(user);
+      factoryRegister.save(user, function(result){
+        console.log(result);
+        $window.open('#/side-menu/home', "_self")
+      }, function(error){
+        console.log(error);
+      })
+    }
   }
 
 })
