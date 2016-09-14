@@ -39,16 +39,6 @@ angular.module('starter', ['ionic', 'ngResource','app.controllers'])
   }
   })
 
-  .state('menu.signout', {
-  url: '/signout',
-  views: {
-    'side-menu': {
-      templateUrl: 'templates/signout.html',
-      controller: 'signoutCtrl'
-    }
-  }
-  })
-
   .state('menu', {
   url: '/side-menu',
   templateUrl: 'templates/menu.html',
