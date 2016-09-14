@@ -33,6 +33,9 @@
       <p ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="help-block">
         Seu e-mail é obrigatório
       </p>
+      <h1 ng-show="errorEmail">
+        Este email já está em uso!
+      </h1>
       <br />
       <input name="email" type="email" ng-model="user.email" placeholder="E-mail" required></textarea>
     </label>

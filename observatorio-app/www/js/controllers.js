@@ -33,14 +33,13 @@ function ($scope, $stateParams) {
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
 function ($scope, factoryRegister, $window) {
   $scope.registerEmail= function(isFormValid, user){
-
     if(isFormValid){
       console.log(user);
       factoryRegister.save(user, function(result){
         console.log(result);
         $window.open('#/side-menu/home', "_self")
       }, function(error){
-        console.log(error);
+        $scope.errorEmail = true;
       })
     }
   }
