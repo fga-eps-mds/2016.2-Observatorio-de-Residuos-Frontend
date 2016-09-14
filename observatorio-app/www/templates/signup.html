@@ -43,21 +43,19 @@
 
     <label class="item item-input">
       <span class="input-label">Senha</span>
-      <br />
-      <p ng-show="userForm.password_digest.$invalid && !userForm.password_digest.$pristine" class="help-block">
-        A senha é obrigatória
-      </p>
-      <input name="password" ng-model="user.password_digest" type="password" placeholder="Senha" required></textarea>
+      <input type="password" name="password_digest" ng-model="user.password_digest" required />
+      <div class="form-errors" ng-messages="userForm.password_digest.$error" ng-if='userForm.password_digest.$touched'>
+        <span class="form-error" ng-message="required">Entre com uma senha</span>
+      </div>
     </label>
 
     <label class="item item-input">
-      <span class="input-label" >Confirmação de Senha</span>
-      <br />
-      <p ng-show="userForm.password_confirmation.$invalid && !userForm.password_confirmation.$pristine" class="help-block">
-        Confirme sua senha!
-      </p>
-      <br />
-      <input name="password_confirmation" ng-model="user.password_confirmation" type="password" placeholder="Senha" required></textarea>
+      <span class="input-label">Password confirmation</span>
+      <input type="password" name="password_confirmation" ng-model="user.password_confirmation" required="" confirm-pwd="user.password_digest" />
+      <div class="form-errors" ng-messages="userForm.password_confirmation.$error" ng-if='userForm.password_confirmation.$touched'>
+        <span class="form-error" ng-message="required">Confirmação de senha requerida</span>
+        <span class="form-error" ng-message="password">Senha diferente</span>
+      </div>
     </label>
     <br />
 
