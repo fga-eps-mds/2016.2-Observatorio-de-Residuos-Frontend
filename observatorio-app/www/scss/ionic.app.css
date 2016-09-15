@@ -9815,45 +9815,58 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-.login-container {
-  display: -webkit-flex;
-  -webkit-flex-direction: column;
-  height: 100%;
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,white), color-stop(100%,#32a8bc));
-  background: -webkit-linear-gradient(top,white 50%,#32a8bc 100%);
+p {
+  text-align: center;
+
 }
 
-.login-container > .button-row img {
-  max-width: 80%;
+p > a{
+  color: black;
+  text-decoration: none;
+  font-weight: bold;
+
 }
 
-.login-container > .header {
-  -webkit-flex: 4;
-  padding-top: 20px;
+.button.button-royal {
+  margin-left: 80px;
 }
 
-.logo{
+.button.button-positive {
+  width: 60%;
+  border-color: transparent;
+  background-color: green;
+  color: white;
+  margin-left: 70px;
+}
+
+.button.button-positive.active, .button.button-positive.activated {
+  border-color: transparent;
+  background-color: green;
+}
+
+img {
+  text-align: center;
+  margin-left: 95px;
   margin-top: 50px;
-  width: 280px;
+  margin-bottom: 50px;
 }
 
-.button-assertive, .button-light {
-  width: 260px;
-  height: 50px;
+.painel {
+  background: url(../img/autumn.gif);
+  background-size: cover !important;
+  background-position: center;
 }
 
-.button-assertive {
-  margin-top: 30px;
+.scroll-content {
+  background-color: lightgrey;
 }
 
-.button.button-light {
-  border-color: transparent;
-  background-color: transparent;
-  color: #444; }
-.button.button-light.active, .button.button-light.activated {
-  border-color: transparent;
-  background-color: transparent; }
-
-a {
-  text-decoration: ;
+.nav-bar-block {
+  color: gray;
+  text-align: center;
 }
+
+
+
+
+
