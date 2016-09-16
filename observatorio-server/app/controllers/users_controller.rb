@@ -13,10 +13,6 @@ class UsersController < ApplicationController
 
 
   private
-  def set_user
-    user = User.find_by_token(params[:token])
-  end
-
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password_digest, :city, :gender, :profile_type)
   end
