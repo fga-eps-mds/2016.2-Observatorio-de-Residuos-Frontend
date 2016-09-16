@@ -25,7 +25,7 @@
           <h3 ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="nav-bar-block">
             Seu e-mail é obrigatório
           </h3>
-          <h3 ng-show="errorEmail">
+          <h3 ng-show="errorEmail" class="nav-bar-block">
             Este email já está em uso!
           </h3>
           <input name="email" type="email" ng-model="user.email" placeholder="Email" required></textarea>
@@ -39,11 +39,12 @@
         </label>
 
         <label class="item item-input">
-          <input type="password" name="password_confirmation" ng-model="user.password_confirmation" placeholder="Confirmação da Senha"required="" confirm-pwd="user.password_digest" />
-          <h3 ng-show="userForm.password_confirmation.$invalid && userForm.password_confirmation.$touched" class="nav-bar-block">
+          <input type="password" name="password_confirmation" ng-model="user.password_confirmation" placeholder="Confirmação da Senha" required="" confirm-pwd="user.password_digest" />
+          <h3 ng-show="" class="nav-bar-block">
             Confirmação de senha requerida
           </h3>
-          <h3 ng-show="password">
+
+          <h3 ng-show="(userForm.password_confirmation.$valid != userForm.password_digest.$valid)" class="nav-bar-block">
             Senha diferente
           </h3>
         </label>
