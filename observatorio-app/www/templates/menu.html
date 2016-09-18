@@ -24,27 +24,30 @@
               </a>
             </div>
           -->
-              <div class="list">
-                <a class="item item-avatar" href="#">
-                  <img class="item item-image-left" src="venkman.jpg">
-                  <h2>Nome</h2>
-                  <p>Perfil profissional</p>
-                </a>
-              </div>
+              <div class="list" about="">
+                <a class="item item-avatar" menu-close href="/home"  ui-sref="menu.profile">
+                  <img class="image img-profile" src="../img/goku-profile.gif"><!-- getProfilePicture() -->
+                <h2>Goku Kakarotto</h2> <!-- getProfileName -->
+                <h3>Sayajin</h3> <!-- getProfileType -->
+              </a>
 
-            <div class="list">
+              <a class="item" menu-close href="/home" ui-sref="menu.home">
+                Mapa
+              </a>
+
               <div class="item item-divider">
                 Tô de Olho
               </div>
-                  <a class="item" href="#">
+                  <a class="item" menu-close href="/home" ui-sref="menu.my-markings">
                     Minhas Marcações
                   </a>
-                  <a class="item" href="#">
+                  <a class="item" menu-close href="/home"  ui-sref="menu.new-marking">
                     Marcar novo Incidente
                   </a>
-                  <a class="item" href="#">
+                  <a class="item" menu-close href="/home" ui-sref="menu.nearby">
                     Incidentes Próximos
                   </a>
+
               <div class="item item-divider">
                 PEVs
               </div>

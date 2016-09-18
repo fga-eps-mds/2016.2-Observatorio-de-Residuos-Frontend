@@ -9817,7 +9817,6 @@ a.button {
 
 p {
   text-align: center;
-
 }
 
 p > a{
@@ -9866,7 +9865,45 @@ img {
   text-align: center;
 }
 
+.buttons-zoom {
+  position: absolute;
+  top: 515px;
+  right: 12px;
+}
 
+.button-geolocation {
+  position: absolute;
+  top: 560px;
+  right: 155px;
+}
 
+.has-header-and-image {
+  top: 44px;
+  background: url(../img/map-example.png);
+  background-size: cover !important;
+  background-position: center;
+}
 
+.item-avatar {
+  min-height: 74px;
+}
+
+.img-profile {
+  text-align: left;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.img-new-marking {
+ text-align: left;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.item-image img:first-child, .item-image .list-img {
+  width: 50%;
+  vertical-align: middle;
+}
 
