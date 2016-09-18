@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     user = User.new(user_params)
     if user.save
       render json: user
-    else
+    elsif
       render json: { error: 'Incorrect credentials' }, status: 401
       session[:user_id] = user.id
 	    #redirect_to '/'

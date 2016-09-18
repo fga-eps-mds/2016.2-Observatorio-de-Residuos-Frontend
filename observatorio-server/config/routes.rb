@@ -1,21 +1,13 @@
 Rails.application.routes.draw do
-<<<<<<< Updated upstream
+
   get 'users/' => 'users#index'
-
   post 'users/create' => 'users#create'
-
-
-=======
-<<<<<<< Updated upstream
-=======
   get 'users/' => 'users#index'
   post 'users/create' => 'users#create'
   get 'signup' => 'users#new'
   resources :users
   get '/login' => 'sessions#new'
 
->>>>>>> Stashed changes
->>>>>>> Stashed changes
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
