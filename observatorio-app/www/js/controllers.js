@@ -27,7 +27,7 @@ function ($scope, $stateParams, $state, factoryLogin) {
         $state.go("menu.home")
         $scope.errorLogin = false;
       }, function(error){
-        console.log("ERRROOOOO")
+        console.log("ERRO!")
         $scope.errorLogin = true;
       })
     }

@@ -1,4 +1,4 @@
-<ion-view title="Observatório de Resíduos" id="signin">
+<ion-view cache-view="false" title="Observatório de Resíduos" id="signin">
     <ion-content padding="true" scroll="false" class="painel">
         <div>
             <img src="img/logo_transparent.png" width="50%" height="auto">
@@ -11,7 +11,7 @@
                 <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="nav-bar-block">
                   Digite seu E-mail
                 </p>
-                <h3 ng-show="errorLogin" class="nav-bar-block">
+                <h3 ng-show="errorLogin && !loginForm.email.$invalid" class="nav-bar-block">
                   E-mail ou Senha inválido(s)!
                 </h3>
                 <input ng-model="user.email" name="email" type="text" placeholder="" required>
