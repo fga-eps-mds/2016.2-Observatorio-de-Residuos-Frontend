@@ -3,15 +3,13 @@ class SessionsController < ApplicationController
 	end
 
   def create
-	  user = User.find_by_email(params[:session][:email])
-	  if user && user.authenticate(params[:session][:password])
+	  user = User.find_by_email(params[:email])
+	  if user && user.password_digest == params[:password]
 	    session[:user_id] = user.id
-	    redirect_to '/'
-	  else
-	    redirect_to 'login'
+	    render json: user
 	  end
 	end
-
+  
   def destroy
 	  session[:user_id] = nil
 	  redirect_to '/'

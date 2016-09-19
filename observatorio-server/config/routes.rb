@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   post 'users/create' => 'users#create'
   get 'users/' => 'users#index'
   post 'users/create' => 'users#create'
+
+  post 'sessions/login' => 'sessions#create'
+
   get 'signup' => 'users#new'
   resources :users
   get '/login' => 'sessions#new'

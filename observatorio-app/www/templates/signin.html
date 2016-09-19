@@ -4,12 +4,16 @@
             <img src="img/logo_transparent.png" width="50%" height="auto">
         </div>
         <a ui-sref="signup" id="page-button1" class="button button-positive  button-block">Criar uma Conta</a>
+
         <form name="loginForm" id="loginForm" class="list" ng-submit="loginAttempt(loginForm.$valid, user)">
             <label class="item item-input" id="page-input9">
                 <span class="input-label">Email</span>
                 <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="nav-bar-block">
                   Digite seu E-mail
                 </p>
+                <h3 ng-show="errorLogin" class="nav-bar-block">
+                  E-mail ou Senha inválido(s)!
+                </h3>
                 <input ng-model="user.email" name="email" type="text" placeholder="" required>
             </label>
             <label class="item item-input" id="page-input10">

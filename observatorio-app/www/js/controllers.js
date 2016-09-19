@@ -18,11 +18,18 @@ function ($scope, $stateParams) {
 .controller('signinCtrl', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state) {
+function ($scope, $stateParams, $state, factoryLogin) {
   $scope.loginAttempt = function(isFormValid, user){
     if(isFormValid){
       console.log(user);
-      $state.go("menu.home")
+      factoryLogin.save(user, function(result){
+        console.log(result);
+        $state.go("menu.home")
+        $scope.errorLogin = false;
+      }, function(error){
+        console.log("ERRROOOOO")
+        $scope.errorLogin = true;
+      })
     }
   }
 })
