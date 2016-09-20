@@ -1,4 +1,4 @@
-<ion-view title="Cadastro" id="cadastro">
+<ion-view cache-view="false" title="Cadastro" id="cadastro">
   <ion-content padding="true" class="has-header">
 
     <p style="font-size: 18px">Cadastre-se com uma rede social</p>
@@ -21,7 +21,7 @@
         </label>
 
         <label class="item item-input" id="last_name">
-          <p ng-show="userForm.first_name.$invalid && !userForm.first_name.$pristine" class="nav-bar-block">
+          <p ng-show="userForm.last_name.$invalid && !userForm.last_name.$pristine" class="nav-bar-block">
             Seu sobrenome é obrigatório
           </p>
           <input name="last_name" ng-model="user.last_name" type="text" placeholder="Último Nome" required>
@@ -31,7 +31,7 @@
           <h3 ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="nav-bar-block">
             Seu e-mail é obrigatório
           </h3>
-          <h3 ng-show="errorEmail" class="nav-bar-block">
+          <h3 ng-show="errorEmail && !userForm.email.$invalid" class="nav-bar-block">
             Este email já está em uso!
           </h3>
           <input name="email" type="email" ng-model="user.email" placeholder="Email" required></textarea>
@@ -45,12 +45,12 @@
         </label>
 
         <label class="item item-input">
-          <input type="password" name="password_confirmation" ng-model="user.password_confirmation" placeholder="Confirmação da Senha" required="" confirm-pwd="user.password_digest" />
-          <h3 ng-show="" class="nav-bar-block">
+          <input ng-click="count = 0" ng-init="count = 0" ng-keydown="count = count + 1" type="password" name="password_confirmation" ng-model="user.password_confirmation" placeholder="Confirmação da Senha" required="" confirm-pwd="user.password_digest" />
+          <h3 ng-show="(count < 1) && userForm.password_confirmation.$touched" class="nav-bar-block">
             Confirmação de senha requerida
           </h3>
 
-          <h3 ng-show="(userForm.password_confirmation.$valid != userForm.password_digest.$valid)" class="nav-bar-block">
+          <h3 ng-show="(userForm.password_confirmation.$valid != userForm.password_digest.$valid) && (count > 0)" class="nav-bar-block">
             Senha diferente
           </h3>
         </label>
@@ -58,7 +58,6 @@
         <label class="item item-input item-select">
           <span class="input-label">Estado</span>
           <select ng-model="user.city" name="estado" required>
-            <option value="estado">Selecione o Estado</option>
             <br>
             <option value="ac">Acre</option>
             <option value="al">Alagoas</option>
@@ -98,7 +97,6 @@
             Selecione seu genero
           </p>
           <select ng-model="user.gender" name="genero" required>
-            <option value="gênero">Selecione o Gênero</option>
             <br>
             <option value="fem">Feminino</option>
             <option value="mas">Masculino</option>
@@ -111,7 +109,6 @@
             Selecione seu tipo de perfil!
           </p>
           <select ng-model="user.profile_type" name="profile_type" required>
-            <option name="profile type">Selecione o tipo de perfil</option>
             <option name="professor">Professor(a)</option>
             <option name="cidadao">Cidadã(o)</option>
             <option name="estudante">Estudante</option>
