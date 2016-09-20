@@ -37,7 +37,7 @@ function ($scope, $stateParams, $state, factoryLogin) {
 .controller('signupCtrl', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
 // You can include any angular dependencies as parameters for this function
 // TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, factoryRegister, $state) {
+function ($scope, factoryRegister, $state, $ionicLoading, $timeout) {
   $scope.registerEmail= function(isFormValid, user){
     if(isFormValid){
       console.log(user);
@@ -49,6 +49,36 @@ function ($scope, factoryRegister, $state) {
         $scope.errorEmail = true;
       })
     }
+  }
+  $scope.registerFacebook = function(){
+
+    var ref = new Firebase("dojogrupo04.firebaseio.com");
+
+    ref.authWithOAuthPopup("facebook", function(error, authData){
+      if(error){
+        console.log("Failed ", error)
+      }
+      else{
+          $scope.user = authData;
+          console.log($scope.user);
+          $scope.user.first_name = authData.facebook.cachedUserProfile.first_name;
+          $scope.user.last_name = authData.facebook.cachedUserProfile.last_name;
+          $scope.user.gender = authData.facebook.cachedUserProfile.gender;
+          $scope.user.profile_type = "cidadao";
+          $scope.user.email = authData.facebook.email;
+
+          console.log($scope.user);
+
+          $ionicLoading.show({
+          template: 'Recebendo suas informações... <ion-spinner icon="android"></ion-spinner>'
+          });
+          $timeout(function(){
+            $ionicLoading.hide();
+          },10000);
+          //$state.go('menu.home');
+      }
+    })
+
   }
 
 })

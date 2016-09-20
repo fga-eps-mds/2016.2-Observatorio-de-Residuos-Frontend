@@ -2,9 +2,9 @@
   <ion-content padding="true" class="has-header">
 
     <p style="font-size: 18px">Cadastre-se com uma rede social</p>
-    <button class="button button-royal" class="item item-icon-left" href="#">
+    <button ng-click="registerFacebook()" class="button button-royal" class="item item-icon-left" href="#">
        <i class="ion-social-facebook"></i>  Facebook
-     </button><!-- Icone facebook: <i class="ion-social-facebook"></i> -->
+    </button><!-- Icone facebook: <i class="ion-social-facebook"></i> -->
     <button class="button button-assertive" class="item item-icon-left" href="#">
        <i class="ion-social-googleplus"></i>  Google
     </button><br><!-- Icone google+: <i class="ion-social-googleplus"></i> -->
@@ -98,8 +98,8 @@
           </p>
           <select ng-model="user.gender" name="genero" required>
             <br>
-            <option value="fem">Feminino</option>
-            <option value="mas">Masculino</option>
+            <option value="female">Feminino</option>
+            <option value="male">Masculino</option>
           </select>
         </label>
 
@@ -109,14 +109,14 @@
             Selecione seu tipo de perfil!
           </p>
           <select ng-model="user.profile_type" name="profile_type" required>
-            <option name="professor">Professor(a)</option>
-            <option name="cidadao">Cidadã(o)</option>
-            <option name="estudante">Estudante</option>
-            <option name="trabalhador">Trabalhador(a)</option>
-            <option name="Empresário">Empresário(a)</option>
-            <option name="Agricultor">Agricultor(a)</option>
-            <option name="Sindico">Síndico(a)/Líder comunitário</option>
-            <option name="Dirigente de associação">Dirigente de associação/Cooperativa de catadores de materiais recicláveis</option>
+            <option name="professor" value="professor">Professor(a)</option>
+            <option name="cidadao" value="cidadao">Cidadã(o)</option>
+            <option name="estudante" value="estudante">Estudante</option>
+            <option name="trabalhador" value="trabalhador">Trabalhador(a)</option>
+            <option name="Empresário" value="empresario">Empresário(a)</option>
+            <option name="Agricultor" value="agricultor">Agricultor(a)</option>
+            <option name="Sindico" value="sindico">Síndico(a)/Líder comunitário</option>
+            <option name="Dirigente de associação" value="dirigente">Dirigente de associação/Cooperativa de catadores de materiais recicláveis</option>
           </select>
         </label>
 
