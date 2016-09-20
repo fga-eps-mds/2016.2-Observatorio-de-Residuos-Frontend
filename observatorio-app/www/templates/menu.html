@@ -1,0 +1,74 @@
+<ion-side-menus enable-menu-with-back-views="false">
+    <ion-side-menu-content>
+        <ion-nav-bar class="bar-stable">
+            <ion-nav-back-button></ion-nav-back-button>
+            <ion-nav-buttons side="left">
+                <button class="button button-icon button-clear ion-navicon" menu-toggle="left"></button>
+            </ion-nav-buttons>
+
+        </ion-nav-bar>
+        <ion-nav-view name="side-menu"></ion-nav-view>
+    </ion-side-menu-content>
+    <ion-side-menu side="left" id="side-menu">
+
+        <ion-header-bar class="bar-stable">
+            <div class="title">Menu</div>
+        </ion-header-bar>
+        <ion-content padding="false" class="side-menu-left has-header ">
+            <!--
+            <div class="item" ng-repeat="user in users" href="#/user?id={{user.id}}">
+              <a class="item item-avatar" href="#">
+                <img src="logo_transparent.png">
+                <h2>{{user.name}}</h2>
+                <p>{{user.profile_type}}</p>
+              </a>
+            </div>
+          -->
+              <div class="list">
+                <a class="item item-avatar" href="#">
+                  <img class="item item-image-left" src="venkman.jpg">
+                  <h2>Nome</h2>
+                  <p>Perfil profissional</p>
+                </a>
+              </div>
+
+            <div class="list">
+              <div class="item item-divider">
+                Tô de Olho
+              </div>
+                  <a class="item" href="#">
+                    Minhas Marcações
+                  </a>
+                  <a class="item" href="#">
+                    Marcar novo Incidente
+                  </a>
+                  <a class="item" href="#">
+                    Incidentes Próximos
+                  </a>
+              <div class="item item-divider">
+                PEVs
+              </div>
+                  <a class="item" href="#">
+                    PEVs Próximas
+                  </a>
+                  <a class="item" href="#">
+                    Marcar nova PEV
+                  </a>
+              <div class="item item-divider">
+                Tô Contribuindo
+              </div>
+            </div>
+            <!--
+            <ion-list id="menu-null">
+                <ion-item id="menu-list-item1" ui-sref="menu.home" menu-close="">Tô de Olho</ion-item>
+                <ion-item id="menu-list-item2" ui-sref="menu.home" menu-close="">PEVs</ion-item>
+                <ion-item id="menu-list-item2" ui-sref="menu.home" menu-close="">Tô Contribuindo</ion-item>
+            </ion-list>
+          -->
+            <div class="bar bar-footer bar-assertive" ui-sref="signin" menu-close="">
+              <div class="title">Sair</div>
+            </div>
+        </ion-content>
+
+    </ion-side-menu>
+</ion-side-menus>

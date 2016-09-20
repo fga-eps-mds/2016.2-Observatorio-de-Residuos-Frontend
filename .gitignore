@@ -6,12 +6,14 @@ capybara-*.html
 /tmp
 /db/*.sqlite3
 /db/*.sqlite3-journal
+/db/schema.rb
 /public/system
 /coverage/
 /spec/tmp
 **.orig
 rerun.txt
 pickle-email-*.html
+
 
 # TODO Comment out these rules if you are OK with secrets being uploaded to the repo
 config/initializers/secret_token.rb
@@ -43,3 +45,6 @@ bower.json
 node_modules/
 platforms/
 plugins/
+
+########## Webstorm
+/.idea

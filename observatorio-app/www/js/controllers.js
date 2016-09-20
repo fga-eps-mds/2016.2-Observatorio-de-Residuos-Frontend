@@ -1,28 +1,69 @@
-angular.module('starter.controllers', [])
+angular.module('app.controllers',[])
 
-.controller('DashCtrl', function($scope) {})
+.controller('homeCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams) {
+}])
 
-.controller('ChatsCtrl', function($scope, Chats) {
-  // With the new view caching in Ionic, Controllers are only called
-  // when they are recreated or on app start, instead of every page change.
-  // To listen for when this page is active (for example, to refresh data),
-  // listen for the $ionicView.enter event:
-  //
-  //$scope.$on('$ionicView.enter', function(e) {
-  //});
 
-  $scope.chats = Chats.all();
-  $scope.remove = function(chat) {
-    Chats.remove(chat);
-  };
+.controller('menuCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams) {
+
+
+}])
+
+.controller('signinCtrl', ['$scope', '$stateParams', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, $stateParams) {
+// $scope.submit = function () {
+//   $window.open('/side-menu21/page1', '_self');
+}])
+
+.controller('signupCtrl', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
+// You can include any angular dependencies as parameters for this function
+// TIP: Access Route Parameters for your page via $stateParams.parameterName
+function ($scope, factoryRegister, $window) {
+  $scope.registerEmail= function(isFormValid, user){
+    if(isFormValid){
+      console.log(user);
+      factoryRegister.save(user, function(result){
+        console.log(result);
+        $scope.errorEmail = false
+        $window.open("#/side-menu/home", "_self")
+      }, function(error){
+        $scope.errorEmail = true;
+      })
+    }
+  }
+
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
-  $scope.chat = Chats.get($stateParams.chatId);
+.controller('loginController', function($scope, factoryRegister) {
+
+
 })
 
-.controller('AccountCtrl', function($scope) {
-  $scope.settings = {
-    enableFriends: true
-  };
-});
+  .directive('confirmPwd', function($interpolate, $parse) {
+    return {
+      require: 'ngModel',
+      link: function(scope, elem, attr, ngModelCtrl) {
+
+        var pwdToMatch = $parse(attr.confirmPwd);
+        var pwdFn = $interpolate(attr.confirmPwd)(scope);
+
+        scope.$watch(pwdFn, function(newVal) {
+          ngModelCtrl.$setValidity('password', ngModelCtrl.$viewValue == newVal);
+        })
+
+        ngModelCtrl.$validators.password = function(modelValue, viewValue) {
+          var value = modelValue || viewValue;
+          return value == pwdToMatch(scope);
+        };
+
+      }
+    }
+  });
