@@ -40,7 +40,7 @@ gem 'rspec-rails'
 
 group :development, :test do
 	gem 'simplecov'
-	gem 'cucumber-rails'
+	gem 'cucumber-rails', :require => false
 end
 
 group :development, :test do

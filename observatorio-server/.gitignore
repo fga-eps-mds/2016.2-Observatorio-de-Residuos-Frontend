@@ -15,5 +15,5 @@
 /log/*
 !/log/.keep
 /tmp
-
 /observatorio-server/db/schema.rb
+Gemfile.lock
