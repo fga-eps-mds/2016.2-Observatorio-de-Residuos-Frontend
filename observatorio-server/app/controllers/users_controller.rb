@@ -5,18 +5,24 @@ class UsersController < ApplicationController
     user = User.new
   end
 
+  def verify_email
+      user = User.find_by_email(params[:email])
+      if(user == nil)
+          puts "Usuário já existe"
+      else
+          user.create
+      end
+
+  end
+
   def create
+
     user = User.new(user_params)
     if user.save
-      render json: user
-    elsif
-      render json: { error: 'Incorrect credentials' }, status: 401
-      session[:user_id] = user.id
-	    #redirect_to '/'
+        render json: user
     else
-      render json: { error: 'Incorrect credentials' }, status: 401
-      #redirect_to '/signup'
-      puts user.errors.messages
+        render json: { error: 'Incorrect credentials' }, status: 401
+        puts user.errors.messages
     end
   end
 
