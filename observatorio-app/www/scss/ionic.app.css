@@ -6175,7 +6175,7 @@ a.item-content {
     left: 11px; }
 
 .item-complex.item-icon-left {
-  padding-left: 0; }
+  padding-left: 0px; }
   .item-complex.item-icon-left .item-content {
     padding-left: 54px; }
 
@@ -8867,13 +8867,13 @@ progress {
   color: #444;
   position: relative;
   display: inline-block;
-  margin: 10;
-  border-width: 10px;
+  margin: 0px;
+  border-width: 0px;
   border-style: solid;
   border-radius: 100px;
   vertical-align: top;
   text-overflow: ellipsis;
-  line-height: 20px;
+  line-height: 10px;
   cursor: pointer;
   padding: 0px 0px 0px;
   min-width: 0px;
