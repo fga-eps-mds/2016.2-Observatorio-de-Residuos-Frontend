@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'users/' => 'users#index'
   post 'users/create' => 'users#create'
   get 'users/' => 'users#index'
-  post 'users/create' => 'users#verify_email'
+  post 'users/verify_email' => 'users#verify_email'
 
   post 'sessions/login' => 'sessions#create'
 

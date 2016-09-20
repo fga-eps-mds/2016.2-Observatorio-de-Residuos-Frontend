@@ -8,11 +8,10 @@ class UsersController < ApplicationController
   def verify_email
       user = User.find_by_email(params[:email])
       if(user == nil)
-          puts "Usuário já existe"
+          render json: {"userExist": false}
       else
-          user.create
+          render json: {"userExist": true}
       end
-
   end
 
   def create
