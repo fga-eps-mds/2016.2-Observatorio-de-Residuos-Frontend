@@ -34,24 +34,34 @@ angular.module('app.controllers', [])
       })
     }
 
-  var ref = new Firebase("dojogrupo04.firebaseio.com");
-  $scope.registerFacebook = function(){
-    ref.authWithOAuthPopup("facebook", function(error, authData){
+  $scope.registerSocial = function(socialNetwork){
+    var ref = new Firebase("dojogrupo04.firebaseio.com");
+    ref.authWithOAuthPopup(socialNetwork, function(error, authData){
       if(error){
         console.log("Failed ", error)
       }
       else{
           console.log(authData)
           $scope.user = authData;
-          factoryEmail.save({"email": authData.facebook.email}, function(result) {
+          factoryEmail.save({"email": ((socialNetwork=='facebook')?authData.facebook.email:authData.google.email)}, function(result) {
             if(result.userExist){
               $state.go('menu.home')
             }else{
-              $scope.user.first_name = authData.facebook.cachedUserProfile.first_name;
-              $scope.user.last_name = authData.facebook.cachedUserProfile.last_name;
-              $scope.user.gender = authData.facebook.cachedUserProfile.gender;
-              $scope.user.profile_type = "cidadao";
-              $scope.user.email = authData.facebook.email;
+              if(socialNetwork=='facebook'){
+                $scope.user.first_name = authData.facebook.cachedUserProfile.first_name;
+                $scope.user.last_name = authData.facebook.cachedUserProfile.last_name;
+                $scope.user.gender = authData.facebook.cachedUserProfile.gender;
+                $scope.user.profile_type = "cidadao";
+                $scope.user.email = authData.facebook.email;
+              }else{
+                $scope.user.first_name = authData.google.cachedUserProfile.given_name;
+                console.log("nome:"+ $scope.user.first_name)
+                $scope.user.last_name  = authData.google.cachedUserProfile.family_name;
+                console.log("lastNome:"+ $scope.user.last_name)
+                $scope.user.gender = authData.google.cachedUserProfile.gender;
+                $scope.user.profile_type = "cidadao";
+                $scope.user.email = authData.google.email;
+              }
               socialService.setUserData($scope.user)
               $state.go('signup')
             }
@@ -64,42 +74,6 @@ angular.module('app.controllers', [])
           $timeout(function(){
             $ionicLoading.hide();
           },10000);
-      }
-    })
-  }
-    $scope.registerGoogle = function(){
-    ref.authWithOAuthPopup("google", function(error, authData){
-      if(error){
-        console.log("Failed ", error)
-      }
-      else{
-          console.log(authData)
-          $scope.user = authData;
-          factoryEmail.save({"email": authData.google.email}, function(result) {
-            if(result.userExist){
-              $state.go('menu.home')
-            }else{
-              $scope.user.first_name = authData.google.cachedUserProfile.given_name;
-              console.log("nome:"+ $scope.user.first_name)
-              $scope.user.last_name  = authData.google.cachedUserProfile.family_name;
-              console.log("lastNome:"+ $scope.user.last_name)
-              $scope.user.gender = authData.google.cachedUserProfile.gender;
-              $scope.user.profile_type = "cidadao";
-              $scope.user.email = authData.google.email;
-              socialService.setUserData($scope.user)
-              $state.go('signup')
-            }
-          }, function(error){
-            console.log(error)
-          })
-
-          $ionicLoading.show({
-          template: 'Recebendo suas informações... <ion-spinner icon="android"></ion-spinner>'
-          });
-          $timeout(function(){
-            $ionicLoading.hide();
-          },10000);
-          $state.go('signup');
       }
     })
   }
