@@ -8580,17 +8580,17 @@ progress {
   position: relative;
   display: inline-block;
   margin: 0;
-  padding: 0 12px;
-  min-width: 52px;
-  min-height: 47px;
-  border-width: 1px;
+  padding: 0 10px;
+  min-width: 0px;
+  min-height: 0px;
+  border-width: 10px;
   border-style: solid;
-  border-radius: 4px;
+  border-radius: 0px;
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
   font-size: 16px;
-  line-height: 42px;
+  line-height: 20px;
   cursor: pointer; }
   .button:hover {
     color: #444;
@@ -8600,32 +8600,32 @@ progress {
     background-color: #e5e5e5; }
   .button:after {
     position: absolute;
-    top: -6px;
-    right: -6px;
-    bottom: -6px;
-    left: -6px;
+    top: -0px;
+    right: -0px;
+    bottom: -0px;
+    left: -0px;
     content: ' '; }
   .button .icon {
     vertical-align: top;
     pointer-events: none; }
   .button .icon:before, .button.icon:before, .button.icon-left:before, .button.icon-right:before {
     display: inline-block;
-    padding: 0 0 1px 0;
+    padding: 0 0 0px 0;
     vertical-align: inherit;
-    font-size: 24px;
-    line-height: 41px;
+    font-size: 16px;
+    line-height: 0px;
     pointer-events: none; }
   .button.icon-left:before {
     float: left;
-    padding-right: .2em;
+    padding-right: .0em;
     padding-left: 0; }
   .button.icon-right:before {
     float: right;
     padding-right: 0;
-    padding-left: .2em; }
+    padding-left: .0em; }
   .button.button-block, .button.button-full {
-    margin-top: 10px;
-    margin-bottom: 10px; }
+    margin-top: 0px;
+    margin-bottom: 0px; }
   .button.button-light {
     border-color: transparent;
     background-color: #fff;
@@ -8862,22 +8862,48 @@ progress {
         color: #fff; }
 
 .button-small {
-  padding: 2px 4px 1px;
-  min-width: 28px;
-  min-height: 30px;
-  font-size: 12px;
-  line-height: 26px; }
+  border-color: transparent;
+  background-color: #f8f8f8;
+  color: #444;
+  position: relative;
+  display: inline-block;
+  margin: 10;
+  border-width: 10px;
+  border-style: solid;
+  border-radius: 100px;
+  vertical-align: top;
+  text-overflow: ellipsis;
+  line-height: 20px;
+  cursor: pointer;
+  padding: 0px 0px 0px;
+  min-width: 0px;
+  min-height: 0px;
+  font-size: 16px;
+  text-align: center; }
   .button-small .icon:before, .button-small.icon:before, .button-small.icon-left:before, .button-small.icon-right:before {
     font-size: 16px;
-    line-height: 19px;
-    margin-top: 3px; }
+    line-height: 0px;
+    margin-top: 0px; }
 
 .button-large {
-  padding: 0 16px;
-  min-width: 68px;
-  min-height: 59px;
-  font-size: 20px;
-  line-height: 53px; }
+    border-color: transparent;
+    background-color: #f8f8f8;
+    color: #444;
+    position: relative;
+    display: inline-block;
+    margin: 10;
+    border-width: 10px;
+    border-style: solid;
+    border-radius: 100px;
+    vertical-align: top;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    cursor: pointer;
+    padding: 0px 0px 0px;
+    min-width: 0px;
+    min-height: 0px;
+    font-size: 16px;
+    text-align: center; }
   .button-large .icon:before, .button-large.icon:before, .button-large.icon-left:before, .button-large.icon-right:before {
     padding-bottom: 2px;
     font-size: 32px;
@@ -8886,7 +8912,7 @@ progress {
 .button-icon {
   -webkit-transition: opacity 0.1s;
   transition: opacity 0.1s;
-  padding: 0 6px;
+  padding: 0 0px;
   min-width: initial;
   border-color: transparent;
   background: none; }
