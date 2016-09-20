@@ -3,7 +3,6 @@
         <div>
             <img src="img/logo_transparent.png" width="50%" height="auto">
         </div>
-        <a ui-sref="signup" id="page-button1" class="button button-positive  button-block">Criar uma Conta</a>
 
         <form name="loginForm" id="loginForm" class="list" ng-submit="loginAttempt(loginForm.$valid, user)">
             <label class="item item-input" id="page-input9">
@@ -18,14 +17,23 @@
             </label>
             <label class="item item-input" id="page-input10">
                 <span class="input-label">Senha</span>
-                <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="nav-bar-block" required>
+                <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="nav-bar-block">
                   Digite sua Senha
                 </p>
-                <input ng-model="user.password" name="password" type="password" placeholder="">
+                <input ng-model="user.password" name="password" type="password" placeholder="" required>
             </label>
-
-            <button type="submit" ng-disabled="loginForm.$invalid" id="page-button6" class="button button-positive  button-block" style="margin-top: -15px; background-color: transparent; color: white">Fazer Login</button>
+            <br />
+            <button type="submit" ng-disabled="loginForm.$invalid" id="page-button6" class="button button-positive  button-block" style="margin-top: -15px; color: white">Fazer Login</button>
         </form>
+
+        <a ui-sref="signup" id="page-button1" class="button button-positive  button-block">Criar uma Conta</a>
+        <button ng-click="registerFacebook()" class="button button-royal" class="item item-icon-left" href="#">
+           <i class="ion-social-facebook"></i>  Facebook
+        </button><!-- Icone facebook: <i class="ion-social-facebook"></i> -->
+        <button ng-click="registerGoogle()" class="button button-assertive" class="item item-icon-left" href="#">
+           <i class="ion-social-googleplus"></i>  Google
+        </button><br><!-- Icone google+: <i class="ion-social-googleplus"></i> -->
+        <br>
 
         <div id="page-markdown1">
             <p>Ao entrar, você concorda com os <a href="#">Termos de Serviço</a> e <a href="#">Termos de Privacidade</a></p>
