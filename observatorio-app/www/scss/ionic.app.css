@@ -9877,12 +9877,12 @@ img {
   right: 155px;
 }
 
-.has-header-and-image {
-  top: 44px;
-  background: url(../img/map-example.png);
-  background-size: cover !important;
-  background-position: center;
-}
+/*.has-header-and-image {*/
+  /*top: 44px;*/
+  /*background: url(../img/map-example.png);*/
+  /*background-size: cover !important;*/
+  /*background-position: center;*/
+/*}*/
 
 .item-avatar {
   min-height: 74px;
@@ -9907,3 +9907,16 @@ img {
   vertical-align: middle;
 }
 
+/*body {*/
+  /*cursor: url('http://ionicframework.com/img/finger.png'), auto;*/
+/*}*/
+
+.mapa-google {
+  margin: -10px;
+  width: 106%;
+  height: 103%;
+}
+
+.scroll, .mapWrap {
+  height: 100%;
+}

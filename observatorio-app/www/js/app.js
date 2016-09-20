@@ -1,4 +1,4 @@
-angular.module('starter', ['ionic', 'ngResource','app.controllers'])
+angular.module('starter', ['ionic', 'ngResource','app.controllers', 'ngMap'])
 
 .constant('URL', 'http://localhost:3000')
 .run(function($ionicPlatform) {
