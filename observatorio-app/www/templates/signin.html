@@ -11,7 +11,7 @@
                 <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="nav-bar-block">
                   Digite seu E-mail
                 </p>
-                <h3 ng-show="errorLogin && !loginForm.email.$invalid" class="nav-bar-block">
+                <h3 ng-show="loginError && !loginForm.email.$invalid" class="nav-bar-block">
                   E-mail ou Senha inválido(s)!
                 </h3>
                 <input ng-model="user.email" name="email" type="text" placeholder="" required>
@@ -24,7 +24,7 @@
                 <input ng-model="user.password" name="password" type="password" placeholder="">
             </label>
 
-            <button type="submit" id="page-button6" class="button button-positive  button-block" style="margin-top: -15px; background-color: transparent; color: white">Fazer Login</button>
+            <button type="submit" ng-disabled="loginForm.$invalid" id="page-button6" class="button button-positive  button-block" style="margin-top: -15px; background-color: transparent; color: white">Fazer Login</button>
         </form>
 
         <div id="page-markdown1">

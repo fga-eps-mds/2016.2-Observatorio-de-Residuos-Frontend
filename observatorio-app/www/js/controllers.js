@@ -15,40 +15,31 @@ function ($scope, $stateParams) {
 
 }])
 
-.controller('signinCtrl', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, $stateParams, $state, factoryLogin) {
-  $scope.loginAttempt = function(isFormValid, user){
-    if(isFormValid){
+.controller('signinCtrl', function ($scope, $stateParams, $state, factoryLogin) {
+  $scope.loginAttempt = function(user){
       console.log(user);
       factoryLogin.save(user, function(result){
         console.log(result);
         $state.go("menu.home")
-        $scope.errorLogin = false;
+        $scope.loginError = false;
       }, function(error){
         console.log("ERRO!")
-        $scope.errorLogin = true;
+        $scope.loginError = true;
       })
     }
-  }
 })
 
-.controller('signupCtrl', // The following is the constructor function for this page's controller. See https://docs.angularjs.org/guide/controller
-// You can include any angular dependencies as parameters for this function
-// TIP: Access Route Parameters for your page via $stateParams.parameterName
-function ($scope, factoryRegister, $state, $ionicLoading, $timeout) {
-  $scope.registerEmail= function(isFormValid, user){
-    if(isFormValid){
+.controller('signupCtrl', function ($scope, factoryRegister, $state, $ionicLoading, $timeout) {
+  $scope.registerEmail= function(user){
       console.log(user);
       factoryRegister.save(user, function(result){
         console.log(result);
-        $scope.errorEmail = false
+        $scope.invalidEmail = false;
         $state.go("menu.home")
       }, function(error){
-        $scope.errorEmail = true;
+        $scope.invalidEmail = true;
       })
-    }
+
   }
   $scope.registerFacebook = function(){
     var ref = new Firebase("dojogrupo04.firebaseio.com");
