@@ -51,9 +51,7 @@ function ($scope, factoryRegister, $state, $ionicLoading, $timeout) {
     }
   }
   $scope.registerFacebook = function(){
-
     var ref = new Firebase("dojogrupo04.firebaseio.com");
-
     ref.authWithOAuthPopup("facebook", function(error, authData){
       if(error){
         console.log("Failed ", error)
@@ -77,8 +75,33 @@ function ($scope, factoryRegister, $state, $ionicLoading, $timeout) {
           },10000);
           //$state.go('menu.home');
       }
-    })
+    })}
+    $scope.registerGoogle = function(){
+    var ref = new Firebase("dojogrupo04.firebaseio.com");
+    ref.authWithOAuthPopup("google", function(error, authData){
+      if(error){
+        console.log("Failed ", error)
+      }
+      else{
+          $scope.user = authData;
+          console.log($scope.user);
+          $scope.user.first_name = authData.google.cachedUserProfile.given_name;
+          $scope.user.last_name = authData.google.cachedUserProfile.family_name;
+          $scope.user.gender = authData.google.cachedUserProfile.gender;
+          $scope.user.profile_type = "cidadao";
+          $scope.user.email = authData.google.email;
 
+          console.log($scope.user);
+
+          $ionicLoading.show({
+          template: 'Recebendo suas informações... <ion-spinner icon="android"></ion-spinner>'
+          });
+          $timeout(function(){
+            $ionicLoading.hide();
+          },10000);
+          //$state.go('menu.home');
+      }
+    })
   }
 
 })
