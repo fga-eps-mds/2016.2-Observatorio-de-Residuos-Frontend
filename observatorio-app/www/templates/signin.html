@@ -4,7 +4,7 @@
             <img src="img/logo_transparent.png" width="50%" height="auto">
         </div>
 
-        <form name="loginForm" id="loginForm" class="list" ng-submit="loginAttempt(loginForm.$valid, user)">
+        <form name="loginForm" id="loginForm" class="list" ng-submit="loginAttempt(user)">
             <label class="item item-input" id="page-input9">
                 <span class="input-label">Email</span>
                 <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="nav-bar-block">
