@@ -5792,6 +5792,10 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
 .item-borderless {
   border-width: 0; }
 
+.item-content {
+  background-color: LightSkyBlue  !important;
+}
+
 .item.active,
 .item.activated,
 .item-complex.active .item-content,
@@ -9877,7 +9881,7 @@ img {
 }
 
 .painel {
-  background: url(../img/autumn.gif);
+  background-color: transparent;
   background-size: cover !important;
   background-position: center;
 }
