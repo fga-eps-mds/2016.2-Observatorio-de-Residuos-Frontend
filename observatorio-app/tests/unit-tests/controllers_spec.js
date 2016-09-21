@@ -11,20 +11,33 @@ describe("Controller", function() {
   }));
 
   describe("signupCtrl", function() {
-    var factoryRegisterMock;
+    var factoryRegisterMock, $httpBackend;
       
-    beforeEach(inject(function(factoryRegister) {
+    beforeEach(inject(function(factoryRegister, _$httpBackend_) {
       factoryRegisterMock = factoryRegister;
+      $httpBackend = _$httpBackend_;
       var controller = controllerMock('signupCtrl', {'$scope' : scopeMock, 'factoryRegister' : factoryRegisterMock});
       spyOn(factoryRegisterMock, 'save').andCallThrough();
-    }));
-   
-    it("saves a user when the form is valid", inject(function($window) {
-      scopeMock.registerEmail(true, {});
-      expect(factoryRegisterMock.save).toHaveBeenCalled();
+      $httpBackend.when('GET', /\.html$/).respond('');
     }));
 
-   it("doesn't save a user, and sets an email error, when the form is invalid", function() {
+    it("saves a user when the form is valid", function() {
+      $httpBackend.expect('POST', 'http://localhost:3000/users/create').respond(200);
+      scopeMock.registerEmail(true);
+      $httpBackend.flush();
+      expect(factoryRegisterMock.save).toHaveBeenCalled();
+      expect(scopeMock.errorEmail).toBeFalsy();
+    });
+
+    it("it doesn't save a user, and sets an email error, if the email has already been taken", function() {
+      $httpBackend.expect('POST', 'http://localhost:3000/users/create').respond(500);
+      scopeMock.registerEmail(true)
+      $httpBackend.flush();
+      expect(factoryRegisterMock.save).toHaveBeenCalled();
+      expect(scopeMock.errorEmail).toBeTruthy();
+    });
+
+   it("doesn't try to save a user when the form is invalid", function() {
       scopeMock.registerEmail(false, {});
       expect(factoryRegisterMock.save).not.toHaveBeenCalled();
     });
