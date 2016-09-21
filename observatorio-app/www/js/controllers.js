@@ -75,6 +75,8 @@ angular.module('app.controllers', [])
             $ionicLoading.hide();
           },10000);
       }
+    },{
+      scope: "email"
     })
   }
 })
