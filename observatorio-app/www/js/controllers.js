@@ -16,9 +16,17 @@ angular.module('app.controllers',[])
   function ($scope, $stateParams) {
 }])
 
-.controller('new-markingCtrl', ['$scope', '$stateParams',
-  function ($scope, $stateParams) {
-}])
+.controller('new-markingCtrl',
+  function ($scope, $stateParams, factoryMarking) {
+    $scope.registerMarking= function(marking){
+      console.log(marking)
+      factoryMarking.save(marking, function(result){
+        console.log(result);
+      },function(error){
+
+      })
+    }
+})
 
 .controller('profileCtrl', ['$scope', '$stateParams',
   function ($scope, $stateParams) {

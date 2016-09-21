@@ -13,17 +13,18 @@
       </div>
     </div>
 
+    <form name="markingForm" ng-submit="registerMarking(marking)">
     <div class="list">
       <label class="item item-input">
-        <input type="text" placeholder="Nome do Incidente">
+        <input type="text" ng-model="marking.name" placeholder="Nome do Incidente">
       </label>
       <label class="item item-input">
-        <input type="text" placeholder="Local do Incidente">
+        <input type="text" ng-model="marking.local" placeholder="Local do Incidente">
       </label>
 
       <label class="item item-input item-select">
         <span class="input-label">Tipo do Incidente</span>
-        <select ng-model="marking.type" name="type" required>
+        <select ng-model="marking.tipo" name="tipo" required>
           <option value="organic">Resíduos Orgânicos</option>
           <option value="water">Poluição aquática</option>
           <option value="fire">Incêndios</option>
@@ -32,10 +33,11 @@
       </label>
 
       <label class="item item-input">
-        <textarea placeholder="Comentário" rows="3" ></textarea>
+        <textarea ng-model="marking.comment" placeholder="Comentário" rows="3" ></textarea>
       </label>
 
-      <button type="submit" id="signup-button5" class="button button-stable  button-block">Cadastrar Novo Incidente</button>
+      <button type="submit" id="signup-button5" ng-disabled="markingForm.$invalid" class="button button-stable  button-block">Cadastrar Novo Incidente</button>
     </div>
+  </form>
   </ion-content>
 </ion-view>

@@ -3,7 +3,7 @@ class CreateMarkings < ActiveRecord::Migration
     create_table :markings do |t|
       t.string :name
       t.string :local
-      t.string :type
+      t.string :tipo
       t.string :comment
       t.string :picture
 

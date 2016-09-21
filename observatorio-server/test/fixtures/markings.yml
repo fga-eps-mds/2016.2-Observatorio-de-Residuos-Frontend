@@ -3,13 +3,13 @@
 one:
   name: MyString
   local: MyString
-  type: 
+  tipo: MyString
   comment: MyString
   picture: MyString
 
 two:
   name: MyString
   local: MyString
-  type: 
+  tipo: MyString
   comment: MyString
   picture: MyString

@@ -1,7 +1,7 @@
-class MarkingsControllerController < ApplicationController
+class MarkingsController < ApplicationController
 
   def create
-    marking = Markings.new(marking_params)
+    marking = Marking.new(marking_params)
     if marking.save
       render json: marking
     else
@@ -12,7 +12,7 @@ class MarkingsControllerController < ApplicationController
 
   private
   def marking_params
-    params.require(:marking).permit(:name, :local, :type, :comment, :picture)
+    params.require(:marking).permit(:name, :local, :tipo, :comment)
   end
 
 end
