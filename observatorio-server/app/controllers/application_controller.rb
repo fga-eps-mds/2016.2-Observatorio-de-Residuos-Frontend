@@ -1,17 +1,7 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
-
-  helper_method :current_user
   before_filter :add_allow_credentials_headers
-
-	def current_user
-	  current_user ||= User.find(session[:user_id]) if session[:user_id] #verifica se está logado
-	end
-
-  def require_user
-	  redirect_to '/login' unless current_user 
-	end
 
   def add_allow_credentials_headers
      response.headers['Access-Control-Allow-Origin'] = '*'
