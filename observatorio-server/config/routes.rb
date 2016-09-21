@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   post 'users/create' => 'users#create'
 
+  #get 'markings/' => 'markings#index'
 
+  post 'markings/create' => 'markings#create'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
