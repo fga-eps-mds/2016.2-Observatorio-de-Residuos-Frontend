@@ -31,33 +31,33 @@
                 <h3>Sayajin</h3> <!-- getProfileType -->
               </a>
 
-              <a class="item" menu-close href="/home" ui-sref="menu.home">
+              <a class="item" ng-click="TodeOlho=false; PEVs=false" menu-close href="/home" ui-sref="menu.home">
                 Mapa
               </a>
 
-              <div class="item item-divider">
+              <a class="item" ng-click="TodeOlho=true; PEVs=false">
                 Tô de Olho
-              </div>
-                  <a class="item" menu-close href="/home" ui-sref="menu.my-markings">
+              </a>
+                  <a ng-show="TodeOlho" ng-click="TodeOlho=false" class="item" menu-close href="/home" ui-sref="menu.my-markings" >
                     Minhas Marcações
                   </a>
-                  <a class="item" menu-close href="/home"  ui-sref="menu.new-marking">
+                  <a ng-show="TodeOlho" ng-click="TodeOlho=false" class="item" menu-close href="/home"  ui-sref="menu.new-marking">
                     Marcar novo Incidente
                   </a>
-                  <a class="item" menu-close href="/home" ui-sref="menu.nearby">
+                  <a ng-show="TodeOlho" ng-click="TodeOlho=false" class="item" menu-close href="/home" ui-sref="menu.nearby">
                     Incidentes Próximos
                   </a>
 
-              <div class="item item-divider">
+              <div class="item" ng-click="PEVs=true; TodeOlho=false">
                 PEVs
               </div>
-                  <a class="item" href="#">
+                  <a class="item" ng-show="PEVs" ng-click="PEVs=false" href="#">
                     PEVs Próximas
                   </a>
-                  <a class="item" href="#">
+                  <a class="item" ng-show="PEVs" ng-click="PEVs=false" href="#">
                     Marcar nova PEV
                   </a>
-              <div class="item item-divider">
+              <div class="item">
                 Tô Contribuindo
               </div>
             </div>
