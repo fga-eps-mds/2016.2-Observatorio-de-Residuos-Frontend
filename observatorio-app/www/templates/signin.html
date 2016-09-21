@@ -1,42 +1,47 @@
 <ion-view cache-view="false" title="Observatório de Resíduos" id="signin">
     <ion-content padding="true" scroll="false" class="painel">
-        <div>
-            <img src="img/logo_transparent.png" width="50%" height="auto">
-        </div>
 
-        <form name="loginForm" id="loginForm" class="list" ng-submit="loginAttempt(user)">
-            <label class="item item-input" id="page-input9">
-                <span class="input-label">Email</span>
-                <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="nav-bar-block">
+        <img src="../img/logo-2.png" width="80%">
+
+        <div class="container">
+          <form name="loginForm" id="loginForm" class="list" ng-submit="loginAttempt(user)">
+
+            <label class="item item-input"> 
+              <i class="icon ion-ios-email placeholder-icon"></i>
+              <p ng-show="loginForm.email.$invalid && !loginForm.email.$pristine" class="nav-bar-block">
                   Digite seu E-mail
                 </p>
                 <h3 ng-show="loginError && !loginForm.email.$invalid" class="nav-bar-block">
                   E-mail ou Senha inválido(s)!
                 </h3>
-                <input ng-model="user.email" name="email" type="text" placeholder="" required>
+              <input ng-model="user.email" name="email" type="text" placeholder="Email"  autocorrect="off" autocapitalize="off" required> 
             </label>
-            <label class="item item-input" id="page-input10">
-                <span class="input-label">Senha</span>
-                <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="nav-bar-block">
+
+            <label class="item item-input">
+              <i class="icon ion-locked placeholder-icon"></i>
+              <p ng-show="loginForm.password.$invalid && !loginForm.password.$pristine" class="nav-bar-block">
                   Digite sua Senha
                 </p>
-                <input ng-model="user.password" name="password" type="password" placeholder="" required>
+              <input  ng-model="user.password" name="password" type="password"  placeholder="Senha" required> 
             </label>
-            <br />
-            <button type="submit" ng-disabled="loginForm.$invalid" id="page-button6" class="button button-positive  button-block" style="margin-top: -15px; color: white">Fazer Login</button>
-        </form>
 
-        <a ui-sref="signup" id="page-button1" class="button button-positive  button-block">Criar uma Conta</a>
-        <button ng-click="registerSocial('facebook')" class="button button-royal" class="item item-icon-left" href="#">
-           <i class="ion-social-facebook"></i>  Facebook
-        </button><!-- Icone facebook: <i class="ion-social-facebook"></i> -->
-        <button ng-click="registerSocial('google')" class="button button-assertive" class="item item-icon-left" href="#">
-           <i class="ion-social-googleplus"></i>  Google
-        </button><br><!-- Icone google+: <i class="ion-social-googleplus"></i> -->
-        <br>
+            <button type="submit" ng-disabled="loginForm.$invalid" class="button button-positive" >Entrar</button>
 
-        <div id="page-markdown1">
-            <p>Ao entrar, você concorda com os <a href="#">Termos de Serviço</a> e <a href="#">Termos de Privacidade</a></p>
+            <div class="bottom-links">
+              <a href="#" class="link" ui-sref="signup">Criar uma conta</a>  |  <a href="#" class="link">Esqueceu sua senha?</a>
+            </div>
+          </form>
+          <div class="termos">
+            Ao entrar, você concorda com os <a href="#"><b>Termos de Serviço e Privacidade</b></a>
+          </div>
+
+          <div class="socialLogin">
+            <b>Entrar com:</b><br>
+            <img src="../img/facebook-button.png" class="button" ng-click="registerSocial('facebook')" style="background-color: transparent">
+            <img src="../img/google-button.png" class="button" ng-click="registerSocial('google')" style="background-color: transparent">
+          </div>
+
         </div>
-    </ion-content>
+      </ion-content>
+
 </ion-view>

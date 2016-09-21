@@ -29,6 +29,42 @@ angular.module('starter')
   controller: 'signupCtrl'
   })
 
+  .state('menu.my-markings', {
+    url: '/my-markings',
+    views: {
+      'side-menu': {
+        templateUrl: 'templates/my-markings.html'
+      }
+    }
+  })
+
+  .state('menu.nearby', {
+    url: '/nearby',
+    views: {
+      'side-menu': {
+        templateUrl: 'templates/nearby.html'
+      }
+    }
+  })
+
+  .state('menu.new-marking', {
+    url: '/new-marking',
+    views: {
+      'side-menu': {
+        templateUrl: 'templates/new-marking.html'
+      }
+    }
+  })
+
+  .state('menu.profile', {
+    url: '/profile',
+    views: {
+      'side-menu': {
+        templateUrl: 'templates/profile.html'
+      }
+    }
+  })
+
   $urlRouterProvider.otherwise('/signin')
 
   //$urlRouterProvider.otherwise("app/home");

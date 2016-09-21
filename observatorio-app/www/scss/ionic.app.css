@@ -5792,6 +5792,10 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
 .item-borderless {
   border-width: 0; }
 
+.item-content {
+  background-color: white;
+}
+
 .item.active,
 .item.activated,
 .item-complex.active .item-content,
@@ -6175,7 +6179,7 @@ a.item-content {
     left: 11px; }
 
 .item-complex.item-icon-left {
-  padding-left: 0; }
+  padding-left: 0px; }
   .item-complex.item-icon-left .item-content {
     padding-left: 54px; }
 
@@ -8580,17 +8584,17 @@ progress {
   position: relative;
   display: inline-block;
   margin: 0;
-  padding: 0 12px;
-  min-width: 52px;
-  min-height: 47px;
-  border-width: 1px;
+  padding: 0 10px;
+  min-width: 0px;
+  min-height: 0px;
+  border-width: 10px;
   border-style: solid;
-  border-radius: 4px;
+  border-radius: 0px;
   vertical-align: top;
   text-align: center;
   text-overflow: ellipsis;
   font-size: 16px;
-  line-height: 42px;
+  line-height: 20px;
   cursor: pointer; }
   .button:hover {
     color: #444;
@@ -8600,32 +8604,32 @@ progress {
     background-color: #e5e5e5; }
   .button:after {
     position: absolute;
-    top: -6px;
-    right: -6px;
-    bottom: -6px;
-    left: -6px;
+    top: -0px;
+    right: -0px;
+    bottom: -0px;
+    left: -0px;
     content: ' '; }
   .button .icon {
     vertical-align: top;
     pointer-events: none; }
   .button .icon:before, .button.icon:before, .button.icon-left:before, .button.icon-right:before {
     display: inline-block;
-    padding: 0 0 1px 0;
+    padding: 0 0 0px 0;
     vertical-align: inherit;
-    font-size: 24px;
-    line-height: 41px;
+    font-size: 16px;
+    line-height: 0px;
     pointer-events: none; }
   .button.icon-left:before {
     float: left;
-    padding-right: .2em;
+    padding-right: .0em;
     padding-left: 0; }
   .button.icon-right:before {
     float: right;
     padding-right: 0;
-    padding-left: .2em; }
+    padding-left: .0em; }
   .button.button-block, .button.button-full {
-    margin-top: 10px;
-    margin-bottom: 10px; }
+    margin-top: 0px;
+    margin-bottom: 0px; }
   .button.button-light {
     border-color: transparent;
     background-color: #fff;
@@ -8862,22 +8866,48 @@ progress {
         color: #fff; }
 
 .button-small {
-  padding: 2px 4px 1px;
-  min-width: 28px;
-  min-height: 30px;
-  font-size: 12px;
-  line-height: 26px; }
+  border-color: transparent;
+  background-color: #f8f8f8;
+  color: #444;
+  position: relative;
+  display: inline-block;
+  margin: 0px;
+  border-width: 0px;
+  border-style: solid;
+  border-radius: 100px;
+  vertical-align: top;
+  text-overflow: ellipsis;
+  line-height: 10px;
+  cursor: pointer;
+  padding: 0px 0px 0px;
+  min-width: 0px;
+  min-height: 0px;
+  font-size: 16px;
+  text-align: center; }
   .button-small .icon:before, .button-small.icon:before, .button-small.icon-left:before, .button-small.icon-right:before {
     font-size: 16px;
-    line-height: 19px;
-    margin-top: 3px; }
+    line-height: 0px;
+    margin-top: 0px; }
 
 .button-large {
-  padding: 0 16px;
-  min-width: 68px;
-  min-height: 59px;
-  font-size: 20px;
-  line-height: 53px; }
+    border-color: transparent;
+    background-color: #f8f8f8;
+    color: #444;
+    position: relative;
+    display: inline-block;
+    margin: 10;
+    border-width: 10px;
+    border-style: solid;
+    border-radius: 100px;
+    vertical-align: top;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    cursor: pointer;
+    padding: 0px 0px 0px;
+    min-width: 0px;
+    min-height: 0px;
+    font-size: 16px;
+    text-align: center; }
   .button-large .icon:before, .button-large.icon:before, .button-large.icon-left:before, .button-large.icon-right:before {
     padding-bottom: 2px;
     font-size: 32px;
@@ -8886,7 +8916,7 @@ progress {
 .button-icon {
   -webkit-transition: opacity 0.1s;
   transition: opacity 0.1s;
-  padding: 0 6px;
+  padding: 0 0px;
   min-width: initial;
   border-color: transparent;
   background: none; }
@@ -9817,7 +9847,6 @@ a.button {
 
 p {
   text-align: center;
-
 }
 
 p > a{
@@ -9831,40 +9860,136 @@ p > a{
   margin-left: 80px;
 }
 
-.button.button-positive {
-  width: 60%;
-  border-color: transparent;
-  background-color: green;
-  color: white;
-  margin-left: 70px;
-}
-
-.button.button-positive.active, .button.button-positive.activated {
-  border-color: transparent;
-  background-color: green;
-}
-
 img {
-  text-align: center;
-  margin-left: 95px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-left: 38px;
+  margin-top: 0px;
+  margin-bottom: -25px;
 }
 
 .painel {
-  background: url(../img/autumn.gif);
+  background: url(../img/background-simple.png);
   background-size: cover !important;
   background-position: center;
+  background-position-x: -35px;
 }
 
 .scroll-content {
-  background-color: lightgrey;
+  background-color: white;
 }
 
 .nav-bar-block {
   color: gray;
   text-align: center;
 }
+
+.buttons-zoom {
+  position: absolute;
+  top: 515px;
+  right: 12px;
+}
+
+.button-geolocation {
+  position: absolute;
+  top: 560px;
+  right: 155px;
+}
+
+.has-header-and-image {
+  top: 44px;
+  background: url(../img/map-example.png);
+  background-size: cover !important;
+  background-position: center;
+}
+
+.item-avatar {
+  min-height: 74px;
+}
+
+.img-profile {
+  text-align: left;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.img-new-marking {
+ text-align: left;
+  margin-left: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.item-image img:first-child, .item-image .list-img {
+  width: 50%;
+  vertical-align: middle;
+}
+
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+.item-floating-label .placeholder-icon {
+  padding-right: 18px;
+  position: absolute;
+  bottom: 9px;
+  left: 17px;
+}
+
+.item-floating-label {
+  padding-left: 40px !important;
+}
+
+.container {
+
+  background-color: white;
+  padding: 10px;
+}
+
+.button.button-positive {
+  width: 95%;
+  border-color: transparent;
+  background-color: #74a017;
+  color: white;
+  font-family: arial, sans-serif;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-left: 9px;
+  margin-bottom: 5px;
+
+}
+
+.button.button-positive.active, .button.button-positive.activated {
+  border-color: transparent;
+  background-color: darkgreen;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.bottom-links {
+  margin-left: 50px;
+}
+
+.termos {
+  color: black;
+  font-size: 12px;
+  text-align: center;
+}
+
+.socialLogin {
+  margin-top: 38px;
+  color: black;
+  text-align: center;
+}
+
+i.ion-social-facebook {
+  font-size: 28px;
+}
+
+
 
 
 

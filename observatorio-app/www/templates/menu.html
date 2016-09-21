@@ -14,7 +14,7 @@
         <ion-header-bar class="bar-stable">
             <div class="title">Menu</div>
         </ion-header-bar>
-        <ion-content padding="false" class="side-menu-left has-header ">
+        <ion-content padding="false" class="side-menu-left has-header item-content">
             <!--
             <div class="item" ng-repeat="user in users" href="#/user?id={{user.id}}">
               <a class="item item-avatar" href="#">
@@ -24,37 +24,40 @@
               </a>
             </div>
           -->
-              <div class="list">
-                <a class="item item-avatar" href="#">
-                  <img class="item item-image-left" src="venkman.jpg">
-                  <h2>Nome</h2>
-                  <p>Perfil profissional</p>
-                </a>
-              </div>
+              <div class="list" about="">
+                <a class="item item-avatar" menu-close href="/home"  ui-sref="menu.profile">
+                  <img class="image img-profile" src="../img/usuario.jpeg"><!-- getProfilePicture() -->
+                <h2>Usuário</h2> <!-- getProfileName -->
+                <h3>Cidadã(o)</h3> <!-- getProfileType -->
+              </a>
 
-            <div class="list">
-              <div class="item item-divider">
+              <a class="item" ng-click="TodeOlho=false; PEVs=false" menu-close href="/home" ui-sref="menu.home">
+                Mapa
+              </a>
+
+              <a class="item" ng-click="TodeOlho=true; PEVs=false">
                 Tô de Olho
-              </div>
-                  <a class="item" href="#">
+              </a>
+                  <a ng-show="TodeOlho" ng-click="TodeOlho=false" class="item" menu-close href="/home" ui-sref="menu.my-markings" >
                     Minhas Marcações
                   </a>
-                  <a class="item" href="#">
+                  <a ng-show="TodeOlho" ng-click="TodeOlho=false" class="item" menu-close href="/home"  ui-sref="menu.new-marking">
                     Marcar novo Incidente
                   </a>
-                  <a class="item" href="#">
+                  <a ng-show="TodeOlho" ng-click="TodeOlho=false" class="item" menu-close href="/home" ui-sref="menu.nearby">
                     Incidentes Próximos
                   </a>
-              <div class="item item-divider">
+
+              <div class="item" ng-click="PEVs=true; TodeOlho=false">
                 PEVs
               </div>
-                  <a class="item" href="#">
+                  <a class="item" ng-show="PEVs" ng-click="PEVs=false" href="#">
                     PEVs Próximas
                   </a>
-                  <a class="item" href="#">
+                  <a class="item" ng-show="PEVs" ng-click="PEVs=false" href="#">
                     Marcar nova PEV
                   </a>
-              <div class="item item-divider">
+              <div class="item">
                 Tô Contribuindo
               </div>
             </div>
