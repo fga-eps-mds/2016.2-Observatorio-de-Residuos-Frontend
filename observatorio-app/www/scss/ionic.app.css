@@ -5793,7 +5793,7 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
   border-width: 0; }
 
 .item-content {
-  background-color: LightSkyBlue  !important;
+  background-color: white;
 }
 
 .item.active,
@@ -9860,34 +9860,21 @@ p > a{
   margin-left: 80px;
 }
 
-.button.button-positive {
-  width: 60%;
-  border-color: transparent;
-  background-color: green;
-  color: white;
-  margin-left: 70px;
-}
-
-.button.button-positive.active, .button.button-positive.activated {
-  border-color: transparent;
-  background-color: green;
-}
-
 img {
-  text-align: center;
-  margin-left: 95px;
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin-left: 26px;
+  margin-top: 0px;
+  margin-bottom: -25px;
 }
 
 .painel {
-  background-color: transparent;
+  background: url(../img/background-simple.png);
   background-size: cover !important;
   background-position: center;
+  background-position-x: -35px;
 }
 
 .scroll-content {
-  background-color: lightgrey;
+  background-color: white;
 }
 
 .nav-bar-block {
@@ -9936,4 +9923,75 @@ img {
   width: 50%;
   vertical-align: middle;
 }
+
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+.item-floating-label .placeholder-icon {
+  padding-right: 18px;
+  position: absolute;
+  bottom: 9px;
+  left: 17px;
+}
+
+.item-floating-label {
+  padding-left: 40px !important;
+}
+
+.container {
+
+  background-color: white;
+  padding: 10px;
+}
+
+.button.button-positive {
+  width: 95%;
+  border-color: transparent;
+  background-color: #74a017;
+  color: white;
+  font-family: arial, sans-serif;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-left: 9px;
+  margin-bottom: 5px;
+
+}
+
+.button.button-positive.active, .button.button-positive.activated {
+  border-color: transparent;
+  background-color: darkgreen;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.bottom-links {
+  margin-left: 50px;
+}
+
+.termos {
+  color: black;
+  font-size: 12px;
+  text-align: center;
+}
+
+.socialLogin {
+  margin-top: 38px;
+  color: black;
+  text-align: center;
+}
+
+i.ion-social-facebook {
+  font-size: 28px;
+}
+
+
+
+
+
+
 
