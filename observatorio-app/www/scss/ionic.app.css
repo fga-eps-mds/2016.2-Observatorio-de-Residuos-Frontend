@@ -9894,12 +9894,12 @@ img {
   right: 155px;
 }
 
-.has-header-and-image {
-  top: 44px;
-  background: url(../img/map-example.png);
-  background-size: cover !important;
-  background-position: center;
-}
+/*.has-header-and-image {*/
+  /*top: 44px;*/
+  /*background: url(../img/map-example.png);*/
+  /*background-size: cover !important;*/
+  /*background-position: center;*/
+/*}*/
 
 .item-avatar {
   min-height: 74px;
@@ -9989,9 +9989,12 @@ i.ion-social-facebook {
   font-size: 28px;
 }
 
+.mapa-google {
+  margin: -10px;
+  width: 106%;
+  height: 103%;
+}
 
-
-
-
-
-
+.scroll, .mapWrap {
+  height: 100%;
+}
