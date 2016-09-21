@@ -5,4 +5,7 @@ angular.module('starter')
 })
 .factory('factoryLogin', function($resource, URL){
   return $resource(URL+"/sessions/login")
+})
+.factory('factoryEmail', function($resource, URL){
+  return $resource(URL+"/users/verify_email")
 });

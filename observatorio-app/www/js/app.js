@@ -33,16 +33,14 @@ angular.module('starter', ['ionic', 'ngResource','app.controllers'])
   url: '/home',
   views: {
     'side-menu': {
-      templateUrl: 'templates/home.html',
-      controller: 'homeCtrl'
+      templateUrl: 'templates/home.html'
     }
   }
   })
 
   .state('menu', {
   url: '/side-menu',
-  templateUrl: 'templates/menu.html',
-  controller: 'menuCtrl'
+  templateUrl: 'templates/menu.html'
   })
 
   .state('signin', {
