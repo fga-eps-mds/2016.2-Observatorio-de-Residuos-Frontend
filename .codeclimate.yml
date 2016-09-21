@@ -16,8 +16,11 @@ engines:
     enabled: true
 ratings:
   paths:
-  - "observatorio-app/www/js"
-  - "observatorio-app/www/templates"
-  - "observatorio-server/app"
+  - "observatorio-app/www/js/controllers.js"
+  - "observatorio-app/www/js/app.js"
+  - "observatorio-app/www/js/Login/*.js"
+  - "observatorio-app/www/templates/*.html"
+  - "observatorio-server/app/controllers/*.rb"
+  - "observatorio-server/app/models/*.rb"
 exclude_paths: 
   - "observatorio-app/www/lib"
