@@ -6,52 +6,52 @@ angular.module('starter')
   .state('menu.home', {
   url: '/home',
   views: {
-    'side-menu': {
-      templateUrl: 'templates/home.html'
+    'sideMenu': {
+      templateUrl: 'views/home.html'
     }
   }
   })
 
   .state('menu', {
-  url: '/side-menu',
-  templateUrl: 'templates/menu.html'
+  url: '/sideMenu',
+  templateUrl: 'views/menu.html'
   })
 
   .state('signin', {
   url: '/signin',
-  templateUrl: 'templates/signin.html',
+  templateUrl: 'views/signIn.html',
   controller: 'signinCtrl'
   })
 
   .state('signup', {
   url: '/signup',
-  templateUrl: 'templates/signup.html',
+  templateUrl: 'views/user/signUp.html',
   controller: 'signupCtrl'
   })
 
-  .state('menu.my-markings', {
-    url: '/my-markings',
+  .state('menu.myMarkings', {
+    url: '/myMarkings',
     views: {
-      'side-menu': {
-        templateUrl: 'templates/my-markings.html'
+      'sideMenu': {
+        templateUrl: 'views/marking/myMarkings.html'
       }
     }
   })
 
-  .state('menu.nearby', {
-    url: '/nearby',
+  .state('menu.nearbyMarkings', {
+    url: '/nearbyMarkings',
     views: {
-      'side-menu': {
-        templateUrl: 'templates/nearby.html'
+      'sideMenu': {
+        templateUrl: 'views/marking/nearbyMarkings.html'
       }
     }
   })
 
-  .state('menu.new-marking', {
-    url: '/new-marking',
+  .state('menu.newMarking', {
+    url: '/newMarking',
     views: {
-      'side-menu': {
-        templateUrl: 'templates/new-marking.html'
+      'sideMenu': {
+        templateUrl: 'views/marking/newMarking.html'
       }
     }
   })
@@ -59,8 +59,8 @@ angular.module('starter')
   .state('menu.profile', {
     url: '/profile',
     views: {
-      'side-menu': {
-        templateUrl: 'templates/profile.html'
+      'sideMenu': {
+        templateUrl: 'views/user/userProfile.html'
       }
     }
   })

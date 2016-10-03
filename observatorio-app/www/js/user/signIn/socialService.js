@@ -8,7 +8,7 @@ angular.module('starter')
   var getUserData = function(){
     console.log(userData)
     return userData
-  }
+  }  
   return {
     setUserData: setUserData,
     getUserData: getUserData
