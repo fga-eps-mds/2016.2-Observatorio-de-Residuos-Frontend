@@ -6,14 +6,14 @@ angular.module('starter')
   .state('menu.home', {
   url: '/home',
   views: {
-    'sideMenu': {
+    'side-menu': {
       templateUrl: 'views/home.html'
     }
   }
   })
 
   .state('menu', {
-  url: '/sideMenu',
+  url: '/side-menu',
   templateUrl: 'views/menu.html'
   })
 
@@ -32,7 +32,7 @@ angular.module('starter')
   .state('menu.myMarkings', {
     url: '/myMarkings',
     views: {
-      'sideMenu': {
+      'side-menu': {
         templateUrl: 'views/marking/myMarkings.html'
       }
     }
@@ -41,7 +41,7 @@ angular.module('starter')
   .state('menu.nearbyMarkings', {
     url: '/nearbyMarkings',
     views: {
-      'sideMenu': {
+      'side-menu': {
         templateUrl: 'views/marking/nearbyMarkings.html'
       }
     }
@@ -50,7 +50,7 @@ angular.module('starter')
   .state('menu.newMarking', {
     url: '/newMarking',
     views: {
-      'sideMenu': {
+      'side-menu': {
         templateUrl: 'views/marking/newMarking.html'
       }
     }
@@ -59,7 +59,7 @@ angular.module('starter')
   .state('menu.profile', {
     url: '/profile',
     views: {
-      'sideMenu': {
+      'side-menu': {
         templateUrl: 'views/user/userProfile.html'
       }
     }
