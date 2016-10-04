@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 	  if user && user.password_digest == params[:password]
 	    render json: user
 	  else
-	  	render json:{}
+	  	render json:{}, :status => :unauthorized
 	  end
 	end
 
