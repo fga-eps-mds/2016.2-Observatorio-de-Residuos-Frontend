@@ -10,4 +10,8 @@ angular.module('starter')
 
 .factory('factoryEmail', function($resource, URL){
   return $resource(URL+"/users/verify_email")
+})
+
+.factory('factoryMarking', function($resource, URL){
+  return $resource(URL+"/markings/create")
 });

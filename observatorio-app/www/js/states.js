@@ -51,7 +51,8 @@ angular.module('starter')
     url: '/newMarking',
     views: {
       'side-menu': {
-        templateUrl: 'views/marking/newMarking.html'
+        templateUrl: 'views/marking/newMarking.html',
+        controller: 'markingCtrl'
       }
     }
   })
