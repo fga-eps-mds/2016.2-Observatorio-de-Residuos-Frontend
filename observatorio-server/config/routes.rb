@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'users/verify_email' => 'users#verify_email'
   post 'sessions/login' => 'sessions#create'
   post 'markings/create' => 'markings#create'
+  get 'markings' => 'markings#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -7,7 +7,8 @@ angular.module('starter')
   url: '/home',
   views: {
     'side-menu': {
-      templateUrl: 'views/home.html'
+      templateUrl: 'views/home.html',
+      controller: 'mapCtrl'
     }
   }
   })

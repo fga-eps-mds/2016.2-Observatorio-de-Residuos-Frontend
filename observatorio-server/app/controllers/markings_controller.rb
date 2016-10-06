@@ -1,6 +1,10 @@
 class MarkingsController < ApplicationController
   before_action :set_marking, only: [:show, :edit, :update, :destroy]
 
+  def index
+    render json: Marking.all
+  end 
+
   def new
     marking = Marking.new
   end
