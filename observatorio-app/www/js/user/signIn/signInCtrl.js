@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-.controller('signinCtrl', function ($scope, $stateParams, $state, socialService, factoryEmail, factoryLogin, $ionicLoading, $timeout) {
+.controller('signinCtrl', function ($scope, $stateParams, $state, currentUserService, userDataExtractorService, factoryEmail, factoryLogin, $ionicLoading, $timeout) {
   $scope.loginAttempt = function(user){
       console.log(user);
       factoryLogin.save(user, function(result){
@@ -20,28 +20,13 @@ angular.module('app.controllers')
         console.log("Failed ", error)
       }
       else{
-          console.log(authData)
           $scope.user = authData;
           factoryEmail.save({"email": ((socialNetwork=='facebook')?authData.facebook.email:authData.google.email)}, function(result) {
             if(result.userExist){
               $state.go('menu.home')
             }else{
-              if(socialNetwork=='facebook'){
-                $scope.user.first_name = authData.facebook.cachedUserProfile.first_name;
-                $scope.user.last_name = authData.facebook.cachedUserProfile.last_name;
-                $scope.user.gender = authData.facebook.cachedUserProfile.gender;
-                $scope.user.profile_type = "cidadao";
-                $scope.user.email = authData.facebook.email;
-              }else{
-                $scope.user.first_name = authData.google.cachedUserProfile.given_name;
-                console.log("nome:"+ $scope.user.first_name)
-                $scope.user.last_name  = authData.google.cachedUserProfile.family_name;
-                console.log("lastNome:"+ $scope.user.last_name)
-                $scope.user.gender = authData.google.cachedUserProfile.gender;
-                $scope.user.profile_type = "cidadao";
-                $scope.user.email = authData.google.email;
-              }
-              socialService.setUserData($scope.user)
+              userDataExtractorService.extract(authData,socialNetwork)
+              currentUserService.setUserData(userDataExtractorService.getData())
               $state.go('signup')
             }
           }, function(error){

@@ -1,8 +1,8 @@
 angular.module('app.controllers')
 
-.controller('signupCtrl', function ($scope, factoryRegister,socialService, $state) {
+.controller('signupCtrl', function ($scope, factoryRegister, currentUserService, $state) {
 
-  $scope.user = socialService.getUserData()
+  $scope.user = currentUserService.getUserData()
   $scope.registerEmail= function(user){
       console.log(user);
       factoryRegister.save(user, function(result){
