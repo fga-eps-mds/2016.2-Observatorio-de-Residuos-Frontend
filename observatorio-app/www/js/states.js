@@ -55,6 +55,15 @@ angular.module('starter')
       }
     }
   })
+  
+  .state('menu.newPEV', {
+    url: '/newPEV',
+    views: {
+      'side-menu': {
+        templateUrl: 'views/newPEV.html'
+      }
+    }
+  })
 
   .state('menu.profile', {
     url: '/profile',
