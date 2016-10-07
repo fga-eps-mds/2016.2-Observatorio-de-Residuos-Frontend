@@ -1,20 +1,5 @@
 angular.module('starter')
 
-.service('currentUserService',function(){
-  var userData = "";
-  var setUserData = function(paramUserData){
-    userData = paramUserData
-  }
-  var getUserData = function(){
-    console.log(userData)
-    return userData
-  }
-  return {
-    setUserData: setUserData,
-    getUserData: getUserData
-  }
-})
-
 .service('googleExtractor', function(){
 var userData = "";
 var extract = function(authData){
@@ -23,6 +8,7 @@ var extract = function(authData){
   userData.last_name  = authData.google.cachedUserProfile.family_name;
   userData.gender = authData.google.cachedUserProfile.gender;
   userData.email = authData.google.email;
+  console.log(userData)
   return userData;
 }
   return{
@@ -38,6 +24,7 @@ var extract = function(authData){
   userData.last_name = authData.facebook.cachedUserProfile.last_name;
   userData.gender = authData.facebook.cachedUserProfile.gender;
   userData.email = authData.facebook.email;
+  console.log(userData)
   return userData;
 }
   return{
@@ -47,21 +34,36 @@ var extract = function(authData){
 
 
 .service('userDataExtractorService',function(facebookExtractor, googleExtractor){
-  var userData = "";
   var extract = function(authData, paramSocialNetwork){
-    userData = authData;
+    authData.profile_type = "cidadao";
     if(paramSocialNetwork == 'facebook'){
-      userData = facebookExtractor.extract(authData);
+      return facebookExtractor.extract(authData);
     }else{
-      userData = googleExtractor.extract(authData);
+      return googleExtractor.extract(authData);
     }
-    userData.profile_type = "cidadao";
-  }
-  var getData = function(){
-    return userData
   }
   return {
-    extract: extract,
-    getData: getData
+    extract: extract
   }
+})
+
+.service('firebaseService', function(userDataExtractorService){
+  var ref = new Firebase("dojogrupo04.firebaseio.com");
+  var socialLogin = function(socialNetwork){
+    ref.authWithOAuthPopup(socialNetwork, function(error, authData){
+      if(error){
+        console.log("Failed ", error)
+        return NULL;
+      }
+      else{
+        console.log("rola12312312")
+        return userDataExtractorService.extract(authData, socialNetwork);
+      }
+    },{
+      scope: "email"
+    })
+  }
+    return{
+      socialLogin: socialLogin
+    }
 })

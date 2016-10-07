@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-.controller('signinCtrl', function ($scope, $stateParams, $state, currentUserService, userDataExtractorService, factoryEmail, factoryLogin, $ionicLoading, $timeout) {
+.controller('signinCtrl', function ($scope, $stateParams, $state, firebaseService, currentUserService, factoryEmail, factoryLogin, $ionicLoading, $timeout) {
   $scope.loginAttempt = function(user){
       console.log(user);
       factoryLogin.save(user, function(result){
@@ -14,19 +14,18 @@ angular.module('app.controllers')
     }
 
   $scope.registerSocial = function(socialNetwork){
-    var ref = new Firebase("dojogrupo04.firebaseio.com");
-    ref.authWithOAuthPopup(socialNetwork, function(error, authData){
-      if(error){
-        console.log("Failed ", error)
-      }
-      else{
-          $scope.user = authData;
-          factoryEmail.save({"email": ((socialNetwork=='facebook')?authData.facebook.email:authData.google.email)}, function(result) {
+      $scope.user = firebaseService.socialLogin(socialNetwork)
+      console.log("ROLA")
+      if($scope.user!= null){
+        console.log("ROLA2")
+          factoryEmail.save({"email": $scope.user.email}, function(result) {
+            currentUserService.setUserData($scope.user)
+            console.log("ROLA3")
             if(result.userExist){
+              console.log("ROLA4")
               $state.go('menu.home')
             }else{
-              userDataExtractorService.extract(authData,socialNetwork)
-              currentUserService.setUserData(userDataExtractorService.getData())
+              console.log("ROLA5")
               $state.go('signup')
             }
           }, function(error){
@@ -39,8 +38,5 @@ angular.module('app.controllers')
             $ionicLoading.hide();
           },10000);
       }
-    },{
-      scope: "email"
-    })
   }
 })
