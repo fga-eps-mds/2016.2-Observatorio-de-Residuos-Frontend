@@ -49,21 +49,26 @@ var extract = function(authData){
 
 .service('firebaseService', function(userDataExtractorService){
   var ref = new Firebase("dojogrupo04.firebaseio.com");
+  var userData;
   var socialLogin = function(socialNetwork){
     ref.authWithOAuthPopup(socialNetwork, function(error, authData){
       if(error){
         console.log("Failed ", error)
-        return NULL;
+        userData = null;
       }
       else{
         console.log("rola12312312")
-        return userDataExtractorService.extract(authData, socialNetwork);
+        userData =  userDataExtractorService.extract(authData, socialNetwork);
       }
     },{
       scope: "email"
     })
   }
+  var getData = function(){
+    return userData
+  }
     return{
+      getData: getData,
       socialLogin: socialLogin
     }
 })

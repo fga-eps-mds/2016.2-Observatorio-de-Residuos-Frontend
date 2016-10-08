@@ -14,29 +14,25 @@ angular.module('app.controllers')
     }
 
   $scope.registerSocial = function(socialNetwork){
-      $scope.user = firebaseService.socialLogin(socialNetwork)
-      console.log("ROLA")
-      if($scope.user!= null){
-        console.log("ROLA2")
-          factoryEmail.save({"email": $scope.user.email}, function(result) {
-            currentUserService.setUserData($scope.user)
-            console.log("ROLA3")
-            if(result.userExist){
-              console.log("ROLA4")
-              $state.go('menu.home')
-            }else{
-              console.log("ROLA5")
-              $state.go('signup')
-            }
-          }, function(error){
-            console.log(error)
-          })
-          $ionicLoading.show({
-          template: 'Recebendo suas informações... <ion-spinner icon="android"></ion-spinner>'
-          });
-          $timeout(function(){
-            $ionicLoading.hide();
-          },10000);
-      }
+      firebaseService.socialLogin(socialNetwork)
+      $ionicLoading.show({
+      template: 'Recebendo suas informações... <ion-spinner icon="android"></ion-spinner>'
+      });
+      $timeout(function(){
+        $ionicLoading.hide();
+        $scope.user = firebaseService.getData();
+        if($scope.user != null){
+            factoryEmail.save({"email": $scope.user.email}, function(result) {
+              currentUserService.setUserData($scope.user)
+              if(result.userExist){
+                $state.go('menu.home')
+              }else{
+                $state.go('signup')
+              }
+            }, function(error){
+              console.log(error)
+            })
+        }
+      },11000);
   }
 })
