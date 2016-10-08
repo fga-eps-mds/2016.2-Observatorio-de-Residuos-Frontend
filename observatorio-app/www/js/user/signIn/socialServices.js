@@ -1,5 +1,9 @@
 angular.module('starter')
+//Services responsáveis por realizar o login e cadastro com redes sociais.
 
+
+/* googleExtractor
+     extract: Extrai os dados recebidos da authData no formato google. */
 .service('googleExtractor', function(){
 var userData = "";
 var extract = function(authData){
@@ -16,6 +20,8 @@ var extract = function(authData){
   }
 })
 
+/* facebookExtractor
+    extract: Extrai os dados recebidos da authData no formato facebook. */
 .service('facebookExtractor', function(){
 var userData = "";
 var extract = function(authData){
@@ -32,7 +38,9 @@ var extract = function(authData){
   }
 })
 
-
+/* userDataExtractorService
+      extract: responsável por decidir qual a rede social utilizada
+               e chamar as devidas services extratoras.  */
 .service('userDataExtractorService',function(facebookExtractor, googleExtractor){
   var extract = function(authData, paramSocialNetwork){
     authData.profile_type = "cidadao";
@@ -46,6 +54,16 @@ var extract = function(authData){
     extract: extract
   }
 })
+
+/* firebaseService
+      Responsável por instanciar o objeto do firebase para receber os dados do usuário.
+
+      socialLogin: Recebe a string de qual rede social desejada e realiza a autenticação.
+                  em caso de sucesso chama a service para extração dos dados e salva o usuário.
+                  em caso de erro salva um usuário nulo.
+
+      getData: Método para acessar as informações salvas do usuário
+              após o carregamento de todas elas no metodo login.  */
 
 .service('firebaseService', function(userDataExtractorService, $q){
   var ref = new Firebase("dojogrupo04.firebaseio.com");
@@ -76,6 +94,9 @@ var extract = function(authData){
     }
 })
 
+/* socialLoginService
+    login: Responsável por validar os dados recebidos pelo firebase
+           e decidir qual o state este usuário deve ser enviado */
 .service('socialLoginService', function(factoryEmail, $state ,currentUserService){
   var login = function(user){
     factoryEmail.save({"email": user.email}, function(result) {

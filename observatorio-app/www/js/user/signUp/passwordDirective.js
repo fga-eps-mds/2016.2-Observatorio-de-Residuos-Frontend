@@ -1,5 +1,5 @@
 angular.module('starter')
-
+/* Diretiva para validar o campo de Password com a confirmação de Password  */
 .directive('confirmPwd', function($interpolate, $parse) {
   return {
     require: 'ngModel',
