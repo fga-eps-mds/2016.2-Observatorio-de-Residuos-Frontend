@@ -14,16 +14,18 @@ angular.module('app.controllers')
     }
 
   $scope.registerSocial = function(socialNetwork){
-      firebaseService.socialLogin(socialNetwork)
+      var login = firebaseService.socialLogin(socialNetwork);
+      login.then(function() {
+        $scope.user = firebaseService.getData();
+        if($scope.user != null){
+          socialLoginService.login($scope.user);
+        }  
+      });
       $ionicLoading.show({
       template: 'Recebendo suas informações... <ion-spinner icon="android"></ion-spinner>'
       });
       $timeout(function(){
         $ionicLoading.hide();
-        $scope.user = firebaseService.getData();
-        if($scope.user != null){
-            socialLoginService.login($scope.user);
-        }
-      },11000);
+      },3000);
   }
 })

@@ -47,22 +47,25 @@ var extract = function(authData){
   }
 })
 
-.service('firebaseService', function(userDataExtractorService){
+.service('firebaseService', function(userDataExtractorService, $q){
   var ref = new Firebase("dojogrupo04.firebaseio.com");
   var userData;
   var socialLogin = function(socialNetwork){
+    var deferred = $q.defer();
     ref.authWithOAuthPopup(socialNetwork, function(error, authData){
       if(error){
         console.log("Failed ", error)
         userData = null;
+        deferred.resolve(userData);
       }
       else{
-        console.log("rola12312312")
         userData =  userDataExtractorService.extract(authData, socialNetwork);
+        deferred.resolve(userData);
       }
     },{
       scope: "email"
     })
+    return deferred.promise;
   }
   var getData = function(){
     return userData
