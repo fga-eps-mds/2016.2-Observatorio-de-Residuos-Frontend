@@ -72,3 +72,21 @@ var extract = function(authData){
       socialLogin: socialLogin
     }
 })
+
+.service('socialLoginService', function(factoryEmail, $state ,currentUserService){
+  var login = function(user){
+    factoryEmail.save({"email": user.email}, function(result) {
+      currentUserService.setUserData(user)
+      if(result.userExist){
+        $state.go('menu.home')
+      }else{
+        $state.go('signup')
+      }
+    }, function(error){
+      console.log(error)
+    })
+  }
+  return{
+    login : login
+  }
+})

@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-.controller('signinCtrl', function ($scope, $stateParams, $state, firebaseService, currentUserService, factoryEmail, factoryLogin, $ionicLoading, $timeout) {
+.controller('signinCtrl', function ($scope, $stateParams, $state, socialLoginService, firebaseService, currentUserService, factoryEmail, factoryLogin, $ionicLoading, $timeout) {
   $scope.loginAttempt = function(user){
       console.log(user);
       factoryLogin.save(user, function(result){
@@ -22,16 +22,7 @@ angular.module('app.controllers')
         $ionicLoading.hide();
         $scope.user = firebaseService.getData();
         if($scope.user != null){
-            factoryEmail.save({"email": $scope.user.email}, function(result) {
-              currentUserService.setUserData($scope.user)
-              if(result.userExist){
-                $state.go('menu.home')
-              }else{
-                $state.go('signup')
-              }
-            }, function(error){
-              console.log(error)
-            })
+            socialLoginService.login($scope.user);
         }
       },11000);
   }
