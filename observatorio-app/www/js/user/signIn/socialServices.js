@@ -5,9 +5,8 @@ angular.module('starter')
 /* googleExtractor
      extract: Extrai os dados recebidos da authData no formato google. */
 .service('googleExtractor', function(){
-var userData = "";
+var userData = {};
 var extract = function(authData){
-  userData = authData;
   userData.first_name = authData.google.cachedUserProfile.given_name;
   userData.last_name  = authData.google.cachedUserProfile.family_name;
   userData.gender = authData.google.cachedUserProfile.gender;
@@ -23,9 +22,8 @@ var extract = function(authData){
 /* facebookExtractor
     extract: Extrai os dados recebidos da authData no formato facebook. */
 .service('facebookExtractor', function(){
-var userData = "";
+var userData = {};
 var extract = function(authData){
-  userData = authData;
   userData.first_name = authData.facebook.cachedUserProfile.first_name;
   userData.last_name = authData.facebook.cachedUserProfile.last_name;
   userData.gender = authData.facebook.cachedUserProfile.gender;
