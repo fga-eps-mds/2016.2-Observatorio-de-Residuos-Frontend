@@ -1,5 +1,5 @@
 // Karma configuration
-// Generated on Sun Sep 18 2016 10:05:48 GMT-0300 (BRT)
+// Generated on Sat Oct 08 2016 20:38:28 GMT-0300 (BRT)
 
 module.exports = function(config) {
   config.set({
@@ -14,16 +14,17 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: [
-      'www/lib/ionic/js/ionic.bundle.js',
-      'https://cdn.firebase.com/js/client/2.2.4/firebase.js',
-      'https://cdn.firebase.com/libs/angularfire/1.1.3/angularfire.min.js',
-      'www/lib/angular-resource//angular-mocks.js',
-      'www/lib/angular-resource/angular-resource.js',
-      'www/js/*.js',
-      'www/js/**/*.js',
-      'tests/unit-tests/*.js'
-         ],
+    files: [ 'www/lib/ionic/js/ionic.bundle.js',
+	     'www/lib/firebase/firebase.js',
+	     'www/lib/firebase/angularfire.min.js',
+	     'www/lib/angular-resource/angular-resource.js',
+	     'www/lib/angular-resource/angular-mocks.js',
+	     'www/lib/ngmap/build/scripts/ng-map.min.js',
+	     'https://maps.googleapis.com/maps/api/js?key=AIzaSyASY7L520_jRca_Ecr7Rvki2P28qvo-ZXE',
+	     'www/js/*.js',
+	     'www/js/**/*.js',
+	     'tests/unit-tests/*.js'
+    ],
 
 
     // list of files to exclude
@@ -34,21 +35,21 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'www/js/*.js': ['coverage'],
-      'www/js/**/*.js': ['coverage']
+	'www/js/*.js':['coverage'],
+	'www/js/**/*.js':['coverage']
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
-
-
-    coverageReporter: {
-      type: 'html',
-      dir: 'coverage/'
+    reporters: ['progress','coverage'],
+    
+    coverageReporter:{
+	type: 'html',
+	dir: 'coverage/'
     },
+
 
     // web server port
     port: 9876,
