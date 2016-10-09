@@ -10,7 +10,6 @@ angular.module('starter')
     userData = paramUserData
   }
   var getUserData = function(){
-    console.log(userData)
     return userData
   }
   return {

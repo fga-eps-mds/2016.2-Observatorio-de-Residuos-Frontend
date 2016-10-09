@@ -11,7 +11,6 @@ var extract = function(authData){
   userData.last_name  = authData.google.cachedUserProfile.family_name;
   userData.gender = authData.google.cachedUserProfile.gender;
   userData.email = authData.google.email;
-  console.log(userData)
   return userData;
 }
   return{
@@ -28,7 +27,6 @@ var extract = function(authData){
   userData.last_name = authData.facebook.cachedUserProfile.last_name;
   userData.gender = authData.facebook.cachedUserProfile.gender;
   userData.email = authData.facebook.email;
-  console.log(userData)
   return userData;
 }
   return{
