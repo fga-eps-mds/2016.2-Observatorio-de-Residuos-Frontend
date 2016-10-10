@@ -55,12 +55,12 @@ angular.module('starter')
       }
     }
   })
-  
+
   .state('menu.newPEV', {
     url: '/newPEV',
     views: {
       'side-menu': {
-        templateUrl: 'views/newPEV.html'
+        templateUrl: 'views/pev/newPEV.html'
       }
     }
   })

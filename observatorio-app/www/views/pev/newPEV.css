@@ -1,0 +1,14 @@
+.bar .button.button-icon .icon:before, .bar .button.button-icon:before, .bar .button.button-icon.icon-left:before, .bar .button.button-icon.icon-right:before, .bar button.button-icon .icon:before, .bar button.button-icon:before, .bar button.button-icon.icon-left:before, .bar button.button-icon.icon-right:before {
+  vertical-align: baseline;
+  font-size: 32px;
+  line-height: 0px;
+}
+.item-image img:first-child, .item-image .list-img {
+  width: 100%;
+  margin-left: 0px;
+}
+
+.buttons-from-img {
+  vertical-align: middle;
+  margin-top: 25px;
+}
