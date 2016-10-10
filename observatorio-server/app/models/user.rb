@@ -1,5 +1,4 @@
 class User < ActiveRecord::Base
-   has_secure_password
 
    VALID_NAME_FORMAT= /[a-z|A-Z áéíóúÁÉÍÓÚçÇâôãõÂÔÃÕ]/
    validates :first_name, presence: true, length: {maximum: 30}, format: { with: VALID_NAME_FORMAT}

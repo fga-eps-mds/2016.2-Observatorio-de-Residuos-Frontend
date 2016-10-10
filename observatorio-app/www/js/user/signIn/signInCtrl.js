@@ -2,6 +2,7 @@ angular.module('app.controllers')
 
 .controller('signinCtrl', function ($scope, $stateParams, $state, currentUserService, userDataExtractorService, factoryEmail, factoryLogin, $ionicLoading, $timeout) {
   $scope.loginAttempt = function(user){
+      user.password = String(CryptoJS.SHA256(user.password)); //criptografia da senha
       console.log(user);
       factoryLogin.save(user, function(result){
         console.log(result);
