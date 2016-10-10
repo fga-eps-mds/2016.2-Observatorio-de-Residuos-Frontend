@@ -1,13 +1,12 @@
 <ion-view title="Nova PEV" id="new-pev">
   <ion-content padding="true" ng-controller="cameraCtrl" class="has-header" scroll="true">
+    <form ng-submit="createPEV(pev)">
     <div class="image-and-buttons">
       <div class="list card">
         <div class = "row">
           <div class = "col col-60">
             <div class="item item-image">
               <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="text-align: center">
-              <!-- This image is blank, because this place will be filled with the photo from camera.
-                   Maybe, must be a placeholder, just to not scare the user -->
             </div>
           </div>
           <div class = "col">
@@ -24,9 +23,9 @@
     <div class="item item-body">
         <ion-list id="list">
           <label class="item item-input">
-            <input type="text" placeholder="Nome da PEV">
+            <input type="text"  ng-model="pev.name" placeholder="Nome da PEV">
           </label>
-          <ion-item class="item-divider" id="page-list-item-divider3">Tipo da PEV</ion-item>
+          <ion-item class="item-divider" id="page-list">Tipo da PEV</ion-item>
           <ion-checkbox class="checkbox-positive">Papel</ion-checkbox>
           <ion-checkbox class="checkbox-positive">Plástico</ion-checkbox>
           <ion-checkbox class="checkbox-positive">Metal</ion-checkbox>
@@ -34,12 +33,13 @@
         </ion-list>
 
           <label class="item item-input">
-            <input type="text" placeholder="Local da PEV">
+            <input type="text" ng-model="pev.location" placeholder="Local da PEV">
           </label>
-        <button id="page-button9" class="button button-positive  button-block">Cadastrar</button>
+        <button type="submit" id="page-button9" class="button button-positive  button-block">Cadastrar</button>
       </div>
     </div>
     <div class="form-list"></div>
     <div class="menu-bar"></div>
+    </form>
   </ion-content>
 </ion-view>
