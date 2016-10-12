@@ -11,4 +11,8 @@ angular.module('starter')
 //Factory de verificação de email válido.
 .factory('factoryEmail', function($resource, URL){
   return $resource(URL+"/users/verify_email")
+})
+
+.factory('factoryMarking', function($resource, URL){
+  return $resource(URL+"/markings/create")
 });

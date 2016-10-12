@@ -8,7 +8,8 @@ angular.module('starter')
   url: '/home',
   views: {
     'side-menu': {
-      templateUrl: 'views/home.html'
+      templateUrl: 'views/home.html',
+      controller: 'mapCtrl'
     }
   }
   })
@@ -57,7 +58,8 @@ angular.module('starter')
     url: '/newMarking',
     views: {
       'side-menu': {
-        templateUrl: 'views/marking/newMarking.html'
+        templateUrl: 'views/marking/newMarking.html',
+        controller: 'markingCtrl'
       }
     }
   })
