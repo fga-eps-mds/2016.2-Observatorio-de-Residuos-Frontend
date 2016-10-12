@@ -24,3 +24,5 @@ ratings:
   - "observatorio-server/app/models/*.rb"
 exclude_paths: 
   - "observatorio-app/www/lib"
+  - "observatorio-server/coverage"
+  - "observatorio-app/coverage"
