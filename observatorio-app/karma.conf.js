@@ -20,6 +20,7 @@ module.exports = function(config) {
 	     'www/lib/angular-resource/angular-resource.js',
 	     'www/lib/angular-resource/angular-mocks.js',
 	     'www/lib/ngmap/build/scripts/ng-map.min.js',
+         'www/lib/crypto-js/*.js',
 	     'https://maps.googleapis.com/maps/api/js?key=AIzaSyASY7L520_jRca_Ecr7Rvki2P28qvo-ZXE',
 	     'www/js/*.js',
 	     'www/js/**/*.js',
