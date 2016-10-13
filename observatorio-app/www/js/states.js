@@ -3,13 +3,12 @@ angular.module('starter')
 .config(function($stateProvider, $urlRouterProvider){
   $stateProvider
 
-  //State principal do mapa
+  //State da home
   .state('menu.home', {
   url: '/home',
   views: {
     'side-menu': {
       templateUrl: 'views/home.html',
-      controller: 'mapCtrl'
     }
   }
   })
