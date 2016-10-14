@@ -17,6 +17,6 @@ class PevsController < ApplicationController
 
   private
   def pev_params
-    params.require(:pev).permit(:name, :plastic, :paper, :metal, :glass, :location)
+    params.require(:pev).permit(:name, :plastic, :paper, :metal, :glass, :location, :comment)
   end
 end
