@@ -1,17 +1,25 @@
-# 2016.2-Time04-Observatório de Resíduos
+Ionic App Base
+=====================
 
-[![Build Status](https://travis-ci.org/fga-gpp-mds/2016.2-Observatorio-de-Residuos.svg?branch=ambient_config)](https://travis-ci.org/fga-gpp-mds/2016.2-Observatorio-de-Residuos)
+A starting project for Ionic that optionally supports using custom SCSS.
 
-[![Code Climate](https://codeclimate.com/github/fga-gpp-mds/2016.2-Observatorio-de-Residuos/badges/gpa.svg)](https://codeclimate.com/github/fga-gpp-mds/2016.2-Observatorio-de-Residuos)
+## Using this project
 
-[![Test Coverage](https://codeclimate.com/github/fga-gpp-mds/2016.2-Observatorio-de-Residuos/badges/coverage.svg)](https://codeclimate.com/github/fga-gpp-mds/2016.2-Observatorio-de-Residuos/coverage)
+We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
 
-A aplicação mobile do Observatório de Resíduos surgiu do projeto da Universidade de Brasília voltado para gestão responsável dos resíduos sólidos, servindo de ferramenta de auxílio à sociedade na tarefa de registro, controle e correção de focos de irregularidade ambiental, assim como divulgar pontos registrados de coleta de resíduos, e projetos relacionados ao tema de preservação ambiental.
+For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
 
-###Desenvolvimento
+```bash
+$ npm install -g ionic
+```
 
-Software desenvolvido na liguangem Ruby On Rail e framework Ionic.
+Then run: 
 
-###Licença
+```bash
+$ ionic start myProject tabs
+```
 
-Licenciado sob GPL V3. Ver [LICENSE](https://github.com/fga-gpp-mds/2016.2-Observatorio-de-Residuos/blob/master/LICENSE)
+More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
+
+## Issues
+Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
