@@ -1,6 +1,10 @@
 class PevsController < ApplicationController
 #   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
+  def index
+    render json: Pevs.all
+  end
+
   def create
     pev = Pev.new(pev_params)
     if pev.save
@@ -13,6 +17,6 @@ class PevsController < ApplicationController
 
   private
   def pev_params
-    params.require(:pev).permit(:name, :location)
+    params.require(:pev).permit(:name, :plastic, :paper, :metal, :glass, :location)
   end
 end
