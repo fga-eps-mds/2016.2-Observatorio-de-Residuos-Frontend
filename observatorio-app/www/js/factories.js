@@ -8,7 +8,14 @@ angular.module('starter')
 .factory('factoryLogin', function($resource, URL){
   return $resource(URL+"/sessions/login")
 })
+
 //Factory de verificação de email válido.
+
+.factory('factoryPEV', function($resource, URL){
+  return $resource(URL+"/pevs/create")
+})
+
+>>>>>>> us_create_pev
 .factory('factoryEmail', function($resource, URL){
   return $resource(URL+"/users/verify_email")
 })

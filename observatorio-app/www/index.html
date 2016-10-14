@@ -7,6 +7,7 @@
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="scss/ionic.app.css" rel="stylesheet">
+    <link href="views/pev/newPEV.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then remove the CSS include above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -14,6 +15,10 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- ng-Cordova library js -->
+    <!-- Comment: This library is included for the camera plugin -->
+    <script src="lib/ng-cordova/ng-cordova.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -23,12 +28,16 @@
     <script src="js/controllers.js"></script>
     <script src="js/states.js"></script>
     <script src="js/factories.js"></script>
+
     <script src="js/user/signIn/signInCtrl.js"></script>
     <script src="js/user/signIn/socialServices.js"></script>
     <script src="js/user/userService.js"></script>
     <script src="js/user/signUp/signUpCtrl.js"></script>
+    <script src="js/pev/newPevCtrl.js"></script>
     <script src="js/user/signUp/passwordDirective.js"></script>
     <script src="js/map/mapCtrl.js"></script>
+    <script src="js/camera/cameraCtrl.js"></script>
+
     <script src="lib/angular-resource/angular-resource.js"></script>
     <script src="lib/firebase/firebase.js"></script>
     <script src="lib/firebase/angularfire.min.js"></script>
@@ -40,6 +49,7 @@
     <script src="lib/crypto-js/enc-base64.js"></script>
     <script src="lib/crypto-js/hmac.js"></script>
     <script src="lib/crypto-js/sha256.js"></script>
+
   </head>
 
   <body ng-app="starter" animation="slide-left-right-ios7">

@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post 'sessions/login' => 'sessions#create'
   post 'markings/create' => 'markings#create'
   get 'markings' => 'markings#index'
+  post 'pevs/create' => 'pevs#create'
+  get 'pevs' => 'pevs#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

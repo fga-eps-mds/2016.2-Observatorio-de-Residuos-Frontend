@@ -69,7 +69,8 @@ angular.module('starter')
     url: '/newPEV',
     views: {
       'side-menu': {
-        templateUrl: 'views/newPEV.html'
+        controller: 'newPevCtrl',
+        templateUrl: 'views/pev/newPEV.html'
       }
     }
   })

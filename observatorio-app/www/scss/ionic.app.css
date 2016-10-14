@@ -9920,8 +9920,7 @@ img {
 }
 
 .item-image img:first-child, .item-image .list-img {
-  width: 50%;
-  vertical-align: middle;
+  width: auto;
 }
 
 body {
