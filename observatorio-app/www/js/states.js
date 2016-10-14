@@ -83,6 +83,16 @@ angular.module('starter')
     }
   })
 
+  //State da tela de ajuda
+    .state('menu.ajuda', {
+      url: '/ajuda',
+      views: {
+        'side-menu': {
+          templateUrl: 'views/ajuda.html'
+        }
+      }
+    })
+
   //State inicial do sistema definido em login.
   $urlRouterProvider.otherwise('/signin')
 })
