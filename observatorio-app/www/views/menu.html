@@ -31,13 +31,13 @@
                 <h3>Cidadã(o)</h3> <!-- getProfileType -->
               </a>
 
-              <a class="item" ng-click="TodeOlho=false; PEVs=false" menu-close href="/home" ui-sref="menu.home">
-                Mapa
-              </a>
+              <div class="item" ng-click="TodeOlho=false; PEVs=false" menu-close href="/home" ui-sref="menu.home">
+                <strong>Mapa</strong>
+              </div>
 
-              <a class="item" ng-click="TodeOlho=true; PEVs=false">
-                Tô de Olho
-              </a>
+              <div class="item" ng-click="TodeOlho=true; PEVs=false">
+                <strong>Tô de Olho</strong>
+              </div>
                   <a ng-show="TodeOlho" ng-click="TodeOlho=false" class="item" menu-close href="/home" ui-sref="menu.myMarkings" >
                     Minhas Marcações
                   </a>
@@ -49,7 +49,9 @@
                   </a>
 
               <div class="item" ng-click="PEVs=true; TodeOlho=false">
+
                 <b style="color: black">PEVs</b>
+                
               </div>
                   <a class="item" ng-show="PEVs" ng-click="PEVs=false" href="#">
                     PEVs Próximas
@@ -58,7 +60,10 @@
                     Marcar nova PEV
                   </a>
               <div class="item">
-                Tô Contribuindo
+                <strong>Tô Contribuindo</strong>
+              </div>
+              <div class="item" menu-close href="/ajuda" ui-sref="menu.ajuda">
+                <strong>Ajuda</strong>
               </div>
             </div>
             <!--

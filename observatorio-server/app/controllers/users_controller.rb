@@ -16,7 +16,6 @@ class UsersController < ApplicationController
         render json: user
     else
         render json: { error: 'Incorrect credentials' }, status: 401
-        puts user.errors.messages
     end
   end
 

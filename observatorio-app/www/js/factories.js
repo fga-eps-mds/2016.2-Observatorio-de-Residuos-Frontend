@@ -15,7 +15,6 @@ angular.module('starter')
   return $resource(URL+"/pevs/create")
 })
 
->>>>>>> us_create_pev
 .factory('factoryEmail', function($resource, URL){
   return $resource(URL+"/users/verify_email")
 })

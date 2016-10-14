@@ -18,6 +18,7 @@ module.exports = function(config) {
 	     'www/lib/firebase/firebase.js',
 	     'www/lib/firebase/angularfire.min.js',
 	     'www/lib/angular-resource/angular-resource.js',
+         'www/lib/ng-cordova/ng-cordova.min.js',
 	     'www/lib/angular-resource/angular-mocks.js',
 	     'www/lib/ngmap/build/scripts/ng-map.min.js',
          'www/lib/crypto-js/*.js',

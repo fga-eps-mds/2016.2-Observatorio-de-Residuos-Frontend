@@ -3,13 +3,12 @@ angular.module('starter')
 .config(function($stateProvider, $urlRouterProvider){
   $stateProvider
 
-  //State principal do mapa
+  //State da home
   .state('menu.home', {
   url: '/home',
   views: {
     'side-menu': {
       templateUrl: 'views/home.html',
-      controller: 'mapCtrl'
     }
   }
   })
@@ -84,6 +83,16 @@ angular.module('starter')
       }
     }
   })
+
+  //State da tela de ajuda
+    .state('menu.ajuda', {
+      url: '/ajuda',
+      views: {
+        'side-menu': {
+          templateUrl: 'views/ajuda.html'
+        }
+      }
+    })
 
   //State inicial do sistema definido em login.
   $urlRouterProvider.otherwise('/signin')

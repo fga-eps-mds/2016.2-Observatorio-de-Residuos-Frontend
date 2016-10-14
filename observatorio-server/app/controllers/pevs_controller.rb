@@ -2,7 +2,7 @@ class PevsController < ApplicationController
 #   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   def index
-    render json: Pevs.all
+    render json: Pev.all
   end
 
   def create
