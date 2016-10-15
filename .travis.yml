@@ -1,26 +1,19 @@
-language: ruby
+language: node_js
 
 rvm:
-  - "2.3.0"
+  - "4.5.0"
 
 install:
- # - npm install -g karma --save-dev
+ - npm install -g karma --save-dev
 
 before_script:
-# - npm install -g karma-jasmine@0.1.0 --save-dev
- #- npm install -g phantomjs --save-dev
- #- npm install -g karma-phantomjs-launcher --save-dev
- #- npm install -g karma-coverage --save-dev
- - cd observatorio-server/
- - gem install rspec rspec-rails simplecov
- - bundle install
- - cd ../observatorio-app
+ - npm install -g karma-jasmine
+ - npm install -g phantomjs --save-dev
+ - npm install -g karma-phantomjs-launcher --save-dev
+ - npm install -g karma-coverage --save-dev
 
 script:
-  - cd ../observatorio-server/
-  - rake db:migrate RAILS_ENV=test
-  - bundle exec rspec spec
-  #- karma start --single-run --browsers PhantomJS ../observatorio-app/karma.conf.js
+  - karma start --single-run --browsers PhantomJS
 
 notifications:
   email:
