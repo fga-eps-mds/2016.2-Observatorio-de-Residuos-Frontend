@@ -38,14 +38,23 @@ var extract = function(authData){
 /* userDataExtractorService
       extract: responsável por decidir qual a rede social utilizada
                e chamar as devidas services extratoras.  */
-.service('userDataExtractorService',function(facebookExtractor, googleExtractor){
-  var extract = function(authData, paramSocialNetwork){
-    authData.profile_type = "cidadao";
+.service('userDataExtractorService',function(facebookExtractor, googleExtractor,$http,$q){
+  var deferred = $q.defer();
+  var extract = function(result, paramSocialNetwork){
+    result.profile_type = "cidadao";
     if(paramSocialNetwork == 'facebook'){
       return facebookExtractor.extract(authData);
     }else{
-      return googleExtractor.extract(authData);
+      $http.get("https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token="+result.credential.accessToken)
+      .success(function(userData){
+        deferred.resolve(googleExtractor.extract(userData));
+      })
+      .error(function(error){
+        deferred.resolve(error);
+        console.log(error);
+      })
     }
+    return deferred.promise;
   }
   return {
     extract: extract
@@ -62,7 +71,7 @@ var extract = function(authData){
       getData: Método para acessar as informações salvas do usuário
               após o carregamento de todas elas no metodo login.  */
 
-.service('firebaseService', function(userDataExtractorService, socialLoginService){
+.service('firebaseService', function(userDataExtractorService, socialLoginService, $http){
   var userData = {};
   var socialLogin = function(socialNetwork){
     var provider = (socialNetwork == 'google')?new firebase.auth.GoogleAuthProvider():new firebase.auth.FacebookAuthProvider();
@@ -70,14 +79,11 @@ var extract = function(authData){
       provider.addScope('public_profile');
     }
     firebase.auth().signInWithPopup(provider).then(function(result) {
-        console.log(result.user.email);
-        userData = result.user;
-        socialLoginService.login(result.user);
+        userDataExtractorService.extract(result, socialNetwork).then(function(userData){
+          socialLoginService.login(userData);
+        })
     }).catch(function(error) {
-        console.log(error.code);
-        console.log(errorMessage = error.message);
-        console.log(email = error.email);
-        console.log(error.credential);
+      console.log({'FirebaseError': error})
     });
   }
   var getData = function(){

@@ -27,10 +27,9 @@ registerSocial: Recebe a rede social desejada pelo parametro carregado no botão
           $ionicLoading.show({
             template: 'Recebendo suas informações... <ion-spinner icon="android"></ion-spinner>'
           });
-      //timeout para aguardar os dados serem recebidos antes de liberar a tela para o usuário.
+          //timeout para aguardar os dados serem recebidos antes de liberar a tela para o usuário.
           $timeout(function(){
             $ionicLoading.hide();
           },3000);
-        
   }
 })
