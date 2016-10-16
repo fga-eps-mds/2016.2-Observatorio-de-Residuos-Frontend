@@ -94,15 +94,15 @@ angular.module('starter')
       }
     })
 
-   //State da tela de ajuda
+   //State da tela de tabs
     .state('tabs', {
       url: '/tabs',
       abstract :true,
       templateUrl: 'views/tabs.html'
     })
 
-  //State da tela de ajuda
-    .states('tabs.map', {
+  //State da tela de map
+    .state('tabs.map', {
       url: '/map',
       views: {
         'mapaObservatorio': {
@@ -111,8 +111,8 @@ angular.module('starter')
       }
     })
 
-    //State da tela de ajuda
-    .states('tabs.deOlho', {
+    //State da tela do to de olho
+    .state('tabs.deOlho', {
       url: '/deOlho',
       views: {
         'deOlho': {
@@ -121,8 +121,8 @@ angular.module('starter')
       }
     })
 
-    //State da tela de ajuda
-    .states('tabs.pevs', {
+    //State da tela das pevs
+    .state('tabs.pevs', {
       url: '/pevs',
       views: {
         'pevs': {
@@ -131,8 +131,8 @@ angular.module('starter')
       }
     }) 
 
-    //State da tela de ajuda
-    .states('tabs.toContribuindo', {
+    //State da tela do to contribuindo
+    .state('tabs.toContribuindo', {
       url: '/toContribuindo',
       views: {
         'toContribuindo': {

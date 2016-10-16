@@ -28,7 +28,7 @@ describe('signinCtrl',function(){
       $httpBackend.expectPOST(URL + '/sessions/login', user).respond(201);
       $scope.loginAttempt(user);
       $httpBackend.flush();
-      expect($state.go).toHaveBeenCalledWith("menu.home");
+      expect($state.go).toHaveBeenCalledWith("tabs.map");
       expect($scope.loginError).toBeFalsy();
     });
 
