@@ -6,11 +6,12 @@ angular.module('starter')
      extract: Extrai os dados recebidos da authData no formato google. */
 .service('googleExtractor', function(){
 var userData = {};
-var extract = function(authData){
-  userData.first_name = authData.google.cachedUserProfile.given_name;
-  userData.last_name  = authData.google.cachedUserProfile.family_name;
-  userData.gender = authData.google.cachedUserProfile.gender;
-  userData.email = authData.google.email;
+var extract = function(paramUserData){
+  userData.first_name = paramUserData.given_name;
+  userData.last_name  = paramUserData.family_name;
+  userData.gender = paramUserData.gender;
+  userData.email = paramUserData.email;
+  userData.profile_type = paramUserData.profile_type;
   return userData;
 }
   return{
