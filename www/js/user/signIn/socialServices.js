@@ -61,25 +61,23 @@ var extract = function(authData){
       getData: Método para acessar as informações salvas do usuário
               após o carregamento de todas elas no metodo login.  */
 
-.service('firebaseService', function(userDataExtractorService, $q){
-  var ref = new Firebase("dojogrupo04.firebaseio.com");
-  var userData;
+.service('firebaseService', function(userDataExtractorService, socialLoginService){
+  var userData = {};
   var socialLogin = function(socialNetwork){
-    var deferred = $q.defer();
-    ref.authWithOAuthPopup(socialNetwork, function(error, authData){
-      if(error){
-        console.log("Failed ", error)
-        userData = null;
-        deferred.resolve(userData);
-      }
-      else{
-        userData =  userDataExtractorService.extract(authData, socialNetwork);
-        deferred.resolve(userData);
-      }
-    },{
-      scope: "email"
-    })
-    return deferred.promise;
+    var provider = (socialNetwork == 'google')?new firebase.auth.GoogleAuthProvider():new firebase.auth.FacebookAuthProvider();
+    if(socialNetwork=="facebook"){
+      provider.addScope('public_profile');
+    }
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+        console.log(result.user.email);
+        userData = result.user;
+        socialLoginService.login(result.user);
+    }).catch(function(error) {
+        console.log(error.code);
+        console.log(errorMessage = error.message);
+        console.log(email = error.email);
+        console.log(error.credential);
+    });
   }
   var getData = function(){
     return userData

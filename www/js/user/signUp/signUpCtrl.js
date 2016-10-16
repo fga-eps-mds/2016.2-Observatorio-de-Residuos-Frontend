@@ -8,7 +8,10 @@ angular.module('app.controllers')
   /*Caso utilizem o botão de login social sem se cadastrar os dados do
     cadastro se preenchem sozinhos através da service de usuário atual.*/
 
-  $scope.user = currentUserService.getUserData()
+  var user = currentUserService.getUserData();
+  $scope.user = {}
+  $scope.user.email = user.email;
+  console.log($scope.user);
   $scope.registerEmail= function(user){
       user.password_digest = String(CryptoJS.SHA256(user.password_digest));//criptografia
       user.password_confirmation = String(CryptoJS.SHA256(user.password_confirmation));
