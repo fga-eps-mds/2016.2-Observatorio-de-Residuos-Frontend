@@ -15,6 +15,10 @@ before_script:
 script:
   - karma start --single-run --browsers PhantomJS
 
+after_success:
+  - npm install codeclimate-test-reporter
+  - CODECLIMATE_REPO_TOKEN=31c7a0fe383cb7ccb088534e21bb44fe5e84bbbf9b296fc4f0518da24cdcc26b codeclimate-test-reporter < coverage/PhantomJS\ 2.1.1\ \(Linux\ 0.0.0\)/lcov.info
+
 notifications:
   email:
     recipients:
