@@ -23,11 +23,11 @@ var extract = function(paramUserData){
     extract: Extrai os dados recebidos da authData no formato facebook. */
 .service('facebookExtractor', function(){
 var userData = {};
-var extract = function(authData){
-  userData.first_name = authData.facebook.cachedUserProfile.first_name;
-  userData.last_name = authData.facebook.cachedUserProfile.last_name;
-  userData.gender = authData.facebook.cachedUserProfile.gender;
-  userData.email = authData.facebook.email;
+var extract = function(paramUserData){
+  userData.first_name = paramUserData.first_name;
+  userData.last_name = paramUserData.last_name;
+  userData.gender = paramUserData.gender;
+  userData.email = paramUserData.email;
   return userData;
 }
   return{
@@ -43,7 +43,16 @@ var extract = function(authData){
   var extract = function(result, paramSocialNetwork){
     result.profile_type = "cidadao";
     if(paramSocialNetwork == 'facebook'){
-      return facebookExtractor.extract(authData);
+      var fields = 'first_name, last_name, gender, email';
+      $http.get('https://graph.facebook.com/me?fields=' +fields + '&access_token=' + result.credential.accessToken)
+      .success(function(userData){
+        console.log(facebookExtractor.extract(userData));
+        deferred.resolve(facebookExtractor.extract(userData));
+       })
+       .error(function(error) {
+         deferred.resolve(error);
+       console.log('error: ' + error);
+       })
     }else{
       $http.get("https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token="+result.credential.accessToken)
       .success(function(userData){
