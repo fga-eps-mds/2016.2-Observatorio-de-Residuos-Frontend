@@ -94,6 +94,53 @@ angular.module('starter')
       }
     })
 
+   //State da tela de ajuda
+    .state('tabs', {
+      url: '/tabs',
+      abstract :true,
+      templateUrl: 'views/tabs.html'
+    })
+
+  //State da tela de ajuda
+    .states('tabs.map', {
+      url: '/map',
+      views: {
+        'mapaObservatorio': {
+          templateUrl: 'views/map.html'
+        }
+      }
+    })
+
+    //State da tela de ajuda
+    .states('tabs.deOlho', {
+      url: '/deOlho',
+      views: {
+        'deOlho': {
+          templateUrl: 'views/marking/deOlho.html'
+        }
+      }
+    })
+
+    //State da tela de ajuda
+    .states('tabs.pevs', {
+      url: '/pevs',
+      views: {
+        'pevs': {
+          templateUrl: 'views/pev/pevs.html'
+        }
+      }
+    }) 
+
+    //State da tela de ajuda
+    .states('tabs.toContribuindo', {
+      url: '/toContribuindo',
+      views: {
+        'toContribuindo': {
+          templateUrl: 'views/contribute/toContribuindo.html'
+        }
+      }
+    }) 
+
   //State inicial do sistema definido em login.
   $urlRouterProvider.otherwise('/signin')
 })
