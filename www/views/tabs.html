@@ -1,22 +1,17 @@
-<style>
-	.ion-tab-font {
-		font-size: 65%
-	}
-</style>
 <ion-tabs class="tabs-icon-top">
 	<ion-tab class="ion-tab-font" title="Mapa do Observatório" href="#/tabs/map" icon= "ion-earth">
 		<ion-nav-view name="mapaObservatorio">
 		</ion-nav-view>
 	</ion-tab>
-	<ion-tab title="Tô de olho" href="#/tabs/deOlho" icon = "ion-eye">
+	<ion-tab title="Tô de olho" ui-sref="tabs.deOlho" icon = "ion-eye">
 		<ion-nav-view name="deOlho">
 		</ion-nav-view>
 	</ion-tab>
-	<ion-tab title="PEVs" align-title="left" href="#/tabs/pevs" icon = "ion-location">
+	<ion-tab title="PEVs" align-title="left" ui-sref="tabs.pevs" icon = "ion-location">
 		<ion-nav-view name="pevs">
 		</ion-nav-view>
 	</ion-tab>
-	<ion-tab title="Tô contribuindo" href="#/tabs/toContribuindo" icon = "ion-compose">
+	<ion-tab title="Tô contribuindo" ui-sref="tabs.toContribuindo" icon = "ion-compose">
 		<ion-nav-view name="toContribuindo">
 		</ion-nav-view>
 	</ion-tab>

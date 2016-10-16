@@ -4,18 +4,13 @@ angular.module('starter')
   $stateProvider
 
   //State da home
-  .state('menu.home', {
+  .state('tabs.home', {
   url: '/home',
   views: {
-    'side-menu': {
+    'home': {
       templateUrl: 'views/home.html',
     }
   }
-  })
-  //State do menu lateral
-  .state('menu', {
-  url: '/side-menu',
-  templateUrl: 'views/menu.html'
   })
 
   //State da tela de login inicial.
@@ -33,30 +28,30 @@ angular.module('starter')
   })
 
   //State da tela de minhas marcações.
-  .state('menu.myMarkings', {
+  .state('tabs.myMarkings', {
     url: '/myMarkings',
     views: {
-      'side-menu': {
+      'myMarkings': {
         templateUrl: 'views/marking/myMarkings.html'
       }
     }
   })
 
   //State da tela de marcações próximas.
-  .state('menu.nearbyMarkings', {
+  .state('tabs.nearbyMarkings', {
     url: '/nearbyMarkings',
     views: {
-      'side-menu': {
+      'nearbyMarkings': {
         templateUrl: 'views/marking/nearbyMarkings.html'
       }
     }
   })
 
   //State da tela de cadastro de marcações/incidentes.
-  .state('menu.newMarking', {
+  .state('tabs.newMarking', {
     url: '/newMarking',
     views: {
-      'side-menu': {
+      'newMarking': {
         templateUrl: 'views/marking/newMarking.html',
         controller: 'markingCtrl'
       }
@@ -64,10 +59,10 @@ angular.module('starter')
   })
 
   //State da tela de cadastro de novas PEVs
-  .state('menu.newPEV', {
+  .state('tabs.newPEV', {
     url: '/newPEV',
     views: {
-      'side-menu': {
+      'newPEV': {
         controller: 'newPevCtrl',
         templateUrl: 'views/pev/newPEV.html'
       }
@@ -75,20 +70,20 @@ angular.module('starter')
   })
 
   //State da tela de profile do usuário
-  .state('menu.profile', {
+  .state('tabs.profile', {
     url: '/profile',
     views: {
-      'side-menu': {
+      'profile': {
         templateUrl: 'views/user/userProfile.html'
       }
     }
   })
 
   //State da tela de ajuda
-    .state('menu.ajuda', {
+    .state('tabs.ajuda', {
       url: '/ajuda',
       views: {
-        'side-menu': {
+        'ajuda': {
           templateUrl: 'views/ajuda.html'
         }
       }
