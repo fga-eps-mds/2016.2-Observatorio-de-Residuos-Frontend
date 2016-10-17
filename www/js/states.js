@@ -20,7 +20,7 @@ angular.module('starter')
   controller: 'signinCtrl'
   })
 
-  //State da tela de cadastro
+  //State da telav de cadastro
   .state('signup', {
   url: '/signup',
   templateUrl: 'views/user/signUp.html',

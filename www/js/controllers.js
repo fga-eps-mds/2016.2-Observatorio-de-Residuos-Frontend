@@ -18,4 +18,13 @@ e onde podem ser adicionadas controllers relacionadas a aplicação */
   }).then(function(popover) {
     $scope.popover = popover;
   });
+})
+
+.controller('popoverPerfilCtrl', function($scope, $ionicPopover) {
+
+  $ionicPopover.fromTemplateUrl('templates/popoverPerfil.html', {
+    scope: $scope
+  }).then(function(popover) {
+    $scope.popover = popover;
+  });
 });
