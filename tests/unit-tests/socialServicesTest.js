@@ -23,16 +23,16 @@ describe('SocialServices', function(){
     });
 
     describe('googleExtractor', function(){
-      var authData = {google:{email:'amoedo@gmail.com', cachedUserProfile:{given_name:"Amoedo",family_name:'Mito',gender:'male'}}}
-      it('extracts google information from authData object', function(){
-        userData = serviceGoogle.extract(authData);
+      var paramUserData = {email:'amoedo@gmail.com', given_name:"Amoedo",family_name:'Mito',gender:'male'}
+      it('extracts google information from userData object', function(){
+        userData = serviceGoogle.extract(paramUserData);
       });
     });
 
     describe('facebookExtractor', function(){
-      var authData = {facebook:{email:'amoedo@gmail.com', cachedUserProfile:{first_name:"Amoedo",last_name:'Mito',gender:'male'}}}
-      it('extracts facebook information from authData object', function(){
-        userData = serviceFacebook.extract(authData);
+      var paramUserData = {email:'amoedo@gmail.com', first_name:"Amoedo",last_name:'Mito',gender:'male'}
+      it('extracts facebook information from userData object', function(){
+        userData = serviceFacebook.extract(paramUserData);
       });
     });
 
