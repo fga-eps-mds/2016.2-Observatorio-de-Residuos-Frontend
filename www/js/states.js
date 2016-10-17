@@ -107,26 +107,6 @@ angular.module('starter')
       }
     })
 
-    //State da tela do to de olho
-    .state('tabs.deOlho', {
-      url: '/deOlho',
-      views: {
-        'deOlho': {
-          templateUrl: 'views/marking/deOlho.html'
-        }
-      }
-    })
-
-    //State da tela das pevs
-    .state('tabs.pevs', {
-      url: '/pevs',
-      views: {
-        'pevs': {
-          templateUrl: 'views/pev/pevs.html'
-        }
-      }
-    }) 
-
     //State da tela do to contribuindo
     .state('tabs.toContribuindo', {
       url: '/toContribuindo',
@@ -135,7 +115,7 @@ angular.module('starter')
           templateUrl: 'views/contribute/toContribuindo.html'
         }
       }
-    }) 
+    })
 
   //State inicial do sistema definido em login.
   $urlRouterProvider.otherwise('/signin')

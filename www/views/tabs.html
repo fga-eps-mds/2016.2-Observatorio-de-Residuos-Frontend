@@ -1,28 +1,45 @@
 <ion-tabs class="tabs-icon-top">
-  <ion-tab class="ion-tab-font" title="Mapa do Observatório" href="#/tabs/map" icon= "ion-earth">
+  <ion-tab class="ion-tab-font" title="Mapa do Observatório" ui-sref="tabs.map" icon= "ion-earth">
     <ion-nav-view name="mapaObservatorio">
     </ion-nav-view>
   </ion-tab>
-  <ion-tab title="Tô de olho" ui-sref="tabs.deOlho" icon = "ion-eye" ng-click="openPopover($event)">
+  <ion-tab title="Tô de olho" icon = "ion-eye" ng-click="popover.show($event)" ng-controller="popoverCtrl">
   </ion-tab>
-  <ion-tab title="PEVs" align-title="left" ui-sref="tabs.pevs" icon = "ion-location" ng-click="openPopover($event)">
+  <ion-tab title="PEVs" icon = "ion-location" ng-click="popover.show($event)" ng-controller="popoverPevCtrl">
   </ion-tab>
-  <ion-tab title="Tô contribuindo" ui-sref="tabs.toContribuindo" icon = "ion-compose" ng-click="openPopover($event)">
+  <ion-tab title="Tô contribuindo" ui-sref="tabs.toContribuindo" icon = "ion-compose">
+    <ion-nav-view name="toContribuindo">
+    </ion-nav-view>
   </ion-tab>
 </ion-tabs>
 
-<script id="my-popover.html" type="text/ng-template">
-  <ion-popover-view>
+<script id="templates/popoverOlho.html" type="text/ng-template">
+  <ion-popover-view style="height: 126px">
     <ion-content>
       <div class="list">
         <button class="button button-full button-balanced">
           Minhas Marcações
         </button>
         <button class="button button-full button-balanced">
-          Minhas Marcações
+          Marcar novo Incidente
         </button>
         <button class="button button-full button-balanced">
-          Minhas Marcações
+          Incidentes Próximos
+        </button>
+      </div>
+    </ion-content>
+  </ion-popover-view>
+</script>
+
+<script id="templates/popoverPev.html" type="text/ng-template">
+  <ion-popover-view style="height: 84px">
+    <ion-content>
+      <div class="list">
+        <button class="button button-full button-balanced">
+          PEVs Próximas
+        </button>
+        <button class="button button-full button-balanced">
+          Marcar nova PEV
         </button>
       </div>
     </ion-content>
