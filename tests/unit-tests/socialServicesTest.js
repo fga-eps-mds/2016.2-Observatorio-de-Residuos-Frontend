@@ -3,13 +3,15 @@ describe('SocialServices', function(){
   var serviceFacebook;
   var userExtractorService;
   var $state;
-
+  var $httpBackend;
   beforeEach(module('starter'));
 
-  beforeEach(inject(function(_googleExtractor_,_facebookExtractor_, _userDataExtractorService_){
+  beforeEach(inject(function(_googleExtractor_,_facebookExtractor_, _userDataExtractorService_, _$httpBackend_){
     serviceGoogle = _googleExtractor_;
     serviceFacebook = _facebookExtractor_;
     userExtractorService = _userDataExtractorService_;
+    $httpBackend = _$httpBackend_;
+    $httpBackend.when('GET', /\.html$/).respond('');
     }));
 
   describe('Extractors', function() {
@@ -39,19 +41,27 @@ describe('SocialServices', function(){
   });
 
   describe('userDataExtractorService', function(){
-    
+    var result = {credential:{accessToken:'123123123'}}
     it('calls facebookExtractor with button facebook string parameter', function(){
-        var authDataFacebook = {facebook:{email:'amoedo@gmail.com', cachedUserProfile:{first_name:"Amoedo",last_name:'Mito',gender:'male'}}};
+        var fields = 'first_name, last_name, gender, email';
+        var userData = {email:'amoedo@gmail.com', first_name:"Amoedo", last_name:'Mito',gender:'male'};
+        $httpBackend.expectGET('https://graph.facebook.com/me?fields=' + fields + '&access_token=' + result.credential.accessToken).respond(201, userData);
         spyOn(serviceFacebook, 'extract');
-        userExtractorService.extract(authDataFacebook,'facebook');
-        expect(serviceFacebook.extract).toHaveBeenCalledWith(authDataFacebook);
+        userExtractorService.extract(result,'facebook');
+
+        $httpBackend.flush();
+        expect(serviceFacebook.extract).toHaveBeenCalledWith(userData);
     });
 
     it('calls googleExtractor with button facebook string parameter', function(){
-        var authDataGoogle = {google:{email:'amoedo@gmail.com', cachedUserProfile:{given_name:"Amoedo",family_name:'Mito',gender:'male'}}};
+        var fields = 'first_name, last_name, gender, email';
+        var userData = {email:'amoedo@gmail.com', given_name:"Amoedo",family_name:'Mito',gender:'male'};
+        $httpBackend.expectGET("https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token="+result.credential.accessToken).respond(201,userData);
+
         spyOn(serviceGoogle,'extract');
-        userExtractorService.extract(authDataGoogle,'google');
-        expect(serviceGoogle.extract).toHaveBeenCalledWith(authDataGoogle);
+        userExtractorService.extract(result,'google');
+        $httpBackend.flush();
+        expect(serviceGoogle.extract).toHaveBeenCalledWith(userData);
     });
   });
 });
