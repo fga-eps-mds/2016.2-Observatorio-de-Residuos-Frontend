@@ -93,7 +93,8 @@ angular.module('starter')
     .state('tabs', {
       url: '/tabs',
       abstract :true,
-      templateUrl: 'views/tabs.html'
+      templateUrl: 'views/tabs.html',
+      controller: 'popoverCtrl'
     })
 
   //State da tela de map
