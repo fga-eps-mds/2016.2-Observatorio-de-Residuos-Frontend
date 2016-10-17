@@ -1,6 +1,6 @@
 <ion-view title="Nova PEV" id="new-pev">
   <ion-content padding="true" ng-controller="cameraCtrl" class="has-header" scroll="true">
-    <form ng-submit="createPEV(pev)">
+    <div ng-controller="newPevCtrl">
     <div class="image-and-buttons">
       <div class="list card">
         <div class = "row">
@@ -35,11 +35,19 @@
           <label class="item item-input">
             <input type="text" ng-model="pev.comment" placeholder="Descrição">
           </label>
-        <button type="submit" id="page-button9" class="button button-positive  button-block">Cadastrar</button>
+          <label class="item item-input">
+              <input type="hidden" placeholder="Latitude" ng-model="pev.latitude" disabled="true">
+            </label>
+
+            <label class="item item-input">
+              <input type="hidden" placeholder="Longitude" ng-model="pev.longitude" disabled="true">
+            </label>
+          <button type="submit" ng-click="createPEV(pev); modal.hide()" id="page-button9" class="button button-positive  button-block">Cadastrar</button>
+        </div>
       </div>
+      <div class="form-list"></div>
+      <div class="menu-bar"></div> 
+      </form>
     </div>
-    <div class="form-list"></div>
-    <div class="menu-bar"></div>
-    </form>
-  </ion-content>
-</ion-view>
+    </ion-content>
+  </ion-view>
