@@ -9,6 +9,10 @@ e onde podem ser adicionadas controllers relacionadas a aplicação */
   }).then(function(popover) {
     $scope.popover = popover;
   });
+
+  $scope.closePopover = function() {
+    $scope.popover.hide();
+  };
 })
 
 .controller('popoverPevCtrl', function($scope, $ionicPopover) {
@@ -18,6 +22,10 @@ e onde podem ser adicionadas controllers relacionadas a aplicação */
   }).then(function(popover) {
     $scope.popover = popover;
   });
+
+  $scope.closePopover = function() {
+    $scope.popover.hide();
+  };
 })
 
 .controller('popoverPerfilCtrl', function($scope, $ionicPopover) {
@@ -27,4 +35,8 @@ e onde podem ser adicionadas controllers relacionadas a aplicação */
   }).then(function(popover) {
     $scope.popover = popover;
   });
+
+  $scope.closePopover = function() {
+    $scope.popover.hide();
+  };
 });

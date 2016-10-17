@@ -73,18 +73,20 @@
   </body>
 
   <script id="templates/popoverPerfil.html" type="text/ng-template">
-    <ion-popover-view style="height: 168px">
-      <ion-content>
+    <ion-popover-view style="height: 180px">
+      <ion-content scroll="false" style="height: 178px">
         <div class="list">
           <a class="button button-full button-balanced" ui-sref="tabs.profile">
+            <i class="icon ion-loading-c"></i>
             Ver Perfil
           </a>
-          <a class="button button-full button-balanced" ui-sref="tabs.home">
+          <a class="button button-full button-balanced" icon="ion-gear-a" ui-sref="tabs.home">
             Editar Perfil
           </a>
           <a class="button button-full button-balanced" ui-sref="tabs.ajuda">
             Ajuda
           </a>
+          <hr>
           <a class="button button-full button-balanced" ui-sref="signin">
             Sair
           </a>
