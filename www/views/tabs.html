@@ -1,29 +1,33 @@
-<ion-tabs class="tabs-icon-top">
-  <ion-tab class="ion-tab-font" title="Mapa do Observatório" ui-sref="tabs.map" icon= "ion-earth">
+<ion-tabs class="tabs-icon-top tabs-messages tabs-light tabs-top tabs-icon-top has-tabs-top">
+  <ion-tab class="ion-tab-font tabs-color-active-positive" title="Mapa do Observatório" ui-sref="tabs.map" icon-off="ion-earth" icon-on="ion-earth">
     <ion-nav-view name="mapaObservatorio">
     </ion-nav-view>
   </ion-tab>
-  <ion-tab class="ion-tab-font" title="Tô de olho" icon = "ion-eye" ng-click="popover.show($event)" ng-controller="popoverCtrl">
+  <ion-tab class="ion-tab-font tabs-color-active-positive" title="Tô de olho" icon-off="ion-eye" icon-on="ion-eye" ng-click="popover.show($event)" ng-controller="popoverCtrl" ui-sref-active="current">
+    <ion-nav-view name="deOlho">
+    </ion-nav-view>
   </ion-tab>
-  <ion-tab class="ion-tab-font" title="PEVs" icon = "ion-location" ng-click="popover.show($event)" ng-controller="popoverPevCtrl">
+  <ion-tab class="ion-tab-font tabs-color-active-positive" title="PEVs" icon-off="ion-location" icon-on="ion-location" ng-click="popover.show($event)" ng-controller="popoverPevCtrl">
+    <ion-nav-view name="pev">
+    </ion-nav-view>
   </ion-tab>
-  <ion-tab class="ion-tab-font" title="Tô contribuindo" ui-sref="tabs.toContribuindo" icon = "ion-compose">
+  <ion-tab class="ion-tab-font tabs-color-active-positive" title="Tô contribuindo" ui-sref="tabs.toContribuindo" icon-off="ion-compose" icon-on="ion-compose">
     <ion-nav-view name="toContribuindo">
     </ion-nav-view>
   </ion-tab>
 </ion-tabs>
 
 <script id="templates/popoverOlho.html" type="text/ng-template">
-  <ion-popover-view style="height: 126px">
+  <ion-popover-view style="height: 129px">
     <ion-content>
       <div class="list">
-        <a class="button button-full button-balanced" ui-sref="tabs.myMarkings">
+        <a class="button button-full button-balanced" ui-sref="myMarkings" ngclick="myMarkings=true; newMarking=false; nearbyMarkings=false">
           Minhas Marcações
         </a>
-        <a class="button button-full button-balanced" ui-sref="tabs.newMarking">
+        <a class="button button-full button-balanced" ui-sref="newMarking" ngclick="myMarkings=false; newMarking=true; nearbyMarkings=false">
           Marcar novo Incidente
         </a>
-        <a class="button button-full button-balanced" ui-sref="tabs.nearbyMarkings">
+        <a class="button button-full button-balanced" ui-sref="nearbyMarkings" ngclick="myMarkings=false; newMarking=false; nearbyMarkings=true">
           Incidentes Próximos
         </a>
       </div>
@@ -32,7 +36,7 @@
 </script>
 
 <script id="templates/popoverPev.html" type="text/ng-template">
-  <ion-popover-view style="height: 84px">
+  <ion-popover-view style="height: 88px">
     <ion-content>
       <div class="list">
         <a class="button button-full button-balanced" ui-sref="">
@@ -40,27 +44,6 @@
         </a>
         <a class="button button-full button-balanced" ui-sref="tabs.newPEV">
           Marcar nova PEV
-        </a>
-      </div>
-    </ion-content>
-  </ion-popover-view>
-</script>
-
-<script id="templates/popoverPerfil.html" type="text/ng-template">
-  <ion-popover-view style="height: 168px">
-    <ion-content>
-      <div class="list">
-        <a class="button button-full button-balanced" ui-sref="">
-          Ver Perfil
-        </a>
-        <a class="button button-full button-balanced" ui-sref="">
-          Editar Perfil
-        </a>
-        <a class="button button-full button-balanced" ui-sref="tabs.ajuda">
-          Ajuda
-        </a>
-        <a class="button button-full button-balanced" ui-sref="signin">
-          Sair
         </a>
       </div>
     </ion-content>

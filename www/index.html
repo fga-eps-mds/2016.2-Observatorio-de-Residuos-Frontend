@@ -56,12 +56,34 @@
     <ion-nav-bar class="bar bar-header bar-balanced">
         <ion-nav-title align="center">Observatório de Resíduos</ion-nav-title>
             <ion-nav-buttons side="right">
-                <button class="button button-clear icon ion-person" style="top:-28%"></button>
+                <button class="button button-clear icon ion-person tabs-color-active-positive" style="top:-28%" ng-click="popover.show($event)" ng-controller="popoverPerfilCtrl" ui-sref-active="current">Perfil</button>
             </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view>
     </ion-nav-view>
+    <div>
     </div>
-  </div>
   </body>
+
+  <script id="templates/popoverPerfil.html" type="text/ng-template">
+    <ion-popover-view style="height: 168px">
+      <ion-content>
+        <div class="list">
+          <a class="button button-full button-balanced" ui-sref="tabs.profile">
+            Ver Perfil
+          </a>
+          <a class="button button-full button-balanced" ui-sref="">
+            Editar Perfil
+          </a>
+          <a class="button button-full button-balanced" ui-sref="tabs.ajuda">
+            Ajuda
+          </a>
+          <a class="button button-full button-balanced" ui-sref="signin">
+            Sair
+          </a>
+        </div>
+      </ion-content>
+    </ion-popover-view>
+  </script>
+
 </html>
