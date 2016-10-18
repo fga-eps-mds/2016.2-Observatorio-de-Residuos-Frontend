@@ -15,13 +15,13 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [ 'www/lib/ionic/js/ionic.bundle.js',
-	     'www/lib/firebase/firebase.js',
-	     'www/lib/firebase/angularfire.min.js',
+	     'https://www.gstatic.com/firebasejs/3.5.0/firebase.js',
+	     'www/lib/firebase/firebaseInitialConfigurator.js', 
 	     'www/lib/angular-resource/angular-resource.js',
-         'www/lib/ng-cordova/ng-cordova.min.js',
+             'www/lib/ng-cordova/ng-cordova.min.js',
 	     'www/lib/angular-resource/angular-mocks.js',
 	     'www/lib/ngmap/build/scripts/ng-map.min.js',
-         'www/lib/crypto-js/*.js',
+             'www/lib/crypto-js/*.js',
 	     'https://maps.googleapis.com/maps/api/js?key=AIzaSyASY7L520_jRca_Ecr7Rvki2P28qvo-ZXE',
 	     'www/js/*.js',
 	     'www/js/**/*.js',

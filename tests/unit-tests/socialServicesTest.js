@@ -3,15 +3,49 @@ describe('SocialServices', function(){
   var serviceFacebook;
   var userExtractorService;
   var $state;
-
+  var $httpBackend;
+  var URL;
   beforeEach(module('starter'));
 
-  beforeEach(inject(function(_googleExtractor_,_facebookExtractor_, _userDataExtractorService_){
+  beforeEach(inject(function($injector, _googleExtractor_,_facebookExtractor_, _userDataExtractorService_, _$httpBackend_, _factoryEmail_, _$state_ ,_currentUserService_, _socialLoginService_){
     serviceGoogle = _googleExtractor_;
     serviceFacebook = _facebookExtractor_;
+    factoryEmail = _factoryEmail_; 
+    state = _$state_;
+    currentUserService = _currentUserService_;
     userExtractorService = _userDataExtractorService_;
-    }));
+    $httpBackend = _$httpBackend_;
+    socialLoginService = _socialLoginService_;
+    URL = $injector.get('URL');
+    $httpBackend.when('GET', /\.html$/).respond('');
+  }));
 
+  describe('socialLoginService', function(){
+      var paramUserData = {email:'amoedo@gmail.com', first_name:"Amoedo",last_name:'Mito',gender:'male'}
+      it('verifica email e usuario existe', function(){
+        var result = {userExist: true}; 
+        $httpBackend.expectPOST(URL+"/users/verify_email", {"email": paramUserData.email}).respond(200, result);
+        socialLoginService.login(paramUserData);
+        $httpBackend.flush();
+        expect(currentUserService.getUserData()).toBe(paramUserData);
+      });
+
+      it('verifica email e usuario não existe', function(){
+        var result = {userExist: false}; 
+        $httpBackend.expectPOST(URL+"/users/verify_email", {"email": paramUserData.email}).respond(200, result);
+        socialLoginService.login(paramUserData);
+        $httpBackend.flush();
+        expect(currentUserService.getUserData()).toBe(paramUserData);
+      });
+
+      it('não verifica email', function(){
+        $httpBackend.expectPOST(URL+"/users/verify_email", {"email": paramUserData.email}).respond(400);
+        socialLoginService.login(paramUserData);
+        $httpBackend.flush();
+        expect(currentUserService.getUserData()).not.toBe(paramUserData);
+      });
+    });
+  
   describe('Extractors', function() {
     var userData;
 
@@ -23,35 +57,43 @@ describe('SocialServices', function(){
     });
 
     describe('googleExtractor', function(){
-      var authData = {google:{email:'amoedo@gmail.com', cachedUserProfile:{given_name:"Amoedo",family_name:'Mito',gender:'male'}}}
-      it('extracts google information from authData object', function(){
-        userData = serviceGoogle.extract(authData);
+      var paramUserData = {email:'amoedo@gmail.com', given_name:"Amoedo",family_name:'Mito',gender:'male'}
+      it('extracts google information from userData object', function(){
+        userData = serviceGoogle.extract(paramUserData);
       });
     });
 
     describe('facebookExtractor', function(){
-      var authData = {facebook:{email:'amoedo@gmail.com', cachedUserProfile:{first_name:"Amoedo",last_name:'Mito',gender:'male'}}}
-      it('extracts facebook information from authData object', function(){
-        userData = serviceFacebook.extract(authData);
+      var paramUserData = {email:'amoedo@gmail.com', first_name:"Amoedo",last_name:'Mito',gender:'male'}
+      it('extracts facebook information from userData object', function(){
+        userData = serviceFacebook.extract(paramUserData);
       });
     });
 
   });
 
   describe('userDataExtractorService', function(){
-    
+    var result = {credential:{accessToken:'123123123'}}
     it('calls facebookExtractor with button facebook string parameter', function(){
-        var authDataFacebook = {facebook:{email:'amoedo@gmail.com', cachedUserProfile:{first_name:"Amoedo",last_name:'Mito',gender:'male'}}};
+        var fields = 'first_name, last_name, gender, email';
+        var userData = {email:'amoedo@gmail.com', first_name:"Amoedo", last_name:'Mito',gender:'male'};
+        $httpBackend.expectGET('https://graph.facebook.com/me?fields=' + fields + '&access_token=' + result.credential.accessToken).respond(201, userData);
         spyOn(serviceFacebook, 'extract');
-        userExtractorService.extract(authDataFacebook,'facebook');
-        expect(serviceFacebook.extract).toHaveBeenCalledWith(authDataFacebook);
+        userExtractorService.extract(result,'facebook');
+
+        $httpBackend.flush();
+        expect(serviceFacebook.extract).toHaveBeenCalledWith(userData);
     });
 
     it('calls googleExtractor with button facebook string parameter', function(){
-        var authDataGoogle = {google:{email:'amoedo@gmail.com', cachedUserProfile:{given_name:"Amoedo",family_name:'Mito',gender:'male'}}};
+        var fields = 'first_name, last_name, gender, email';
+        var userData = {email:'amoedo@gmail.com', given_name:"Amoedo",family_name:'Mito',gender:'male'};
+        $httpBackend.expectGET("https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token="+result.credential.accessToken).respond(201,userData);
+
         spyOn(serviceGoogle,'extract');
-        userExtractorService.extract(authDataGoogle,'google');
-        expect(serviceGoogle.extract).toHaveBeenCalledWith(authDataGoogle);
+        userExtractorService.extract(result,'google');
+        $httpBackend.flush();
+        expect(serviceGoogle.extract).toHaveBeenCalledWith(userData);
     });
   });
 });
