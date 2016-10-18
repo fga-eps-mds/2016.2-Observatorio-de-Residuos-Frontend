@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-  .controller("newPevCtrl", function ($ionicHistory, $scope, $rootScope, $http, $state, factoryPEV, $ionicPopup, $cordovaGeolocation) {
+  .controller("newPevCtrl", function ($ionicHistory, $scope, $rootScope, $http, factoryPEV, $ionicPopup, $cordovaGeolocation) {
     $rootScope.pevs = [];
 
     $http.get('http://localhost:3000/pevs')
@@ -30,7 +30,7 @@ angular.module('app.controllers')
           template: 'Obrigado por contribuir!'
         })
         $scope.pev={}
-        console.log("Sucess!")
+        console.log("Success!")
         $ionicHistory.nextViewOptions({
           disableBack: true
         })
