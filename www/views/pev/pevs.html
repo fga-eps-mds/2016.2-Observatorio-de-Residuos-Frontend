@@ -1,5 +1,11 @@
-<ion-view>
-	<ion-content>
-		<h1>PEVs</h1>
-	</ion-content>
+<ion-view title="PEV">
+
+  <ion-tabs class="tabs-striped tabs-top tabs-background-stable">
+    <ion-tab title="PEVs Próximas" ui-sref="tabs.map">
+    </ion-tab>
+    <ion-tab title="Nova PEV" ui-sref="tabs.PEV.newPEV">
+    </ion-tab>
+  </ion-tabs>
+
+    <ui-view name="pev-page"></ui-view>
 </ion-view>

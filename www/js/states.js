@@ -42,7 +42,17 @@ angular.module('starter')
       abstract: true,
       views: {
         'toDeOlho': {
-          templateUrl: 'views/toDeOlho.html',
+          templateUrl: 'views/marking/toDeOlho.html',
+        }
+      }
+    })
+
+    .state('tabs.PEV', {
+      url: '/PEV',
+      abstract: true,
+      views: {
+        'PEV': {
+          templateUrl: 'views/pev/pevs.html'
         }
       }
     })
@@ -79,10 +89,10 @@ angular.module('starter')
   })
 
   //State da tela de cadastro de novas PEVs
-  .state('tabs.newPEV', {
+  .state('tabs.PEV.newPEV', {
     url: '/newPEV',
     views: {
-      'newPEV': {
+      'pev-page': {
         controller: 'newPevCtrl',
         templateUrl: 'views/pev/newPEV.html'
       }
@@ -131,5 +141,5 @@ angular.module('starter')
     })
 
   //State inicial do sistema definido em login.
-  $urlRouterProvider.otherwise('/tabs/map')
+  $urlRouterProvider.otherwise('/signin')
 })
