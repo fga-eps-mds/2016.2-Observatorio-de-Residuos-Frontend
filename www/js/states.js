@@ -31,7 +31,7 @@ angular.module('starter')
   .state('tabs.myMarkings', {
     url: '/myMarkings',
     views: {
-      'myMarkings': {
+      'tab-view': {
         templateUrl: 'views/marking/myMarkings.html'
       }
     }
@@ -41,7 +41,7 @@ angular.module('starter')
   .state('tabs.nearbyMarkings', {
     url: '/nearbyMarkings',
     views: {
-      'nearbyMarkings': {
+      'tab-view': {
         templateUrl: 'views/marking/nearbyMarkings.html'
       }
     }
@@ -51,7 +51,7 @@ angular.module('starter')
   .state('tabs.newMarking', {
     url: '/newMarking',
     views: {
-      'newMarking': {
+      'tab-view': {
         templateUrl: 'views/marking/newMarking.html',
         controller: 'markingCtrl'
       }
@@ -62,7 +62,7 @@ angular.module('starter')
   .state('tabs.newPEV', {
     url: '/newPEV',
     views: {
-      'newPEV': {
+      'tab-view': {
         controller: 'newPevCtrl',
         templateUrl: 'views/pev/newPEV.html'
       }
@@ -101,7 +101,7 @@ angular.module('starter')
     .state('tabs.map', {
       url: '/map',
       views: {
-        'mapaObservatorio': {
+        'tab-view': {
           templateUrl: 'views/map.html'
         }
       }
@@ -111,7 +111,7 @@ angular.module('starter')
     .state('tabs.toContribuindo', {
       url: '/toContribuindo',
       views: {
-        'toContribuindo': {
+        'tab-view': {
           templateUrl: 'views/contribute/toContribuindo.html'
         }
       }

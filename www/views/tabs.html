@@ -1,21 +1,14 @@
 <ion-tabs class="tabs-icon-top tabs-messages tabs-light tabs-top tabs-icon-top has-tabs-top">
   <ion-tab class="ion-tab-font tabs-color-active-positive" title="Mapa do Observatório" icon-off="ion-earth" icon-on="ion-earth">
-    <ion-nav-view name="mapaObservatorio">
-    </ion-nav-view>
   </ion-tab>
   <ion-tab class="ion-tab-font tabs-color-active-positive" title="Tô de olho" icon-off="ion-eye" icon-on="ion-eye" ng-click="popover.show($event)" ng-controller="popoverCtrl">
-    <ion-nav-view name="myMarkings">
-    </ion-nav-view>
   </ion-tab>
   <ion-tab class="ion-tab-font tabs-color-active-positive" title="PEVs" icon-off="ion-location" icon-on="ion-location" ng-click="popover.show($event)" ng-controller="popoverPevCtrl">
-    <ion-nav-view name="home">
-    </ion-nav-view>
   </ion-tab>
   <ion-tab class="ion-tab-font tabs-color-active-positive" title="Tô contribuindo" ui-sref="tabs.toContribuindo" icon-off="ion-compose" icon-on="ion-compose">
-    <ion-nav-view name="toContribuindo">
-    </ion-nav-view>
   </ion-tab>
 </ion-tabs>
+<ui-view name="tab-view"></ui-view>
 
 <script id="templates/popoverOlho.html" type="text/ng-template">
   <ion-popover-view class="popover-height">
