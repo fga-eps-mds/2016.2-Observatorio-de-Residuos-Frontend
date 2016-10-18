@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="scss/ionic.app.css" rel="stylesheet">
+    <link href="views/pev/newPEV.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then remove the CSS include above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- ng-Cordova library js -->
+    <!-- Comment: This library is included for the camera plugin -->
+    <script src="lib/ng-cordova/ng-cordova.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
+    <script src="js/states.js"></script>
+    <script src="js/factories.js"></script>
+
+    <script src="js/user/signIn/signInCtrl.js"></script>
+    <script src="js/user/signIn/socialServices.js"></script>
+    <script src="js/user/userService.js"></script>
+    <script src="js/user/signUp/signUpCtrl.js"></script>
+    <script src="js/pev/newPevCtrl.js"></script>
+    <script src="js/user/signUp/passwordDirective.js"></script>
+    <script src="js/map/mapCtrl.js"></script>
+    <script src="js/camera/cameraCtrl.js"></script>
+
+    <script src="lib/angular-resource/angular-resource.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+    <script src="lib/firebase/firebaseInitialConfigurator.js"></script>
+    <script src="lib/ngmap/build/scripts/ng-map.min.js"></script>
+    <script src="js/marking/markingCtrl.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASY7L520_jRca_Ecr7Rvki2P28qvo-ZXE"
+            type="text/javascript"></script>
+    <script src="lib/crypto-js/core.js"></script>
+    <script src="lib/crypto-js/enc-base64.js"></script>
+    <script src="lib/crypto-js/hmac.js"></script>
+    <script src="lib/crypto-js/sha256.js"></script>
+
+  </head>
+
+  <body ng-app="starter" animation="slide-left-right-ios7">
+    <ion-nav-bar class="bar bar-header bar-balanced">
+        <ion-nav-title align="center">Observatório de Resíduos</ion-nav-title>
+            <ion-nav-buttons side="right">
+                <button class="button button-clear icon ion-person tabs-color-active-positive" style="top:-28%" ng-click="popover.show($event)" ng-controller="popoverPerfilCtrl">Perfil</button>
+            </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view>
+    </ion-nav-view>
+    </div>
+  </body>
+
+  <script id="templates/popoverPerfil.html" type="text/ng-template">
+    <ion-popover-view class="popover-height-perfil">
+      <ion-content scroll="false" class="popover-height-perfil">
+        <ion-list>
+          <ion-button class="button button-full button-balanced" ui-sref="tabs.profile" ng-click="popover.hide()">
+            <i class="icon ion-loading-c"></i>
+            Ver Perfil
+          </ion-button>
+          <ion-button class="button button-full button-balanced" icon="ion-gear-a" ui-sref="tabs.home" ng-click="popover.hide()">
+            Editar Perfil
+          </ion-button>
+          <ion-button class="button button-full button-balanced" ui-sref="tabs.ajuda" ng-click="popover.hide()">
+            Ajuda
+          </ion-button>
+          <hr>
+          <ion-button class="button button-full button-balanced" ui-sref="signin" ng-click="popover.hide()">
+            Sair
+          </ion-button>
+        </ion-list>
+      </ion-content>
+    </ion-popover-view>
+  </script>
+
+</html>
