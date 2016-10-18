@@ -36,14 +36,4 @@ describe('mapCtrl', function() {
     expect(NgMap.getMap).toHaveBeenCalled();
   });
 
-  it('should get the position of an event', function() {
-    var event = {latLng: {
-      lat: function(){return '-40'}, 
-      lng: function(){return '30'}
-    }};
-    spyOn($scope, 'getPosition').and.callThrough();
-    $scope.getPosition(event);
-    expect($scope.getPosition).toHaveBeenCalledWith(event);
-  });
-
 });
