@@ -12,6 +12,7 @@ angular.module('starter')
   views: {
     'home': {
       templateUrl: 'views/home.html',
+      controller: 'mapCtrl'
     }
   }
   })

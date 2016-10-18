@@ -6,11 +6,12 @@ angular.module('starter')
      extract: Extrai os dados recebidos da authData no formato google. */
 .service('googleExtractor', function(){
 var userData = {};
-var extract = function(authData){
-  userData.first_name = authData.google.cachedUserProfile.given_name;
-  userData.last_name  = authData.google.cachedUserProfile.family_name;
-  userData.gender = authData.google.cachedUserProfile.gender;
-  userData.email = authData.google.email;
+var extract = function(paramUserData){
+  userData.first_name = paramUserData.given_name;
+  userData.last_name  = paramUserData.family_name;
+  userData.gender = paramUserData.gender;
+  userData.email = paramUserData.email;
+  userData.profile_type = paramUserData.profile_type;
   return userData;
 }
   return{
@@ -22,11 +23,11 @@ var extract = function(authData){
     extract: Extrai os dados recebidos da authData no formato facebook. */
 .service('facebookExtractor', function(){
 var userData = {};
-var extract = function(authData){
-  userData.first_name = authData.facebook.cachedUserProfile.first_name;
-  userData.last_name = authData.facebook.cachedUserProfile.last_name;
-  userData.gender = authData.facebook.cachedUserProfile.gender;
-  userData.email = authData.facebook.email;
+var extract = function(paramUserData){
+  userData.first_name = paramUserData.first_name;
+  userData.last_name = paramUserData.last_name;
+  userData.gender = paramUserData.gender;
+  userData.email = paramUserData.email;
   return userData;
 }
   return{
@@ -37,14 +38,32 @@ var extract = function(authData){
 /* userDataExtractorService
       extract: responsável por decidir qual a rede social utilizada
                e chamar as devidas services extratoras.  */
-.service('userDataExtractorService',function(facebookExtractor, googleExtractor){
-  var extract = function(authData, paramSocialNetwork){
-    authData.profile_type = "cidadao";
+.service('userDataExtractorService',function(facebookExtractor, googleExtractor,$http,$q){
+  var deferred = $q.defer();
+  var extract = function(result, paramSocialNetwork){
+    result.profile_type = "cidadao";
     if(paramSocialNetwork == 'facebook'){
-      return facebookExtractor.extract(authData);
+      var fields = 'first_name, last_name, gender, email';
+      $http.get('https://graph.facebook.com/me?fields=' +fields + '&access_token=' + result.credential.accessToken)
+      .success(function(userData){
+        console.log(facebookExtractor.extract(userData));
+        deferred.resolve(facebookExtractor.extract(userData));
+       })
+       .error(function(error) {
+         deferred.resolve(error);
+       console.log('error: ' + error);
+       })
     }else{
-      return googleExtractor.extract(authData);
+      $http.get("https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token="+result.credential.accessToken)
+      .success(function(userData){
+        deferred.resolve(googleExtractor.extract(userData));
+      })
+      .error(function(error){
+        deferred.resolve(error);
+        console.log(error);
+      })
     }
+    return deferred.promise;
   }
   return {
     extract: extract
@@ -61,25 +80,20 @@ var extract = function(authData){
       getData: Método para acessar as informações salvas do usuário
               após o carregamento de todas elas no metodo login.  */
 
-.service('firebaseService', function(userDataExtractorService, $q){
-  var ref = new Firebase("dojogrupo04.firebaseio.com");
-  var userData;
+.service('firebaseService', function(userDataExtractorService, socialLoginService, $http){
+  var userData = {};
   var socialLogin = function(socialNetwork){
-    var deferred = $q.defer();
-    ref.authWithOAuthPopup(socialNetwork, function(error, authData){
-      if(error){
-        console.log("Failed ", error)
-        userData = null;
-        deferred.resolve(userData);
-      }
-      else{
-        userData =  userDataExtractorService.extract(authData, socialNetwork);
-        deferred.resolve(userData);
-      }
-    },{
-      scope: "email"
-    })
-    return deferred.promise;
+    var provider = (socialNetwork == 'google')?new firebase.auth.GoogleAuthProvider():new firebase.auth.FacebookAuthProvider();
+    if(socialNetwork=="facebook"){
+      provider.addScope('public_profile');
+    }
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+        userDataExtractorService.extract(result, socialNetwork).then(function(userData){
+          socialLoginService.login(userData);
+        })
+    }).catch(function(error) {
+      console.log({'FirebaseError': error})
+    });
   }
   var getData = function(){
     return userData

@@ -23,21 +23,13 @@ registerSocial: Recebe a rede social desejada pelo parametro carregado no botão
     }
 
   $scope.registerSocial = function(socialNetwork){
-      var login = firebaseService.socialLogin(socialNetwork);
-      //login chama a execução do firebase e aguarda os dados do usuário para executar o login.
-      login.then(function() {
-        //Quando os dados já estiverem disponiveis, scopeUser recebe o usuario e o enviamos para a service de login.
-        $scope.user = firebaseService.getData();
-        if($scope.user != null){
-          socialLoginService.login($scope.user);
-        }
-      });
-      $ionicLoading.show({
-      template: 'Recebendo suas informações... <ion-spinner icon="android"></ion-spinner>'
-      });
-      //timeout para aguardar os dados serem recebidos antes de liberar a tela para o usuário.
-      $timeout(function(){
-        $ionicLoading.hide();
-      },3000);
+          firebaseService.socialLogin(socialNetwork);
+          $ionicLoading.show({
+            template: 'Recebendo suas informações... <ion-spinner icon="android"></ion-spinner>'
+          });
+          //timeout para aguardar os dados serem recebidos antes de liberar a tela para o usuário.
+          $timeout(function(){
+            $ionicLoading.hide();
+          },3000);
   }
 })
