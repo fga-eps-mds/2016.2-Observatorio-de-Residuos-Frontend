@@ -98,7 +98,7 @@ var extract = function(authData){
     factoryEmail.save({"email": user.email}, function(result) {
       currentUserService.setUserData(user)
       if(result.userExist){
-        $state.go('menu.home')
+        $state.go('tabs.map')
       }else{
         $state.go('signup')
       }
