@@ -12,3 +12,14 @@
   vertical-align: middle;
   margin-top: 25px;
 }
+
+.pev-modal {
+  min-height: 0;
+  top: 25%;
+  bottom: 25%;
+  left: 5%;
+  right: 5%;
+  width: 90%;
+  height: 50%;
+
+} 
