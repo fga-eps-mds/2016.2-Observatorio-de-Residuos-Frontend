@@ -1,16 +1,21 @@
 angular.module('app.controllers')
 
-/* Controller do mapa principal*/
-.controller('mapCtrl', function($scope, NgMap){
-
+.controller('mapCtrl', function(NgMap, $cordovaGeolocation, $scope, $ionicModal) {
   NgMap.getMap().then(function(map) {
-    console.log('markers', map.markers);
-    console.log('shapes', map.shapes);
-    console.log(map.getCenter());
-  })
-  
-  $scope.getPosition = function(event) {
-    console.log("LATITUDE: " + event.latLng.lat() + "LONGITUDE: " + event.latLng.lng());
-  };
+    $scope.pev = {};
 
+    google.maps.event.addListener(map, "rightclick", function(event) {
+      $scope.pev.latitude = event.latLng.lat();
+      $scope.pev.longitude = event.latLng.lng();
+      $scope.modal.show();
+      console.log("latitude "+$scope.pev.latitude +" longitude "+$scope.pev.longitude);
+    });
+
+    var modal = $ionicModal.fromTemplateUrl('views/pev/newPEV.html', {
+    scope: $scope
+    }).then(function(modal) {
+    $scope.modal = modal;
+    });
+
+  })
 })
