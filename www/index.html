@@ -54,13 +54,38 @@
   </head>
 
   <body ng-app="starter" animation="slide-left-right-ios7">
-  <div>
-    <div>
-      <ion-nav-bar class="bar-stable">
-        <ion-nav-back-button></ion-nav-back-button>
-      </ion-nav-bar>
-      <ion-nav-view></ion-nav-view>
+    <ion-nav-bar class="bar bar-header bar-balanced">
+        <ion-nav-title align="center">Observatório de Resíduos</ion-nav-title>
+            <ion-nav-buttons side="right">
+                <button class="button button-clear icon ion-person tabs-color-active-positive" style="top:-28%" ng-click="popover.show($event)" ng-controller="popoverPerfilCtrl">Perfil</button>
+            </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view>
+    </ion-nav-view>
     </div>
-  </div>
   </body>
+
+  <script id="templates/popoverPerfil.html" type="text/ng-template">
+    <ion-popover-view class="popover-height-perfil">
+      <ion-content scroll="false" class="popover-height-perfil">
+        <ion-list>
+          <ion-button class="button button-full button-balanced" ui-sref="tabs.profile" ng-click="popover.hide()">
+            <i class="icon ion-loading-c"></i>
+            Ver Perfil
+          </ion-button>
+          <ion-button class="button button-full button-balanced" icon="ion-gear-a" ui-sref="tabs.home" ng-click="popover.hide()">
+            Editar Perfil
+          </ion-button>
+          <ion-button class="button button-full button-balanced" ui-sref="tabs.ajuda" ng-click="popover.hide()">
+            Ajuda
+          </ion-button>
+          <hr>
+          <ion-button class="button button-full button-balanced" ui-sref="signin" ng-click="popover.hide()">
+            Sair
+          </ion-button>
+        </ion-list>
+      </ion-content>
+    </ion-popover-view>
+  </script>
+
 </html>

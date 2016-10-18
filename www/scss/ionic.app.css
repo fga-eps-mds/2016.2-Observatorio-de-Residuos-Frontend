@@ -5487,7 +5487,7 @@ ion-tabs.tabs-striped.tabs-color-active-dark .tab-item.tab-item-active, ion-tabs
     top: -6px; }
 
 .platform-android .popover {
-  margin-top: -32px;
+  margin-top: 20px;
   background-color: #fafafa;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35); }
   .platform-android .popover .item {
@@ -9996,4 +9996,20 @@ i.ion-social-facebook {
 
 .scroll, .mapWrap {
   height: 100%;
+}
+
+.ion-tab-font {
+  font-size: 65%
+}
+
+.popover-height{
+  height: 122px;
+}
+
+.popover-height-perfil{
+  height: 178px;
+}
+
+.popover-height-pev{
+  height: 82px;
 }

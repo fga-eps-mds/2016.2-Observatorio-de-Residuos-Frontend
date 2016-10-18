@@ -1,22 +1,20 @@
 angular.module('starter')
 /*Arquivo responsável por conectar todas as controllers e suas views definindo como states da aplicação*/
-.config(function($stateProvider, $urlRouterProvider){
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider){
+  
+  $ionicConfigProvider.tabs.position('bottom');
+  
   $stateProvider
 
   //State da home
-  .state('menu.home', {
+  .state('tabs.home', {
   url: '/home',
   views: {
-    'side-menu': {
+    'home': {
       templateUrl: 'views/home.html',
       controller: 'mapCtrl'
     }
   }
-  })
-  //State do menu lateral
-  .state('menu', {
-  url: '/side-menu',
-  templateUrl: 'views/menu.html'
   })
 
   //State da tela de login inicial.
@@ -26,38 +24,65 @@ angular.module('starter')
   controller: 'signinCtrl'
   })
 
-  //State da tela de cadastro
+  //State da telav de cadastro
   .state('signup', {
   url: '/signup',
   templateUrl: 'views/user/signUp.html',
   controller: 'signupCtrl'
   })
 
+  //State da tela de tabs
+    .state('tabs', {
+      url: '/tabs',
+      abstract: true,
+      templateUrl: 'views/tabs.html'
+    })
+
+    .state('tabs.toDeOlho', {
+      url: '/toDeOlho',
+      abstract: true,
+      views: {
+        'toDeOlho': {
+          templateUrl: 'views/marking/toDeOlho.html',
+        }
+      }
+    })
+
+    .state('tabs.PEV', {
+      url: '/PEV',
+      abstract: true,
+      views: {
+        'PEV': {
+          templateUrl: 'views/pev/pevs.html'
+        }
+      }
+    })
+
   //State da tela de minhas marcações.
-  .state('menu.myMarkings', {
+  .state('tabs.toDeOlho.myMarkings', {
     url: '/myMarkings',
     views: {
-      'side-menu': {
+      'markings-page': {
         templateUrl: 'views/marking/myMarkings.html'
       }
     }
   })
 
   //State da tela de marcações próximas.
-  .state('menu.nearbyMarkings', {
+  .state('tabs.toDeOlho.nearbyMarkings', {
     url: '/nearbyMarkings',
     views: {
-      'side-menu': {
+      'markings-page': {
         templateUrl: 'views/marking/nearbyMarkings.html'
       }
     }
   })
 
   //State da tela de cadastro de marcações/incidentes.
-  .state('menu.newMarking', {
+  .state('tabs.toDeOlho.newMarking', {
     url: '/newMarking',
     views: {
-      'side-menu': {
+      'markings-page': {
         templateUrl: 'views/marking/newMarking.html',
         controller: 'markingCtrl'
       }
@@ -65,31 +90,53 @@ angular.module('starter')
   })
 
   //State da tela de cadastro de novas PEVs
-  .state('menu.newPEV', {
+  .state('tabs.PEV.newPEV', {
     url: '/newPEV',
     views: {
-      'side-menu': {
+      'pev-page': {
+        controller: 'newPevCtrl',
         templateUrl: 'views/pev/newPEV.html'
       }
     }
   })
 
   //State da tela de profile do usuário
-  .state('menu.profile', {
+  .state('tabs.profile', {
     url: '/profile',
     views: {
-      'side-menu': {
+      'profile': {
         templateUrl: 'views/user/userProfile.html'
       }
     }
   })
 
   //State da tela de ajuda
-    .state('menu.ajuda', {
+    .state('tabs.ajuda', {
       url: '/ajuda',
       views: {
-        'side-menu': {
+        'ajuda': {
           templateUrl: 'views/ajuda.html'
+        }
+      }
+    })
+
+
+  //State da tela de map
+    .state('tabs.map', {
+      url: '/map',
+      views: {
+        'mapaObservatorio': {
+          templateUrl: 'views/map.html'
+        }
+      }
+    })
+
+    //State da tela do to contribuindo
+    .state('tabs.toContribuindo', {
+      url: '/toContribuindo',
+      views: {
+        'toContribuindo': {
+          templateUrl: 'views/contribute/toContribuindo.html'
         }
       }
     })
