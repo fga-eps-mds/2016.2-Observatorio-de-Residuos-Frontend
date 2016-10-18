@@ -10001,3 +10001,15 @@ i.ion-social-facebook {
 .ion-tab-font {
   font-size: 65%
 }
+
+.popover-height{
+  height: 122px;
+}
+
+.popover-height-perfil{
+  height: 178px;
+}
+
+.popover-height-pev{
+  height: 82px;
+}

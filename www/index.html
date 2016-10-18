@@ -61,36 +61,28 @@
     </ion-nav-bar>
     <ion-nav-view>
     </ion-nav-view>
-    <ion-nav-view name="profile">
-    </ion-nav-view>
-    <ion-nav-view name="home">
-    </ion-nav-view>
-    <ion-nav-view name="ajuda">
-    </ion-nav-view>
-    <ion-nav-view name="signin">
-    </ion-nav-view>
     </div>
   </body>
 
   <script id="templates/popoverPerfil.html" type="text/ng-template">
-    <ion-popover-view style="height: 180px">
-      <ion-content scroll="false" style="height: 178px">
-        <div class="list">
-          <a class="button button-full button-balanced" ui-sref="tabs.profile">
+    <ion-popover-view class="popover-height-perfil">
+      <ion-content scroll="false" class="popover-height-perfil">
+        <ion-list>
+          <ion-button class="button button-full button-balanced" ui-sref="tabs.profile" ng-click="popover.hide()">
             <i class="icon ion-loading-c"></i>
             Ver Perfil
-          </a>
-          <a class="button button-full button-balanced" icon="ion-gear-a" ui-sref="tabs.home">
+          </ion-button>
+          <ion-button class="button button-full button-balanced" icon="ion-gear-a" ui-sref="tabs.home" ng-click="popover.hide()">
             Editar Perfil
-          </a>
-          <a class="button button-full button-balanced" ui-sref="tabs.ajuda">
+          </ion-button>
+          <ion-button class="button button-full button-balanced" ui-sref="tabs.ajuda" ng-click="popover.hide()">
             Ajuda
-          </a>
+          </ion-button>
           <hr>
-          <a class="button button-full button-balanced" ui-sref="signin">
+          <ion-button class="button button-full button-balanced" ui-sref="signin" ng-click="popover.hide()">
             Sair
-          </a>
-        </div>
+          </ion-button>
+        </ion-list>
       </ion-content>
     </ion-popover-view>
   </script>

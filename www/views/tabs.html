@@ -3,18 +3,12 @@
     <ion-nav-view name="mapaObservatorio">
     </ion-nav-view>
   </ion-tab>
-  <ion-tab class="ion-tab-font tabs-color-active-positive" title="Tô de olho" icon-off="ion-eye" icon-on="ion-eye" ng-click="popover.show($event)" ng-controller="popoverCtrl" ui-sref-active="current">
+  <ion-tab class="ion-tab-font tabs-color-active-positive" title="Tô de olho" icon-off="ion-eye" icon-on="ion-eye" ng-click="popover.show($event)" ng-controller="popoverCtrl">
     <ion-nav-view name="myMarkings">
-    </ion-nav-view>
-    <ion-nav-view name="newMarking">
-    </ion-nav-view>
-    <ion-nav-view name="nearbyMarkings">
     </ion-nav-view>
   </ion-tab>
   <ion-tab class="ion-tab-font tabs-color-active-positive" title="PEVs" icon-off="ion-location" icon-on="ion-location" ng-click="popover.show($event)" ng-controller="popoverPevCtrl">
     <ion-nav-view name="home">
-    </ion-nav-view>
-    <ion-nav-view name="newPEV">
     </ion-nav-view>
   </ion-tab>
   <ion-tab class="ion-tab-font tabs-color-active-positive" title="Tô contribuindo" ui-sref="tabs.toContribuindo" icon-off="ion-compose" icon-on="ion-compose">
@@ -24,34 +18,34 @@
 </ion-tabs>
 
 <script id="templates/popoverOlho.html" type="text/ng-template">
-  <ion-popover-view style="height: 123px; background:#00FF00">
-    <ion-content scroll="false" style="height: 122px">
-      <div class="list">
-        <a class="button button-full button-balanced" href="#/tabs/myMarkings" ng-click="popover.hide()">
+  <ion-popover-view class="popover-height">
+    <ion-content scroll="false" class="popover-height">
+      <ion-list>
+        <ion-button class="button button-full button-balanced" ui-sref="tabs.myMarkings" ng-click="popover.hide()">
           Minhas Marcações
-        </a>
-        <a class="button button-full button-balanced" href="#/tabs/newMarking" ng-click="popover.hide()">
+        </ion-button>
+        <ion-button class="button button-full button-balanced" ui-sref="tabs.newMarking" ng-click="popover.hide()">
           Marcar novo Incidente
-        </a>
-        <a class="button button-full button-balanced" href="#/tabs/nearbyMarkings" ng-click="popover.hide()">
+        </ion-button>
+        <ion-button class="button button-full button-balanced" ui-sref="tabs.nearbyMarkings" ng-click="popover.hide()">
           Incidentes Próximos
-        </a>
-      </div>
+        </ion-button>
+      </ion-list>
     </ion-content>
   </ion-popover-view>
 </script>
 
 <script id="templates/popoverPev.html" type="text/ng-template">
-  <ion-popover-view style="height: 83px">
-    <ion-content scroll="false" style="height: 82px">
-      <div class="list">
-        <a class="button button-full button-balanced" href="#/tabs/map" ng-click="popover.hide()">
+  <ion-popover-view class="popover-height-pev">
+    <ion-content scroll="false" class="popover-height-pev">
+      <ion-list>
+        <ion-button class="button button-full button-balanced" ui-sref="tabs.map" ng-click="popover.hide()">
           PEVs Próximas
-        </a>
-        <a class="button button-full button-balanced" href="#/tabs/newPEV" ng-click="popover.hide()" >
+        </ion-button>
+        <ion-button class="button button-full button-balanced" ui-sref="tabs.newPEV" ng-click="popover.hide()" >
           Marcar nova PEV
-        </a>
-      </div>
+        </ion-button>
+      </ion-list>
     </ion-content>
   </ion-popover-view>
 </script>
