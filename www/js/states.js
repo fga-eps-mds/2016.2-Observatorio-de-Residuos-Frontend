@@ -1,6 +1,9 @@
 angular.module('starter')
 /*Arquivo responsável por conectar todas as controllers e suas views definindo como states da aplicação*/
-.config(function($stateProvider, $urlRouterProvider){
+.config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider){
+  
+  $ionicConfigProvider.tabs.position('bottom');
+  
   $stateProvider
 
   //State da home
@@ -27,31 +30,48 @@ angular.module('starter')
   controller: 'signupCtrl'
   })
 
+  //State da tela de tabs
+    .state('tabs', {
+      url: '/tabs',
+      abstract: true,
+      templateUrl: 'views/tabs.html'
+    })
+
+    .state('tabs.toDeOlho', {
+      url: '/toDeOlho',
+      abstract: true,
+      views: {
+        'toDeOlho': {
+          templateUrl: 'views/toDeOlho.html',
+        }
+      }
+    })
+
   //State da tela de minhas marcações.
-  .state('tabs.myMarkings', {
+  .state('tabs.toDeOlho.myMarkings', {
     url: '/myMarkings',
     views: {
-      'myMarkings': {
+      'markings-page': {
         templateUrl: 'views/marking/myMarkings.html'
       }
     }
   })
 
   //State da tela de marcações próximas.
-  .state('tabs.nearbyMarkings', {
+  .state('tabs.toDeOlho.nearbyMarkings', {
     url: '/nearbyMarkings',
     views: {
-      'nearbyMarkings': {
+      'markings-page': {
         templateUrl: 'views/marking/nearbyMarkings.html'
       }
     }
   })
 
   //State da tela de cadastro de marcações/incidentes.
-  .state('tabs.newMarking', {
+  .state('tabs.toDeOlho.newMarking', {
     url: '/newMarking',
     views: {
-      'newMarking': {
+      'markings-page': {
         templateUrl: 'views/marking/newMarking.html',
         controller: 'markingCtrl'
       }
@@ -89,13 +109,6 @@ angular.module('starter')
       }
     })
 
-   //State da tela de tabs
-    .state('tabs', {
-      url: '/tabs',
-      abstract :true,
-      templateUrl: 'views/tabs.html',
-      controller: 'popoverCtrl'
-    })
 
   //State da tela de map
     .state('tabs.map', {
@@ -118,5 +131,5 @@ angular.module('starter')
     })
 
   //State inicial do sistema definido em login.
-  $urlRouterProvider.otherwise('/signin')
+  $urlRouterProvider.otherwise('/tabs/map')
 })
