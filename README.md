@@ -1,25 +1,19 @@
-Ionic App Base
-=====================
+ 2016.2-Time04-Observatório de Resíduos
 
-A starting project for Ionic that optionally supports using custom SCSS.
+[![Build Status](https://travis-ci.org/fga-gpp-mds/2016.2-Observatorio-de-Residuos-Frontend.svg?branch=devel)](https://travis-ci.org/fga-gpp-mds/2016.2-Observatorio-de-Residuos-Frontend)
 
-## Using this project
+[![Code Climate](https://codeclimate.com/github/fga-gpp-mds/2016.2-Observatorio-de-Residuos-Frontend/badges/gpa.svg)](https://codeclimate.com/github/fga-gpp-mds/2016.2-Observatorio-de-Residuos-Frontend)
 
-We recommend using the [Ionic CLI](https://github.com/driftyco/ionic-cli) to create new Ionic projects that are based on this project but use a ready-made starter template.
+[![Test Coverage](https://codeclimate.com/github/fga-gpp-mds/2016.2-Observatorio-de-Residuos-Frontend/badges/coverage.svg)](https://codeclimate.com/github/fga-gpp-mds/2016.2-Observatorio-de-Residuos-Frontend/coverage)
 
-For example, to start a new Ionic project with the default tabs interface, make sure the `ionic` utility is installed:
+A aplicação mobile do Observatório de Resíduos surgiu do projeto da Universidade de Brasília voltado para gestão responsável dos resíduos sólidos, servindo de ferramenta de auxílio à sociedade na tarefa de registro, controle e correção de focos de irregularidade ambiental, assim como divulgar pontos registrados de coleta de resíduos, e projetos relacionados ao tema de preservação ambiental.
 
-```bash
-$ npm install -g ionic
-```
+###Desenvolvimento
 
-Then run: 
+Software desenvolvido na liguangem Ruby On Rails e framework Ionic.
 
-```bash
-$ ionic start myProject tabs
-```
+Link do repositório da parte frontend da aplicação: [backend](https://github.com/fga-gpp-mds/2016.2-Observatorio-de-Residuos-Backend)
 
-More info on this can be found on the Ionic [Getting Started](http://ionicframework.com/getting-started) page and the [Ionic CLI](https://github.com/driftyco/ionic-cli) repo.
+###Licença
 
-## Issues
-Issues have been disabled on this repo, if you do find an issue or have a question consider posting it on the [Ionic Forum](http://forum.ionicframework.com/).  Or else if there is truly an error, follow our guidelines for [submitting an issue](http://ionicframework.com/submit-issue/) to the main Ionic repository.
+Licenciado sob AGPL V3. Ver [LICENSE](https://github.com/fga-gpp-mds/2016.2-Observatorio-de-Residuos/blob/master/LICENSE)
