@@ -1,9 +1,9 @@
 angular.module('starter')
 /*Arquivo responsável por conectar todas as controllers e suas views definindo como states da aplicação*/
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider){
-  
+
   $ionicConfigProvider.tabs.position('bottom');
-  
+
   $stateProvider
 
   //State da home
@@ -126,7 +126,8 @@ angular.module('starter')
       url: '/map',
       views: {
         'mapaObservatorio': {
-          templateUrl: 'views/map.html'
+          templateUrl: 'views/map.html',
+          controller: 'mapCtrl'
         }
       }
     })
