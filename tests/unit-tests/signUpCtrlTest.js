@@ -43,14 +43,14 @@ describe('signupCtrl', function() {
       expect(user.password_confirmation).toEqual(user.password_digest)
     });
 
-    it('should set invalidEmail to false and redirect to menu.home when getting\
+    it('should set invalidEmail to false and redirect to tabs.map when getting\
        a successfull response from server during email validation', function() {
       $httpBackend.expectPOST(URL + '/users/create', user).respond(201);
       $scope.registerEmail(user);
       spyOn($state, 'go');
       $httpBackend.flush();
       expect($scope.invalidEmail).toBeFalsy();
-      expect($state.go).toHaveBeenCalledWith('menu.home');
+      expect($state.go).toHaveBeenCalledWith('tabs.map');
     });
 
     it('should set invalidEmail to true when getting an error response from\

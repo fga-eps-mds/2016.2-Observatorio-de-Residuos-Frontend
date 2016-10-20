@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 
-.controller('markingCtrl', function($scope, $state, $stateParams, factoryMarking, $http){
-  $http.get('http://localhost:3000/markings')
+.controller('markingCtrl', function($scope, $state, $stateParams, factoryMarking, $http, URL){
+  $http.get(URL + '/markings')
   .success(function(markings){
     $scope.markings = markings;
   }).error(function(data){

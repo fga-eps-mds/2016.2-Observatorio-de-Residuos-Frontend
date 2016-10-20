@@ -1,7 +1,5 @@
 angular.module('starter', ['ionic', 'ngResource','app.controllers', 'ngMap', 'ngCordova'])
 
-//Constante URL da aplicação utilizada nas Factories.
-.constant('URL', 'http://localhost:3000')
 //Configuração inicial e inicialização do ionic.
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
