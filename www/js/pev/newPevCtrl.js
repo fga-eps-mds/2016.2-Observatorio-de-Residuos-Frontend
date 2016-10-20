@@ -21,7 +21,7 @@ angular.module('app.controllers')
           plastic: pev.plastic,
           metal: pev.metal,
           glass: pev.glass,
-          comment: pev.comment,
+          description: pev.description,
           latitude: pev.latitude,
           longitude: pev.longitude
         });
