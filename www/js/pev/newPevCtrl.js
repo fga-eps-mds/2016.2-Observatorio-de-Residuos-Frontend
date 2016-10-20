@@ -51,7 +51,7 @@ angular.module('app.controllers')
         }, function (error) {
           var alertPopup = $ionicPopup.alert({
             title: 'Informações insuficientes',
-            template: 'Preencha as informções corretamente!'
+            template: 'Preencha as informações corretamente!'
           })
         })
       },

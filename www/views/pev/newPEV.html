@@ -1,6 +1,7 @@
 <ion-view title="Nova PEV" id="new-pev">
   <ion-content padding="true" ng-controller="cameraCtrl" class="has-header has-tabs-top" scroll="true">
     <div>
+    <form ng-submit="createPEV(pev); modal.hide()" name="PEVform">
     <div class="image-and-buttons">
       <div class="list card">
         <div class = "row">
@@ -22,8 +23,11 @@
 
     <div class="item item-body">
         <ion-list id="list">
+          <p ng-show="PEVform.name.$invalid && !PEVform.name.$pristine" class="nav-bar-block">
+            O nome da PEV é obrigatório!
+          </p>
           <label class="item item-input">
-            <input type="text"  ng-model="pev.name" placeholder="Nome da PEV">
+            <input type="text"  ng-model="pev.name" placeholder="Nome da PEV" name="name" required>
           </label>
           <ion-item class="item-divider" id="page-list">Tipo da PEV</ion-item>
           <ion-checkbox ng-model="pev.paper" class="checkbox-positive">Papel</ion-checkbox>
@@ -42,7 +46,7 @@
             <label class="item item-input">
               <input type="hidden" placeholder="Longitude" ng-model="pev.longitude" disabled="true">
             </label>
-          <button type="submit" ng-click="createPEV(pev); modal.hide()" id="page-button9" class="button button-positive  button-block">Cadastrar</button>
+          <button type="submit" id="page-button9" class="button button-positive  button-block" ng-disabled="PEVform.$invalid">Cadastrar</button>
         </div>
       </div>
       <div class="form-list"></div>
