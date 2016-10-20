@@ -1,9 +1,9 @@
 angular.module('app.controllers')
 
-  .controller("newPevCtrl", function ($ionicHistory, $scope, $rootScope, $http, factoryPEV, $ionicPopup, $cordovaGeolocation) {
+  .controller("newPevCtrl", function ($ionicHistory, $scope, $rootScope, $http, factoryPEV, $ionicPopup, $cordovaGeolocation, URL) {
     $rootScope.pevs = [];
 
-    $http.get('http://localhost:3000/pevs')
+    $http.get(URL + '/pevs')
 
     .success(function(content){
       angular.forEach(content, function(value, key) {
