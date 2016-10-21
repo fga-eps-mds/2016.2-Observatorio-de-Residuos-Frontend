@@ -12,7 +12,7 @@ angular.module('app.controllers')
     console.log(marking);
     factoryMarking.save(marking, function(result){
       console.log(result);
-      $state.go("menu.home")
+      $state.go("tabs.home")
     })
   }
 })
