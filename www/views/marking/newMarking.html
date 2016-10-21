@@ -1,41 +1,53 @@
-<ion-view title="Novo Incidente" id="new-marking" >
-  <ion-content padding="true" class="has-header padding has-tabs-top" scroll="True">
-
-    <div class="list card">
-
-      <div class="item item-image">
-        <img class="img-new-marking" src="img/new-marking-placeholder.jpg"> <!-- getImageMarking() -->
+<ion-view title="Novo Incidente" id="new-marking">
+  <ion-content padding="true" ng-controller="cameraCtrl" class="has-header has-tabs-top" scroll="true">
+    <div>
+      <div class="image-and-buttons">
+        <div class="list card">
+          <div class = "row">
+            <div class = "col col-60">
+              <div class="item item-image">
+                <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="text-align: center">
+              </div>
+            </div>
+            <div class = "col">
+              <div class="buttons-from-img">
+                <button class="button button-block icon ion-camera" ng-click="takePhoto('CAMERA')">Câmera</button><br>
+                <button class="button button-block icon ion-images" ng-click="takePhoto('PHOTOLIBRARY')">Galeria</button>
+                <!-- The camera doesn't work on browser, and a android build is necessary -->
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div class="buttons-choose">
-        <button class="button icon-left ion-image">Escolher imagem</button>
-        <button class="button icon-left ion-camera">Tirar foto</button>
+      <div class="item item-body">
+        <ion-list id="list">
+          <label class="item item-input">
+            <input type="text"  ng-model="marking.name" placeholder="Nome do Incidente">
+          </label>
+          <ion-item class="item-divider" id="page-list">Tipo do Incidente</ion-item>
+          <ion-checkbox ng-model="marking.fire" class="checkbox-positive">Fogo</ion-checkbox>
+          <ion-checkbox ng-model="marking.water" class="checkbox-positive">Água</ion-checkbox>
+          <ion-checkbox ng-model="marking.earth" class="checkbox-positive">Terra</ion-checkbox>
+          <ion-checkbox ng-model="marking.air" class="checkbox-positive">Ar</ion-checkbox>
+        </ion-list>
+
+        <label class="item item-input">
+          <input type="text" ng-model="marking.comment" placeholder="Descrição">
+        </label>
+        <label class="item item-input">
+          <input type="hidden" placeholder="Latitude" ng-model="marking.latitude" disabled="true">
+        </label>
+
+        <label class="item item-input">
+          <input type="hidden" placeholder="Longitude" ng-model="marking.longitude" disabled="true">
+        </label>
+        <button type="submit" ng-click="registerMarking(marking); modal.hide()" id="page-button9" class="button button-positive  button-block">Cadastrar</button>
       </div>
     </div>
-
-    <div class="list">
-      <label class="item item-input">
-        <input type="text" placeholder="Nome do Incidente" ng-model="marking.name">
-      </label>
-      <label class="item item-input">
-        <input type="text" placeholder="Local do Incidente" ng-model="marking.local">
-      </label>
-
-      <label class="item item-input item-select">
-        <span class="input-label">Tipo do Incidente</span>
-        <select ng-model="marking.marking_type" name="type" required>
-          <option value="organic">Resíduos Orgânicos</option>
-          <option value="water">Poluição aquática</option>
-          <option value="fire">Incêndios</option>
-          <option value="leaf">Desmatamento</option>
-        </select>
-      </label>
-
-      <label class="item item-input">
-        <textarea placeholder="Comentário" rows="3" ng-model="marking.description" ></textarea>
-      </label>
-
-      <button type="submit" ng-click="registerMarking(marking)" id="signup-button5" class="button button-stable  button-block">Cadastrar Novo Incidente</button>
+    <div class="form-list"></div>
+    <div class="menu-bar"></div>
+    </form>
     </div>
   </ion-content>
 </ion-view>
