@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-.controller("newMarkingCtrl", function ($ionicHistory, $scope, $rootScope, $http, factoryMarking, $ionicPopup, $cordovaGeolocation, URL) {
+.controller("newMarkingCtrl", function ($ionicHistory, currentUserService, $state, $scope, $rootScope, $http, factoryMarking, $ionicPopup, $cordovaGeolocation) {
   $rootScope.markings = [];
 
   var options = {enableHighAccuracy: true};
@@ -16,12 +16,11 @@ angular.module('app.controllers')
     })
 
   $scope.registerMarking = function (marking) {
-    navigator.geolocation.getCurrentPosition(function(pos){
+    navigator.geolocation.getCurrentPosition(function(pos) {
       // $scope.position = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
       marking.latitude = pos.coords.latitude;
       marking.longitude = pos.coords.longitude;
-
-      console.log(marking)
+    })
 
       factoryMarking.save(marking, function (result){
         $rootScope.markings.push({
@@ -38,12 +37,11 @@ angular.module('app.controllers')
         title: 'Incidente cadastrado com sucesso',
         template: 'Obrigado por contribuir!'
       })
-      $scope.marking = {}
-        console.log("Success!")
-        $ionicHistory.nextViewOptions({
-          disableBack: true
-        })
-      console.log(pev)
+      console.log("Success!")
+      $ionicHistory.nextViewOptions({
+        disableBack: true
+      })
+      console.log(marking)
       /* This state must be reset and the back button too */
       }, function (error) {
         var alertPopup = $ionicPopup.alert({
@@ -51,10 +49,6 @@ angular.module('app.controllers')
         template: 'Preencha as informações corretamente!'
         })
       })
-    }, function(error) {
-      alert('Unable to get location: ' + error.message);
-      }
-    , options);
-  }
+    }
 
 })
