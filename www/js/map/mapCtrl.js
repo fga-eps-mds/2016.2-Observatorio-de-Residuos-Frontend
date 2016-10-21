@@ -2,9 +2,9 @@ angular.module('app.controllers')
 
 .controller('mapCtrl', function(NgMap, $cordovaGeolocation, $scope, $ionicModal) {
   NgMap.getMap().then(function(map) {
-    $scope.marking = {};
 
     google.maps.event.addListener(map, "rightclick", function(event) {
+      $scope.marking = {};
       $scope.marking.latitude = event.latLng.lat();
       $scope.marking.longitude = event.latLng.lng();
       $scope.modal.show();
