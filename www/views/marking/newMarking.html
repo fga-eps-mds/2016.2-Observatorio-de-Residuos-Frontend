@@ -1,6 +1,7 @@
 <ion-view title="Novo Incidente" id="new-marking">
   <ion-content padding="true" ng-controller="cameraCtrl" class="has-header has-tabs-top" scroll="true">
     <div>
+      <form ng-submit="registerMarking(marking); modal.hide()" name="Markingform">
       <div class="image-and-buttons">
         <div class="list card">
           <div class = "row">
@@ -22,8 +23,11 @@
 
       <div class="item item-body">
         <ion-list id="list">
+          <p ng-show="Markingform.name.$invalid && !Markingform.name.$pristine" class="nav-bar-block">
+            O nome do incidente é obrigatório!
+          </p>
           <label class="item item-input">
-            <input type="text"  ng-model="marking.name" placeholder="Nome do Incidente">
+            <input type="text"  ng-model="marking.name" placeholder="Nome do Incidente" name="name" required>
           </label>
           <ion-item class="item-divider" id="page-list">Tipo do Incidente</ion-item>
           <ion-checkbox ng-model="marking.fire" class="checkbox-positive">Fogo</ion-checkbox>
@@ -33,7 +37,7 @@
         </ion-list>
 
         <label class="item item-input">
-          <input type="text" ng-model="marking.comment" placeholder="Descrição">
+          <input type="text" ng-model="marking.description" placeholder="Descrição">
         </label>
         <label class="item item-input">
           <input type="hidden" placeholder="Latitude" ng-model="marking.latitude" disabled="true">
@@ -42,7 +46,7 @@
         <label class="item item-input">
           <input type="hidden" placeholder="Longitude" ng-model="marking.longitude" disabled="true">
         </label>
-        <button type="submit" ng-click="registerMarking(marking); modal.hide()" id="page-button9" class="button button-positive  button-block">Cadastrar</button>
+        <button type="submit" id="page-button9" class="button button-positive  button-block" ng-disabled="Markingform.$invalid">Cadastrar</button>
       </div>
     </div>
     <div class="form-list"></div>
