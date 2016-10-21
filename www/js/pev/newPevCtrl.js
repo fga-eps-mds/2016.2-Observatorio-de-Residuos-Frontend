@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-  .controller("newPevCtrl", function ($ionicHistory, currentUserService, $state, $scope, $rootScope, $http, factoryPEV, $ionicPopup, $cordovaGeolocation) {
+  .controller("newPevCtrl", function ($ionicHistory, $state, $scope, $rootScope, $http, factoryPEV, $ionicPopup, $cordovaGeolocation) {
     $rootScope.pevs = [];
 
     $http.get('http://localhost:3000/pevs')
@@ -36,7 +36,7 @@ angular.module('app.controllers')
         $ionicHistory.nextViewOptions({
           disableBack: true
         })
-
+        $state.go('tabs.map')
         console.log(pev)
         /* This state must be reset and the back button too */
       }, function (error) {
