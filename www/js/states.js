@@ -126,7 +126,8 @@ angular.module('starter')
       url: '/map',
       views: {
         'mapaObservatorio': {
-          templateUrl: 'views/map.html'
+          templateUrl: 'views/map.html',
+          controller: 'mapCtrl'
         }
       }
     })
