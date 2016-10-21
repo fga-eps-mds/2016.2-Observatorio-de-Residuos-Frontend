@@ -100,6 +100,17 @@ angular.module('starter')
     }
   })
 
+    //State da tela de editar PEVs
+  .state('tabs.PEV.editPEV', {
+    url: '/editPEV',
+    views: {
+      'pev-page': {
+        controller: 'editPevCtrl',
+        templateUrl: 'views/pev/editPEV.html'
+      }
+    }
+  })
+
   //State da tela de profile do usuário
   .state('tabs.profile', {
     url: '/profile',
