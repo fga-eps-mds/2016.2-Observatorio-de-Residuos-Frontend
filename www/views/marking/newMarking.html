@@ -23,10 +23,10 @@
 
       <div class="item item-body">
         <ion-list id="list">
-          <p ng-show="Markingform.name.$invalid && !Markingform.name.$pristine" class="nav-bar-block">
-            O nome do incidente é obrigatório!
-          </p>
           <label class="item item-input">
+            <p ng-show="Markingform.name.$invalid && !Markingform.name.$pristine" class="nav-bar-block">
+              O nome do incidente é obrigatório!
+            </p>
             <input type="text"  ng-model="marking.name" placeholder="Nome do Incidente" name="name" required>
           </label>
           <ion-item class="item-divider" id="page-list">Tipo do Incidente</ion-item>
