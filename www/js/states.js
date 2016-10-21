@@ -100,6 +100,16 @@ angular.module('starter')
     }
   })
 
+  //State da tela de PEVs próximas
+  .state('tabs.PEV.nearbyPEVs', {
+    url: '/nearbyPEVs',
+    views: {
+      'pev-page': {
+        templateUrl: 'views/pev/nearbyPEVs.html'
+      }
+    }
+  })
+
   //State da tela de profile do usuário
   .state('tabs.profile', {
     url: '/profile',
