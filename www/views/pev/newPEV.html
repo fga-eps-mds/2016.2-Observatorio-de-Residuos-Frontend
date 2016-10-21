@@ -28,17 +28,17 @@
               <input type="text"  ng-model="pev.name" placeholder="Nome da PEV" name="name" required>
             </label>
 
-            <div class="spacer" style="height: 5%;"></div>
+            <label class="item item-input">
+              <input type="text" ng-model="pev.description" placeholder="Descrição">
+            </label>
 
+            <div class="spacer" style="height: 5%;"></div>
             <ion-item class="item-divider" id="page-list">Materiais Recolhidos</ion-item>
             <ion-toggle toggle-class="toggle-positive" ng-model="pev.paper">Papel</ion-toggle>
             <ion-toggle toggle-class="toggle-assertive" ng-model="pev.plastic">Plástico</ion-toggle>
             <ion-toggle toggle-class="toggle-energized" ng-model="pev.metal">Metal</ion-toggle>
             <ion-toggle toggle-class="toggle-balanced" ng-model="pev.glass">Vidro</ion-toggle>
 
-            <label class="item item-input">
-              <input type="text" ng-model="pev.description" placeholder="Descrição">
-            </label>
           </ion-list>
 
           <label class="item item-input">

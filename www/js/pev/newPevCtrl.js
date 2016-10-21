@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-  .controller("newPevCtrl", function ($ionicHistory, $state, $scope, $rootScope, $http, factoryPEV, $ionicPopup, $cordovaGeolocation) {
+  .controller("newPevCtrl", function ($ionicHistory, $state, $scope, $rootScope, $http, factoryPEV, $ionicPopup, $cordovaGeolocation, URL) {
     $rootScope.pevs = [];
     var options = {enableHighAccuracy: true};
 
@@ -15,6 +15,7 @@ angular.module('app.controllers')
       console.log(data)
     });
     $scope.createPEV = function (pev) {
+        console.log(pev)
             navigator.geolocation.getCurrentPosition(function(pos){
                     pev.latitude = pos.coords.latitude;
                     pev.longitude = pos.coords.longitude;
@@ -47,10 +48,8 @@ angular.module('app.controllers')
                               template: 'Preencha as informações corretamente!'
                             })
                     });
-            },
-            function(error) {
-            alert('Unable to get location: ' + error.message);
-             }
-            , options);
+            },function(error) {
+                alert('Unable to get location: ' + error.message);
+            }, options);
     }
 })
