@@ -30,6 +30,16 @@
           <ion-checkbox ng-model="pev.plastic" class="checkbox-positive">Plástico</ion-checkbox>
           <ion-checkbox ng-model="pev.metal" class="checkbox-positive">Metal</ion-checkbox>
           <ion-checkbox ng-model="pev.glass" class="checkbox-positive">Vidro</ion-checkbox>
+        <ion-list id="list">
+            <ion-item class="item-divider" id="page-list">Materiais Recolhidos</ion-item>
+
+            <ion-toggle toggle-class="toggle-positive" ng-model="pev.paper">Papel</ion-toggle>
+
+            <ion-toggle toggle-class="toggle-assertive" ng-model="pev.plastic">Plástico</ion-toggle>
+
+            <ion-toggle toggle-class="toggle-energized" ng-model="pev.metal">Metal</ion-toggle>
+
+            <ion-toggle toggle-class="toggle-balanced" ng-model="pev.glass">Vidro</ion-toggle>
         </ion-list>
 
           <label class="item item-input">
