@@ -2,16 +2,16 @@ angular.module('app.controllers')
 
 .controller('mapCtrl', function(NgMap, $cordovaGeolocation, $scope, $ionicModal) {
   NgMap.getMap().then(function(map) {
-    $scope.pev = {};
+    $scope.marking = {};
 
     google.maps.event.addListener(map, "rightclick", function(event) {
-      $scope.pev.latitude = event.latLng.lat();
-      $scope.pev.longitude = event.latLng.lng();
+      $scope.marking.latitude = event.latLng.lat();
+      $scope.marking.longitude = event.latLng.lng();
       $scope.modal.show();
-      console.log("latitude "+$scope.pev.latitude +" longitude "+$scope.pev.longitude);
+      console.log("latitude "+$scope.marking.latitude +" longitude "+$scope.marking.longitude);
     });
 
-    var modal = $ionicModal.fromTemplateUrl('views/pev/newPEV.html', {
+    var modal = $ionicModal.fromTemplateUrl('views/marking/newMarking.html', {
     scope: $scope
     }).then(function(modal) {
     $scope.modal = modal;
