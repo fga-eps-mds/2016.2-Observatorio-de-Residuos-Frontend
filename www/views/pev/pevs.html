@@ -1,12 +1,16 @@
 <ion-view title="PEV">
 
   <ion-tabs class="tabs-striped tabs-top tabs-background-stable">
-    <ion-tab title="PEVs Próximas" ui-sref="tabs.map">
-    </ion-tab>
+
     <ion-tab title="Nova PEV" ui-sref="tabs.PEV.newPEV">
     </ion-tab>
+
     <ion-tab title="Editar PEV" ui-sref="tabs.PEV.editPEV">
     </ion-tab>
+
+    <ion-tab title="PEVs Próximas" ui-sref="tabs.PEV.nearbyPEVs">
+    </ion-tab>
+
   </ion-tabs>
 
     <ui-view name="pev-page"></ui-view>

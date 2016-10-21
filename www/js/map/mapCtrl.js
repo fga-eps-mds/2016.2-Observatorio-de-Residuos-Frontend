@@ -2,9 +2,8 @@ angular.module('app.controllers')
 
 .controller('mapCtrl', function(NgMap, $cordovaGeolocation, $scope, $ionicModal) {
   NgMap.getMap().then(function(map) {
-    $scope.pev = {};
-
     google.maps.event.addListener(map, "rightclick", function(event) {
+      $scope.pev = {};
       $scope.pev.latitude = event.latLng.lat();
       $scope.pev.longitude = event.latLng.lng();
       $scope.modal.show();
