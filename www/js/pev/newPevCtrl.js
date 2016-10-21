@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-  .controller("newPevCtrl", function ($ionicHistory, $scope, $rootScope, $http, factoryPEV, $ionicPopup, $cordovaGeolocation) {
+  .controller("newPevCtrl", function ($ionicHistory, currentUserService, $state, $scope, $rootScope, $http, factoryPEV, $ionicPopup, $cordovaGeolocation) {
     $rootScope.pevs = [];
 
     $http.get('http://localhost:3000/pevs')
@@ -12,8 +12,11 @@ angular.module('app.controllers')
     }).error(function(data){
       console.log(data)
     })
-
     $scope.createPEV = function (pev) {
+      navigator.geolocation.getCurrentPosition(function(pos){
+        pev.latitude = pos.coords.latitude;
+        pev.longitude = pos.coords.longitude;
+      })
       factoryPEV.save(pev, function (result){
         $rootScope.pevs.push({
           name: pev.name,
@@ -26,10 +29,9 @@ angular.module('app.controllers')
           longitude: pev.longitude
         });
         var alertPopup = $ionicPopup.alert({
-          title: 'PEV cadastrada com sucesso',
-          template: 'Obrigado por contribuir!'
+          title: "PEV cadastrada com sucesso",
+          template: "Obrigado por contribuir!"
         })
-        $scope.pev={}
         console.log("Success!")
         $ionicHistory.nextViewOptions({
           disableBack: true
@@ -40,7 +42,7 @@ angular.module('app.controllers')
       }, function (error) {
         var alertPopup = $ionicPopup.alert({
           title: 'Informações insuficientes',
-          template: 'Preencha as informções corretamente!'
+          template: 'Preencha as informações corretamente!'
         })
       })
     }
