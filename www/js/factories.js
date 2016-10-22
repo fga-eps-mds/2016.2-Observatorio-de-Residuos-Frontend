@@ -14,6 +14,11 @@ angular.module('starter')
   return $resource(URL+"/pevs/create");
 })
 
+//Factory para edição de PEV
+.factory('factoryEditPEV', function($resource, URL){
+  return $resource(URL+"/pevs/edit");
+})
+
 //Factory de verificação de email válido.
 .factory('factoryEmail', function($resource, URL){
   return $resource(URL+"/users/verify_email");
