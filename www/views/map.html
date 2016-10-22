@@ -5,7 +5,7 @@
 		  		<!-- <span>Loation found using HTML5.</span> -->
 			</info-window>
 		  	<div ng-repeat="marking in markings">
-				<marker position="[{{marking.latitude}}, {{marking.longitude}}]" title="{{marking.name}}"></marker>
+				<marker icon="{{customIcon}}" position="[{{marking.latitude}}, {{marking.longitude}}]" title="{{marking.name}}"></marker>
 		  	</div>
 		</ng-map>
 	</ion-content>
