@@ -4,6 +4,7 @@ describe('newPevCtrl', function () {
     var $httpBackend;
     var $ionicHistory;
     var factoryPEV;
+    var URL;
 
     beforeEach(module('starter'));
     beforeEach(inject(function (_$controller_, _$httpBackend_, $injector, _factoryPEV_, _$ionicHistory_) {
@@ -13,7 +14,7 @@ describe('newPevCtrl', function () {
         $httpBackend.when('GET', /\.html$/).respond('');
         factoryPEV = _factoryPEV_;
         $ionicHistory = _$ionicHistory_;
-    }))
+    }));
 
     beforeEach(function () {
         var controller = $controller('newPevCtrl', {$scope: $scope, $ionicHistory:$ionicHistory});
