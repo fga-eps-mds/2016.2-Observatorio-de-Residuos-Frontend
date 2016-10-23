@@ -1,11 +1,15 @@
 <ion-view>
 	<ion-content>
 		<ng-map default-style="false" class="mapa-google" center="current-location" zoom="18" style="height: 101%">
-		  	<info-window position="current-location">
-		  		<!-- <span>Loation found using HTML5.</span> -->
-			</info-window>
 		  	<div ng-repeat="marking in markings">
-				<marker icon="{{customIcon}}" position="[{{marking.latitude}}, {{marking.longitude}}]" title="{{marking.name}}"></marker>
+				<marker icon="{{customIcon}}" position="[{{marking.latitude}}, {{marking.longitude}}]" title="{{marking.name}}" on-click="informationMarking(pev)"></marker>
+				<!--
+                   <info-window>
+                     <div>
+                       name: {{marking.name}}<br/>
+                     </div>
+                   </info-window>
+                 -->
 		  	</div>
 		</ng-map>
 	</ion-content>
