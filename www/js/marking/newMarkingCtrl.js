@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-.controller("newMarkingCtrl", function ($ionicHistory, currentUserService, $state, $scope, $rootScope, factoryMarking, $ionicPopup, URL, $cordovaGeolocation) {
+.controller("newMarkingCtrl", function ($ionicHistory, currentUserService, $state, $scope, $rootScope, factoryMarking, $ionicPopup, URL, $cordovaGeolocation, currentUserService) {
 
   var options = {enableHighAccuracy: true};
 
@@ -9,9 +9,11 @@ angular.module('app.controllers')
       // $scope.position = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
       marking.latitude = pos.coords.latitude;
       marking.longitude = pos.coords.longitude;
+      marking.author_email = currentUserService.getUserData().email;
       console.log(marking);
       factoryMarking.save(marking, function (result){
         $rootScope.markings.push({
+          author_email: marking.author_email,
           name: marking.name,
           fire: marking.fire,
           water: marking.water,
