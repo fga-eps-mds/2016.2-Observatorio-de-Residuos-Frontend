@@ -1,27 +1,15 @@
 angular.module('app.controllers')
 
-.controller("newMarkingCtrl", function ($ionicHistory, currentUserService, $state, $scope, $rootScope, $http, factoryMarking, $ionicPopup, $cordovaGeolocation) {
-  $rootScope.markings = [];
+.controller("newMarkingCtrl", function ($ionicHistory, currentUserService, $state, $scope, $rootScope, factoryMarking, $ionicPopup, URL, $cordovaGeolocation) {
 
   var options = {enableHighAccuracy: true};
-
-  $http.get(URL + '/markings')
-
-    .success(function(content){
-      angular.forEach(content, function(value, key) {
-        $rootScope.markings.push(value);
-      })
-    }).error(function(data){
-      console.log(data)
-    })
 
   $scope.registerMarking = function (marking) {
     navigator.geolocation.getCurrentPosition(function(pos) {
       // $scope.position = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
       marking.latitude = pos.coords.latitude;
       marking.longitude = pos.coords.longitude;
-    })
-
+      console.log(marking);
       factoryMarking.save(marking, function (result){
         $rootScope.markings.push({
           name: marking.name,
@@ -48,7 +36,9 @@ angular.module('app.controllers')
         title: 'Informações insuficientes',
         template: 'Preencha as informações corretamente!'
         })
-      })
-    }
-
-})
+      });
+  },function(error) {
+    alert('Unable to get location: ' + error.message);
+  }, options);
+}
+});
