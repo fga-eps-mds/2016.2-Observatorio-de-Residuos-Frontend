@@ -15,7 +15,7 @@
         </div>
       </div>
 
-      <div class="spacer" style="height: 5%;"></div>
+        <div class="spacer" style="height: 15px;"></div>
         <ion-list id="list">
           <label class="item item-input">
             <p ng-show="Markingform.name.$invalid && !Markingform.name.$pristine" class="nav-bar-block">
@@ -23,15 +23,15 @@
             </p>
             <input type="text"  ng-model="marking.name" placeholder="Nome do Incidente" name="name" required>
           </label>
-          <ion-item class="item-divider" id="page-list">Tipo do Incidente</ion-item>
-          <ion-checkbox ng-model="marking.fire" class="checkbox-positive">Fogo</ion-checkbox>
-          <ion-checkbox ng-model="marking.water" class="checkbox-positive">Água</ion-checkbox>
-          <ion-checkbox ng-model="marking.earth" class="checkbox-positive">Terra</ion-checkbox>
-          <ion-checkbox ng-model="marking.air" class="checkbox-positive">Ar</ion-checkbox>
+          <ion-item class="item-divider" id="marking-list">Tipo do Incidente</ion-item>
+          <ion-toggle toggle-class="toggle-positive" ng-model="marking.fire" class="checkbox-positive">Fogo</ion-toggle>
+          <ion-toggle toggle-class="toggle-positive" ng-model="marking.water" class="checkbox-positive">Água</ion-toggle>
+          <ion-toggle toggle-class="toggle-positive" ng-model="marking.earth" class="checkbox-positive">Terra</ion-toggle>
+          <ion-toggle toggle-class="toggle-positive" ng-model="marking.air" class="checkbox-positive">Ar</ion-toggle>
         </ion-list>
 
         <label class="item item-input">
-          <input type="text" ng-model="marking.description" placeholder="Descrição">
+          <textarea type="text" ng-model="marking.description" placeholder="Descrição" rows="3"></textarea>
         </label>
         <label class="item item-input">
           <input type="hidden" placeholder="Latitude" ng-model="marking.latitude" disabled="true">
@@ -40,7 +40,7 @@
         <label class="item item-input">
           <input type="hidden" placeholder="Longitude" ng-model="marking.longitude" disabled="true">
         </label>
-        <button type="submit" id="page-button9" class="button button-positive  button-block" ng-disabled="Markingform.$invalid">Cadastrar</button>
+        <button type="submit" id="page-button9" class="button button-full button-positive" ng-disabled="Markingform.$invalid">Cadastrar</button>
     </form>
     </div>
   </ion-content>
