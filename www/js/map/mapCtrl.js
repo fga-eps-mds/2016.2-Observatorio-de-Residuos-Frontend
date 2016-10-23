@@ -1,7 +1,6 @@
 angular.module('app.controllers')
 
-.controller('mapCtrl', function(NgMap, $cordovaGeolocation, $scope, $ionicModal, $rootScope, URL, $http
-) {
+.controller('mapCtrl', function(NgMap, $cordovaGeolocation, $scope, $ionicModal, $rootScope, URL, $http, $ionicPopup) {
   $rootScope.markings = [];
 
   $http.get(URL + '/markings')
@@ -30,6 +29,14 @@ angular.module('app.controllers')
     }).then(function(modal) {
     $scope.modal = modal;
     });
+
+    $scope.informationMarking = function (marking) {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Titulo',
+        template: 'descricao!'
+        //Adicionar marking.name, tipo de marking e marking.description
+      });
+    }
 
   })
 
