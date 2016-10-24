@@ -13,20 +13,34 @@ angular.module("app.controllers")
       console.log("error");
     });  
 
-    $scope.editPEV = function(pev){
-   //  	console.log($rootScope.pevs[index]);
-	 	// $rootScope.pevs[index] = pev;
+	$scope.confirmEditPEV = function(pev) {
+		var confirmPopup = $ionicPopup.confirm({
+			title: 'Edição da PEV',
+			template: 'Deseja finalizar a edição desta PEV?'
+		});
 
-    	factoryEditPEV.save(pev, function(result){
-    		var alertPopup = $ionicPopup.alert({
-              title: 'PEV editada com sucesso',
-              template: 'Obrigado por contribuir!'
-            });
+		confirmPopup.then(function(res) {
+			if(res) {
+			console.log('sim');
+				// $scope.editPEV = function(pev){
+					// console.log($rootScope.pevs[index]);
+					// $rootScope.pevs[index] = pev;
 
-    		$state.go("tabs.map")
+					factoryEditPEV.save(pev, function(result){
+						var alertPopup = $ionicPopup.alert({
+						title: 'PEV editada com sucesso',
+						template: 'Obrigado por contribuir!'
+						});
 
-		}, function(erro){
-			console.log(erro);
-		})
-    }
+					$state.go("tabs.map")
+
+					}, function(erro){
+						console.log(erro);
+					})
+				// }
+			} else {
+			console.log('não');
+			}
+		});
+	};
 })
