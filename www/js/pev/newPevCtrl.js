@@ -2,6 +2,9 @@ angular.module('app.controllers')
 
   .controller("newPevCtrl", function ($ionicHistory, NgMap,$state, $scope, $rootScope, factoryPEV, $ionicPopup, URL) {
     var options = {enableHighAccuracy: true};
+    if(angular.isUndefined($rootScope.pevs)) {
+      $rootScope.pevs = [];
+    }
 
     $scope.createPEV = function (pev) {
             console.log(NgMap);
