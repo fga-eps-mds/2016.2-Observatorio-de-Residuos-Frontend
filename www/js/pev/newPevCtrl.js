@@ -1,14 +1,13 @@
 angular.module('app.controllers')
 
-  .controller("newPevCtrl", function ($ionicHistory, $state, $scope, $rootScope, $http, factoryPEV, $ionicPopup, $cordovaGeolocation, URL) {
+  .controller("newPevCtrl", function ($ionicHistory, NgMap,$state, $scope, $rootScope, factoryPEV, $ionicPopup, URL) {
     var options = {enableHighAccuracy: true};
 
     $scope.createPEV = function (pev) {
-        console.log(pev)
-            navigator.geolocation.getCurrentPosition(function(pos){
-                    pev.latitude = pos.coords.latitude;
-                    pev.longitude = pos.coords.longitude;
-                    console.log(pev);
+            console.log(NgMap);
+            NgMap.getGeoLocation().then(function(map) {
+                    pev.latitude = map.lat();
+                    pev.longitude = map.lng();
                     factoryPEV.save(pev, function (result){
                             $rootScope.pevs.push({
                               name: pev.name,

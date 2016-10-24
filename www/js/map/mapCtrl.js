@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-.controller('mapCtrl', function(NgMap, $cordovaGeolocation, $scope, $ionicModal, $http, $rootScope, URL) {
+.controller('mapCtrl', function(NgMap, $scope, $ionicModal, $http, $rootScope, URL) {
   NgMap.getMap().then(function(map) {
     google.maps.event.addListener(map, "rightclick", function(event) {
       $scope.pev = {};
@@ -17,7 +17,7 @@ angular.module('app.controllers')
         $rootScope.pevs.push(value);
       })
     })
-    
+
     .error(function(data){
       console.log(data)
     });

@@ -5,8 +5,6 @@ angular.module('starter')
   var findIndex = function(pev){
     angular.forEach($rootScope.pevs, function(value, key) {
       if(value.latitude == pev.latitude && value.longitude == pev.longitude){
-        console.log(value)
-        console.log(key)
         index = key;
       }
     })
