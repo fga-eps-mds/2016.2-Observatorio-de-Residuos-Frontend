@@ -84,7 +84,7 @@ angular.module('starter')
     views: {
       'markings-page': {
         templateUrl: 'views/marking/newMarking.html',
-        controller: 'markingCtrl'
+        controller: 'newMarkingCtrl'
       }
     }
   })

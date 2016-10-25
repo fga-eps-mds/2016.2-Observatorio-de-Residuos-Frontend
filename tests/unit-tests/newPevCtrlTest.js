@@ -6,6 +6,7 @@ describe('newPevCtrl', function () {
     var $ionicHistory;
     var $ionicPopup;
     var factoryPEV;
+    var URL;
 
     beforeEach(function() {
         module('starter');
