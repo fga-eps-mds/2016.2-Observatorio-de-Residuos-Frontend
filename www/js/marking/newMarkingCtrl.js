@@ -1,14 +1,16 @@
 angular.module('app.controllers')
 
-.controller("newMarkingCtrl", function ($ionicHistory, currentUserService, $state, $scope, $rootScope, factoryMarking, $ionicPopup, URL, $cordovaGeolocation, currentUserService) {
+.controller("newMarkingCtrl", function ($ionicHistory, currentUserService, NgMap, $state, $scope, $rootScope, factoryMarking, $ionicPopup, URL) {
 
   var options = {enableHighAccuracy: true};
+  if(angular.isUndefined($rootScope.markings)) {
+    $rootScope.markings = [];
+  }
 
   $scope.registerMarking = function (marking) {
-    navigator.geolocation.getCurrentPosition(function(pos) {
-      // $scope.position = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-      marking.latitude = pos.coords.latitude;
-      marking.longitude = pos.coords.longitude;
+    NgMap.getGeoLocation().then(function(map) {
+      marking.latitude = map.lat();
+      marking.longitude = map.lng();
       marking.author_email = currentUserService.getUserData().email;
       console.log(marking);
       factoryMarking.save(marking, function (result){
@@ -31,16 +33,16 @@ angular.module('app.controllers')
       $ionicHistory.nextViewOptions({
         disableBack: true
       })
-      console.log(marking)
+      $state.go('tabs.map')
       /* This state must be reset and the back button too */
       }, function (error) {
         var alertPopup = $ionicPopup.alert({
-        title: 'Informações insuficientes',
-        template: 'Preencha as informações corretamente!'
+          title: 'Informações insuficientes',
+          template: 'Preencha as informações corretamente!'
         })
       });
-  },function(error) {
+  }/*,function(error) {
     alert('Unable to get location: ' + error.message);
-  }, options);
+  }*/, options);
 }
 });
