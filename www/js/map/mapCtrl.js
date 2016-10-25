@@ -1,47 +1,37 @@
 angular.module('app.controllers')
 
-.controller('mapCtrl', function(NgMap, $cordovaGeolocation, $scope, $ionicModal, $rootScope, URL, $http, $ionicPopup) {
-  $rootScope.markings = [];
+    .controller('mapCtrl', function(NgMap, $scope, $ionicModal, $http, $rootScope, URL) {
+      NgMap.getMap().then(function(map) {
+        google.maps.event.addListener(map, /*"rightclick", */function(event) {
+          $scope.marking = {};
+          $scope.marking.latitude = event.latLng.lat();
+          $scope.marking.longitude = event.latLng.lng();
+          $scope.modal.show();
+          console.log("latitude "+$scope.marking.latitude +" longitude "+$scope.marking.longitude);
+        });
+        $rootScope.markings = [];
 
-  $http.get(URL + '/markings')
+        $http.get(URL + '/markings')
+            .success(function(content){
+              angular.forEach(content, function(value, key) {
+                $rootScope.markings.push(value);
+              })
+            })
 
-      .success(function(content){
-        angular.forEach(content, function(value, key) {
-          $rootScope.markings.push(value);
-        })
-      }).error(function(data){
-    console.log(data)
-  });
+            .error(function(data){
+              console.log(data)
+            });
 
-  NgMap.getMap().then(function(map) {
+        var modal = $ionicModal.fromTemplateUrl('views/marking/newMarking.html', {
+          scope: $scope
+        }).then(function(modal) {
+          $scope.modal = modal;
+        });
 
-    //Add this method when you gonna activate marking with click ;)
-    // google.maps.event.addListener(map, "rightclick", function(event) {
-    //   $scope.marking = {};
-    //   $scope.marking.latitude = event.latLng.lat();
-    //   $scope.marking.longitude = event.latLng.lng();
-    //   $scope.modal.show();
-    //   console.log("latitude "+$scope.marking.latitude +" longitude "+$scope.marking.longitude);
-    // });
+      })
 
-    var modal = $ionicModal.fromTemplateUrl('views/marking/newMarking.html', {
-    scope: $scope
-    }).then(function(modal) {
-    $scope.modal = modal;
-    });
-
-    $scope.informationMarking = function (marking) {
-      var alertPopup = $ionicPopup.alert({
-        title: 'Titulo',
-        template: 'descricao!'
-        //Adicionar marking.name, tipo de marking e marking.description
-      });
-    }
-
-  })
-
-  $scope.customIcon = {
-    "scaledSize": [50, 50],
-    "url": "https://lh4.ggpht.com/Tr5sntMif9qOPrKV_UVl7K8A_V3xQDgA7Sw_qweLUFlg76d_vGFA7q1xIKZ6IcmeGqg=w300"
-  };
-})
+      $scope.customIcon = {
+        "scaledSize": [50, 50],
+        "url": "https://lh4.ggpht.com/Tr5sntMif9qOPrKV_UVl7K8A_V3xQDgA7Sw_qweLUFlg76d_vGFA7q1xIKZ6IcmeGqg=w300"
+      };
+    })
