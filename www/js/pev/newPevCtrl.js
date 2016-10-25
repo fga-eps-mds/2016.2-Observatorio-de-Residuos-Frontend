@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-  .controller("newPevCtrl", function ($ionicHistory, NgMap,$state, $scope, $rootScope, factoryPEV, $ionicPopup, URL) {
+  .controller("newPevCtrl", function ($ionicHistory, NgMap,$state, $scope, $rootScope,currentUserService, factoryPEV, $ionicPopup, URL) {
     var options = {enableHighAccuracy: true};
     if(angular.isUndefined($rootScope.pevs)) {
       $rootScope.pevs = [];
