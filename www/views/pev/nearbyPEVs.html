@@ -8,10 +8,10 @@
 
 	<div id="nerby-pev-list" class="list card">
 
-      <ion-item style="" class="item-thumbnail-left">
+      <ion-item ng-repeat="pev in pevs" style="" class="item-thumbnail-left">
       	<img src="../img/new-marking-placeholder.jpg">
-        <p>PEV nome</p>
-        <p>PEV status</p>
+        <p>{{pev.name}}</p>
+        <p>{{pev.description}}</p>
       </ion-item>
 
     </div>

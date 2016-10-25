@@ -16,7 +16,7 @@
 
           </div>
 
-          <div class="spacer" style="height: 5%;"></div>
+          <div class="spacer" style="height: 15px;"></div>
 
           <ion-list id="list">
 
@@ -27,31 +27,22 @@
             <label class="item item-input">
               <input type="text"  ng-model="pev.name" placeholder="Nome da PEV" name="name" required>
             </label>
-
             <label class="item item-input">
-              <input type="text" ng-model="pev.description" placeholder="Descrição">
+              <textarea type="text" ng-model="pev.description" placeholder="Descrição" rows="3" ></textarea>
             </label>
 
-            <div class="spacer" style="height: 5%;"></div>
+            <div class="spacer" style="height: 15px;"></div>
+
             <ion-item class="item-divider" id="page-list">Materiais Recolhidos</ion-item>
             <ion-toggle toggle-class="toggle-positive" ng-model="pev.paper">Papel</ion-toggle>
             <ion-toggle toggle-class="toggle-assertive" ng-model="pev.plastic">Plástico</ion-toggle>
             <ion-toggle toggle-class="toggle-energized" ng-model="pev.metal">Metal</ion-toggle>
             <ion-toggle toggle-class="toggle-balanced" ng-model="pev.glass">Vidro</ion-toggle>
-
           </ion-list>
 
-          <label class="item item-input">
-            <input type="hidden" placeholder="Latitude" ng-model="pev.latitude" disabled="true">
-          </label>
+          <div class="spacer" style="height: 15px;"></div>
 
-          <label class="item item-input">
-            <input type="hidden" placeholder="Longitude" ng-model="pev.longitude" disabled="true">
-          </label>
-
-          <div class="spacer" style="height: 5%;"></div>
-
-          <button type="submit" id="page-button9" class="button button-positive  button-block" ng-disabled="PEVform.$invalid">Cadastrar</button>
+          <button type="submit" id="page-button9" class="button button-full button-positive" ng-disabled="PEVform.$invalid">Cadastrar</button>
         </form>
         <div class="form-list"></div>
         <div class="menu-bar"></div>

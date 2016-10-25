@@ -11,8 +11,10 @@ angular.module('app.controllers')
             NgMap.getGeoLocation().then(function(map) {
                     pev.latitude = map.lat();
                     pev.longitude = map.lng();
+                    pev.author_email = currentUserService.getUserData().email;
                     factoryPEV.save(pev, function (result){
                             $rootScope.pevs.push({
+                              author_email: pev.author_email,
                               name: pev.name,
                               paper: pev.paper,
                               plastic: pev.plastic,

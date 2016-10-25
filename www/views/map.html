@@ -4,7 +4,7 @@
 		  <info-window position="current-location">
 		  </info-window>
 			<div ng-repeat="pev in pevs">
-				<marker position="[{{pev.latitude}}, {{pev.longitude}}]" title="{{pev.name}}"></marker>
+				<marker position="[{{pev.latitude}}, {{pev.longitude}}]" title="{{pev.name}}" on-click="informationPEV(pev)"></marker>
 			</div>
 	  	<div ng-repeat="marking in markings">
 				<marker icon="{{customIcon}}" position="[{{marking.latitude}}, {{marking.longitude}}]" title="{{marking.name}}" on-click="informationMarking(pev)"></marker>
