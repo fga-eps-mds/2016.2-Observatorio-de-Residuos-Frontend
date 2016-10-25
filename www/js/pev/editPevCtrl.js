@@ -4,7 +4,6 @@ angular.module("app.controllers")
     var index;
     $http.get(URL+"/pevs/getonepev")
     .success(function(pev){
-      console.log(pev);
       $scope.pev = pev;
       findPevService.findIndex(pev);
     })
@@ -14,12 +13,12 @@ angular.module("app.controllers")
     });
 
 	$scope.confirmEditPEV = function(pev) {
-		var confirmPopup = $ionicPopup.confirm({
+			$ionicPopup.confirm({
 			title: 'Edição da PEV',
 			template: 'Deseja finalizar a edição desta PEV?'
-		});
+		})
 
-    confirmPopup.then(function(res) {
+   	.then(function(res) {
 			if(res) {
 			    factoryEditPEV.save(pev, function(result){
             index = findPevService.getIndex();
