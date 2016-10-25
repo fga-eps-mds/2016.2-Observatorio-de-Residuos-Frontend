@@ -4,6 +4,7 @@ describe('newPevCtrl', function () {
     var $rootScope = {};
     var $httpBackend;
     var $ionicHistory;
+    var $ionicPopup;
     var factoryPEV;
 
     beforeEach(function() {
@@ -23,7 +24,7 @@ describe('newPevCtrl', function () {
             });
         });
     });
-    beforeEach(inject(function (_$controller_, _$httpBackend_, $injector, _factoryPEV_, _$ionicHistory_, _$rootScope_) {
+    beforeEach(inject(function (_$controller_, _$httpBackend_, $injector, _factoryPEV_, _$ionicHistory_, _$rootScope_, _$ionicPopup_) {
         $controller = _$controller_;
         $httpBackend = _$httpBackend_;
         URL = $injector.get('URL');
@@ -31,6 +32,7 @@ describe('newPevCtrl', function () {
         factoryPEV = _factoryPEV_;
         $ionicHistory = _$ionicHistory_;
         $rootScope = _$rootScope_;
+        $ionicPopup = _$ionicPopup_;
     }))
 
 
@@ -51,7 +53,9 @@ describe('newPevCtrl', function () {
             var data = "error message";
             $httpBackend.expectPOST(URL + '/pevs/create', pev).respond(400, data);
             $scope.createPEV(pev);
+            spyOn($ionicPopup, 'alert');
             $httpBackend.flush();
+            expect($ionicPopup.alert).toHaveBeenCalled();
         });
     });
 });
