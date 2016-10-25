@@ -1,9 +1,9 @@
 angular.module('starter')
 /*Arquivo responsável por conectar todas as controllers e suas views definindo como states da aplicação*/
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider){
-  
+
   $ionicConfigProvider.tabs.position('bottom');
-  
+
   $stateProvider
 
   //State da home
@@ -100,6 +100,26 @@ angular.module('starter')
     }
   })
 
+    //State da tela de editar PEVs
+  .state('tabs.PEV.editPEV', {
+    url: '/editPEV',
+    views: {
+      'pev-page': {
+        controller: 'editPevCtrl',
+        templateUrl: 'views/pev/editPEV.html'
+      }
+    }
+  })
+  //State da tela de PEVs próximas
+  .state('tabs.PEV.nearbyPEVs', {
+    url: '/nearbyPEVs',
+    views: {
+      'pev-page': {
+        templateUrl: 'views/pev/nearbyPEVs.html'
+      }
+    }
+  })
+
   //State da tela de profile do usuário
   .state('tabs.profile', {
     url: '/profile',
@@ -126,7 +146,8 @@ angular.module('starter')
       url: '/map',
       views: {
         'mapaObservatorio': {
-          templateUrl: 'views/map.html'
+          templateUrl: 'views/map.html',
+          controller: 'mapCtrl'
         }
       }
     })

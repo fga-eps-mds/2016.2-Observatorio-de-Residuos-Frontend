@@ -2,7 +2,7 @@
   <ion-content padding="true" ng-controller="cameraCtrl" class="has-header has-tabs-top" scroll="true">
     <div>
       <div>
-        <form ng-submit="createPEV(pev); modal.hide()" name="PEVform">
+        <form ng-submit="confirmEditPEV(pev); modal.hide()"name="PEVform">
           <div>
 
             <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
@@ -51,7 +51,7 @@
 
           <div class="spacer" style="height: 5%;"></div>
 
-          <button type="submit" id="page-button9" class="button button-positive  button-block" ng-disabled="PEVform.$invalid">Cadastrar</button>
+          <button type="submit" id="page-button9" class="button button-assertive  button-block" ng-disabled="PEVform.$invalid">Editar</button>
         </form>
         <div class="form-list"></div>
         <div class="menu-bar"></div>

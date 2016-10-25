@@ -4,6 +4,9 @@
 		  <info-window position="current-location">
 		  	<!-- <span>Loation found using HTML5.</span> -->
 		  </info-window>
+			<div ng-repeat="pev in pevs">
+				<marker position="[{{pev.latitude}}, {{pev.longitude}}]" title="{{pev.name}}"></marker>
+			</div>
 		</ng-map>
 	</ion-content>
 </ion-view>
