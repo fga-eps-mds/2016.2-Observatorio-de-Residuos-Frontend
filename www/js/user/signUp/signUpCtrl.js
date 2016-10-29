@@ -23,13 +23,17 @@ angular.module('app.controllers')
   console.log($scope.user);
   $scope.registerEmail= function(user){
       user.password_digest = String(CryptoJS.SHA256(user.password_digest));//criptografia
-      user.password_confirmation = String(CryptoJS.SHA256(user.password_confirmation));
+      console.log(user);
       factoryRegister.save(user, function(result){
         console.log(result);
         $scope.invalidEmail = false;
         $state.go("tabs.map")
+        user.password_digest = "";
+        user.password_confirmation = "";
       }, function(error){
         $scope.invalidEmail = true;
+        user.password_digest = "";
+        user.password_confirmation = "";
       })
   }
 })
