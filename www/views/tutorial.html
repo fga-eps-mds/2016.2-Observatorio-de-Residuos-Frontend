@@ -1,27 +1,4 @@
 
-<ion-nav-bar class="bar-light" align-title="center">
-    <ion-nav-buttons side="left">
-        <button class="button button-positive button-clear no-animation"
-                ng-click="startApp()" ng-show="!slideIndex">
-            Pular tutorial
-        </button>
-        <button class="button button-positive button-clear no-animation"
-                ng-click="previous()" ng-show="slideIndex > 0">
-            Slide anterior
-        </button>
-    </ion-nav-buttons>
-    <ion-nav-title>Tutorial</ion-nav-title>
-    <ion-nav-buttons side="right">
-        <button class="button button-positive button-clear no-animation"
-                ng-click="next()" ng-show="slideIndex != 2">
-            Pŕoximo slide
-        </button>
-        <button class="button button-positive button-clear no-animation"
-                ng-click="startApp()" ng-show="slideIndex == 2">
-            Finalizar tutorial
-        </button>
-    </ion-nav-buttons>
-</ion-nav-bar>
 
 <ion-nav-view>
     <ion-view view-title="Tutorial" id="tutorial">
