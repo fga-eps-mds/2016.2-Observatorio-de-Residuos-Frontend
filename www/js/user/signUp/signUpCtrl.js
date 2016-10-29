@@ -7,12 +7,12 @@ angular.module('app.controllers')
 
   /*Caso utilizem o botão de login social sem se cadastrar os dados do
     cadastro se preenchem sozinhos através da service de usuário atual.*/
-  $scope.perfis = [];
+  $scope.profiles = [];
 
-  $http.get(URL + 'perfis/index')
-  .success(function(perfis){
+  $http.get(URL + '/profiles')
+  .success(function(content){
     angular.forEach(content, function(value, key) {
-      $scope.perfis.push(value);
+      $scope.profiles.push(value);
     })
   })
   .error(function(error){
