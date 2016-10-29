@@ -1,0 +1,67 @@
+<!--ion-nav-bar com bug, aparece somente na primeira vez que entra na conta, na segunda vez já não aparece mais-->
+<!--Link abaixo com bug, testar alguma outra forma de fazer o tutorial sem utilizar este link-->
+<link href="//code.ionicframework.com/nightly/css/ionic.css" rel="stylesheet">
+<script src="//code.ionicframework.com/nightly/js/ionic.bundle.js"></script>
+
+<ion-nav-bar class="bar-light" align-title="center">
+    <ion-nav-buttons side="left">
+        <button class="button button-positive button-clear no-animation"
+                ng-click="startApp()" ng-show="!slideIndex">
+            Pular tutorial
+        </button>
+        <button class="button button-positive button-clear no-animation"
+                ng-click="previous()" ng-show="slideIndex > 0">
+            Slide anterior
+        </button>
+    </ion-nav-buttons>
+    <ion-nav-title>Tutorial</ion-nav-title>
+    <ion-nav-buttons side="right">
+        <button class="button button-positive button-clear no-animation"
+                ng-click="next()" ng-show="slideIndex != 2">
+            Pŕoximo slide
+        </button>
+        <button class="button button-positive button-clear no-animation"
+                ng-click="startApp()" ng-show="slideIndex == 2">
+            Finalizar tutorial
+        </button>
+    </ion-nav-buttons>
+</ion-nav-bar>
+
+<ion-nav-view>
+    <ion-view view-title="Tutorial" id="tutorial">
+        <ion-content padding="true" scroll="true">
+            <ion-slide-box on-slide-changed="slideChanged(index)">
+                <ion-slide>
+                    <h3>Thank you for choosing the Awesome App!</h3>
+                    <div id="logo">
+                        <img src="http://code.ionicframework.com/assets/img/app_icon.png">
+                    </div>
+                    <p>
+                        We've worked super hard to make you happy.
+                    </p>
+                    <p>
+                        But if you are angry, too bad.
+                    </p>
+                </ion-slide>
+                <ion-slide>
+                    <h3>Using Awesome</h3>
+
+                    <div id="list">
+                        <h5>Just three steps:</h5>
+                        <ol>
+                            <li>Be awesome</li>
+                            <li>Stay awesome</li>
+                            <li>There is no step 3</li>
+                        </ol>
+                    </div>
+                </ion-slide>
+                <ion-slide>
+                    <h3>Any questions?</h3>
+                    <p>
+                        Too bad!
+                    </p>
+                </ion-slide>
+            </ion-slide-box>
+        </ion-content>
+    </ion-view>
+</ion-nav-view>
