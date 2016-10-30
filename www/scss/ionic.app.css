@@ -10019,10 +10019,11 @@ i.ion-social-facebook {
 }
 
 .slider-slide {
-  padding-top: 80px;
+  padding: 20px;
+  padding-top: 20px;
   color: #000;
   background-color: #fff;
-  text-align: center;
+  text-align: left;
 
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
@@ -10030,4 +10031,8 @@ i.ion-social-facebook {
 
 .button.ng-hide{
   display:none;
+}
+
+#slideButtons{
+  padding-top: 50px;
 }
