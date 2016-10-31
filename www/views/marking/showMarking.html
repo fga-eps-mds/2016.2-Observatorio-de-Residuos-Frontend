@@ -1,3 +1,9 @@
 <ion-modal-view>
-	<h1>Hello world</h1>
+	<ion-header-bar class="bar bar-header bar-balanced">
+		<h1 class="title">{{marking.name}}</h1>
+		<button class="button button-clear button-primary" ng-click="modal.hide()" style="top:-3px">Voltar</button>
+	</ion-header-bar>
+		<ion-content class="padding" scroll="true">
+			<h1>{{marking.description}}</h1>
+		</ion-content>
 </ion-modal-view>
