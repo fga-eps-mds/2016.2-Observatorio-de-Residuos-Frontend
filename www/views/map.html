@@ -2,13 +2,15 @@
 	<ion-content>
 		<ng-map default-style="false" class="mapa-google" center="current-location" zoom="18" style="height: 101%">
 		  <info-window position="current-location">
-		  </info-window>
-			<div ng-repeat="pev in pevs">
-				<marker position="[{{pev.latitude}}, {{pev.longitude}}]" title="{{pev.name}}" on-click="informationPEV(pev)"></marker>
-			</div>
-	  	<div ng-repeat="marking in markings">
-				<marker icon="{{customIcon}}" position="[{{marking.latitude}}, {{marking.longitude}}]" title="{{marking.name}}" on-click="informationMarking(pev)"></marker>
-	  	</div>
+			  </info-window>
+				<div ng-controller="showMarkingCtrl">
+					<div ng-repeat="pev in pevs">
+					<marker position="[{{pev.latitude}}, {{pev.longitude}}]" title="{{pev.name}}" on-click="showPev()"></marker>
+					</div>
+	  			<div ng-repeat="marking in markings">
+						<marker icon="{{customIcon}}" position="[{{marking.latitude}}, {{marking.longitude}}]" title	="{{marking.name}}" on-click="informationMarking(pev)"></marker>
+	  			</div>
+	  		</div>
 		</ng-map>
 	</ion-content>
 </ion-view>
