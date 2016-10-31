@@ -8,7 +8,7 @@
 					<marker position="[{{pev.latitude}}, {{pev.longitude}}]" title="{{pev.name}}" on-click="showPev(pev)"></marker>
 					</div>
 	  			<div ng-repeat="marking in markings">
-						<marker icon="{{customIcon}}" position="[{{marking.latitude}}, {{marking.longitude}}]" title	="{{marking.name}}" on-click="informationMarking(pev)"></marker>
+						<marker icon="{{customIcon}}" position="[{{marking.latitude}}, {{marking.longitude}}]" title	="{{marking.name}}" on-click="showIncident(marking)"></marker>
 	  			</div>
 	  		</div>
 		</ng-map>
