@@ -1,7 +1,9 @@
 <ion-view cache-view="false" title="Observatório de Resíduos" id="signin" hide-nav-bar="true">
     <ion-content padding="true" scroll="true">
 
-        <img src="img/logo-2.png" width="80%">
+        <div class="frontal-logo">
+          <img src="../img/logo-2.png" width="80%">
+        </div>
 
         <div class="container">
           <form name="loginForm" id="loginForm" class="list" ng-submit="loginAttempt(user)">
@@ -25,15 +27,12 @@
               <input  ng-model="user.password" name="password" type="password"  placeholder="Senha" required> 
             </label>
 
-            <button type="submit" ng-disabled="loginForm.$invalid" class="button button-positive" >Entrar</button>
+            <button type="submit" ng-disabled="loginForm.$invalid" class="button button-block button-positive" >Entrar</button>
 
             <div class="bottom-links">
-              <a href="#" class="link" ui-sref="signup">Criar uma conta</a>  |  <a href="#" class="link">Esqueceu sua senha?</a>
+              Sem conta ainda? <a href="#" class="link" ui-sref="signup">Crie uma!</a>
             </div>
           </form>
-          <div class="termos">
-            Ao entrar, você concorda com os <a href="#"><b>Termos de Serviço e Privacidade</b></a>
-          </div>
 
           <div class="socialLogin">
             <b>Entrar com:</b><br>
