@@ -10035,3 +10035,7 @@ i.ion-social-facebook {
 #slideButtons{
   padding-top: 50px;
 }
+
+.text-format{
+  text-align: justify;
+}
