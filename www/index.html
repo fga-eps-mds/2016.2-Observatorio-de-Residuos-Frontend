@@ -8,7 +8,11 @@
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="scss/ionic.app.css" rel="stylesheet">
     <link href="scss/tabs.css" rel="stylesheet">
+
     <link href="views/pev/newPEV.css" rel="stylesheet">
+    <link href="scss/custom-css/buttons.css" rel="stylesheet">
+    <link href="scss/custom-css/alignment.css" rel="stylesheet">
+    <link href="scss/custom-css/app-elements.css" rel="stylesheet">
 
     <!-- IF using Sass (run gulp sass first), then remove the CSS include above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -57,8 +61,8 @@
   </head>
 
   <body ng-app="starter" animation="slide-left-right-ios7">
-    <ion-nav-bar class="bar bar-header bar-balanced">
-        <ion-nav-title align="center">Observatório de Resíduos</ion-nav-title>
+    <ion-nav-bar class="bar-positive">
+        <ion-nav-title>Observatório de Resíduos</ion-nav-title>
             <ion-nav-buttons side="right">
                 <button class="button button-clear icon ion-person tabs-color-active-positive" style="top:-28%" ng-click="popover.show($event)" ng-controller="popoverPerfilCtrl">Perfil</button>
             </ion-nav-buttons>
