@@ -1,0 +1,54 @@
+/* Global Variables - Please copy this in every css file to reminder */
+:root {
+    --background-color: #ffffff;
+    --secondary-button: #3c4f19;
+    --primary-button: #5c8d23;
+    --clickable-link: #4b6174;
+    --clickable-link-hover: #8192a1;
+
+    --black-one: #000000;
+    --white-one: #ffffff;
+    --green-one: #798c54;
+    --green-two: #8fa662;
+    --green-three: #daedb6;
+    --green-four: #778274;
+    --green-five: #b6c19f;
+    --green-six: #3c4f19;
+    --green-seven: #5c8d23;
+    --blue-one: #4b6174;
+    --blue-two: #8192a1;
+    --blue-three: #a2adb9;
+    --blue-four: #012148;
+    --red-one: #973c13;
+    --orange-one: #df7500;
+    --yellow-one: #dcca53;
+    --yellow-two: #fbe582;
+    --brown-one: #663311;
+    --brown-two: #8a5711;
+    --brown-three: #bc9c63;
+}
+
+.button.button-positive {
+    color: var(--white-one);
+    background-color: var(--green-seven);
+}
+
+.button.button-assertive {
+    color: var(--white-one);
+    background-color: var(--green-seven);
+}
+
+.button.button-positive.active, .button.button-positive.activated {
+    border-color: transparent;
+    background-color: var(--secondary-button);
+}
+
+.button.button-full.button-balanced{
+    background-color: var(--primary-button);
+    color: var(--white-one);
+}
+
+
+
+
+
