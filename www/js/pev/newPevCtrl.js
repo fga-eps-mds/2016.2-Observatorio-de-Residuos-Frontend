@@ -30,6 +30,7 @@ angular.module('app.controllers')
                             });
                             $scope.pev={}
                             console.log("Success!")
+                            console.log(pev)
                             $ionicHistory.nextViewOptions({
                               disableBack: true
                             });
