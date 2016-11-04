@@ -9,7 +9,7 @@ describe('signupCtrl', function() {
 
   beforeEach(module('starter'));
 
-  beforeEach(inject(function(_$controller_, _currentUserService_, 
+  beforeEach(inject(function(_$controller_, _currentUserService_,
                              _factoryRegister_, _$httpBackend_, _$state_,
                              $injector){
     $controller = _$controller_;
@@ -22,8 +22,8 @@ describe('signupCtrl', function() {
   }));
 
   beforeEach(function() {
-    var controller = $controller('signupCtrl', 
-                                  {$scope: $scope, 
+    var controller = $controller('signupCtrl',
+                                  {$scope: $scope,
                                   currentUserService: currentUserService
                                   });
   });
@@ -33,18 +33,17 @@ describe('signupCtrl', function() {
   });
 
   describe('user validation', function() {
-    var user = {name: "Amoêdo", email: "amoedo@email.com", 
+    var user = {name: "Amoêdo", email: "amoedo@email.com",
               password_digest: "cacofonia", password_confirmation: "cacofonia"};
 
     it('should encrypt an user password', function() {
       $scope.registerEmail(user);
       expect(user.password_digest).not.toEqual('cacofonia');
-      expect(user.password_confirmation).not.toEqual('cacofonia');
-      expect(user.password_confirmation).toEqual(user.password_digest)
     });
 
     it('should set invalidEmail to false and redirect to tabs.map when getting\
        a successfull response from server during email validation', function() {
+      $httpBackend.when('GET', URL+"/profiles").respond(200);
       $httpBackend.expectPOST(URL + '/users/create', user).respond(201);
       $scope.registerEmail(user);
       spyOn($state, 'go');
@@ -55,6 +54,7 @@ describe('signupCtrl', function() {
 
     it('should set invalidEmail to true when getting an error response from\
      server during email validation', function() {
+      $httpBackend.when('GET', URL+"/profiles").respond(200);
       $httpBackend.expectPOST(URL + '/users/create', user).respond(401);
       $scope.registerEmail(user);
       $httpBackend.flush();
