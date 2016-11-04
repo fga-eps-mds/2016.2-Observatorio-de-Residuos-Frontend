@@ -1,0 +1,47 @@
+<ion-view title="Editar Incidente" id="edit-marking">
+  <ion-content padding="true" ng-controller="cameraCtrl" class="has-header has-tabs-top" scroll="true">
+    <div>
+      <form ng-submit="registerMarking(marking); modal.hide()" name="Markingform">
+      <div class="image-and-buttons">
+
+        <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
+          <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+        </div>
+
+        <div class="button-bar">
+          <button class="button icon-left ion-camera" ng-click="takePhoto('CAMERA')">Câmera</button><br>
+          <button class="button icon-left ion-image" ng-click="takePhoto('PHOTOLIBRARY')">Galeria</button>
+          <!-- The camera doesn't work on browser, and a android build is necessary -->
+        </div>
+      </div>
+
+        <div class="spacer" style="height: 15px;"></div>
+        <ion-list id="list">
+          <label class="item item-input">
+            <p ng-show="Markingform.name.$invalid && !Markingform.name.$pristine" class="nav-bar-block">
+              O nome do incidente é obrigatório!
+            </p>
+            <input type="text"  ng-model="marking.name" placeholder="Nome do Incidente" name="name" required>
+          </label>
+          <ion-item class="item-divider" id="marking-list">Tipo do Incidente</ion-item>
+          <ion-toggle toggle-class="toggle-positive" ng-model="marking.fire" class="checkbox-positive">Fogo</ion-toggle>
+          <ion-toggle toggle-class="toggle-positive" ng-model="marking.water" class="checkbox-positive">Água</ion-toggle>
+          <ion-toggle toggle-class="toggle-positive" ng-model="marking.earth" class="checkbox-positive">Terra</ion-toggle>
+          <ion-toggle toggle-class="toggle-positive" ng-model="marking.air" class="checkbox-positive">Ar</ion-toggle>
+        </ion-list>
+
+        <label class="item item-input">
+          <textarea type="text" ng-model="marking.description" placeholder="Descrição" rows="3"></textarea>
+        </label>
+        <label class="item item-input">
+          <input type="hidden" placeholder="Latitude" ng-model="marking.latitude" disabled="true">
+        </label>
+
+        <label class="item item-input">
+          <input type="hidden" placeholder="Longitude" ng-model="marking.longitude" disabled="true">
+        </label>
+        <button type="submit" id="page-button9" class="button button-full button-positive" ng-disabled="Markingform.$invalid">Editar</button>
+    </form>
+    </div>
+  </ion-content>
+</ion-view>
