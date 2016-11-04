@@ -101,16 +101,11 @@
           <p ng-show="userForm.profile_type.$invalid && !userForm.profile_type.$pristine" class="help-block">
             Selecione seu tipo de perfil!
           </p>
-          <select ng-model="user.profile_type" name="profile_type" required>
-            <option name="professor" value="professor">Professor(a)</option>
-            <option name="cidadao" value="cidadao">Cidadã(o)</option>
-            <option name="estudante" value="estudante">Estudante</option>
-            <option name="trabalhador" value="trabalhador">Trabalhador(a)</option>
-            <option name="Empresário" value="empresario">Empresário(a)</option>
-            <option name="Agricultor" value="agricultor">Agricultor(a)</option>
-            <option name="Sindico" value="sindico">Síndico(a)/Líder comunitário</option>
-            <option name="Dirigente de associação" value="dirigente">Dirigente de associação/Cooperativa de catadores de materiais recicláveis</option>
-          </select>
+          <!--<select ng-model="user.profile_type" name="profile_type" required>
+            <div ng-repeat="perfil in perfis">
+              <option value="{{perfil.perfil}}">{{perfil.perfil}}</option>
+            </div>
+          </select>-->
         </label>
 
       </ion-list>
