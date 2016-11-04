@@ -162,6 +162,13 @@ angular.module('starter')
       }
     })
 
+    //State do tutorial
+    .state('tutorial', {
+      url: '/tutorial',
+      templateUrl: 'views/tutorial.html',
+      controller: 'tutorialCtrl'
+    })
+
   //State inicial do sistema definido em login.
   $urlRouterProvider.otherwise('/signin')
 })
