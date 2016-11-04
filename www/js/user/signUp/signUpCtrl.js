@@ -27,9 +27,9 @@ angular.module('app.controllers')
       factoryRegister.save(user, function(result){
         console.log(result);
         $scope.invalidEmail = false;
-        $state.go("tabs.map")
         user.password_digest = "";
         user.password_confirmation = "";
+        $state.go('tutorial')
       }, function(error){
         $scope.invalidEmail = true;
         user.password_digest = "";
