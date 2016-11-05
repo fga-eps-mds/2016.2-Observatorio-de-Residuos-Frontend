@@ -9,8 +9,10 @@ angular.module('app.controllers')
         .success(function(content){
           angular.forEach(content, function(value, key) {
             $rootScope.pevs.push({
-                                  name: value.titulo_pev, 
+                                  name: value.titulo_pev,
                                   description: value.descricao_pev,
+                                  author_name: value.author_name,
+                                  author_email: value.author_email,
                                   latitude: value.latitude,
                                   longitude: value.longitude,
                                   paper: value.paper,
@@ -31,7 +33,9 @@ angular.module('app.controllers')
                                       name: value.titulo_incidente,
                                       description: value.descricao_incidente,
                                       latitude: value.latitude,
-                                      longitude: value.longitude
+                                      longitude: value.longitude,
+                                      author_name: value.author_name,
+                                      author_email: value.author_email
                                     });
           })
         })

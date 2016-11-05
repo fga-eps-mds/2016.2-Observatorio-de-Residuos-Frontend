@@ -8,6 +8,15 @@
          <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
        </div>
        <div class="card">
+				 <div class="item item-divider">
+        		Contribuinte
+        	</div>
+        	<div class="item item-text-wrap">
+ 						{{marking.author_name}}
+ 					</div>
+					<div class="item item-text-wrap">
+						{{marking.author_email}}
+					</div>
        	<div class="item item-divider">
        		Descrição
        	</div>
@@ -21,6 +30,6 @@
 					{{type}}
 				</div>
 				</div>
-				<button id="page-button9" class="button button-positive button-block" ui-sref="tabs.toDeOlho.editMarking">Editar</button>
+				<button id="page-button9" ng-show="currentUserEmail==marking.author_email" class="button button-positive button-block" ui-sref="tabs.toDeOlho.editMarking">Editar</button>
 		</ion-content>
 </ion-modal-view>
