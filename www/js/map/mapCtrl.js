@@ -8,17 +8,31 @@ angular.module('app.controllers')
         $http.get(URL + '/pevs')
         .success(function(content){
           angular.forEach(content, function(value, key) {
-            $rootScope.pevs.push(value);
+            $rootScope.pevs.push({
+                                  name: value.titulo_pev, 
+                                  description: value.descricao_pev,
+                                  latitude: value.latitude,
+                                  longitude: value.longitude,
+                                  paper: value.paper,
+                                  metal: value.metal,
+                                  plastic: value.plastic,
+                                  glass: value.glass
+                                });
           })
         })
         .error(function(data){
-          console.log(data)
         });
 
         $http.get(URL + '/markings')
         .success(function(content){
           angular.forEach(content, function(value, key) {
-            $rootScope.markings.push(value);
+            console.log(value);
+            $rootScope.markings.push({
+                                      name: value.titulo_incidente,
+                                      description: value.descricao_incidente,
+                                      latitude: value.latitude,
+                                      longitude: value.longitude
+                                    });
           })
         })
         .error(function(data){
