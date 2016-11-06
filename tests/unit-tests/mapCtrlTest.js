@@ -46,15 +46,17 @@ describe('mapCtrl', function() {
     expect(NgMap.getMap).toHaveBeenCalled();
   });
   it('Should get the map', function() {
-    var contentMarking = [{"id_incidente":1,"titulo_incidente":"INCIDENTE","descricao_incidente":"Com acentuação.","id_tipo_incidente":12,"imagem_incidente":"imagem","latitude":-16.079271,"longitude":-47.988983,"cep":null,"estado":"GO","cidade":"Luziania","bairro":null,"logradouro":null,"numero":null,"complemento":null,"id_usuario":1,"total_visualizacoes":0,"total_confirmacoes_existencia":0,"total_confirmacoes_resolvido":0,"total_denuncias":0,"status":null,"adicionado_em":"2016-11-05T20:39:22.000Z","publicado":false}];
-    var contentPEV = [{"id_pev":5,"titulo_pev":"PEV","descricao_pev":"PEV","id_tipo_pev":1,"imagem_pev":null,"latitude":-16.079239,"longitude":-47.989033,"cep":null,"estado":"CU","cidade":"to do pegarCidade","bairro":null,"logradouro":null,"numero":null,"complemento":null,"id_usuario":41,"total_visualizacoes":0,"total_confirmacoes_funcionando":0,"total_confirmacoes_fechou":0,"total_denuncias":0,"status":null,"adicionado_em":"2016-11-05T10:31:15.000Z","publicado":false,"paper":true,"metal":false,"plastic":true,"glass":true}];
+    var contentMarkingDB = [{"id_incidente":1,"titulo_incidente":"INCIDENTE","descricao_incidente":"Com acentuação.","id_tipo_incidente":12,"imagem_incidente":"imagem","latitude":-16.079271,"longitude":-47.988983,"cep":null,"estado":"GO","cidade":"Luziania","bairro":null,"logradouro":null,"numero":null,"complemento":null,"id_usuario":1,"total_visualizacoes":0,"total_confirmacoes_existencia":0,"total_confirmacoes_resolvido":0,"total_denuncias":0,"status":null,"adicionado_em":"2016-11-05T20:39:22.000Z","publicado":false}];
+    var contentMarkingFormatted = { name: 'INCIDENTE', description: 'Com acentuação.', latitude: -16.079271, longitude: -47.988983 };
+    var contentPEVDB = [{"id_pev":5,"titulo_pev":"PEV","descricao_pev":"PEV","id_tipo_pev":1,"imagem_pev":null,"latitude":-16.079239,"longitude":-47.989033,"cep":null,"estado":"CU","cidade":"to do pegarCidade","bairro":null,"logradouro":null,"numero":null,"complemento":null,"id_usuario":41,"total_visualizacoes":0,"total_confirmacoes_funcionando":0,"total_confirmacoes_fechou":0,"total_denuncias":0,"status":null,"adicionado_em":"2016-11-05T10:31:15.000Z","publicado":false,"paper":true,"metal":false,"plastic":true,"glass":true}];
+    var contentPEVFormatted = { name: 'PEV', description: 'PEV', latitude: -16.079239, longitude: -47.989033, paper: true, metal: false, plastic: true, glass: true };
       spyOn(NgMap, 'getMap').and.callThrough();
-      $httpBackend.expectGET(URL+"/pevs").respond(200, contentPEV);
-      $httpBackend.expectGET(URL+"/markings").respond(200, contentMarking);
+      $httpBackend.expectGET(URL+"/pevs").respond(200, contentPEVDB);
+      $httpBackend.expectGET(URL+"/markings").respond(200, contentMarkingDB);
       NgMap.getMap();
       $httpBackend.flush();
-      expect($rootScope.pevs[0]).toEqual(contentPEV[0]);
-      expect($rootScope.markings[0]).toEqual(contentMarking[0]);
+      expect($rootScope.pevs[0]).toEqual(contentPEVFormatted);
+      expect($rootScope.markings[0]).toEqual(contentMarkingFormatted);
       expect(NgMap.getMap).toHaveBeenCalled();
     });
 });
