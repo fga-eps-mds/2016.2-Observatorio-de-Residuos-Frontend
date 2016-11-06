@@ -1,7 +1,7 @@
 angular.module("starter")
 
 .service("currentMarkingService", function(){
-	var marking = "";
+	var marking = {};
 	var getMarking = function(){
 		return marking;
 	}

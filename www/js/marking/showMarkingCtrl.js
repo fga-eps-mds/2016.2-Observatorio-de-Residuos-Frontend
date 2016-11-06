@@ -30,9 +30,8 @@ angular.module('starter')
 		if(angular.isDefined(marking.paper)){
 			$state.go('editPEV');
 		} else {
+			currentMarkingService.setMarking(marking);
 			$state.go('editMarking');
-			currentMarking = marking;
-			currentMarkingService.setMarking(currentMarking);
 		}
 	};
 

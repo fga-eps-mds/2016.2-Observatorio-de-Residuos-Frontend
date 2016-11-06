@@ -21,7 +21,7 @@
             <p ng-show="Markingform.name.$invalid && !Markingform.name.$pristine" class="nav-bar-block">
               O nome do incidente é obrigatório!
             </p>
-            <input type="text"  ng-model-options="{ getterSetter: true }" ng-model="marking.name" placeholder="Nome do Incidente" name="name" required>
+            <input type="text" ng-model="marking.name" placeholder="Nome do Incidente" name="name" required>
           </label>
           <ion-item class="item-divider" id="marking-list">Tipo do Incidente</ion-item>
           <ion-toggle toggle-class="toggle-positive" ng-model="marking.fire" class="checkbox-positive">Fogo</ion-toggle>
