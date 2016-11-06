@@ -71,9 +71,12 @@ a{
 }
 
 .popover-height-perfil{
-    height: 180px;
+    height: 140px;
 }
 
+.popover{
+  height: 120px;
+}
 .popover-height-pev{
     height: 82px;
 }
@@ -109,6 +112,9 @@ a{
     background-color: var(--green-seven);
   }
 
+  .platform-ios .popover .scroll-content {
+      margin: 0px 0;
+  }
   .popover.right .arrow:after {
   border-right-color: red;
 }
