@@ -121,14 +121,11 @@ angular.module('starter')
   })
 
   //State da tela de profile do usuário
-  .state('tabs.profile', {
+  .state('profile', {
     url: '/profile',
-    views: {
-      'profile': {
-        templateUrl: 'views/user/userProfile.html'
-      }
+    templateUrl: 'views/user/userProfile.html'
     }
-  })
+  )
 
   //State da tela de ajuda
     .state('tabs.ajuda', {
