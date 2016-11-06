@@ -1,6 +1,7 @@
 angular.module('starter')
 
-.controller('showMarkingCtrl',function($scope, $ionicModal, currentUserService, $state){
+.controller('showMarkingCtrl',function($scope, $rootScope, currentMarkingService, $ionicModal, currentUserService, $state){
+	var currentMarking = "";
 	$scope.showPev = function(event, pev){
 		$scope.currentUserEmail = currentUserService.getUserData().email;
 		console.log(pev)
@@ -25,12 +26,13 @@ angular.module('starter')
 
 	$scope.editMarking = function(marking){
 		$scope.modal.hide();
-		// trocar o "paper" quando mudar o banco 
+		// trocar o "paper" quando mudar o banco
 		if(angular.isDefined(marking.paper)){
 			$state.go('editPEV');
 		} else {
 			$state.go('editMarking');
-			console.log(marking);
+			currentMarking = marking;
+			currentMarkingService.setMarking(currentMarking);
 		}
 	};
 
