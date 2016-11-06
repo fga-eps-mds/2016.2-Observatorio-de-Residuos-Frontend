@@ -118,3 +118,37 @@ a{
   .popover.right .arrow:after {
   border-right-color: red;
 }
+
+.popover-height{
+    height: 122px;
+}
+
+.popover-height-perfil{
+    height: 178px;
+}
+
+.popover-height-pev{
+    height: 82px;
+}
+
+.slider {
+    height: 100%;
+}
+
+.slider-slide {
+    padding: 20px;
+    padding-top: 20px;
+    color: #000;
+    background-color: #fff;
+    text-align: left;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
+
+.button.ng-hide{
+    display:none;
+}
+
+#slideButtons{
+    padding-top: 50px;
+}
