@@ -77,3 +77,15 @@ a{
 .popover-height-pev{
     height: 82px;
 }
+
+.item-avatar-perso{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.button-centered{
+    position: relative;
+    left: 10%;
+}
