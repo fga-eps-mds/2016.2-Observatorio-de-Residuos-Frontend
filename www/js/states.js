@@ -123,20 +123,10 @@ angular.module('starter')
   //State da tela de profile do usuário
   .state('profile', {
     url: '/profile',
-    templateUrl: 'views/user/userProfile.html'
+    templateUrl: 'views/user/userProfile.html',
+    controller: 'profileCtrl'
     }
   )
-
-  //State da tela de ajuda
-    .state('tabs.ajuda', {
-      url: '/ajuda',
-      views: {
-        'ajuda': {
-          templateUrl: 'views/ajuda.html'
-        }
-      }
-    })
-
 
   //State da tela de map
     .state('tabs.map', {
