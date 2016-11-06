@@ -90,14 +90,10 @@ angular.module('starter')
   })
 
   //State da tela de editar PEVs
-  .state('tabs.toDeOlho.editMarking', {
+  .state('editMarking', {
     url: '/editMarkings',
-    views: {
-      'markings-page': {
-        controller: 'editMarkingCtrl',
-        templateUrl: 'views/marking/editMarkings.html'
-      }
-    }
+      controller: 'editMarkingCtrl',
+      templateUrl: 'views/marking/editMarkings.html'
   })
 
   //State da tela de cadastro de novas PEVs
@@ -112,14 +108,10 @@ angular.module('starter')
   })
 
     //State da tela de editar PEVs
-  .state('tabs.PEV.editPEV', {
+  .state('editPEV', {
     url: '/editPEV',
-    views: {
-      'pev-page': {
-        controller: 'editPevCtrl',
-        templateUrl: 'views/pev/editPEV.html'
-      }
-    }
+      controller: 'editPevCtrl',
+      templateUrl: 'views/pev/editPEV.html'
   })
   //State da tela de PEVs próximas
   .state('tabs.PEV.nearbyPEVs', {
