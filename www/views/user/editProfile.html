@@ -1,0 +1,27 @@
+<ion-view title="Perfil" id="profile">
+    <ion-content padding="true" class="has-header" scroll="true">
+        <div class="list card">
+            <div class="item">
+                <img class="image item-avatar-perso" src="img/usuario.jpeg">
+                <br>
+                <h2 class="text-center">Foto {{}}</h2><!-- getProfileName()  Actually, the image has 40x40px-->
+                <h2 class="text-center">{{user.nome_completo}}</h2><!-- getProfileType()-->
+                <h2 class="text-center">Perfil {{}}</h2>
+                <h2 class="text-center">{{user.email}}</h2><!-- getProfileTimeStamp.toSimpleDate()-->
+            </div>
+
+            <div class="item item-body">
+                <div class="list">
+                    <a class="button button-positive button-centered" ui-sref="profile">
+                        <i class="icon ion-checkmark-round"></i>
+                        Confirmar
+                    </a>
+                    <a class="button button-positive button-centered" ui-sref="profile">
+                        <i class="icon ion-close-round"></i>
+                        Cancelar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
