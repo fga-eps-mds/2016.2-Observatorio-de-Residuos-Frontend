@@ -131,7 +131,7 @@ angular.module('starter')
   .state('editProfile',{
     url: '/editProfile',
     templateUrl: 'views/user/editProfile.html',
-    controller: 'profileCtrl'
+    controller: 'editProfileCtrl'
   })
 
   //State da tela de map
