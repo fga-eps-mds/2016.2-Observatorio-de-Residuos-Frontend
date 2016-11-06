@@ -125,8 +125,14 @@ angular.module('starter')
     url: '/profile',
     templateUrl: 'views/user/userProfile.html',
     controller: 'profileCtrl'
-    }
-  )
+    })
+
+  //State da tela de editar profile do usuário
+  .state('editProfile',{
+    url: '/editProfile',
+    templateUrl: 'views/user/editProfile.html',
+    controller: 'profileCtrl'
+  })
 
   //State da tela de map
     .state('tabs.map', {
