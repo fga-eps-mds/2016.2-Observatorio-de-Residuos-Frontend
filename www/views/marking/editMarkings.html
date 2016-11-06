@@ -1,5 +1,5 @@
 <ion-view title="Editar Incidente" id="edit-marking">
-  <ion-content padding="true" ng-controller="cameraCtrl" class="has-header has-tabs-top" scroll="true">
+  <ion-content padding="true" ng-controller="cameraCtrl" class="has-header" scroll="true">
     <div>
       <form ng-submit="registerMarking(marking); modal.hide()" name="Markingform">
       <div class="image-and-buttons">
@@ -7,7 +7,7 @@
         <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
           <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
         </div>
-
+        <button ui-sref="tabs.map">volta</button> 
         <div class="button-bar">
           <button class="button icon-left ion-camera" ng-click="takePhoto('CAMERA')">Câmera</button><br>
           <button class="button icon-left ion-image" ng-click="takePhoto('PHOTOLIBRARY')">Galeria</button>
