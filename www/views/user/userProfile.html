@@ -4,7 +4,6 @@
       <div class="item">
         <img class="image item-avatar-perso" src="img/usuario.jpeg">
         <br>
-        <h2 class="text-center">Foto {{}}</h2><!-- getProfileName()  Actually, the image has 40x40px-->
         <h2 class="text-center">{{user.nome_completo}}</h2><!-- getProfileType()-->
         <h2 class="text-center">Perfil {{}}</h2>
         <h2 class="text-center">{{user.email}}</h2><!-- getProfileTimeStamp.toSimpleDate()-->
@@ -12,14 +11,14 @@
 
       <div class="item item-body">
         <div class="list">
-          <a class="button button-positive button-block" ui-sref="editProfile">
+          <button class="button button-positive button-block" ui-sref="editProfile">
             <i class="icon ion-edit"></i>
               Alterar Perfil
-          </a>
-          <a class="button button-positive button-block" ui-sref="tabs.map">
+          </button>
+          <button class="button button-positive button-block" ui-sref="tabs.map">
             <i class="ion-edit"></i>
               Voltar para o Mapa
-          </a>
+          </button>
         </div>
       </div>
     </div>
