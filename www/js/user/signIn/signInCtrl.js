@@ -9,7 +9,7 @@ registerSocial: Recebe a rede social desejada pelo parametro carregado no botão
 
 .controller('signinCtrl', function ($scope, $stateParams, $state, socialLoginService, firebaseService, currentUserService, factoryEmail, factoryLogin, $ionicLoading, $timeout) {
   $scope.loginAttempt = function(user){
-      user.password = String(CryptoJS.SHA256(user.password)); //criptografia da senha
+      user.encripted_password = String(CryptoJS.SHA256(user.password)); //criptografia da senha
       console.log(user);
       factoryLogin.save(user, function(result){
         currentUserService.setUserData(result);

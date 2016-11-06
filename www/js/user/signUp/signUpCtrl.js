@@ -22,18 +22,14 @@ angular.module('app.controllers')
   $scope.user = currentUserService.getUserData();
   console.log($scope.user);
   $scope.registerEmail= function(user){
-      user.password_digest = String(CryptoJS.SHA256(user.password_digest));//criptografia
+      user.password_digest = String(CryptoJS.SHA256(user.password));//criptografia
       console.log(user);
       factoryRegister.save(user, function(result){
         console.log(result);
         $scope.invalidEmail = false;
-        user.password_digest = "";
-        user.password_confirmation = "";
         $state.go('tutorial')
       }, function(error){
         $scope.invalidEmail = true;
-        user.password_digest = "";
-        user.password_confirmation = "";
       })
   }
 })
