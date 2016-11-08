@@ -3,10 +3,12 @@ angular.module("starter")
 .service("currentMarkingService", function(){
 	var marking = {};
 	var getMarking = function(){
-		return marking;
+		console.log(this.marking);
+		return this.marking;
 	}
 	var setMarking = function(paramMarking){
-		marking = paramMarking;
+		console.log(paramMarking);
+		this.marking = paramMarking;
 	}
 	return{
 		getMarking: getMarking,
