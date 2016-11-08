@@ -39,7 +39,10 @@
     <script src="js/user/signIn/signInCtrl.js"></script>
     <script src="js/user/signIn/socialServices.js"></script>
     <script src="js/user/userService.js"></script>
+    <script src="js/user/profile/profileCtrl.js"></script>
+    <script src="js/user/profile/editProfileCtrl.js"></script>
     <script src="js/user/signUp/signUpCtrl.js"></script>
+    <script src="js/user/profile/popoverProfileCtrl.js"></script>
     <script src="js/pev/newPevCtrl.js"></script>
     <script src="js/pev/editPevCtrl.js"></script>
     <script src="js/pev/findPevService.js"></script>
@@ -66,35 +69,11 @@
     <ion-nav-bar class="bar-positive">
         <ion-nav-title>Observatório de Resíduos</ion-nav-title>
             <ion-nav-buttons side="right">
-                <button class="button button-clear icon ion-person tabs-color-active-positive" style="top:-28%" ng-click="popover.show($event)" ng-controller="popoverPerfilCtrl">Perfil</button>
+                <button class="button button-clear icon ion-person tabs-color-active-positive" ng-click="popover.show($event)" ng-controller="popoverProfileCtrl">Perfil</button>
             </ion-nav-buttons>
     </ion-nav-bar>
     <ion-nav-view>
     </ion-nav-view>
     </div>
   </body>
-
-  <script id="templates/popoverPerfil.html" type="text/ng-template">
-    <ion-popover-view class="popover-height-perfil">
-      <ion-content scroll="false" class="popover-height-perfil">
-        <ion-list>
-          <ion-button class="button button-full button-balanced" ui-sref="tabs.profile" ng-click="popover.hide()">
-            <i class="icon ion-loading-c"></i>
-            Ver Perfil
-          </ion-button>
-          <ion-button class="button button-full button-balanced" icon="ion-gear-a" ui-sref="tabs.home" ng-click="popover.hide()">
-            Editar Perfil
-          </ion-button>
-          <ion-button class="button button-full button-balanced" ui-sref="tutorial" ng-click="popover.hide()">
-            Ver Tutorial Novamente
-          </ion-button>
-          <hr>
-          <ion-button class="button button-full button-balanced" ui-sref="signin" ng-click="popover.hide()">
-            Sair
-          </ion-button>
-        </ion-list>
-      </ion-content>
-    </ion-popover-view>
-  </script>
-
 </html>

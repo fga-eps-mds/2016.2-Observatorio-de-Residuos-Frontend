@@ -48,7 +48,15 @@
     color: var(--white-one);
 }
 
+.popover-button {
+    margin: 0px !important;
+    text-align: left !important;
+}
 
+.button.ng-hide{
+    display:none;
+}
 
-
-
+#slideButtons{
+    padding-top: 50px;
+}

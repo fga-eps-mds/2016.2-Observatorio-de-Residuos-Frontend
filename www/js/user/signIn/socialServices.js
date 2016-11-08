@@ -110,6 +110,7 @@ var extract = function(paramUserData){
 .service('socialLoginService', function(factoryEmail, $state ,currentUserService){
   var login = function(user){
     factoryEmail.save({"email": user.email}, function(result) {
+      user.nome_completo = user.first_name +" "+ user.last_name;
       currentUserService.setUserData(user)
       if(result.userExist){
         $state.go('tabs.map')
