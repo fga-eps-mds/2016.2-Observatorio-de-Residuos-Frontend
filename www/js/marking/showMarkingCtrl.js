@@ -1,7 +1,10 @@
 angular.module('starter')
 
-.controller('showMarkingCtrl',function($scope, $ionicModal){
+.controller('showMarkingCtrl',function($scope, $rootScope, currentMarkingService, $ionicModal, currentUserService, $state){
+	var currentMarking = "";
 	$scope.showPev = function(event, pev){
+		$scope.currentUserEmail = currentUserService.getUserData().email;
+		console.log(pev)
 		$scope.marking = pev;
 		$scope.types = [];
 		if (pev.paper == true)
@@ -15,9 +18,22 @@ angular.module('starter')
 		$scope.modal.show();
 	};
 	$scope.showIncident = function(event, incident){
+		$scope.currentUserEmail = currentUserService.getUserData().email;
 		$scope.marking = incident;
 		$scope.types = [];
 		$scope.modal.show();
+	};
+
+	$scope.editMarking = function(marking){
+		$scope.modal.hide();
+		console.log(marking);
+		// trocar o "paper" quando mudar o banco
+		if(angular.isDefined(marking.paper)){
+			$state.go('editPEV');
+		} else {
+			currentMarkingService.setMarking(marking);
+			$state.go('editMarking');
+		}
 	};
 
 	$ionicModal.fromTemplateUrl('views/marking/showMarking.html', {

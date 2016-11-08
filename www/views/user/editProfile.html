@@ -1,0 +1,35 @@
+<ion-view title="Perfil" id="profile">
+    <ion-content padding="true" class="has-header" scroll="true">
+        <form id="editProfile" class="list" name="userForm" ng-submit="editUser(user)" novalidate>
+            <div class="list card" >
+                <div class="item">
+                    <img class="image item-avatar-perso" src="img/usuario.jpeg">
+                    <br>
+                    <label class="item item-input" id="complete_name">
+                        <p class="text-center">Nome: </p>
+                        <input name="complete_name" type="text" ng-model="user.nome_completo" required>
+                    </label>
+                    <label class="item item-input" id="profile">
+                        <p class="text-center">Tipo de perfil: </p>
+                    </label>
+                    <label class="item item-input" id="email">
+                        <p class="text-center">Email: {{user.email}}</p>
+                    </label>
+                </div>
+
+                <div class="item item-body">
+                    <div class="list">
+                        <button type="submit" ng-disabled="userForm.$invalid" class="button button-positive button-centered">
+                            <i class="icon ion-checkmark-round"></i>
+                            Confirmar
+                        </button>
+                        <button class="button button-positive button-centered" ui-sref="profile">
+                            <i class="icon ion-close-round"></i>
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

@@ -27,4 +27,13 @@ angular.module('starter')
 //Factory para criação de incidentes
 .factory('factoryMarking', function($resource, URL){
   return $resource(URL+"/markings/create");
+})
+
+//Factory para edição de perfil
+.factory('factoryProfile', function($resource, URL){
+  return $resource(URL+"/users/edit");
+})
+//Factory para edição de incidentes
+.factory('factoryEditMarking', function($resource, URL){
+  return $resource(URL+"/markings/edit");
 });

@@ -4,7 +4,6 @@
       <div>
         <form ng-submit="confirmEditPEV(pev); modal.hide()"name="PEVform">
           <div>
-
             <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
               <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
             </div>
@@ -25,11 +24,11 @@
             </p>
 
             <label class="item item-input">
-              <input type="text"  ng-model="pev.name" placeholder="Nome da PEV" name="name" required>
+              <input type="text"  ng-model="pev.titulo_pev" placeholder="Nome da PEV" name="name" required>
             </label>
 
             <label class="item item-input">
-              <input type="text" ng-model="pev.description" placeholder="Descrição">
+              <input type="text" ng-model="pev.descricao_pev" placeholder="Descrição">
             </label>
 
             <div class="spacer" style="height: 15px;"></div>

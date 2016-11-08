@@ -1,32 +1,26 @@
 <ion-view title="Perfil" id="profile">
   <ion-content padding="true" class="has-header" scroll="true">
-
     <div class="list card">
-
-      <div class="item item-avatar">
-        <img class="image img-profile" src="img/usuario.jpeg">
-        <h2>Usuário</h2><!-- getProfileName()  Actually, the image has 40x40px-->
-        <h3>Tipo de Perfil: Cidadã(o)</h3><!-- getProfileType()-->
-        <h3>Data de inscrição: Agosto, 08, 2016</h3><!-- getProfileTimeStamp.toSimpleDate()-->
+      <div class="item">
+        <img class="image item-avatar-perso" src="img/usuario.jpeg">
+        <br>
+        <h2 class="text-center">{{user.nome_completo}}</h2><!-- getProfileType()-->
+        <h2 class="text-center">Perfil {{}}</h2>
+        <h2 class="text-center">{{user.email}}</h2><!-- getProfileTimeStamp.toSimpleDate()-->
       </div>
 
       <div class="item item-body">
         <div class="list">
-          <a class="item item-icon-left" href="#">
+          <button class="button button-positive button-block" ui-sref="editProfile">
             <i class="icon ion-edit"></i>
-            Alterar Perfil
-          </a>
-
-          <a class="item item-icon-left" href="#">
-            <i class="icon ion-person"></i>
-            Alterar Foto de Perfil
-          </a>
-
+              Alterar Perfil
+          </button>
+          <button class="button button-positive button-block" ui-sref="tabs.map">
+            <i class="ion-edit"></i>
+              Voltar para o Mapa
+          </button>
         </div>
       </div>
-
     </div>
-
-
   </ion-content>
 </ion-view>

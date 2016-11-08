@@ -7,14 +7,9 @@ angular.module('starter')
   $stateProvider
 
   //State da home
-  .state('tabs.home', {
-  url: '/home',
-  views: {
-    'home': {
-      templateUrl: 'views/home.html',
-      controller: 'mapCtrl'
-    }
-  }
+  .state('home', {
+    url: '/home',
+    templateUrl: 'views/home.html'
   })
 
   //State da tela de login inicial.
@@ -89,6 +84,13 @@ angular.module('starter')
     }
   })
 
+  //State da tela de editar PEVs
+  .state('editMarking', {
+    url: '/editMarkings',
+      controller: 'editMarkingCtrl',
+      templateUrl: 'views/marking/editMarkings.html'
+  })
+
   //State da tela de cadastro de novas PEVs
   .state('tabs.PEV.newPEV', {
     url: '/newPEV',
@@ -101,14 +103,10 @@ angular.module('starter')
   })
 
     //State da tela de editar PEVs
-  .state('tabs.PEV.editPEV', {
+  .state('editPEV', {
     url: '/editPEV',
-    views: {
-      'pev-page': {
-        controller: 'editPevCtrl',
-        templateUrl: 'views/pev/editPEV.html'
-      }
-    }
+      controller: 'editPevCtrl',
+      templateUrl: 'views/pev/editPEV.html'
   })
   //State da tela de PEVs próximas
   .state('tabs.PEV.nearbyPEVs', {
@@ -121,25 +119,18 @@ angular.module('starter')
   })
 
   //State da tela de profile do usuário
-  .state('tabs.profile', {
+  .state('profile', {
     url: '/profile',
-    views: {
-      'profile': {
-        templateUrl: 'views/user/userProfile.html'
-      }
-    }
-  })
-
-  //State da tela de ajuda
-    .state('tabs.ajuda', {
-      url: '/ajuda',
-      views: {
-        'ajuda': {
-          templateUrl: 'views/ajuda.html'
-        }
-      }
+    templateUrl: 'views/user/userProfile.html',
+    controller: 'profileCtrl'
     })
 
+  //State da tela de editar profile do usuário
+  .state('editProfile',{
+    url: '/editProfile',
+    templateUrl: 'views/user/editProfile.html',
+    controller: 'editProfileCtrl'
+  })
 
   //State da tela de map
     .state('tabs.map', {

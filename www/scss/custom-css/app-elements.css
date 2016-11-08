@@ -67,36 +67,88 @@ a{
 }
 
 .popover-height{
+    height: 120px;
+}
+
+.popover-height-perfil{
+    height: 140px;
+}
+
+.popover{
+  height: 120px;
+}
+.popover-height-pev{
+    height: 82px;
+}
+
+.item-avatar-perso{
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.button-centered{
+    position: relative;
+    left: 10%;
+}
+
+.ion-popover-view.fit {
+    height: auto;
+  }
+
+  .ion-popover-view.fit .ion-content {
+    position: relative;
+  }
+
+  .platform-android .ion-popover-view.fit {
+    margin-top: 10px;
+    background-color: var(--green-seven);
+  }
+
+  .platform-ios .ion-popover-view.fit {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: var(--green-seven);
+  }
+
+  .platform-ios .popover .scroll-content {
+      margin: 0px 0;
+  }
+  .popover.right .arrow:after {
+  border-right-color: red;
+}
+
+.popover-height{
     height: 122px;
 }
 
 .popover-height-perfil{
-    height: 250px;
+    height: 178px;
 }
 
 .popover-height-pev{
     height: 82px;
 }
 
-ion-popover-view.fit {
-    height: auto;
-  }
+.slider {
+    height: 100%;
+}
 
-  ion-popover-view.fit ion-content {
-    position: relative;
-  }
+.slider-slide {
+    padding: 20px;
+    padding-top: 20px;
+    color: #000;
+    background-color: #fff;
+    text-align: left;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    font-weight: 300;
+}
 
-  .platform-android ion-popover-view.fit {
-    margin-top: 10px;
-    background-color: var(--green-seven);
-  }
+.button.ng-hide{
+    display:none;
+}
 
-  .platform-ios ion-popover-view.fit {
-    padding-top: 10px;
-    padding-bottom: 10px;
-    background-color: var(--green-seven);
-  }
-
-  .popover.right .arrow:after {
-  border-right-color: red;
+#slideButtons{
+    padding-top: 50px;
 }

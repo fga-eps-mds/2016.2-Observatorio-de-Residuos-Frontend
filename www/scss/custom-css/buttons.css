@@ -53,7 +53,10 @@
     text-align: left !important;
 }
 
+.button.ng-hide{
+    display:none;
+}
 
-
-
-
+#slideButtons{
+    padding-top: 50px;
+}

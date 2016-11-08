@@ -9,10 +9,11 @@ angular.module('app.controllers')
 
   $scope.registerMarking = function (marking) {
     NgMap.getGeoLocation().then(function(map) {
+      console.log(currentUserService.getUserData());
       marking.latitude = map.lat();
       marking.longitude = map.lng();
       marking.author_email = currentUserService.getUserData().email;
-      console.log(marking);
+      marking.full_name = currentUserService.getUserData().nome_completo;
       factoryMarking.save(marking, function (result){
         $rootScope.markings.push({
           author_email: marking.author_email,
@@ -23,7 +24,8 @@ angular.module('app.controllers')
           air: marking.air,
           description: marking.description,
           latitude: marking.latitude,
-          longitude: marking.longitude
+          longitude: marking.longitude,
+          author_name: marking.full_name
         });
       var alertPopup = $ionicPopup.alert({
         title: 'Incidente cadastrado com sucesso',
