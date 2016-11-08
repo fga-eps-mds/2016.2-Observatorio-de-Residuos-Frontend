@@ -7,14 +7,9 @@ angular.module('starter')
   $stateProvider
 
   //State da home
-  .state('tabs.home', {
-  url: '/home',
-  views: {
-    'home': {
-      templateUrl: 'views/home.html',
-      controller: 'mapCtrl'
-    }
-  }
+  .state('home', {
+    url: '/home',
+    templateUrl: 'views/home.html'
   })
 
   //State da tela de login inicial.

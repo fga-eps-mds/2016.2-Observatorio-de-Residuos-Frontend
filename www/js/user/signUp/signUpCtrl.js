@@ -27,7 +27,7 @@ angular.module('app.controllers')
       factoryRegister.save(user, function(result){
         console.log(result);
         $scope.invalidEmail = false;
-        $state.go('tutorial')
+        $state.go('home')
       }, function(error){
         $scope.invalidEmail = true;
       })

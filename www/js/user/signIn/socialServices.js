@@ -112,7 +112,7 @@ var extract = function(paramUserData){
     factoryEmail.save({"email": user.email}, function(result) {
       currentUserService.setUserData(user)
       if(result.userExist){
-        $state.go('tabs.map')
+        $state.go('home')
       }else{
         $state.go('signup')
       }
