@@ -3,7 +3,7 @@ angular.module('app.controllers')
   registerEmail: Chamado pelo botão da signup.html, irá receber os dados do usuário e salva-los.
                  Usuário recebido aqui já deve ter sido validado pela view.
 */
-.controller('signupCtrl', function ($scope, $http, URL, factoryRegister, currentUserService, $state) {
+.controller('signupCtrl', function ($scope, $http, URL, factoryRegister, currentUserService, $state, $ionicPopup) {
 
   /*Caso utilizem o botão de login social sem se cadastrar os dados do
     cadastro se preenchem sozinhos através da service de usuário atual.*/
@@ -19,6 +19,7 @@ angular.module('app.controllers')
     console.log("Error");
   })
 
+
   $scope.user = currentUserService.getUserData();
   console.log($scope.user);
   $scope.registerEmail= function(user){
@@ -27,6 +28,11 @@ angular.module('app.controllers')
       factoryRegister.save(user, function(result){
         console.log(result);
         $scope.invalidEmail = false;
+            var alertPopup = $ionicPopup.alert({
+              title: 'Bem-vindo ao Observatório de Resíduos',
+              //subTitle: '',
+              template: 'O obs é uma maravilha'
+            });
         $state.go('home')
       }, function(error){
         $scope.invalidEmail = true;
