@@ -26,6 +26,7 @@ angular.module('starter')
 
 	$scope.editMarking = function(marking){
 		$scope.modal.hide();
+		console.log(marking);
 		// trocar o "paper" quando mudar o banco
 		if(angular.isDefined(marking.paper)){
 			$state.go('editPEV');

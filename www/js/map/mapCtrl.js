@@ -28,7 +28,6 @@ angular.module('app.controllers')
         $http.get(URL + '/markings')
         .success(function(content){
           angular.forEach(content, function(value, key) {
-            console.log(value);
             $rootScope.markings.push({
                                       name: value.titulo_incidente,
                                       description: value.descricao_incidente,
