@@ -89,6 +89,13 @@ angular.module('starter')
     }
   })
 
+  //State da tela de editar PEVs
+  .state('editMarking', {
+    url: '/editMarkings',
+      controller: 'editMarkingCtrl',
+      templateUrl: 'views/marking/editMarkings.html'
+  })
+
   //State da tela de cadastro de novas PEVs
   .state('tabs.PEV.newPEV', {
     url: '/newPEV',
@@ -101,14 +108,10 @@ angular.module('starter')
   })
 
     //State da tela de editar PEVs
-  .state('tabs.PEV.editPEV', {
+  .state('editPEV', {
     url: '/editPEV',
-    views: {
-      'pev-page': {
-        controller: 'editPevCtrl',
-        templateUrl: 'views/pev/editPEV.html'
-      }
-    }
+      controller: 'editPevCtrl',
+      templateUrl: 'views/pev/editPEV.html'
   })
   //State da tela de PEVs próximas
   .state('tabs.PEV.nearbyPEVs', {

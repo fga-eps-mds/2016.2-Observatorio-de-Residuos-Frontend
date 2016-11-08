@@ -12,6 +12,7 @@ registerSocial: Recebe a rede social desejada pelo parametro carregado no botão
       user.encripted_password = String(CryptoJS.SHA256(user.password)); //criptografia da senha
       console.log(user);
       factoryLogin.save(user, function(result){
+        currentUserService.setUserData(result);
         //Variavel responsavel por exibir a mensagem de email inválido ou senha na tela;
         $state.go('tabs.map')
         $scope.loginError = false;

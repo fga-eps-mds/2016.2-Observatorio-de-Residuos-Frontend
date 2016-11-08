@@ -41,7 +41,7 @@ describe("editPevCtrl", function(){
        $httpBackend.flush();
    });
 
-   it("Should show diolog popup and confirm before pev edition", function(){
+   it("Should show dialog popup and confirm before pev edition", function(){
 
 		$rootScope.pevs = [];
 
@@ -96,5 +96,5 @@ describe("editPevCtrl", function(){
 		$httpBackend.expectGET(URL+"/pevs/getonepev").respond(200);
 		$httpBackend.flush();
    });
-   
+
 });
