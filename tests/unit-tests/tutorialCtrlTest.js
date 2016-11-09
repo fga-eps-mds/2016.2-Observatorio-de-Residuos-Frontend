@@ -21,7 +21,7 @@ describe('tutorialCtrl', function() {
     it('Go to initial screen', function() {
       spyOn($state, 'go');
       $scope.startApp();
-      expect($state.go).toHaveBeenCalledWith("tabs.map");
+      expect($state.go).toHaveBeenCalledWith("tabs.home");
     });
   });
 
