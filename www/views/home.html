@@ -1,16 +1,15 @@
 <ion-view title="Tela Principal" id="home">
-    <ion-content padding="true" lass="has-header padding has-tabs-top" scroll="false">
-        <div class="full-image">
-            <img src="../img/leaves.jpg" height="200px">
-        </div>
-
-        <h3>Hello, World</h3>
-
-        <div class="list">
-            <i class="search">Procurando</i>
-        </div>
-
-        <button class="button-balanced">Hello</button>
-
+    <ion-content padding="true" class="has-header padding" scroll="false">
+        <ul>
+            <li>Logo</li>
+            <li>Barra de Pesquisa</a></li>
+            <li><a ui-sref="tabs.map">Mostrar o Mapa</a></li>
+            <li><a ui-sref="tabs.markings.myMarkings">Ver minhas marcações e mais próximas</a></li>
+            <li><a ui-sref="tabs.newMarkings.newMarking">Criar nova marcação</a></li>
+            <li><a ui-sref="tabs.to-contribuindo.welcome">Ver projetos do Tô Contribuindo</a></li>
+            <li><a ui-sref="profile">Ver meu perfil</a></li>
+            <li><a ui-sref="signin">Sair</a></li>
+        </ul>
     </ion-content>
+    <ui-view name="home-page"></ui-view>
 </ion-view>
