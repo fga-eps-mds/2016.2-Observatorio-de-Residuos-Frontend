@@ -31,9 +31,9 @@ angular.module('app.controllers')
             var alertPopup = $ionicPopup.alert({
               title: 'Bem-vindo ao Observatório de Resíduos',
               //subTitle: '',
-              template: 'O obs é uma maravilha'
+              template: 'O Observatório de Resíduos é um aplicativo que permite que você compartilhe incidentes, locais para depositar seus resíduos e ainda permite que você encontre ou divulgue seu projeto social! Sinta-se em casa!'
             });
-        $state.go('home')
+        $state.go('tabs.home')
       }, function(error){
         $scope.invalidEmail = true;
       })
