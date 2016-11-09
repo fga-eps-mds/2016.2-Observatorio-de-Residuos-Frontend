@@ -27,7 +27,7 @@ angular.module("app.controllers")
   						title: 'PEV editada com sucesso',
   						template: 'Obrigado por contribuir!'
 						});
-            $state.go("tabs.map")
+            $state.go("map")
 					}, function(erro){
 						console.log(erro);
 					})
