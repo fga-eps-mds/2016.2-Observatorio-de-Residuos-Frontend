@@ -3,15 +3,15 @@
 		<h1 class="title">{{marking.name}}</h1>
 		<button class="button button-clear button-primary" ng-click="modal.hide()" style="top:-3px">Voltar</button>
 	</ion-header-bar>
-	<ion-content class="padding" scroll="true">
 
+	<ion-content class="padding" scroll="true">
 		<div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
 	       	<i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
 	    </div>
 
 	    <div class="button-bar">
-            <button class="button icon-center ion-eye-disabled button-clear button-assertive" style="font-size: 32px"></button>
-            <button class="button icon-center ion-eye button-clear button-balanced" style="font-size: 32px"></button>
+            <button class="button icon-center ion-eye-disabled button-clear button-assertive" style="font-size: 32px" ng-click="minusOne($index)"> - {{marking.likes}}</button>
+            <button class="button icon-center ion-eye button-clear button-balanced" style="font-size: 32px" ng-click="plusOne($index)">+ {{marking.dislikes}}</button>
         </div>
 
         <div class="card">
@@ -41,7 +41,7 @@
 		<button id="page-button9" ng-show="currentUserEmail==marking.author_email" class="button button-positive button-block" ng-click="editMarking(marking)">
 			Editar
 		</button>
-
 	</ion-content>
+
 </ion-modal-view>
 

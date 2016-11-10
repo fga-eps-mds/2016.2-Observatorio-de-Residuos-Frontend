@@ -22,7 +22,11 @@ angular.module('app.controllers')
                               glass: pev.glass,
                               description: pev.description,
                               latitude: pev.latitude,
-                              longitude: pev.longitude
+                              longitude: pev.longitude,
+//========================================================================
+                              likes: 0,
+                              dislikes: 0
+//========================================================================
                             });
                             var alertPopup = $ionicPopup.alert({
                               title: 'PEV cadastrada com sucesso',

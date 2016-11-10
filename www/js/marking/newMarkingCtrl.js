@@ -25,7 +25,11 @@ angular.module('app.controllers')
           description: marking.description,
           latitude: marking.latitude,
           longitude: marking.longitude,
-          author_name: marking.full_name
+          author_name: marking.full_name,
+//=============================================
+          likes: 0,
+          dislikes: 0
+//=============================================
         });
       var alertPopup = $ionicPopup.alert({
         title: 'Incidente cadastrado com sucesso',
