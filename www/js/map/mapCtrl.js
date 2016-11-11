@@ -1,5 +1,6 @@
 angular.module('app.controllers')
 
+
 .controller('mapCtrl', function(NgMap, $scope, $ionicModal, $http, $rootScope, URL) {
     NgMap.getMap().then(function(map) {
         $rootScope.pevs = [];
@@ -18,9 +19,12 @@ angular.module('app.controllers')
                                   paper: value.paper,
                                   metal: value.metal,
                                   plastic: value.plastic,
-                                  glass: value.glass
+                                  glass: value.glass,
+                                  likes: value.total_confirmacoes_funcionando,
+                                  dislikes: value.total_confirmacoes_fechou
                                 });
           })
+          console.log($rootScope.pevs);
         })
         .error(function(data){
         });
@@ -34,9 +38,12 @@ angular.module('app.controllers')
                                       latitude: value.latitude,
                                       longitude: value.longitude,
                                       author_name: value.author_name,
-                                      author_email: value.author_email
+                                      author_email: value.author_email,
+                                      likes: value.total_confirmacoes_existencia,
+                                      dislikes: value.total_confirmacoes_resolvido
                                     });
           })
+          console.log($rootScope.markings);
         })
         .error(function(data){
           console.log(data)
