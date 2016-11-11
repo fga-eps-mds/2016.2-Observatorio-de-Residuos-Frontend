@@ -11,6 +11,9 @@
                     </label>
                     <label class="item item-input" id="profile">
                         <p class="text-center">Tipo de perfil: </p>
+                        <select ng-model="user.profile" name="profile_type" required>
+                          <option ng-repeat="profile in profiles" value="{{profile.perfil}}">{{profile.perfil}}</option>
+                        </select>
                     </label>
                     <label class="item item-input" id="email">
                         <p class="text-center">Email: {{user.email}}</p>
