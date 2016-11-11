@@ -46,11 +46,14 @@ angular.module('starter')
 	};
 =======================================================*/
 	$scope.plusOne = function(incident) { 
-	    $rootScope.markings[indexOf(incident)].likes += 1; 
+	    var index = $rootScope.markings.indexOf(incident); 
+	    console.log(index)
+	    $rootScope.markings[index].likes += 1;
 	};
 	  
 	$scope.minusOne = function(incident) { 
-	    $rootScope.markings[indexOf(incident)].dislikes += 1; 
+		var index = $rootScope.markings.indexOf(incident); 
+	    $rootScope.markings[index].dislikes += 1;
 	};
 //=======================================================
 
