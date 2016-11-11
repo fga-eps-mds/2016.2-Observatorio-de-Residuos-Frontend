@@ -1,11 +1,23 @@
 angular.module('app.controllers')
 
-.controller("newMarkingCtrl", function ($ionicHistory, currentUserService, NgMap, $state, $scope, $rootScope, factoryMarking, $ionicPopup, URL) {
+.controller("newMarkingCtrl", function ($ionicHistory, URL, $http, currentUserService, NgMap, $state, $scope, $rootScope, factoryMarking, $ionicPopup, URL) {
 
   var options = {enableHighAccuracy: true};
   if(angular.isUndefined($rootScope.markings)) {
     $rootScope.markings = [];
   }
+
+  $rootScope.marking_types = [];
+  $http.get(URL + '/marking_types')
+  .success(function(content){
+    angular.forEach(content, function(value, key) {
+      $rootScope.marking_types.push(value);
+    })
+    console.log($rootScope.marking_types);
+  })
+  .error(function(error){
+    console.log("Error");
+  })
 
   //Função para cadastrar nova marcação.
   $scope.registerMarking = function (marking) {
