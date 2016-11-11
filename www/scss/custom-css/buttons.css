@@ -28,6 +28,60 @@
     --brown-three: #bc9c63;
 }
 
+.item-input-wrapper {
+    margin-top: 16px;
+    margin-bottom: 22px;
+    background: ghostwhite;
+}
+
+.searchclass {
+    background-color: transparent;
+}
+
+.home-logo {
+    background-color: transparent;
+    margin: -20px;
+}
+
+.list .list-inline{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.list .list-inline .item {
+    flex: 1;
+    left: 10%;
+    font-size: inherit;
+}
+
+.home-grid .button-icon {
+    padding-top: 0px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+    padding-right: 0px;
+
+    float: left;
+
+    background-color: transparent;/*#f0f2e6;*/
+    font-size: 15px;
+    /*line-height: 25px;*/
+    height: 115px;
+    width: 115px;
+}
+
+
+.home-grid {
+    position: absolute;
+    top: 55%;
+    left: 7%;
+    margin: -20px;
+}
+
+.larger {
+    font-size: 30px;
+}
+
 .button.button-positive {
     color: var(--white-one);
     background-color: var(--green-seven);

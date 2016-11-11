@@ -27,6 +27,26 @@
     --brown-two: #8a5711;
     --brown-three: #bc9c63;
 }
+#background {
+    z-index: 1;
+    position: relative;
+    display: none;
+}
+
+#logo {
+    z-index: 2;
+    top: 5%;
+    left: 11%;
+    position: absolute;
+}
+
+#titulo {
+    z-index: 3;
+    top: 4%;
+    left: 9%;
+    position: absolute;
+}
+
 
 .bar.bar-positive {
     background-color: var(--green-seven);
@@ -42,8 +62,9 @@
     background-color: transparent;
 }
 
-.scroll-content {
-    background-color: var(--background-color);
+.view-with-bg {
+    background-image: url("../../img/white.svg") !important;
+    background-size: cover !important;
 }
 
 a{
