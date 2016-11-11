@@ -7,6 +7,7 @@ angular.module('app.controllers')
     $rootScope.markings = [];
   }
 
+  //Função para cadastrar nova marcação.
   $scope.registerMarking = function (marking) {
     NgMap.getGeoLocation().then(function(map) {
       console.log(currentUserService.getUserData());
