@@ -5,6 +5,7 @@ angular.module('app.controllers')
         $rootScope.pevs = [];
         $rootScope.markings = [];
 
+        //Inicializa todas as PEVs salvas no banco.
         $http.get(URL + '/pevs')
         .success(function(content){
           angular.forEach(content, function(value, key) {
@@ -25,6 +26,7 @@ angular.module('app.controllers')
         .error(function(data){
         });
 
+        //Inicializa todas os incidentes salvos no banco.
         $http.get(URL + '/markings')
         .success(function(content){
           angular.forEach(content, function(value, key) {
