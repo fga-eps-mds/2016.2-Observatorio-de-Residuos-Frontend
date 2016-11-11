@@ -45,12 +45,12 @@ angular.module('starter')
 	    $rootScope.pevs[index].dislikes -= 1; 
 	};
 =======================================================*/
-	$scope.plusOne = function(index) { 
-	    $rootScope.markings[index].likes += 1; 
+	$scope.plusOne = function(incident) { 
+	    $rootScope.markings[indexOf(incident)].likes += 1; 
 	};
 	  
-	$scope.minusOne = function(index) { 
-	    $rootScope.markings[index].dislikes += 1; 
+	$scope.minusOne = function(incident) { 
+	    $rootScope.markings[indexOf(incident)].dislikes += 1; 
 	};
 //=======================================================
 
