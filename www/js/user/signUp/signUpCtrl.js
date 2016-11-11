@@ -35,6 +35,7 @@ angular.module('app.controllers')
               //subTitle: '',
               template: 'O Observatório de Resíduos é um aplicativo que permite que você compartilhe incidentes, locais para depositar seus resíduos e ainda permite que você encontre ou divulgue seu projeto social! Sinta-se em casa!'
             });
+        currentUserService.setUserData(user);
         $state.go('tabs.home')
       }, function(error){
         $scope.invalidEmail = true;
