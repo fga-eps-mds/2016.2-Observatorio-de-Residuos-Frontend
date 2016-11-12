@@ -3,17 +3,19 @@ angular.module('app.controllers')
   registerEmail: Chamado pelo botão da signup.html, irá receber os dados do usuário e salva-los.
                  Usuário recebido aqui já deve ter sido validado pela view.
 */
-.controller('signupCtrl', function ($scope, $http, URL, factoryRegister, currentUserService, $state, $ionicPopup) {
+.controller('signupCtrl', function ($scope, $rootScope, $http, URL, factoryRegister, currentUserService, $state, $ionicPopup) {
 
   /*Caso utilizem o botão de login social sem se cadastrar os dados do
     cadastro se preenchem sozinhos através da service de usuário atual.*/
-  $scope.profiles = [];
+  $rootScope.profiles = [];
 
   $http.get(URL + '/profiles')
   .success(function(content){
     angular.forEach(content, function(value, key) {
-      $scope.profiles.push(value);
+      $rootScope.profiles.push(value);
+
     })
+    console.log($rootScope.profiles);
   })
   .error(function(error){
     console.log("Error");
@@ -33,6 +35,7 @@ angular.module('app.controllers')
               //subTitle: '',
               template: 'O Observatório de Resíduos é um aplicativo que permite que você compartilhe incidentes, locais para depositar seus resíduos e ainda permite que você encontre ou divulgue seu projeto social! Sinta-se em casa!'
             });
+        currentUserService.setUserData(user);
         $state.go('tabs.home')
       }, function(error){
         $scope.invalidEmail = true;

@@ -1,6 +1,8 @@
+<!-- Edit profile page -->
 <ion-view title="Perfil" id="profile">
     <ion-content padding="true" class="has-header" scroll="true">
         <form id="editProfile" class="list" name="userForm" ng-submit="editUser(user)" novalidate>
+            <!-- Editable user informations, but email can't be edited -->
             <div class="list card" >
                 <div class="item">
                     <img class="image item-avatar-perso" src="img/usuario.jpeg">
@@ -11,12 +13,16 @@
                     </label>
                     <label class="item item-input" id="profile">
                         <p class="text-center">Tipo de perfil: </p>
+                        <select ng-model="user.profile" name="profile_type" required>
+                          <option ng-repeat="profile in profiles" value="{{profile.perfil}}">{{profile.perfil}}</option>
+                        </select>
                     </label>
                     <label class="item item-input" id="email">
                         <p class="text-center">Email: {{user.email}}</p>
                     </label>
                 </div>
 
+                <!-- Buttons to confirm or cancel profile edition -->
                 <div class="item item-body">
                     <div class="list">
                         <button type="submit" ng-disabled="userForm.$invalid" class="button button-positive button-centered">

@@ -18,6 +18,7 @@ describe('EditProfileCtrl', function(){
     var userData = {first_name: "Pablo Diego", last_name: "Silva da Silva", gender: "male", email: "pablodiegoss@hotmail.com", nome_completo: "Pablo Diego Silva da Silva"};
     var newUserData = {first_name: "Teste Ok", last_name: "Somos bons em JS", gender: "male", email: "amoedoMito@hotmail.com", nome_completo: "Lucas 'Mito' Amoedo"};
     currentUserService.setUserData(userData);
+    $httpBackend.expectGET(URL+"/profiles").respond(200);
     var controller = $controller('editProfileCtrl', {$scope:$scope, currentUserService: currentUserService});
     expect($scope.user).toEqual(userData);
 

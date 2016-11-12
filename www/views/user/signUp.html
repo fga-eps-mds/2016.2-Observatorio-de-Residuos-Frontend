@@ -101,11 +101,9 @@
           <p ng-show="userForm.profile_type.$invalid && !userForm.profile_type.$pristine" class="help-block">
             Selecione seu tipo de perfil!
           </p>
-          <!--<select ng-model="user.profile_type" name="profile_type" required>
-            <div ng-repeat="perfil in perfis">
-              <option value="{{perfil.perfil}}">{{perfil.perfil}}</option>
-            </div>
-          </select>-->
+            <select ng-model="user.profile" name="profile_type" required>
+              <option ng-repeat="profile in profiles" value="{{profile.perfil}}">{{profile.perfil}}</option>
+            </select>
         </label>
 
       </ion-list>
