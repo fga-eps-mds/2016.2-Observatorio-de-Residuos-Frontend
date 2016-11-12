@@ -1,5 +1,6 @@
 angular.module('app.controllers')
 
+
 .controller("newMarkingCtrl", function ($ionicHistory, currentUserService, NgMap, $state, $scope, $rootScope, factoryMarking, $ionicPopup, URL) {
 
   var options = {enableHighAccuracy: true};
@@ -14,6 +15,8 @@ angular.module('app.controllers')
       marking.longitude = map.lng();
       marking.author_email = currentUserService.getUserData().email;
       marking.full_name = currentUserService.getUserData().nome_completo;
+      marking.likes = 0;
+      marking.dislikes = 0;
       factoryMarking.save(marking, function (result){
         $rootScope.markings.push({
           author_email: marking.author_email,
@@ -26,10 +29,8 @@ angular.module('app.controllers')
           latitude: marking.latitude,
           longitude: marking.longitude,
           author_name: marking.full_name,
-//=============================================
-          likes: 0,
-          dislikes: 0
-//=============================================
+          likes: marking.likes,
+          dislikes: marking.dislikes
         });
       var alertPopup = $ionicPopup.alert({
         title: 'Incidente cadastrado com sucesso',
