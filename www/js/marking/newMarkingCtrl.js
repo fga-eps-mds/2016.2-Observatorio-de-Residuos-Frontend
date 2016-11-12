@@ -28,15 +28,13 @@ angular.module('app.controllers')
       marking.author_email = currentUserService.getUserData().email;
       marking.full_name = currentUserService.getUserData().nome_completo;
       factoryMarking.save(marking, function (result){
+        console.log(marking);
         $rootScope.markings.push({
           author_email: marking.author_email,
           name: marking.name,
-          fire: marking.fire,
-          water: marking.water,
-          earth: marking.earth,
-          air: marking.air,
           description: marking.description,
           latitude: marking.latitude,
+          id_marking_type: marking.id_marking_type,
           longitude: marking.longitude,
           author_name: marking.full_name
         });
@@ -56,8 +54,8 @@ angular.module('app.controllers')
           template: 'Preencha as informações corretamente!'
         })
       });
-  }/*,function(error) {
+  },function(error) {
     alert('Unable to get location: ' + error.message);
-  }*/, options);
+  }, options);
 }
 });
