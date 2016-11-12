@@ -5,8 +5,7 @@ angular.module('app.controllers')
         $rootScope.pevs = [];
         $rootScope.markings = [];
 
-        //Inicializa todas as PEVs salvas no banco.
-        $http.get(URL + '/pevs')
+        //Initialize all PEVs saved in database
         .success(function(content){
           angular.forEach(content, function(value, key) {
             $rootScope.pevs.push({
@@ -26,7 +25,7 @@ angular.module('app.controllers')
         .error(function(data){
         });
 
-        //Inicializa todas os incidentes salvos no banco.
+        //Initialize all Markings savedin database
         $http.get(URL + '/markings')
         .success(function(content){
           angular.forEach(content, function(value, key) {

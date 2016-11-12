@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 
 .controller("newMarkingCtrl", function ($ionicHistory, URL, $http, currentUserService, NgMap, $state, $scope, $rootScope, factoryMarking, $ionicPopup, URL) {
-
+  //Function that create scope variable
   var options = {enableHighAccuracy: true};
   if(angular.isUndefined($rootScope.markings)) {
     $rootScope.markings = [];
@@ -19,7 +19,7 @@ angular.module('app.controllers')
     console.log("Error");
   })
 
-  //Função para cadastrar nova marcação.
+  //Function to register new marking
   $scope.registerMarking = function (marking) {
     NgMap.getGeoLocation().then(function(map) {
       console.log(currentUserService.getUserData());

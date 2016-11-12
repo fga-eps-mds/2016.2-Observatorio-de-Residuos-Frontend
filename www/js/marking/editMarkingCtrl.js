@@ -1,7 +1,7 @@
 angular.module("app.controllers")
 
 .controller("editMarkingCtrl", function($scope, $rootScope, $http, URL, $state, currentMarkingService, factoryEditMarking){
-  //Função que atualiza as variáveis de escopo
+  //Function that update scope variables
   $scope.$on("$ionicView.enter", function(event, data){
     $scope.marking = currentMarkingService.getMarking();
     console.log($scope.marking);
@@ -19,7 +19,7 @@ angular.module("app.controllers")
     console.log("Error");
   })
 
-  //Função que manda as mudanças para o Backend
+  //Function that send changes to backend
   $scope.confirmEditMarking = function(marking){
     console.log(marking);
     factoryEditMarking.save(marking, function(result){

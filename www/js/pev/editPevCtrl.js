@@ -1,7 +1,8 @@
 angular.module("app.controllers")
 
 .controller("editPevCtrl", function($scope, $http, factoryEditPEV, $state, $rootScope, $ionicPopup,findPevService, URL){
-    var index;
+	//Function that update scope variables
+	var index;
     $http.get(URL+"/pevs/getonepev")
     .success(function(pev){
       $scope.pev = pev;
@@ -12,6 +13,7 @@ angular.module("app.controllers")
       console.log("error");
     });
 
+	//Function that send changes to backend
 	$scope.confirmEditPEV = function(pev) {
 			$ionicPopup.confirm({
 			title: 'Edição da PEV',

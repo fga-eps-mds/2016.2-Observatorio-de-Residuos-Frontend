@@ -1,8 +1,8 @@
 angular.module('starter')
-// Controller da modal que mostra as informações da marcação clicada
+//Modal Controller thar show informations of clicked marking
 .controller('showMarkingCtrl',function($scope,$http,URL, $rootScope, currentMarkingService, $ionicModal, currentUserService, $state){
 	var currentMarking = "";
-	//Função que coloca como escopo as informações da PEV clicada.
+	//Function that places scope like informations of clicked PEV
 	$scope.showPev = function(event, pev){
 		$scope.currentUserEmail = currentUserService.getUserData().email;
 		console.log(pev)
@@ -18,7 +18,7 @@ angular.module('starter')
 			$scope.types.push("Plástico");
 		$scope.modal.show();
 	};
-	//Função que coloca como escopo as informações do incidente clicado.
+	//Function that places scope like informations of clicked marking
 	$scope.showIncident = function(event, incident){
 		$scope.types = [];
 		console.log(incident);
@@ -35,8 +35,7 @@ angular.module('starter')
 		$scope.modal.show();
 	};
 
-	//Função de transição de páginas. Pode redirecionar para edição de PEV ou
-	//edição de incidentes.
+	//Transition function of pages. Can redirect to edition of PEV or edition of markings
 	$scope.editMarking = function(marking){
 		$scope.modal.hide();
 		console.log(marking);

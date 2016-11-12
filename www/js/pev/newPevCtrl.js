@@ -6,6 +6,7 @@ angular.module('app.controllers')
       $rootScope.pevs = [];
     }
 
+    //Function that create scope variable and register new PEV
     $scope.createPEV = function (pev) {
             console.log(NgMap);
             NgMap.getGeoLocation().then(function(map) {

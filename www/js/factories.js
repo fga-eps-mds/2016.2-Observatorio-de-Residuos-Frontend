@@ -1,39 +1,39 @@
 angular.module('starter')
-/*Factories da aplicação responsáveis por acessar determinadas urls do rails*/
-//Factory para registro de usuário.
+/* Application Factories responsible to acess determined rails urls */
+//Factory to register user
 .factory('factoryRegister', function($resource,URL) {
   return $resource(URL+"/users/create");
 })
-//Factory para o login do usuário
+//Factory for user login
 .factory('factoryLogin', function($resource, URL){
   return $resource(URL+"/sessions/login");
 })
 
-//Factory para criação de PEV
+//Factory for PEV creation
 .factory('factoryPEV', function($resource, URL){
   return $resource(URL+"/pevs/create");
 })
 
-//Factory para edição de PEV
+//Factory for PEV edition
 .factory('factoryEditPEV', function($resource, URL){
   return $resource(URL+"/pevs/edit");
 })
 
-//Factory de verificação de email válido.
+//Factory to verify valid email
 .factory('factoryEmail', function($resource, URL){
   return $resource(URL+"/users/verify_email");
 })
 
-//Factory para criação de incidentes
+//Factory for incident creation
 .factory('factoryMarking', function($resource, URL){
   return $resource(URL+"/markings/create");
 })
 
-//Factory para edição de perfil
+//Factory for profile edition
 .factory('factoryProfile', function($resource, URL){
   return $resource(URL+"/users/edit");
 })
-//Factory para edição de incidentes
+//Factory for incident edition
 .factory('factoryEditMarking', function($resource, URL){
   return $resource(URL+"/markings/edit");
 });

@@ -1,9 +1,9 @@
 angular.module('starter')
-//Services responsáveis por realizar o login e cadastro com redes sociais.
+//Services responsable for realize login and sign up with social medias
 
 
 /* googleExtractor
-     extract: Extrai os dados recebidos da authData no formato google. */
+     extract: Extract received data of authData in google form*/
 .service('googleExtractor', function(){
 var userData = {};
 var extract = function(paramUserData){
@@ -20,7 +20,7 @@ var extract = function(paramUserData){
 })
 
 /* facebookExtractor
-    extract: Extrai os dados recebidos da authData no formato facebook. */
+    extract: Extract received data of authData in facebook form. */
 .service('facebookExtractor', function(){
 var userData = {};
 var extract = function(paramUserData){
@@ -36,8 +36,7 @@ var extract = function(paramUserData){
 })
 
 /* userDataExtractorService
-      extract: responsável por decidir qual a rede social utilizada
-               e chamar as devidas services extratoras.  */
+      extract: Responsible to decide which social media is on use and call proper extractor services */
 .service('userDataExtractorService',function(facebookExtractor, googleExtractor,$http,$q){
   var deferred = $q.defer();
   var extract = function(result, paramSocialNetwork){
@@ -71,14 +70,14 @@ var extract = function(paramUserData){
 })
 
 /* firebaseService
-      Responsável por instanciar o objeto do firebase para receber os dados do usuário.
+      Responsible to instance firebase object to receive user data
 
-      socialLogin: Recebe a string de qual rede social desejada e realiza a autenticação.
-                  em caso de sucesso chama a service para extração dos dados e salva o usuário.
-                  em caso de erro salva um usuário nulo.
+      socialLogin: Receive a string of a desired social media and realize authentification
+                  in case of sucess call service to extract data and save user
+                  in case of error save a null user
 
-      getData: Método para acessar as informações salvas do usuário
-              após o carregamento de todas elas no metodo login.  */
+      getData: Method to acess user informations saved
+              after loading all of them in login method */
 
 .service('firebaseService', function(userDataExtractorService, socialLoginService, $http){
   var userData = {};
@@ -105,8 +104,7 @@ var extract = function(paramUserData){
 })
 
 /* socialLoginService
-    login: Responsável por validar os dados recebidos pelo firebase
-           e decidir qual o state este usuário deve ser enviado */
+    login: Responsible for validating received firebase data and decide which state this user have to be send */
 .service('socialLoginService', function(factoryEmail, $state ,currentUserService){
   var login = function(user){
     factoryEmail.save({"email": user.email}, function(result) {

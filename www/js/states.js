@@ -1,25 +1,25 @@
 angular.module('starter')
-/*Arquivo responsável por conectar todas as controllers e suas views definindo como states da aplicação*/
+/* Archive responsible to connect all controllers and respective views defining as states of application */
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider){
 
   $ionicConfigProvider.tabs.position('bottom');
   $stateProvider
 
-  //State da tela de login inicial.
+  //State of initial login screen
   .state('signin', {
   url: '/signin',
   templateUrl: 'views/signIn.html',
   controller: 'signinCtrl'
   })
 
-  //State da tela de cadastro
+  //Sign Up state
   .state('signup', {
   url: '/signup',
   templateUrl: 'views/user/signUp.html',
   controller: 'signupCtrl'
   })
 
-  //State da tela de tabs
+  //Tabs state
     .state('tabs', {
       url: '/tabs',
       abstract: true,
@@ -27,7 +27,7 @@ angular.module('starter')
     })
 
 
-    //State da home
+      //Home state
       .state('tabs.home', {
         url: "/home",
         views: {
@@ -37,6 +37,7 @@ angular.module('starter')
         }
       })
 
+      //State of markings initial page
       .state('tabs.markings', {
       url: '/markings',
       abstract: true,
@@ -47,6 +48,7 @@ angular.module('starter')
       }
     })
 
+    //New Marking state
     .state('tabs.newMarkings', {
       url: '/newMarkings',
       abstract: true,
@@ -57,17 +59,7 @@ angular.module('starter')
       }
     })
 
-     .state('tabs.to-contribuindo', {
-       url: '/toContribuindo',
-       abstract: true,
-       views: {
-         'to-contribuindo': {
-           templateUrl: 'views/toContribuindo.html'
-         }
-       }
-     })
-
-  //State da tela de minhas marcações e marcacoes proximas
+    //State of my markings and nearby markings
     .state('tabs.markings.myMarkings', {
       url: '/myMarkings',
       views: {
@@ -77,7 +69,7 @@ angular.module('starter')
       }
     })
 
-  //State da tela de minhas pevs e pevs proximas
+      //State of my pevs and nearby pevs
       .state('tabs.markings.myPEVS', {
         url: '/myPEVS',
         views: {
@@ -87,7 +79,7 @@ angular.module('starter')
         }
       })
 
-  //State da tela de cadastro de marcações/incidentes.
+  //State of register marking screen
   .state('tabs.newMarkings.newMarking', {
     url: '/newMarking',
     views: {
@@ -98,58 +90,56 @@ angular.module('starter')
     }
   })
 
-  //State da tela de cadastro de novas PEVs
-      .state('tabs.newMarkings.newPEV', {
-        url: '/newPEV',
-        views: {
-          'new-markings-page': {
-            templateUrl: 'views/pev/newPEV.html',
-            controller: 'newPevCtrl'
-          }
-        }
-      })
+  //State of new pevs screen
+  .state('tabs.newMarkings.newPEV', {
+    url: '/newPEV',
+    views: {
+      'new-markings-page': {
+        templateUrl: 'views/pev/newPEV.html',
+        controller: 'newPevCtrl'
+      }
+    }
+  })
 
-  //State da tela do to contribuindo
-      .state('tabs.to-contribuindo.welcome', {
-        url: '/welcome',
-        views: {
-          'to-contribuindo-page': {
-            templateUrl: 'views/contribute/toContribuindoWelcome.html'
-          }
-        }
-      })
+  //Tô Contribuindo State
+  .state('tabs.to-contribuindo.welcome', {
+    url: '/welcome',
+    views: {
+      'to-contribuindo-page': {
+        templateUrl: 'views/contribute/toContribuindoWelcome.html'
+      }
+    }
+  })
 
-
-  //State da tela de editar marcacoes
+  //Edit Markings state
   .state('editMarking', {
     url: '/editMarkings',
       controller: 'editMarkingCtrl',
       templateUrl: 'views/marking/editMarkings.html'
   })
 
-    //State da tela de editar PEVs
+  //Edit PEVs state
   .state('editPEV', {
     url: '/editPEV',
       controller: 'editPevCtrl',
       templateUrl: 'views/pev/editPEV.html'
   })
 
-
-  //State da tela de profile do usuário
+  //Profile User state
   .state('profile', {
     url: '/profile',
     templateUrl: 'views/user/userProfile.html',
     controller: 'profileCtrl'
     })
 
-  //State da tela de editar profile do usuário
+  //Edit profile user state
   .state('editProfile',{
     url: '/editProfile',
     templateUrl: 'views/user/editProfile.html',
     controller: 'editProfileCtrl'
   })
 
-  //State da tela de map
+  //Map state
     .state('map', {
       url: '/map',
       templateUrl: 'views/map.html',
@@ -157,13 +147,13 @@ angular.module('starter')
     })
 
 
-    //State do tutorial
+    //Tutorial state
     .state('tutorial', {
       url: '/tutorial',
       templateUrl: 'views/tutorial.html',
       controller: 'tutorialCtrl'
     });
 
-  //State inicial do sistema definido em login.
+  //Initial state of system defined in login
   $urlRouterProvider.otherwise('/signin')
 });
