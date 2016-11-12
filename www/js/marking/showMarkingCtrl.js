@@ -36,15 +36,6 @@ angular.module('starter')
 		}
 	};
 
-/*=======================================================
-	$scope.plusOne = function(index) { 
-	    $rootScope.pevs[index].likes += 1; 
-	};
-	  
-	$scope.minusOne = function(index) { 
-	    $rootScope.pevs[index].dislikes -= 1; 
-	};
-=======================================================*/
 	$scope.plusOne = function(incident) { 
 	    var index = $rootScope.markings.indexOf(incident); 
 	    console.log(index)
@@ -55,7 +46,6 @@ angular.module('starter')
 		var index = $rootScope.markings.indexOf(incident); 
 	    $rootScope.markings[index].dislikes += 1;
 	};
-//=======================================================
 
 	$ionicModal.fromTemplateUrl('views/marking/showMarking.html', {
 		scope: $scope,
