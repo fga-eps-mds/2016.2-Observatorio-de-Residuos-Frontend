@@ -35,6 +35,7 @@ angular.module('app.controllers')
                                       description: value.descricao_incidente,
                                       latitude: value.latitude,
                                       longitude: value.longitude,
+                                      id_marking_type: value.id_tipo_incidente,
                                       author_name: value.author_name,
                                       author_email: value.author_email
                                     });
