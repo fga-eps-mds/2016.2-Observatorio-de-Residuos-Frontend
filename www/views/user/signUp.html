@@ -1,9 +1,11 @@
+<!-- Sign Up page -->
 <ion-view cache-view="false" title="Cadastro" id="cadastro" hide-nav-bar="true">
   <ion-content padding="true" class="has-header item-content" scroll="false">
     <a class="button icon-top ion-chevron-left button-clear button-dark" ui-sref="signin">Voltar</a>
 
     <form id="cadastro" class="list" name="userForm" ng-submit="registerEmail(user)" novalidate>
 
+      <!-- Fields to put informations like email, password and password confirmation -->
       <ion-list id="signup-list2">
 
         <label class="item item-input" id="first_name">
@@ -114,6 +116,7 @@
         </label>
 
       </ion-list>
+      <!-- Button confirmation of sign up only works if all fields are filled -->
       <button type="submit" id="signup-button5" ng-disabled="userForm.$invalid" class="button button-positive button-block">Cadastrar</button>
     </form>
   </ion-content>

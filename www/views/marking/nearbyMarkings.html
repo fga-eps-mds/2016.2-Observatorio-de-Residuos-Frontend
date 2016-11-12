@@ -1,6 +1,8 @@
+<!-- Nearby Markings page -->
 <ion-view title="Incidentes Próximos" id="nearby">
   <ion-content padding="true" class="has-header padding has-tabs-top" scroll="true">
 
+    <!-- Show markings according to desired distance radius -->
     <div class="item range">
       <label class="range-label">Distancia desejada: (1-10km)</label>
       <input type="range" name="volume" min="1" max="10" value="5">
@@ -8,6 +10,7 @@
 
     <div class="list">
 
+      <!-- List with all markings according to desired distance radius -->
       <a class="item item-icon-left" ui-sref="/marking/"><!-- marking id -->
         <i class="icon ion-waterdrop"></i> <!-- marking type-->
         Derramamanto de Óleo <!-- marking name -->
