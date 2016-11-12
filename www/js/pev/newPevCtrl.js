@@ -1,5 +1,6 @@
 angular.module('app.controllers')
 
+
   .controller("newPevCtrl", function ($ionicHistory, NgMap,$state, $scope, $rootScope,currentUserService, factoryPEV, $ionicPopup, URL) {
     var options = {enableHighAccuracy: true};
     if(angular.isUndefined($rootScope.pevs)) {
@@ -12,6 +13,8 @@ angular.module('app.controllers')
                     pev.latitude = map.lat();
                     pev.longitude = map.lng();
                     pev.author_email = currentUserService.getUserData().email;
+                    pev.likes = 0;
+                    pev.dislikes = 0;
                     factoryPEV.save(pev, function (result){
                             $rootScope.pevs.push({
                               author_email: pev.author_email,
@@ -23,10 +26,8 @@ angular.module('app.controllers')
                               description: pev.description,
                               latitude: pev.latitude,
                               longitude: pev.longitude,
-//========================================================================
-                              likes: 0,
-                              dislikes: 0
-//========================================================================
+                              likes: marking.likes,
+                              dislikes: marking.dislikes
                             });
                             var alertPopup = $ionicPopup.alert({
                               title: 'PEV cadastrada com sucesso',
