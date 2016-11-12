@@ -41,15 +41,13 @@ describe('newMarkingCtrl', function() {
 
   beforeEach(function () {
     var controller = $controller('newMarkingCtrl', {$scope: $scope, $ionicHistory: $ionicHistory});
+    $httpBackend.expectGET(URL + '/marking_types').respond(200);
   });
 
   describe('registerMarking', function () {
     var marking = {
       name: 'Fire in the Hole',
-      fire: true,
-      water: true,
-      earth: true,
-      air: true,
+      id_marking_type: 12,
       comment: 'Apenas um comentário',
       latitude: '-50.2153',
       longitude: '100.2141'
