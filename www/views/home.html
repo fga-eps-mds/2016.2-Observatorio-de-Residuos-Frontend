@@ -1,20 +1,14 @@
 <ion-view title="Observatório de Resíduos" id="home">
-    <ion-content padding="true" class="has-header padding view-with-bg" scroll="true">
+    <!-- ion-content padding="true" class="has-header padding view-with-bg" scroll="true"-->
+    <ion-content padding="true" class="has-header padding" scroll="false">
       <div class="home-logo">
-          <img id="logo" src="../img/logo-transparente.png" height="250px">
-          <img id="titulo" src="../img/titulo.png">
-          <img id="background" src="../img/white.svg" height="250px">
+          <img src="../img/logo-transparente.png" class="displayed">
+          <img id="titulo" src="../img/titulo.png" class="displayed">
       </div>
-        <div class="home-search-bar">
-            <label class="item-input-wrapper">
-                <i class="icon ion-search placeholder-icon"></i>
-                <input class="searchclass" type="search" placeholder="Busca">
-            </label>
-        </div>
 
         <div class="home-grid">
            <div class="list list-inline">
-            <button class="icon button-icon" ui-sref="map">
+            <button class="icon button-icon" ui-sref="tabs.map">
                 <i class="icon ion-map"></i><br>Mostrar Mapa
             </button>
 
@@ -30,7 +24,7 @@
                 <i class="icon ion-compose"></i><br>Ver projetos do Tô Contribuindo
             </button>
 
-            <button class="icon button-icon" ui-sref="profile">
+            <button class="icon button-icon" ui-sref="tabs.profile">
                 <i class="icon ion-person"></i><br>Ver meu perfil
             </button>
 
