@@ -17,6 +17,7 @@ angular.module('app.controllers')
       marking.full_name = currentUserService.getUserData().nome_completo;
       marking.likes = 0;
       marking.dislikes = 0;
+      console.log(marking)
       factoryMarking.save(marking, function (result){
         $rootScope.markings.push({
           author_email: marking.author_email,
