@@ -1,6 +1,6 @@
 angular.module('starter')
 
-.controller('showMarkingCtrl',function($scope, $rootScope, currentMarkingService, $ionicModal, currentUserService, $state){
+.controller('showMarkingCtrl',function($scope, $rootScope, currentMarkingService, $ionicModal, currentUserService, $state, factoryEvaluateIncidents){
 	var currentMarking = "";
 	$scope.showPev = function(event, pev){
 		$scope.currentUserEmail = currentUserService.getUserData().email;
@@ -35,16 +35,21 @@ angular.module('starter')
 			$state.go('editMarking');
 		}
 	};
-
-	$scope.plusOne = function(incident) { 
+	
+	$scope.evaluate = function(incident, evaluation) { 
 	    var index = $rootScope.markings.indexOf(incident); 
-	    console.log(index)
-	    $rootScope.markings[index].likes += 1;
-	};
-	  
-	$scope.minusOne = function(incident) { 
-		var index = $rootScope.markings.indexOf(incident); 
-	    $rootScope.markings[index].dislikes += 1;
+	    if (evaluation){
+	    	$rootScope.markings[index].likes += 1;	
+	    } else {
+	    	$rootScope.markings[index].dislikes += 1;	
+	    }
+	    console.log($rootScope.markings[index])
+		factoryEvaluateIncidents.save($rootScope.markings[index], function(result){
+			console.log(result)
+		}, function(error){
+			console.log(error)
+		});
+
 	};
 
 	$ionicModal.fromTemplateUrl('views/marking/showMarking.html', {
