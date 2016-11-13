@@ -30,6 +30,7 @@
 
           <ion-item id="special-select" class="item-input item-select">
           <select ng-model="marking.id_marking_type" name="marking_type" required>
+            <option value="" disabled>Selecione um Tipo de Incidente</option>
             <option ng-repeat="marking_type in marking_types" value="{{marking_type.id_tipo_incidente}}">
               {{marking_type.tipo_incidente}}
             </option>
