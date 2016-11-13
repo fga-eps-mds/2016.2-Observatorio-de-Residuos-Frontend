@@ -35,12 +35,8 @@
 }
 
 .searchclass {
+    position: relative;
     background-color: transparent;
-}
-
-.home-logo {
-    background-color: transparent;
-    margin: -20px;
 }
 
 .list .list-inline{
@@ -51,31 +47,56 @@
 
 .list .list-inline .item {
     flex: 1;
-    left: 10%;
+    left: 2%;
     font-size: inherit;
 }
 
 .home-grid .button-icon {
-    padding-top: 0px;
-    padding-left: 0px;
-    padding-bottom: 0px;
-    padding-right: 0px;
-
     float: left;
 
-    background-color: transparent;/*#f0f2e6;*/
-    font-size: 15px;
+    margin-left: 2px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    margin-right: 2px;
+
+    background-color: transparent;
     /*line-height: 25px;*/
     height: 115px;
     width: 115px;
+
+    border: 1px solid black;
+}
+img.displayed {
+    position: absolute;
+    max-width: 80%;
+    top: 10%;
+    left: 10%;
+    border-radius: 3px;
+}
+
+img.displayed:empty {
+    top: 25%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (orientation: portrait) {
+    img.displayed { max-width: 60%; }
+}
+
+@media screen and (orientation: landscape) {
+    img.displayed { max-height: 50%; }
 }
 
 
 .home-grid {
     position: absolute;
-    top: 55%;
-    left: 7%;
-    margin: -20px;
+    bottom: 5%;
+    align-content: center;
 }
 
 .larger {

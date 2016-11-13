@@ -27,26 +27,21 @@
     --brown-two: #8a5711;
     --brown-three: #bc9c63;
 }
-#background {
-    z-index: 1;
-    position: relative;
-    display: none;
-}
+
 
 #logo {
     z-index: 2;
-    top: 5%;
-    left: 11%;
+    top: 2%;
+    left: 33%;
     position: absolute;
 }
 
 #titulo {
     z-index: 3;
-    top: 4%;
-    left: 9%;
     position: absolute;
+    height: 240px;
+    max-width: 305px;
 }
-
 
 .bar.bar-positive {
     background-color: var(--green-seven);
@@ -172,4 +167,33 @@ a{
 
 #slideButtons{
     padding-top: 50px;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+.hidden-input {
+    display: none;
+}
+
+.item-select {
+    padding: 0px;
+}
+
+.item-select select{
+    width: 400px;
+    max-width: 100%;
+    right: auto;
+    direction: ltr;
+}
+
+#special-select {
+    height: 45px;
+    font-size: 16px;
+}
+
+.validation-msg {
+    color: red;
+    font-weight: bold;
 }
