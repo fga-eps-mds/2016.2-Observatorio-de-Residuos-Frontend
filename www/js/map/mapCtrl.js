@@ -1,30 +1,32 @@
 angular.module('app.controllers')
 
 .controller('mapCtrl', function(NgMap, $scope, $ionicModal, $http, $rootScope, URL) {
-    NgMap.getMap().then(function(map) {
-        $rootScope.pevs = [];
-        $rootScope.markings = [];
-
-        //Inicializa todas as PEVs salvas no banco.
-        $http.get(URL + '/pevs')
-        .success(function(content){
-          angular.forEach(content, function(value, key) {
-            $rootScope.pevs.push({
-                                  name: value.titulo_pev,
-                                  description: value.descricao_pev,
-                                  author_name: value.author_name,
-                                  author_email: value.author_email,
-                                  latitude: value.latitude,
-                                  longitude: value.longitude,
-                                  paper: value.paper,
-                                  metal: value.metal,
-                                  plastic: value.plastic,
-                                  glass: value.glass
-                                });
-          })
+  NgMap.getGeoLocation().then(function(map) {
+    $scope.currentLocation ="["+ map.lat()+","+map.lng()+"]"
+  });
+  NgMap.getMap().then(function(map) {
+    $rootScope.pevs = [];
+    $rootScope.markings = [];
+      //Inicializa todas as PEVs salvas no banco.
+      $http.get(URL + '/pevs')
+      .success(function(content){
+        angular.forEach(content, function(value, key) {
+          $rootScope.pevs.push({
+                                name: value.titulo_pev,
+                                description: value.descricao_pev,
+                                author_name: value.author_name,
+                                author_email: value.author_email,
+                                latitude: value.latitude,
+                                longitude: value.longitude,
+                                paper: value.paper,
+                                metal: value.metal,
+                                plastic: value.plastic,
+                                glass: value.glass
+                              });
         })
-        .error(function(data){
-        });
+      })
+      .error(function(data){
+      });
 
         //Inicializa todas os incidentes salvos no banco.
         $http.get(URL + '/markings')

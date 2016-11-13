@@ -15,10 +15,19 @@ describe('mapCtrl', function() {
               return map({
                 getCenter: function(){return "center"},
                 markers: "many markers",
-                shapes: "many shapes"
-              });
+                shapes: "many shapes"});
             }
           };
+        },
+        getGeoLocation: function(){
+          return{
+            then: function(map){
+              return map({
+                lat: function(){},
+                lng: function(){}
+              });
+            }
+          }
         }
       });
     });
