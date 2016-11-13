@@ -15,7 +15,7 @@ angular.module('app.controllers')
         $scope.editUser = function (user) {
             factoryProfile.save(user, function (result) {
                 currentUserService.setUserData(user)
-                $state.go('profile')
+                $state.go('tabs.profile')
             }, function (error) {
                 console.log(error)
             })

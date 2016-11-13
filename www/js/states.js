@@ -37,6 +37,28 @@ angular.module('starter')
         }
       })
 
+      //State da tela de map
+      .state('tabs.map', {
+          url: "/map",
+          views: {
+              'map-page': {
+                  templateUrl: "views/map.html",
+                  controller: 'mapCtrl'
+              }
+          }
+      })
+
+      //State da tela de profile do usuário
+      .state('tabs.profile', {
+          url: '/profile',
+          views: {
+              'profile-page': {
+                  templateUrl: 'views/user/userProfile.html',
+                  controller: 'profileCtrl'
+              }
+          }
+      })
+
       .state('tabs.markings', {
       url: '/markings',
       abstract: true,
@@ -135,12 +157,7 @@ angular.module('starter')
   })
 
 
-  //State da tela de profile do usuário
-  .state('profile', {
-    url: '/profile',
-    templateUrl: 'views/user/userProfile.html',
-    controller: 'profileCtrl'
-    })
+
 
   //State da tela de editar profile do usuário
   .state('editProfile',{
@@ -149,12 +166,7 @@ angular.module('starter')
     controller: 'editProfileCtrl'
   })
 
-  //State da tela de map
-    .state('map', {
-      url: '/map',
-      templateUrl: 'views/map.html',
-      controller: 'mapCtrl'
-    })
+
 
 
     //State do tutorial
