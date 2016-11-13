@@ -23,21 +23,30 @@
             </p>
             <input type="text"  ng-model="marking.name" placeholder="Nome do Incidente" name="name" required>
           </label>
-          <ion-item class="item-divider" id="marking-list">Tipo do Incidente</ion-item>
+
+          <ion-item class="item-input" id="marking-list">
+            Tipo do Incidente
+          </ion-item>
+
+          <ion-item id="special-select" class="item-input item-select">
           <select ng-model="marking.id_marking_type" name="marking_type" required>
-            <option ng-repeat="marking_type in marking_types" value="{{marking_type.id_tipo_incidente}}">{{marking_type.tipo_incidente}}</option>
+            <option ng-repeat="marking_type in marking_types" value="{{marking_type.id_tipo_incidente}}">
+              {{marking_type.tipo_incidente}}
+            </option>
           </select>
+          </ion-item>
+
         </ion-list>
 
         <label class="item item-input">
           <textarea type="text" ng-model="marking.description" placeholder="Descrição" rows="3"></textarea>
         </label>
-        <label class="item item-input">
-          <input type="hidden" placeholder="Latitude" ng-model="marking.latitude" disabled="true">
+        <label class="item item-input hidden-input">
+          <input placeholder="Latitude" ng-model="marking.latitude" disabled="true">
         </label>
 
-        <label class="item item-input">
-          <input type="hidden" placeholder="Longitude" ng-model="marking.longitude" disabled="true">
+        <label class="item item-input hidden-input">
+          <input placeholder="Longitude" ng-model="marking.longitude" disabled="true">
         </label>
         <button type="submit" id="page-button9" class="button button-full button-positive" ng-disabled="Markingform.$invalid">Cadastrar</button>
     </form>
