@@ -30,6 +30,7 @@ angular.module('app.controllers')
       factoryRegister.save(user, function(result){
         console.log(result);
         $scope.invalidEmail = false;
+        $scope.emailAlreadyUsed = false;
             var alertPopup = $ionicPopup.alert({
               title: 'Bem-vindo ao Observatório de Resíduos',
               //subTitle: '',
@@ -38,7 +39,13 @@ angular.module('app.controllers')
         currentUserService.setUserData(user);
         $state.go('tabs.home')
       }, function(error){
-        $scope.invalidEmail = true;
+            if(error.status == 401){
+              $scope.emailAlreadyUsed = true;
+              $scope.invalidEmail = false;
+            }else{
+              $scope.emailAlreadyUsed = false;
+              $scope.invalidEmail = true;
+            }
+          })
+        }
       })
-  }
-})
