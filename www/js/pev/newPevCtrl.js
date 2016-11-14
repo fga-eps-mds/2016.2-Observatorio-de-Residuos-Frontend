@@ -26,8 +26,8 @@ angular.module('app.controllers')
                               description: pev.description,
                               latitude: pev.latitude,
                               longitude: pev.longitude,
-                              likes: marking.likes,
-                              dislikes: marking.dislikes
+                              likes: pev.likes,
+                              dislikes: pev.dislikes
                             });
                             var alertPopup = $ionicPopup.alert({
                               title: 'PEV cadastrada com sucesso',
