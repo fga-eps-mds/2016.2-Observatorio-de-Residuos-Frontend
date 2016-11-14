@@ -2,7 +2,8 @@ angular.module('app.controllers')
 
 .controller('editProfileCtrl', function($scope, $http, URL, $rootScope, 
                                         currentUserService, factoryProfile, 
-                                        $state, $ionicPopup) {
+                                        $state, $ionicPopup, 
+                                        factoryDeactivation) {
   
   $rootScope.profiles = [];
 
@@ -39,14 +40,19 @@ angular.module('app.controllers')
       buttons: [
         {text: 'Cancelar'},
         {text: 'Deletar',
-         onTap: authenticateToDeactivate($scope.data.password)
+         onTap: function() {
+            var password = $scope.data.password;
+            var encryptedPassword = String(CryptoJS.SHA256(password));
+            var id = $scope.user.id_usuario;
+            factoryDeactivation.save({id: id, password: encryptedPassword}, function(result){
+              console.log('ihul');
+            }, function(error){
+              console.log(error);
+            });
+          }
         }
       ],
     });
-    
-    function authenticateToDeactivate(password) {
-      var encryptedPassword = String(CryptoJS.SHA256(password));
-    }
-
   };
+
 });
