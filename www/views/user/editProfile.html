@@ -6,7 +6,7 @@
             <div class="list card" >
                 <ion-list id="list">
                     <ion-item>
-                        <img class="image item-avatar-perso" src="img/usuario.jpeg">
+                        <img class="round item-avatar-perso" src="img/usuario.jpeg">
                     </ion-item>
 
                     <ion-item>
@@ -18,7 +18,7 @@
 
                     <ion-item>
                         <label class="item item-input item-select" id="profile">
-                            <p class="text-center">Tipo de perfil: </p>
+                            <p class="text-center">Perfil: </p>
                             <select ng-model="user.profile" name="profile_type" required>
                                 <option ng-repeat="profile in profiles" value="{{profile.perfil}}">{{profile.perfil}}</option>
                             </select>
@@ -27,7 +27,7 @@
 
                     <ion-item>
                         <label class="item item-input" id="email">
-                            <p class="text-center">Email: {{user.email}}</p>
+                            <p class="text-center">E-mail: {{user.email}}</p>
                         </label>
                     </ion-item>
                 </ion-list>
