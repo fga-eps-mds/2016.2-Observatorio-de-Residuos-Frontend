@@ -31,7 +31,7 @@ angular.module('app.controllers')
   $scope.deactivateAccount = function(user) {
     $scope.data = {};
     $ionicPopup.show({
-      template: '<p>Atenção: esta é uma ação permanente, e não pode ser\
+      template: '<p>Esta é uma ação permanente, e não pode ser\
       desfeita. Para continuar, digite sua senha abaixo. Você tem certeza\
       de que deseja desativar sua conta?<p>\
       <input type="password" ng-model="data.password">',
