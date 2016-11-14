@@ -2,8 +2,8 @@ angular.module('app.controllers')
 
 .controller('editProfileCtrl', function($scope, $http, URL, $rootScope, 
                                         currentUserService, factoryProfile, 
-                                        $state, $ionicPopup, 
-                                        factoryDeactivation) {
+                                        $state, $ionicPopup, $timeout,
+                                        factoryDeactivation, $ionicLoading) {
   
   $rootScope.profiles = [];
 
@@ -39,16 +39,35 @@ angular.module('app.controllers')
       scope: $scope,
       buttons: [
         {text: 'Cancelar'},
-        {text: 'Deletar',
+        {text: 'Desativar',
          onTap: function() {
+            
             var password = $scope.data.password;
             var encryptedPassword = String(CryptoJS.SHA256(password));
             var id = $scope.user.id_usuario;
+            
             factoryDeactivation.save({id: id, password: encryptedPassword}, function(result){
-              console.log('ihul');
+              $ionicLoading.show({
+                template: 'Conta desativada com sucesso. Por favor, aguarde.'
+              });
+              $timeout(function(){
+                $ionicLoading.hide();
+                currentUserService.setUserData(null);
+                $state.go('signin');
+              }, 3000);
             }, function(error){
-              console.log(error);
+                var template;
+                if(error.status == 401) {
+                  template = 'Senha incorreta.'
+                } else {
+                  template = 'Código do erro: ' + error.status + '.';
+                }
+                $ionicPopup.alert({
+                    title: 'Erro',
+                    template: template
+                });
             });
+
           }
         }
       ],
