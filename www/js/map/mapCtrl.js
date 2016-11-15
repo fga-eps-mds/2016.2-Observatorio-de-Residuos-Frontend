@@ -6,6 +6,7 @@ angular.module('app.controllers')
         $rootScope.markings = [];
 
         //Initialize all PEVs saved in database
+        $http.get(URL + '/pevs')
         .success(function(content){
           angular.forEach(content, function(value, key) {
             $rootScope.pevs.push({
