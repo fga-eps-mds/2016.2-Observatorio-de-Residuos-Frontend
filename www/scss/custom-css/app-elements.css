@@ -86,9 +86,7 @@ a{
     height: 120px;
 }
 
-.popover-height-perfil{
-    height: 140px;
-}
+
 
 .popover{
   height: 120px;
@@ -196,4 +194,20 @@ a{
 .validation-msg {
     color: red;
     font-weight: bold;
+}
+.item-profile {
+    margin-bottom: 25px;
+    border: transparent;
+}
+
+.item-avatar {
+    margin-bottom: 65px;
+}
+
+.item-avatar > img:first-child {
+    left: 30%;
+    height: 150px;
+    width: 150px;
+    max-height: 4000px;
+    max-width: 4000px;
 }

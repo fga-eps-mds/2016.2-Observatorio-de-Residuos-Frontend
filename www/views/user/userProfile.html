@@ -2,9 +2,12 @@
 <ion-view title="Observatório de Resíduos" id="profile">
   <ion-content padding="true" class="has-header padding" scroll="false">
     <!-- Some user informations -->
-    <div class="avataa">
-      <img class="round item-avatar-perso" src="img/usuario.jpeg" height="150px">
-    </div>
+    <ion-item class="item-profile">
+      <div class="item-avatar">
+        <img src="img/usuario.jpeg" height="150px" width="150px">
+        <!--img ng-src="{{userData.imgUrl}}"-->
+      </div>
+    </ion-item>
 
     <div class="users-params" align="center">
         <h3 class="text-center">Nome: {{user.nome_completo}}</h3>
