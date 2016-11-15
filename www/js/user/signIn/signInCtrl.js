@@ -7,7 +7,11 @@ registerSocial: Receive social media desired by the parameter on button at signi
                 Receiving user sends to service of social login.
 */
 
-.controller('signinCtrl', function ($scope, $stateParams, $state, socialLoginService, firebaseService, currentUserService, factoryEmail, factoryLogin, $ionicLoading, $timeout) {
+.controller('signinCtrl', function ($scope, $stateParams, $state, 
+                                    socialLoginService, firebaseService, 
+                                    currentUserService, factoryEmail, 
+                                    factoryLogin, $ionicLoading, $timeout, 
+                                    $ionicPopup) {
   $scope.loginAttempt = function(user){
       user.encripted_password = String(CryptoJS.SHA256(user.password)); //criptografia da senha
       console.log(user);
@@ -17,9 +21,16 @@ registerSocial: Receive social media desired by the parameter on button at signi
         $state.go('tabs.home')
         $scope.loginError = false;
       }, function(error){
-        //Caso receba Unauthorized do servidor, ativa o erro para ser exibido na view.
-        console.log("ERRO!")
-        $scope.loginError = true;
+        if(error.status == 403) {
+          $ionicPopup.alert({
+            template: 'Esta conta está desativada.',
+            title: 'Erro'
+          });
+        } else {
+          //Caso receba Unauthorized do servidor, ativa o erro para ser exibido na view.
+          console.log("ERRO!")
+          $scope.loginError = true;
+        } 
       })
     }
 

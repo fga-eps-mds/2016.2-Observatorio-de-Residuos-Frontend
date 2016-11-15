@@ -28,6 +28,21 @@
     --brown-three: #bc9c63;
 }
 
+
+#logo {
+    z-index: 2;
+    top: 2%;
+    left: 33%;
+    position: absolute;
+}
+
+#titulo {
+    z-index: 3;
+    position: absolute;
+    height: 240px;
+    max-width: 305px;
+}
+
 .bar.bar-positive {
     background-color: var(--green-seven);
 }
@@ -42,8 +57,9 @@
     background-color: transparent;
 }
 
-.scroll-content {
-    background-color: var(--background-color);
+.view-with-bg {
+    background-image: url("../../img/gradient.png-i7.png") !important;
+    background-size: cover !important;
 }
 
 a{
@@ -70,9 +86,7 @@ a{
     height: 120px;
 }
 
-.popover-height-perfil{
-    height: 140px;
-}
+
 
 .popover{
   height: 120px;
@@ -151,4 +165,49 @@ a{
 
 #slideButtons{
     padding-top: 50px;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+.hidden-input {
+    display: none;
+}
+
+.item-select {
+    padding: 0px;
+}
+
+.item-select select{
+    width: 400px;
+    max-width: 100%;
+    right: auto;
+    direction: ltr;
+}
+
+#special-select {
+    height: 34px;
+    font-size: 16px;
+}
+
+.validation-msg {
+    color: red;
+    font-weight: bold;
+}
+.item-profile {
+    margin-bottom: 25px;
+    border: transparent;
+}
+
+.item-avatar {
+    margin-bottom: 65px;
+}
+
+.item-avatar > img:first-child {
+    left: 30%;
+    height: 150px;
+    width: 150px;
+    max-height: 4000px;
+    max-width: 4000px;
 }

@@ -35,7 +35,7 @@ angular.module('app.controllers')
                             $ionicHistory.nextViewOptions({
                               disableBack: true
                             });
-                            $state.go('map')
+                            $state.go('tabs.map')
                             /* This state must be reset and the back button too */
                     }, function (error) {
                             var alertPopup = $ionicPopup.alert({

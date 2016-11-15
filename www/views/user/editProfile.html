@@ -1,26 +1,47 @@
 <!-- Edit profile page -->
-<ion-view title="Perfil" id="profile">
-    <ion-content padding="true" class="has-header" scroll="true">
+<ion-view title="Perfil" id="profile-page">
+    <ion-content padding="true" class="has-header" scroll="true" ng-controller="cameraCtrl">
         <form id="editProfile" class="list" name="userForm" ng-submit="editUser(user)" novalidate>
             <!-- Editable user informations, but email can't be edited -->
             <div class="list card" >
-                <div class="item">
-                    <img class="image item-avatar-perso" src="img/usuario.jpeg">
-                    <br>
-                    <label class="item item-input" id="complete_name">
-                        <p class="text-center">Nome: </p>
-                        <input name="complete_name" type="text" ng-model="user.nome_completo" required>
-                    </label>
-                    <label class="item item-input" id="profile">
-                        <p class="text-center">Tipo de perfil: </p>
-                        <select ng-model="user.profile" name="profile_type" required>
-                          <option ng-repeat="profile in profiles" value="{{profile.perfil}}">{{profile.perfil}}</option>
-                        </select>
-                    </label>
-                    <label class="item item-input" id="email">
-                        <p class="text-center">Email: {{user.email}}</p>
-                    </label>
-                </div>
+                <ion-list id="list">
+                    <ion-item class="item-profile">
+                        <div class="item-avatar">
+                            <img src="img/usuario.jpeg" height="150px" width="150px">
+                            <!--img ng-src="{{userData.imgUrl}}"-->
+                        </div>
+                    </ion-item>
+
+                    <div class="button-bar">
+                        <button class="button icon-left ion-camera" ng-click="takePhoto('CAMERA')">Tirar nova foto de perfil</button><br>
+                        <button class="button icon-left ion-image" ng-click="takePhoto('PHOTOLIBRARY')">Escolher nova foto de perfil</button>
+                        <!-- The camera doesn't work on browser, and a android build is necessary -->
+                    </div>
+
+                    <ion-item>
+                        <label class="item item-input" id="complete_name">
+                            <p class="text-center">Nome:    </p>
+                            <input name="complete_name" type="text" ng-model="user.nome_completo" required>
+                        </label>
+                    </ion-item>
+
+                    <ion-item>
+                        <label class="item item-input item-select" id="profile">
+                            <p class="text-center">Perfil: </p>
+                            <select ng-model="user.profile" name="profile_type" required>
+                                <option value="" disabled>Selecione um Tipo de Perfil</option>
+                                <option ng-repeat="profile in profiles" value="{{profile.perfil}}">{{profile.perfil}}</option>
+                            </select>
+                        </label>
+                    </ion-item>
+
+                    <ion-item>
+                        <label class="item item-input" id="email">
+                            <p class="text-center">E-mail: {{user.email}}</p>
+                        </label>
+                    </ion-item>
+                </ion-list>
+
 
                 <!-- Buttons to confirm or cancel profile edition -->
                 <div class="item item-body">
@@ -29,11 +50,17 @@
                             <i class="icon ion-checkmark-round"></i>
                             Confirmar
                         </button>
-                        <button class="button button-positive button-centered" ui-sref="profile">
+                        <button class="button button-positive button-centered" ui-sref="tabs.profile">
                             <i class="icon ion-close-round"></i>
                             Cancelar
                         </button>
                     </div>
+                </div>
+                
+                <div class="item item-body">
+                  <div class="list">
+                    <button class="button button-assertive button-centered" type="button" ng-click="deactivateAccount()">Desativar Conta</button>
+                  </div>
                 </div>
             </div>
         </form>

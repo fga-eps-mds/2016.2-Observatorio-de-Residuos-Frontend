@@ -1,29 +1,27 @@
 <!-- User profile page -->
-<ion-view title="Perfil" id="profile">
-  <ion-content padding="true" class="has-header padding has-tabs-top" scroll="true">
+<ion-view title="Observatório de Resíduos" id="profile">
+  <ion-content padding="true" class="has-header padding" scroll="false">
     <!-- Some user informations -->
-    <div class="list card">
-      <div class="item">
-        <img class="image item-avatar-perso" src="img/usuario.jpeg">
-        <br>
-        <h2 class="text-center">{{user.nome_completo}}</h2>
-        <h2 class="text-center">Perfil {{user.profile}}</h2>
-        <h2 class="text-center">{{user.email}}</h2>
+    <ion-item class="item-profile">
+      <div class="item-avatar">
+        <img src="img/usuario.jpeg" height="150px" width="150px">
+        <!--img ng-src="{{userData.imgUrl}}"-->
+      </div>
+    </ion-item>
+
+    <div class="users-params" align="center">
+        <h3 class="text-center">Nome: {{user.nome_completo}}</h3>
+        <h3 class="text-center">Perfil: {{user.profile}}</h3>
+        <h3 class="text-center">E-mail: {{user.email}}</h3>
       </div>
 
-      <!-- Buttons to edit profile and go back to Observatório de Resíduos map -->
-      <div class="item item-body">
-        <div class="list">
-          <button class="button button-positive button-block" ui-sref="editProfile">
-            <i class="icon ion-edit"></i>
-              Alterar Perfil
-          </button>
-          <button class="button button-positive button-block" ui-sref="tabs.home">
-            <i class="ion-edit"></i>
-              Voltar para a Tela Principal
-          </button>
-        </div>
-      </div>
+    <!-- Buttons to edit profile and go back to Observatório de Resíduos map -->
+    <div class="profile-button" align="center">
+      <button class="button button-positive button-block" ui-sref="editProfile">
+        <i class="icon ion-edit"></i>
+          Editar Perfil
+      </button>
     </div>
   </ion-content>
+  <ui-view name="profile-page"></ui-view>
 </ion-view>

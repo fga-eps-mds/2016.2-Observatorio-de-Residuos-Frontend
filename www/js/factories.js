@@ -5,6 +5,13 @@ angular.module('starter')
   return $resource(URL+"/users/create");
 })
 //Factory for user login
+
+//Factory para o login do usuário
+.factory('factoryDeactivation', function($resource, URL){
+  return $resource(URL+"/users/deactivate");
+})
+
+//Factory para o login do usuário
 .factory('factoryLogin', function($resource, URL){
   return $resource(URL+"/sessions/login");
 })

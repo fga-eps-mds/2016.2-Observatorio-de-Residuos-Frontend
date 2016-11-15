@@ -1,16 +1,38 @@
-<!-- Inital page after sign in/Home page -->
-<ion-view title="Tela Principal" id="home">
+<ion-view title="Observatório de Resíduos" id="home">
+    <!-- ion-content padding="true" class="has-header padding view-with-bg" scroll="true"-->
     <ion-content padding="true" class="has-header padding" scroll="false">
-        <ul>
-            <li>Logo</li>
-            <li>Barra de Pesquisa</a></li>
-            <li><a ui-sref="map">Mostrar o Mapa</a></li>
-            <li><a ui-sref="tabs.markings.myMarkings">Ver minhas marcações e mais próximas</a></li>
-            <li><a ui-sref="tabs.newMarkings.newMarking">Criar nova marcação</a></li>
-            <li><a ui-sref="tabs.to-contribuindo.welcome">Ver projetos do Tô Contribuindo</a></li>
-            <li><a ui-sref="profile">Ver meu perfil</a></li>
-            <li><a ui-sref="signin">Sair</a></li>
-        </ul>
+      <div class="home-logo">
+          <img src="../img/logo-transparente.png" class="displayed">
+          <img id="titulo" src="../img/titulo.png" class="displayed">
+      </div>
+
+        <div class="home-grid">
+           <div class="list list-inline">
+            <button class="icon button-icon" ui-sref="tabs.map">
+                <i class="icon ion-map"></i><br>Mostrar Mapa
+            </button>
+
+            <button class="icon button-icon" ui-sref="tabs.markings.myMarkings">
+                <i class="icon ion-pin"></i><br>Ver minhas marcações e próximas
+            </button>
+
+            <button class="icon button-icon" ui-sref="tabs.newMarkings.newMarking">
+                <i class="icon ion-location"></i><br>Criar nova marcação
+            </button>
+
+            <button class="icon button-icon" ui-sref="tabs.to-contribuindo.articles">
+                <i class="icon ion-compose"></i><br>Ver artigos do Tô Contribuindo
+            </button>
+
+            <button class="icon button-icon" ui-sref="tabs.profile">
+                <i class="icon ion-person"></i><br>Ver meu perfil
+            </button>
+
+            <button class="icon button-icon" ui-sref="signin">
+                <i class="icon ion-log-out"></i><br>Sair da aplicação
+            </button>
+          </div>
+        </div>
     </ion-content>
     <ui-view name="home-page"></ui-view>
 </ion-view>
