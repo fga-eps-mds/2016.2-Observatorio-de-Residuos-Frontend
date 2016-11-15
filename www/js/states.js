@@ -142,6 +142,17 @@ angular.module('starter')
         }
       })
 
+  //State da tela do to contribuindo
+  .state('tabs.to-contribuindo.projects', {
+      url: '/projects',
+      views: {
+          'to-contribuindo-page': {
+              templateUrl: 'views/contribute/myProjects.html',
+              controller: 'projectsCtrl'
+          }
+      }
+  })
+
 
   //State da tela de editar marcacoes
   .state('editMarking', {
