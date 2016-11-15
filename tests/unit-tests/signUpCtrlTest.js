@@ -49,7 +49,7 @@ describe('signupCtrl', function() {
       spyOn($state, 'go');
       $httpBackend.flush();
       expect($scope.invalidEmail).toBeFalsy();
-      expect($state.go).toHaveBeenCalledWith('home');//------
+      expect($state.go).toHaveBeenCalledWith('tabs.home');//------
     });
 
     it('should set invalidEmail to true when getting an error response from\

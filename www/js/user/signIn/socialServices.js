@@ -113,7 +113,7 @@ var extract = function(paramUserData){
       user.nome_completo = user.first_name +" "+ user.last_name;
       currentUserService.setUserData(user)
       if(result.userExist){
-        $state.go('home')
+        $state.go('tabs.home')
       }else{
         $state.go('signup')
       }

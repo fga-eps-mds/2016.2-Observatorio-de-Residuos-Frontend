@@ -1,18 +1,27 @@
+<!-- Low tabs page -->
 <ion-tabs class="tabs-messages tabs-light tabs-icon-top">
-  <ion-tab class="ion-tab-font tabs-color-active-positive abas" title="Mapa do Observatório" icon-off="ion-earth" icon-on="ion-earth">
-    <ion-nav-view name="mapaObservatorio">
+  <ion-tab class="ion-tab-font tabs-color-active-positive abas" title="Tela Principal" ui-sref="tabs.home" icon-off="ion-home" icon-on="ion-home">
+    <ion-nav-view name="home-page">
     </ion-nav-view>
   </ion-tab>
-  <ion-tab class="ion-tab-font tabs-color-active-positive abas" title="Tô de olho" icon-off="ion-eye" icon-on="ion-eye" ui-sref="tabs.toDeOlho.myMarkings">
-    <ion-nav-view name="toDeOlho">
+  <ion-tab class="ion-tab-font tabs-color-active-positive abas" title="Marcações" ui-sref="tabs.markings.myMarkings" icon-off="ion-pin" icon-on="ion-pin" >
+    <ion-nav-view name="markings">
     </ion-nav-view>
   </ion-tab>
-  <ion-tab class="ion-tab-font tabs-color-active-positive abas" title="PEVs" icon-off="ion-location" icon-on="ion-location" ui-sref="tabs.PEV.newPEV">
-    <ion-nav-view name="PEV">
+  <ion-tab class="ion-tab-font tabs-color-active-positive abas" title="Criar Marcação" ui-sref="tabs.newMarkings.newMarking" icon-off="ion-location" icon-on="ion-location" >
+    <ion-nav-view name="newMarkings">
     </ion-nav-view>
   </ion-tab>
-  <ion-tab class="ion-tab-font tabs-color-active-positive abas" title="Tô contribuindo" ui-sref="tabs.toContribuindo" icon-off="ion-compose" icon-on="ion-compose">
-    <ion-nav-view name="toContribuindo">
+  <ion-tab class="ion-tab-font tabs-color-active-positive abas" title="Tô Contribuindo" ui-sref="tabs.to-contribuindo.articles" icon-off="ion-document-text" icon-on="ion-document-text">
+    <ion-nav-view name="to-contribuindo">
+    </ion-nav-view>
+  </ion-tab>
+  <ion-tab class= "ion-tab-font tabs-color-active-positive abas" title="Mapa" ui-sref="tabs.map" icon-off="ion-map" icon-on="ion-map" hidden="true">
+    <ion-nav-view name="map-page">
+    </ion-nav-view>
+  </ion-tab>
+  <ion-tab class= "ion-tab-font tabs-color-active-positive abas" title="Perfil" ui-sref="tabs.profile" icon-off="ion-user" icon-on="ion-user" hidden="true">
+    <ion-nav-view name="profile-page">
     </ion-nav-view>
   </ion-tab>
 </ion-tabs>

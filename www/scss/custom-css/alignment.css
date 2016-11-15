@@ -1,4 +1,4 @@
-/* Global Variables - Please copy this in every css file to reminder */
+/* Allign some structures in html */
 :root {
     --background-color: #ffffff;
     --secondary-button: #3c4f19;
@@ -56,4 +56,8 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+.text-format{
+    text-align: justify;
 }

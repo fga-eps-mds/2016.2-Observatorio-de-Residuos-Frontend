@@ -14,7 +14,7 @@ registerSocial: Recebe a rede social desejada pelo parametro carregado no botão
       factoryLogin.save(user, function(result){
         currentUserService.setUserData(result);
         //Variavel responsavel por exibir a mensagem de email inválido ou senha na tela;
-        $state.go('home')
+        $state.go('tabs.home')
         $scope.loginError = false;
       }, function(error){
         //Caso receba Unauthorized do servidor, ativa o erro para ser exibido na view.

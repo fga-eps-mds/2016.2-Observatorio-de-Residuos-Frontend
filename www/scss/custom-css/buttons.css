@@ -1,4 +1,4 @@
-/* Global Variables - Please copy this in every css file to reminder */
+/* Custom and create some buttons */
 :root {
     --background-color: #ffffff;
     --secondary-button: #3c4f19;
@@ -26,6 +26,81 @@
     --brown-one: #663311;
     --brown-two: #8a5711;
     --brown-three: #bc9c63;
+}
+
+.item-input-wrapper {
+    margin-top: 16px;
+    margin-bottom: 22px;
+    background: ghostwhite;
+}
+
+.searchclass {
+    position: relative;
+    background-color: transparent;
+}
+
+.list .list-inline{
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+}
+
+.list .list-inline .item {
+    flex: 1;
+    left: 2%;
+    font-size: inherit;
+}
+
+.home-grid .button-icon {
+    float: left;
+
+    margin-left: 2px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    margin-right: 2px;
+
+    background-color: transparent;
+    /*line-height: 25px;*/
+    height: 115px;
+    width: 115px;
+
+    border: 1px solid black;
+}
+img.displayed {
+    position: absolute;
+    max-width: 80%;
+    top: 10%;
+    left: 10%;
+    border-radius: 3px;
+}
+
+img.displayed:empty {
+    top: 25%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+@media screen and (orientation: portrait) {
+    img.displayed { max-width: 60%; }
+}
+
+@media screen and (orientation: landscape) {
+    img.displayed { max-height: 50%; }
+}
+
+
+.home-grid {
+    position: absolute;
+    bottom: 5%;
+    align-content: center;
+}
+
+.larger {
+    font-size: 30px;
 }
 
 .button.button-positive {
