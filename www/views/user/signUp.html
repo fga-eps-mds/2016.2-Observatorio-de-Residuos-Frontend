@@ -26,6 +26,10 @@
           </h3>
           <h3 ng-show="invalidEmail && !userForm.email.$invalid" class="nav-bar-block">
               Email inválido!
+          </h3>
+          <h3 ng-show="emailAlreadyUsed && !userForm.email.$invalid" class="nav-bar-block">                          
+            Este email já está em uso!
+          </h3>
           <input name="email" type="email" ng-model="user.email" placeholder="Email" required></textarea>
         </label>
 
