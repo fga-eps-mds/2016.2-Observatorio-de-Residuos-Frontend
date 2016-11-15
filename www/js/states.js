@@ -132,11 +132,12 @@ angular.module('starter')
       })
 
   //State da tela do to contribuindo
-      .state('tabs.to-contribuindo.welcome', {
-        url: '/welcome',
+      .state('tabs.to-contribuindo.articles', {
+        url: '/articles',
         views: {
           'to-contribuindo-page': {
-            templateUrl: 'views/contribute/toContribuindoWelcome.html'
+            templateUrl: 'views/contribute/myArticles.html',
+            controller: 'articlesCtrl'
           }
         }
       })
