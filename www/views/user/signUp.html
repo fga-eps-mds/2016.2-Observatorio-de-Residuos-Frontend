@@ -40,7 +40,7 @@
 
         <ion-item class="item-input">
           <label>
-            <input type="password" name="password" ng-model="user.password" placeholder="Senha" required />
+            <input type="password" name="password" ng-model="secret.password" placeholder="Senha" required />
             <h3 class="validation-msg" ng-show="userForm.password.$invalid && userForm.password.$touched" class="nav-bar-block">
               Entre com uma senha
             </h3>
@@ -49,7 +49,7 @@
 
         <ion-item class="item-input">
           <label>
-            <input ng-click="count = 0" ng-init="count = 0" ng-keydown="count = count + 1" type="password" name="password_confirmation" ng-model="user.password_confirmation" placeholder="Confirmação da Senha" required="" confirm-pwd="user.password" />
+            <input ng-click="count = 0" ng-init="count = 0" ng-keydown="count = count + 1" type="password" name="password_confirmation" ng-model="secret.password_confirmation" placeholder="Confirmação da Senha" required="" confirm-pwd="secret.password" />
             <h3 class="validation-msg" ng-show="(count < 1) && userForm.password_confirmation.$touched" class="nav-bar-block">
               Confirmação de senha requerida
             </h3>
