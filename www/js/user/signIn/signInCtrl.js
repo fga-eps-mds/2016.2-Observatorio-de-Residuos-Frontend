@@ -14,7 +14,6 @@ registerSocial: Receive social media desired by the parameter on button at signi
                                     $ionicPopup) {
   $scope.loginAttempt = function(user){
       user.encripted_password = String(CryptoJS.SHA256(user.password)); //criptografia da senha
-      console.log(user);
       factoryLogin.save(user, function(result){
         currentUserService.setUserData(result);
         //Variavel responsavel por exibir a mensagem de email inválido ou senha na tela;
