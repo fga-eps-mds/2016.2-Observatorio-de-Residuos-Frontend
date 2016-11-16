@@ -10,10 +10,12 @@
         <i class="icon ion-flag"></i>
         Ver Tutorial
       </ion-button>
-      <ion-button class="button button-full button-balanced popover-button" ui-sref="signin" ng-click="popover.hide()">
-        <i class="icon ion-log-out"></i>
-        Sair
-      </ion-button>
+      <div ng-controller="signOutCtrl">
+        <ion-button class="button button-full button-balanced popover-button" ng-click="popover.hide(); signOut()">
+          <i class="icon ion-log-out"></i>
+          Sair
+        </ion-button>
+      </div>
     </ion-list>
   </ion-content>
 </ion-popover-view>
