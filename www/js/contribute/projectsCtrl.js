@@ -1,5 +1,6 @@
 angular.module('app.controllers')
 
+    //Controller responsible for projects in to contribuindo
     .controller('projectsCtrl', function($scope, $http, URL, $rootScope) {
         $rootScope.projects = [];
         $http.get(URL + '/projects')

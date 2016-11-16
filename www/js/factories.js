@@ -4,14 +4,13 @@ angular.module('starter')
 .factory('factoryRegister', function($resource,URL) {
   return $resource(URL+"/users/create");
 })
-//Factory for user login
 
-//Factory para o login do usuário
+//Factory for factory deactivation
 .factory('factoryDeactivation', function($resource, URL){
   return $resource(URL+"/users/deactivate");
 })
 
-//Factory para o login do usuário
+//Factory for user login
 .factory('factoryLogin', function($resource, URL){
   return $resource(URL+"/sessions/login");
 })
