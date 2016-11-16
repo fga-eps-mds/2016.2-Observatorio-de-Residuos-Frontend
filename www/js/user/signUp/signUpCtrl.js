@@ -21,19 +21,16 @@ angular.module('app.controllers')
 
 
   $scope.user = currentUserService.getUserData();
-  console.log($scope.user);
   $scope.registerEmail= function(user){
       user.password_digest = String(CryptoJS.SHA256(user.password));//encryption
-      console.log(user);
       factoryRegister.save(user, function(result){
-        console.log(result);
         $scope.invalidEmail = false;
             var alertPopup = $ionicPopup.alert({
               title: 'Bem-vindo ao Observatório de Resíduos',
               //subTitle: '',
               template: 'O Observatório de Resíduos é um aplicativo que permite que você compartilhe incidentes, locais para depositar seus resíduos e ainda permite que você encontre ou divulgue seu projeto social! Sinta-se em casa!'
             });
-        currentUserService.setUserData(user);
+        currentUserService.setUserData(result);
         $state.go('tabs.home')
       }, function(error){
         $scope.invalidEmail = true;

@@ -110,10 +110,11 @@ var extract = function(paramUserData){
     factoryEmail.save({"email": user.email}, function(result) {
       user.nome_completo = user.first_name +" "+ user.last_name;
       currentUserService.setUserData(user)
-      if(result.userExist){
-        $state.go('tabs.home')
-      }else{
-        $state.go('signup')
+      if(result.newUser){
+        $state.go('signup');
+      } else {
+        currentUserService.setUserData(result);
+        $state.go('tabs.home');
       }
     }, function(error){
       console.log(error)
