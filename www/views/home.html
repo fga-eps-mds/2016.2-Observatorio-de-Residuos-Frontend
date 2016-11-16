@@ -30,9 +30,11 @@
                 <i class="icon ion-person"></i><br>Ver meu perfil
             </button>
 
-            <button class="icon button-icon" ui-sref="signin">
-                <i class="icon ion-log-out"></i><br>Sair da aplicação
-            </button>
+            <div ng-controller="signOutCtrl">
+              <button class="icon button-icon" ng-click="signOut()">
+                  <i class="icon ion-log-out"></i><br>Sair da aplicação
+              </button>
+            </div>
           </div>
         </div>
     </ion-content>
