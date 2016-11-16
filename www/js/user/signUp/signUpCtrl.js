@@ -24,9 +24,10 @@ angular.module('app.controllers')
   } else {
     $scope.user = {};
   }
+  $scope.secret = {};
   
   $scope.registerEmail= function(user){
-      user.password_digest = String(CryptoJS.SHA256(user.password));//encryption
+      user.password_digest = String(CryptoJS.SHA256($scope.secret.password));//encryption
       factoryRegister.save(user, function(result){
         $scope.invalidEmail = false;
             var alertPopup = $ionicPopup.alert({
