@@ -23,11 +23,11 @@ describe('SocialServices', function(){
   describe('socialLoginService', function(){
       var paramUserData = {email:'amoedo@gmail.com', first_name:"Amoedo",last_name:'Mito',gender:'male'}
       it('verifica email e usuario existe', function(){
-        var result = {userExist: true}; 
+        var result = {id_usuario: 1, usuario: "amoedo@gmail.com", nome_completo: "Lucas Amoêdo"}; 
         $httpBackend.expectPOST(URL+"/users/verify_email", {"email": paramUserData.email}).respond(200, result);
         socialLoginService.login(paramUserData);
         $httpBackend.flush();
-        expect(currentUserService.getUserData()).toBe(paramUserData);
+        expect(currentUserService.getUserData().id_usuario).toEqual(result.id_usuario);
       });
 
       it('verifica email e usuario não existe', function(){
@@ -35,7 +35,7 @@ describe('SocialServices', function(){
         $httpBackend.expectPOST(URL+"/users/verify_email", {"email": paramUserData.email}).respond(200, result);
         socialLoginService.login(paramUserData);
         $httpBackend.flush();
-        expect(currentUserService.getUserData()).toBe(paramUserData);
+        expect(currentUserService.getUserData().id_usuario).toBe(result.id_usuario);
       });
 
       it('não verifica email', function(){
