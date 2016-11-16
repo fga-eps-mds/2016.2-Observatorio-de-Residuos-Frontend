@@ -1,5 +1,6 @@
 angular.module('app.controllers')
 
+    //Controller responsible for articles in to contribuindo
     .controller('articlesCtrl', function($scope, $http, URL, $rootScope) {
         $rootScope.articles = [];
         $http.get(URL + '/articles')

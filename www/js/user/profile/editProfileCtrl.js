@@ -4,6 +4,7 @@ angular.module('app.controllers')
                                         currentUserService, factoryProfile, 
                                         $state, $ionicPopup, $timeout,
                                         factoryDeactivation, $ionicLoading) {
+  //Function that update scope variables
   
   $rootScope.profiles = [];
 
@@ -17,6 +18,7 @@ angular.module('app.controllers')
     console.log("Error");
   })
 
+  //Function that send changes to backend
   $scope.user = currentUserService.getUserData();
 
   $scope.editUser = function(user) {
