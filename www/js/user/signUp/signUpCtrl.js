@@ -13,14 +13,18 @@ angular.module('app.controllers')
       $rootScope.profiles.push(value);
 
     })
-    console.log($rootScope.profiles);
   })
   .error(function(error){
     console.log("Error");
   })
 
-
-  $scope.user = currentUserService.getUserData();
+  currentUser = currentUserService.getUserData();
+  if(currentUser) {
+    $scope.user = currentUser;
+  } else {
+    $scope.user = {};
+  }
+  
   $scope.registerEmail= function(user){
       user.password_digest = String(CryptoJS.SHA256(user.password));//encryption
       factoryRegister.save(user, function(result){
