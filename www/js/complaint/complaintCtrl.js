@@ -9,7 +9,7 @@ angular.module('starter')
 
    	.then(function(res) {
 			if(res) {
-        $scope.author = currentUserService.getUserData().email;
+        complaint.author = currentUserService.getUserData().email;
 			  factoryComplaint.save(complaint, function(result){
 					var alertPopup = $ionicPopup.alert({
   					title: 'Marcação denunciada com sucesso',
