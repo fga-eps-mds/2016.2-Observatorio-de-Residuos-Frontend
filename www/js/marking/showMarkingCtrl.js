@@ -48,6 +48,11 @@ angular.module('starter')
 		}
 	};
 
+	$scope.complaintMarking = function(marking){
+		$scope.modal.hide();
+		$state.go('complaint');
+	};
+
 	$ionicModal.fromTemplateUrl('views/marking/showMarking.html', {
 		scope: $scope,
 	}).then(function(modal){
