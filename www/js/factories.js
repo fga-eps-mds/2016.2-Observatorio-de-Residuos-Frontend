@@ -42,4 +42,9 @@ angular.module('starter')
 //Factory for incident edition
 .factory('factoryEditMarking', function($resource, URL){
   return $resource(URL+"/markings/edit");
+})
+
+//Factory for complaints
+.factory('factoryComplaint', function($resource, URL){
+  return $resource(URL+"/complaints/create");
 });
