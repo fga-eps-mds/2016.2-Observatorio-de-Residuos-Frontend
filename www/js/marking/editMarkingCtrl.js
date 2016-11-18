@@ -1,6 +1,6 @@
 angular.module("app.controllers")
 
-.controller("editMarkingCtrl", function($scope, $rootScope, $http, URL, $state, currentMarkingService, factoryEditMarking){
+.controller("editMarkingCtrl", function($scope, $rootScope, $http, URL, $state/*, $ionicModal*/, currentMarkingService, factoryEditMarking){
   //Function that update scope variables
   $scope.$on("$ionicView.enter", function(event, data){
     $scope.marking = currentMarkingService.getMarking();
@@ -28,5 +28,11 @@ angular.module("app.controllers")
       console.log(error);
     })
   };
+/* almost done, only need to work in html
+  $ionicModal.fromTemplateUrl('views/marking/editMarkings.html', {
+    scope: $scope,
+  }).then(function(modal){
+    $scope.modal = modal;
+  });*/
 
 })

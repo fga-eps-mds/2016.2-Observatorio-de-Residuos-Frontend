@@ -41,8 +41,10 @@ angular.module('starter')
 		console.log(marking);
 		// trocar o "paper" quando mudar o banco
 		if(angular.isDefined(marking.paper)){
+			//$scope.modal.show();
 			$state.go('editPEV');
 		} else {
+			//$scope.modal.show();
 			currentMarkingService.setMarking(marking);
 			$state.go('editMarking');
 		}
