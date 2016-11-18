@@ -178,6 +178,13 @@ angular.module('starter')
     controller: 'editProfileCtrl'
   })
 
+  //Complaint state
+  .state('complaint',{
+    url: '/complaint',
+    controller: 'complaintCtrl',
+    templateUrl: 'views/complaint/complaint.html'
+  })
+
   //Tutorial state
     .state('tutorial', {
       url: '/tutorial',
