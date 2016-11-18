@@ -4,6 +4,7 @@ angular.module('starter')
 	var currentMarking = "";
 	//Function that places scope like informations of clicked PEV
 	$scope.showPev = function(event, pev){
+		$scope.currentUserEmail = currentUserService.getUserData().email;
 		console.log(pev)
 		$scope.marking = pev;
 		$scope.types = [];
@@ -28,6 +29,7 @@ angular.module('starter')
 		.error(function(){
 			$scope.types.push("Não definido");
 		})
+		$scope.currentUserEmail = currentUserService.getUserData().email;
 		$scope.marking = incident;
 		console.log()
 		$scope.modal.show();
