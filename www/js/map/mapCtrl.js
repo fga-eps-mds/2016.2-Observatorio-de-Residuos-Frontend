@@ -24,6 +24,7 @@ angular.module('app.controllers')
           })
         })
         .error(function(data){
+          console.log(data)
         });
 
         //Initialize all Markings savedin database
@@ -44,11 +45,5 @@ angular.module('app.controllers')
         .error(function(data){
           console.log(data)
         });
-
-        //Icon for Marking, used in map.html;
-        $scope.customIcon = {
-          "scaledSize": [50, 50],
-          "url": "https://lh4.ggpht.com/Tr5sntMif9qOPrKV_UVl7K8A_V3xQDgA7Sw_qweLUFlg76d_vGFA7q1xIKZ6IcmeGqg=w300"
-        };
     })
 })
