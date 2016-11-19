@@ -18,7 +18,7 @@ angular.module("app.controllers")
   $scope.confirmEditMarking = function(marking, modalEditMarking){
     factoryEditMarking.save(marking, function(result) {
       modalEditMarking.hide();
-    }, function(erro){
+    }, function(error){
       console.log(error);
     })
   };
