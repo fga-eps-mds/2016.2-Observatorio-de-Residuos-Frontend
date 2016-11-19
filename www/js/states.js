@@ -157,20 +157,6 @@ angular.module('starter')
   })
 
 
-  //Edit Markings state
-  .state('editMarking', {
-    url: '/editMarkings',
-      controller: 'editMarkingCtrl',
-      templateUrl: 'views/marking/editMarkings.html'
-  })
-
-  //Edit PEVs state
-  .state('editPEV', {
-    url: '/editPEV',
-      controller: 'editPevCtrl',
-      templateUrl: 'views/pev/editPEV.html'
-  })
-
   //Edit profile user state
   .state('editProfile',{
     url: '/editProfile',

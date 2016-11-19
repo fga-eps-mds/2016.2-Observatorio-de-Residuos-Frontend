@@ -49,6 +49,7 @@
 
         <ion-item class="item-input">
           <label>
+              <!-- count is a variable to validate if password field is empty or have some alphanumeric character -->
             <input ng-click="count = 0" ng-init="count = 0" ng-keydown="count = count + 1" type="password" name="password_confirmation" ng-model="secret.password_confirmation" placeholder="Confirmação da Senha" required="" confirm-pwd="secret.password" />
             <h3 class="validation-msg" ng-show="(count < 1) && userForm.password_confirmation.$touched" class="nav-bar-block">
               Confirmação de senha requerida

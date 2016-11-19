@@ -7,7 +7,6 @@ angular.module("starter")
 		return this.marking;
 	}
 	var setMarking = function(paramMarking){
-		console.log(paramMarking);
 		this.marking = paramMarking;
 	}
 	return{

@@ -5,7 +5,6 @@ angular.module('starter')
 	//Function that places scope like informations of clicked PEV
 	$scope.showPev = function(event, pev){
 		$scope.currentUserEmail = currentUserService.getUserData().email;
-		console.log(pev)
 		$scope.marking = pev;
 		$scope.types = [];
 		if (pev.paper == true)
@@ -21,8 +20,7 @@ angular.module('starter')
 	//Function that places scope like informations of clicked marking
 	$scope.showIncident = function(event, incident){
 		$scope.types = [];
-		console.log(incident);
-		$http.get(URL+'/marking_types/'+incident.id_marking_type)
+		$http.get(URL+'/marking_types/'+incident.id_tipo_incidente)
 		.success(function(marking_type){
 			$scope.types.push(marking_type.tipo_incidente);
 		})
@@ -31,20 +29,19 @@ angular.module('starter')
 		})
 		$scope.currentUserEmail = currentUserService.getUserData().email;
 		$scope.marking = incident;
-		console.log()
 		$scope.modal.show();
 	};
 
 	//Transition function of pages. Can redirect to edition of PEV or edition of markings
 	$scope.editMarking = function(marking){
 		$scope.modal.hide();
-		console.log(marking);
 		// trocar o "paper" quando mudar o banco
 		if(angular.isDefined(marking.paper)){
-			$state.go('editPEV');
+			$scope.pev = marking;
+			$scope.modalEditPev.show();
 		} else {
 			currentMarkingService.setMarking(marking);
-			$state.go('editMarking');
+			$scope.modalEditMarking.show();
 		}
 	};
 
@@ -54,8 +51,20 @@ angular.module('starter')
 	};
 
 	$ionicModal.fromTemplateUrl('views/marking/showMarking.html', {
-		scope: $scope,
+		scope: $scope
 	}).then(function(modal){
 		$scope.modal = modal;
 	});
+
+	$ionicModal.fromTemplateUrl('views/marking/editMarkings.html', {
+		scope: $scope
+	}).then(function(modal){
+		$scope.modalEditMarking = modal;
+	});
+
+	$ionicModal.fromTemplateUrl('views/pev/editPEV.html', {
+		scope: $scope
+	}).then(function(modal){
+		$scope.modalEditPev = modal;
+	})
 });

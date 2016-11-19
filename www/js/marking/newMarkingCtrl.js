@@ -13,7 +13,6 @@ angular.module('app.controllers')
     angular.forEach(content, function(value, key) {
       $rootScope.marking_types.push(value);
     })
-    console.log($rootScope.marking_types);
   })
   .error(function(error){
     console.log("Error");
@@ -22,21 +21,20 @@ angular.module('app.controllers')
   //Function to register new marking
   $scope.registerMarking = function (marking) {
     NgMap.getGeoLocation().then(function(map) {
-      console.log(currentUserService.getUserData());
       marking.latitude = map.lat();
       marking.longitude = map.lng();
       marking.author_email = currentUserService.getUserData().email;
       marking.full_name = currentUserService.getUserData().nome_completo;
       factoryMarking.save(marking, function (result){
-        console.log(marking);
         $rootScope.markings.push({
           author_email: marking.author_email,
-          name: marking.name,
-          description: marking.description,
-          latitude: marking.latitude,
-          id_marking_type: marking.id_marking_type,
-          longitude: marking.longitude,
-          author_name: marking.full_name
+          author_name: marking.full_name,
+          id_incidente: result.id_incidente,
+          titulo_incidente: result.titulo_incidente,
+          descricao_incidente: result.descricao_incidente,
+          latitude: result.latitude,
+          longitude: result.longitude,
+          id_tipo_incidente: result.id_tipo_incidente
         });
       var alertPopup = $ionicPopup.alert({
         title: 'Incidente cadastrado com sucesso',
