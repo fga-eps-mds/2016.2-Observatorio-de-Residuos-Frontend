@@ -1,0 +1,24 @@
+<ion-view title="Denunciar PEV" id="complaint-pev">
+  <ion-content padding="true" class="has-header" scroll="true">
+    <div>
+      <form ng-submit="confirmComplaint(complaintPev)" name="Complaintform">
+        <button ui-sref="tabs.map">volta</button>
+
+        <div class="spacer" style="height: 15px;"></div>
+        <ion-list id="list">
+          <!-- Fields to edit informations of marking -->
+          <label class="item item-input">
+            <p ng-show="Complaintform.title.$invalid && !Complaintform.title.$pristine" class="nav-bar-block">
+              O título da denúncia é obrigatório!
+            </p>
+            <input type="text" ng-model="complaintPev.title" placeholder="Título da denúncia" name="title" required>
+          </label>
+          <label class="item item-input">
+            <input type="text" ng-model="complaintPev.description" placeholder="Descrição da denúncia" name="description" required>
+          </label>
+        </ion-list>
+        <button type="submit" id="page-button9" class="button button-full button-positive" ng-disabled="Complaintform.$invalid">Denunciar</button>
+      </form>
+    </div>
+  </ion-content>
+</ion-view>
