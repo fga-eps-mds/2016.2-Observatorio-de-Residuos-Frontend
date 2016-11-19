@@ -171,6 +171,13 @@ angular.module('starter')
     templateUrl: 'views/complaint/complaintMarking.html'
   })
 
+  //Complaint Pev state
+  .state('complaintPev',{
+    url: '/complaintPev',
+    controller: 'complaintPevCtrl',
+    templateUrl: 'views/complaint/complaintPev.html'
+  })
+
   //Tutorial state
     .state('tutorial', {
       url: '/tutorial',
