@@ -12,8 +12,16 @@ angular.module('starter')
   var getUserData = function(){
     return userData
   }
+  var setUserMarking = function(paramUserMarking ){
+    userMarking  = paramUserMarking 
+  }
+  var getUserMarking = function(){
+    return userMarking
+  }
   return {
     setUserData: setUserData,
-    getUserData: getUserData
+    getUserData: getUserData,
+    setUserMarking: setUserMarking,
+    getUserMarking: getUserMarking
   }
 })

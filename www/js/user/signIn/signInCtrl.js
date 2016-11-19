@@ -7,15 +7,21 @@ registerSocial: Recebe a rede social desejada pelo parametro carregado no botão
                 Recebendo o usuário, o envia para a service de login social.
 */
 
-.controller('signinCtrl', function ($scope, $stateParams, $state, socialLoginService, firebaseService, currentUserService, factoryEmail, factoryLogin, $ionicLoading, $timeout) {
+.controller('signinCtrl', function ($http, $scope, $stateParams, $state, socialLoginService, firebaseService, currentUserService, factoryEmail, factoryLogin, $ionicLoading, $timeout) {
   $scope.loginAttempt = function(user){
       user.encripted_password = String(CryptoJS.SHA256(user.password)); //criptografia da senha
       console.log(user);
       factoryLogin.save(user, function(result){
-        currentUserService.setUserData(result);
-        //Variavel responsavel por exibir a mensagem de email inválido ou senha na tela;
-        $state.go('tabs.map')
-        $scope.loginError = false;
+        console.log(result);
+        $http.get("http://localhost:3000/user/" + result.id_usuario + "/markings")
+        .success(function(seenMarkings){
+          currentUserService.setUserData(result);
+          currentUserService.setUserMarking(seenMarkings);
+          console.log(seenMarkings);
+          // Variavel responsavel por exibir a mensagem de email inválido ou senha na tela;
+          $state.go('tabs.map')
+          $scope.loginError = false;
+        });
       }, function(error){
         //Caso receba Unauthorized do servidor, ativa o erro para ser exibido na view.
         console.log("ERRO!")
@@ -33,4 +39,6 @@ registerSocial: Recebe a rede social desejada pelo parametro carregado no botão
             $ionicLoading.hide();
           },3000);
   }
+
+
 })
