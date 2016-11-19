@@ -21,8 +21,7 @@ angular.module('starter')
 	//Function that places scope like informations of clicked marking
 	$scope.showIncident = function(event, incident){
 		$scope.types = [];
-		console.log(incident);
-		$http.get(URL+'/marking_types/'+incident.id_marking_type)
+		$http.get(URL+'/marking_types/'+incident.id_tipo_incidente)
 		.success(function(marking_type){
 			$scope.types.push(marking_type.tipo_incidente);
 		})
@@ -45,12 +44,12 @@ angular.module('starter')
 			$scope.modalEditPev.show();
 		} else {
 			currentMarkingService.setMarking(marking);
-			$state.go('editMarking');
+			$scope.modalEditMarking.show();
 		}
 	};
 
 	$ionicModal.fromTemplateUrl('views/marking/showMarking.html', {
-		scope: $scope,
+		scope: $scope
 	}).then(function(modal){
 		$scope.modal = modal;
 	});

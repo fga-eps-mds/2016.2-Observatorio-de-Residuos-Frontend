@@ -33,18 +33,19 @@ angular.module('app.controllers')
         .success(function(content){
           angular.forEach(content, function(value, key) {
             $rootScope.markings.push({
-                                      name: value.titulo_incidente,
-                                      description: value.descricao_incidente,
-                                      latitude: value.latitude,
-                                      longitude: value.longitude,
-                                      id_marking_type: value.id_tipo_incidente,
-                                      author_name: value.author_name,
-                                      author_email: value.author_email
-                                    });
+              id_incidente: value.id_incidente,
+              latitude: value.latitude,
+              longitude: value.longitude,
+              id_tipo_incidente: value.id_tipo_incidente,
+              titulo_incidente: value.titulo_incidente,
+              descricao_incidente: value.descricao_incidente,
+              author_name: value.author_name,
+              author_email: value.author_email
+            });
           })
         })
         .error(function(data){
           console.log(data)
         });
-    })
+      })
 })

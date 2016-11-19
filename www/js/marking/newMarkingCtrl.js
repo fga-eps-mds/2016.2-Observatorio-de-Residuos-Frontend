@@ -31,12 +31,13 @@ angular.module('app.controllers')
         console.log(marking);
         $rootScope.markings.push({
           author_email: marking.author_email,
-          name: marking.name,
-          description: marking.description,
-          latitude: marking.latitude,
-          id_marking_type: marking.id_marking_type,
-          longitude: marking.longitude,
-          author_name: marking.full_name
+          author_name: marking.full_name,
+          id_incidente: result.id_incidente,
+          titulo_incidente: result.titulo_incidente,
+          descricao_incidente: result.descricao_incidente,
+          latitude: result.latitude,
+          longitude: result.longitude,
+          id_tipo_incidente: result.id_tipo_incidente
         });
       var alertPopup = $ionicPopup.alert({
         title: 'Incidente cadastrado com sucesso',

@@ -2,10 +2,6 @@ angular.module("app.controllers")
 
 .controller("editMarkingCtrl", function($scope, $rootScope, $http, URL, $state/*, $ionicModal*/, currentMarkingService, factoryEditMarking){
   //Function that update scope variables
-  $scope.$on("$ionicView.enter", function(event, data){
-    $scope.marking = currentMarkingService.getMarking();
-    console.log($scope.marking);
-  });
 
   $rootScope.marking_types = [];
   $http.get(URL + '/marking_types')
@@ -20,19 +16,12 @@ angular.module("app.controllers")
   })
 
   //Function that send changes to backend
-  $scope.confirmEditMarking = function(marking){
-    console.log(marking);
-    factoryEditMarking.save(marking, function(result){
-      $state.go('tabs.map');
+  $scope.confirmEditMarking = function(marking, modalEditMarking){
+    factoryEditMarking.save(marking, function(result) {
+      modalEditMarking.hide();
     }, function(erro){
       console.log(error);
     })
   };
-/* almost done, only need to work in html
-  $ionicModal.fromTemplateUrl('views/marking/editMarkings.html', {
-    scope: $scope,
-  }).then(function(modal){
-    $scope.modal = modal;
-  });*/
 
 })
