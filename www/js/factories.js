@@ -44,7 +44,12 @@ angular.module('starter')
   return $resource(URL+"/markings/edit");
 })
 
-//Factory for complaints
-.factory('factoryComplaint', function($resource, URL){
+//Factory for marking complaints
+.factory('factoryComplaintMarking', function($resource, URL){
   return $resource(URL+"/complaints/create");
+})
+
+//Factory for PEVcomplaints
+.factory('factoryComplaintPEV', function($resource, URL){
+  return $resource(URL+"/pev_complaints/create");
 });
