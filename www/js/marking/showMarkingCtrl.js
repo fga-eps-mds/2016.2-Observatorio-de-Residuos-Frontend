@@ -5,7 +5,6 @@ angular.module('starter')
 	//Function that places scope like informations of clicked PEV
 	$scope.showPev = function(event, pev){
 		$scope.currentUserEmail = currentUserService.getUserData().email;
-		console.log(pev)
 		$scope.marking = pev;
 		$scope.types = [];
 		if (pev.paper == true)
@@ -30,14 +29,12 @@ angular.module('starter')
 		})
 		$scope.currentUserEmail = currentUserService.getUserData().email;
 		$scope.marking = incident;
-		console.log()
 		$scope.modal.show();
 	};
 
 	//Transition function of pages. Can redirect to edition of PEV or edition of markings
 	$scope.editMarking = function(marking){
 		$scope.modal.hide();
-		console.log(marking);
 		// trocar o "paper" quando mudar o banco
 		if(angular.isDefined(marking.paper)){
 			$scope.pev = marking;

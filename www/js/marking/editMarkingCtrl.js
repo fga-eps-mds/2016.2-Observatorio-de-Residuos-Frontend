@@ -9,7 +9,6 @@ angular.module("app.controllers")
     angular.forEach(content, function(value, key) {
       $rootScope.marking_types.push(value);
     })
-    console.log($rootScope.marking_types);
   })
   .error(function(error){
     console.log("Error");

@@ -13,7 +13,6 @@ angular.module('app.controllers')
     angular.forEach(content, function(value, key) {
       $rootScope.marking_types.push(value);
     })
-    console.log($rootScope.marking_types);
   })
   .error(function(error){
     console.log("Error");
@@ -22,13 +21,11 @@ angular.module('app.controllers')
   //Function to register new marking
   $scope.registerMarking = function (marking) {
     NgMap.getGeoLocation().then(function(map) {
-      console.log(currentUserService.getUserData());
       marking.latitude = map.lat();
       marking.longitude = map.lng();
       marking.author_email = currentUserService.getUserData().email;
       marking.full_name = currentUserService.getUserData().nome_completo;
       factoryMarking.save(marking, function (result){
-        console.log(marking);
         $rootScope.markings.push({
           author_email: marking.author_email,
           author_name: marking.full_name,
