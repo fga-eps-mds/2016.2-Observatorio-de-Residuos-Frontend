@@ -164,11 +164,11 @@ angular.module('starter')
     controller: 'editProfileCtrl'
   })
 
-  //Complaint state
-  .state('complaint',{
-    url: '/complaint',
-    controller: 'complaintCtrl',
-    templateUrl: 'views/complaint/complaint.html'
+  //Complaint Marking state
+  .state('complaintMarking',{
+    url: '/complaintMarking',
+    controller: 'complaintMarkingCtrl',
+    templateUrl: 'views/complaint/complaintMarking.html'
   })
 
   //Tutorial state

@@ -48,7 +48,7 @@ angular.module('starter')
 	$scope.complaintMarking = function(marking){
 		currentMarkingService.setMarking(marking);
 		$scope.modal.hide();
-		$state.go('complaint');
+		$state.go('complaintMarking');
 	};
 
 	$ionicModal.fromTemplateUrl('views/marking/showMarking.html', {

@@ -1,6 +1,6 @@
 angular.module('starter')
 
-.controller('complaintCtrl', function($scope, $rootScope, $http, currentMarkingService, currentUserService, factoryComplaint, $ionicPopup, $state){
+.controller('complaintMarkingCtrl', function($scope, $rootScope, $http, currentMarkingService, currentUserService, factoryComplaint, $ionicPopup, $state){
   $scope.confirmComplaint = function(complaint) {
 			$ionicPopup.confirm({
 			title: 'Adicionar denúncia',
