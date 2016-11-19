@@ -37,12 +37,15 @@ angular.module('starter')
 	};
 	
 	$scope.evaluate = function(marking, evaluation) { 
+		// trocar o "paper" quando mudar o banco
 		if (angular.isDefined(marking.paper)){		
 		    var index = $rootScope.pevs.indexOf(marking); 
 		    if (evaluation){
 		    	$rootScope.pevs[index].likes += 1;	
+		    	$scope.buttonClicked = false;
 		    } else {
 		    	$rootScope.pevs[index].dislikes += 1;	
+		    	$scope.buttonClicked = false;
 		    }
 		    console.log($rootScope.pevs[index])
 			factoryEvaluatePev.save($rootScope.pevs[index], function(result){
@@ -54,8 +57,10 @@ angular.module('starter')
 		    var index = $rootScope.markings.indexOf(marking); 
 		    if (evaluation){
 		    	$rootScope.markings[index].likes += 1;	
+		    	$scope.buttonClicked = false;
 		    } else {
-		    	$rootScope.markings[index].dislikes += 1;	
+		    	$rootScope.markings[index].dislikes += 1;
+		    	$scope.buttonClicked = false;	
 		    }
 		    console.log($rootScope.markings[index])
 			factoryEvaluateIncidents.save($rootScope.markings[index], function(result){

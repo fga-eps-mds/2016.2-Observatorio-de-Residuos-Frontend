@@ -10,8 +10,8 @@
 	    </div>
 
 	    <div class="button-bar">
-            <button class="button icon-center ion-eye-disabled button-clear button-assertive" style="font-size: 32px" ng-click="evaluate(marking, false)"> - {{marking.dislikes}}</button>
-            <button class="button icon-center ion-eye button-clear button-balanced" style="font-size: 32px" ng-click="evaluate(marking, true)"> + {{marking.likes}}</button>
+            <button class="button icon-center ion-eye-disabled button-clear button-assertive" style="font-size: 32px" ng-click="evaluate(marking, false)" ng-disabled="buttonClicked"> - {{marking.dislikes}}</button>
+            <button class="button icon-center ion-eye button-clear button-balanced" style="font-size: 32px" ng-click="evaluate(marking, true)" ng-disabled="buttonClicked"> + {{marking.likes}}</button>
         </div>
 
         <div class="card">
