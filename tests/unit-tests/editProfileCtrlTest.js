@@ -68,4 +68,31 @@ fdescribe('EditProfileCtrl', function(){
 
   });
 
+  describe('in failed account deactivation', function() {
+
+    beforeEach(function() {
+      $httpBackend.expectGET(URL + '/profiles').respond(200);
+      $scope.deactivateAccount(user);
+      $scope.validateDeactivation();
+      spyOn($ionicPopup, 'alert');
+    });
+
+    it('should show a popup alert containing the error code', function() {
+      $httpBackend.expectPOST(URL + '/users/deactivate').respond(400);
+      $httpBackend.flush();
+      expect($ionicPopup.alert).toHaveBeenCalledWith({
+        title: 'Erro', template: 'Código do erro: 400.'
+      });
+    });
+
+    it('should show a popup alert contaning wrong password message  if password\
+     was wrong', function() {
+      $httpBackend.expectPOST(URL + '/users/deactivate').respond(401);
+      $httpBackend.flush();
+      expect($ionicPopup.alert).toHaveBeenCalledWith({
+        title: 'Erro', template: 'Senha incorreta.'
+      });
+    });
+  });
+
 });
