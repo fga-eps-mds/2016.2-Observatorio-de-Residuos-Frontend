@@ -1,6 +1,6 @@
 angular.module('starter')
 //Modal Controller thar show informations of clicked marking
-.controller('showMarkingCtrl',function($scope,$http,URL, $rootScope, currentMarkingService, $ionicModal, currentUserService, $state){
+.controller('showMarkingCtrl',function($scope,$http,URL, $rootScope, currentMarkingService, currentPEVservice, $ionicModal, currentUserService, $state){
 	var currentMarking = "";
 	//Function that places scope like informations of clicked PEV
 	$scope.showPev = function(event, pev){
@@ -46,9 +46,15 @@ angular.module('starter')
 	};
 
 	$scope.complaintMarking = function(marking){
-		currentMarkingService.setMarking(marking);
 		$scope.modal.hide();
-		$state.go('complaintMarking');
+		if(angular.isDefined(marking.paper)){
+			$scope.pev = marking;
+			currentPEVservice.setPEV($scope.pev);
+			$state.go('complaintPev')
+		} else {
+			currentMarkingService.setMarking(marking);
+			$state.go('complaintMarking');
+		}
 	};
 
 	$ionicModal.fromTemplateUrl('views/marking/showMarking.html', {
