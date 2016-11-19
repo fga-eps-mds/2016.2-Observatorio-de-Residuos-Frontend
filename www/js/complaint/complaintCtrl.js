@@ -1,6 +1,6 @@
 angular.module('starter')
 
-.controller('complaintCtrl', function($scope, $rootScope, $http, currentUserService, factoryComplaint, $ionicPopup, $state){
+.controller('complaintCtrl', function($scope, $rootScope, $http, currentMarkingService, currentUserService, factoryComplaint, $ionicPopup, $state){
   $scope.confirmComplaint = function(complaint) {
 			$ionicPopup.confirm({
 			title: 'Adicionar denúncia',
@@ -10,6 +10,7 @@ angular.module('starter')
    	.then(function(res) {
 			if(res) {
         complaint.author = currentUserService.getUserData().email;
+        complaint.id_marking = currentMarkingService.getMarking().id_incidente;
 			  factoryComplaint.save(complaint, function(result){
 					var alertPopup = $ionicPopup.alert({
   					title: 'Marcação denunciada com sucesso',
