@@ -41,10 +41,9 @@ angular.module('starter')
 		console.log(marking);
 		// trocar o "paper" quando mudar o banco
 		if(angular.isDefined(marking.paper)){
-			//$scope.modal.show();
-			$state.go('editPEV');
+			$scope.pev = marking;
+			$scope.modalEditPev.show();
 		} else {
-			//$scope.modal.show();
 			currentMarkingService.setMarking(marking);
 			$state.go('editMarking');
 		}
@@ -55,4 +54,16 @@ angular.module('starter')
 	}).then(function(modal){
 		$scope.modal = modal;
 	});
+
+	$ionicModal.fromTemplateUrl('views/marking/editMarkings.html', {
+		scope: $scope
+	}).then(function(modal){
+		$scope.modalEditMarking = modal;
+	});
+
+	$ionicModal.fromTemplateUrl('views/pev/editPEV.html', {
+		scope: $scope
+	}).then(function(modal){
+		$scope.modalEditPev = modal;
+	})
 });
