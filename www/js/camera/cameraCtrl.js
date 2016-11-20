@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 
   .controller("cameraCtrl", function ($scope, $cordovaCamera) {
-    /* That is the camera's controller, the following methods are for take a picture or choose one from gallery*/
+    /* That is the camera's controller, the following methods are to take a picture or choose one from gallery*/
 
   $scope.imgURI = "http://placehold.it/800x600";
 

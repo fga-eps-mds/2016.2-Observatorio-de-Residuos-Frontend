@@ -1,55 +1,64 @@
-<ion-view cache-view="false" title="Cadastro" id="cadastro" hide-nav-bar="true">
-  <ion-content padding="true" class="has-header item-content" scroll="false">
+<!-- Sign Up page -->
+<ion-view cache-view="false" title="Cadastro" hide-nav-bar="true">
+  <ion-content padding="true" class="item-content" scroll="true">
     <a class="button icon-top ion-chevron-left button-clear button-dark" ui-sref="signin">Voltar</a>
 
     <form id="cadastro" class="list" name="userForm" ng-submit="registerEmail(user)" novalidate>
 
+      <!-- Fields to put informations like email, password and password confirmation -->
       <ion-list id="signup-list2">
 
-        <label class="item item-input" id="first_name">
-          <p ng-show="userForm.first_name.$invalid && !userForm.first_name.$pristine" class="nav-bar-block">
-            Seu nome é obrigatório
-          </p>
-          <input name="first_name" ng-model="user.first_name" type="text" placeholder="Primeiro Nome" required>
-        </label>
+        <ion-item class="item-input">
+          <label id="first_name">
+            <input name="first_name" ng-model="user.first_name" type="text" placeholder="Primeiro Nome" required>
+            <h3 class="validation-msg" ng-show="userForm.first_name.$invalid && !userForm.first_name.$pristine" class="nav-bar-block">
+              Seu nome é obrigatório
+            </h3>
+          </label>
+        </ion-item>
 
-        <label class="item item-input" id="last_name">
-          <p ng-show="userForm.last_name.$invalid && !userForm.last_name.$pristine" class="nav-bar-block">
-            Seu sobrenome é obrigatório
-          </p>
-          <input name="last_name" ng-model="user.last_name" type="text" placeholder="Último Nome" required>
-        </label>
+        <ion-item class="item-input">
+          <label id="last_name">
+            <input name="last_name" ng-model="user.last_name" type="text" placeholder="Último Nome" required>
+            <h3 class="validation-msg" ng-show="userForm.last_name.$invalid && !userForm.last_name.$pristine" class="nav-bar-block">
+              Seu sobrenome é obrigatório
+            </h3>
+          </label>
+        </ion-item>
 
-        <label class="item item-input">
-          <h3 ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="nav-bar-block">
-            Seu e-mail é obrigatório
-          </h3>
-          <h3 ng-show="invalidEmail && !userForm.email.$invalid" class="nav-bar-block">
-              Email inválido!
-          </h3>
-          <h3 ng-show="emailAlreadyUsed && !userForm.email.$invalid" class="nav-bar-block">                          
-            Este email já está em uso!
-          </h3>
-          <input name="email" type="email" ng-model="user.email" placeholder="Email" required></textarea>
-        </label>
+        <ion-item class="item-input">
+          <label>
+            <input name="email" type="email" ng-model="user.email" placeholder="Email" required></textarea>
+            <h3 class="validation-msg" ng-show="userForm.email.$invalid && !userForm.email.$pristine" class="nav-bar-block">
+              Seu e-mail é obrigatório
+            </h3>
+            <h3 class="validation-msg" ng-show="invalidEmail && !userForm.email.$invalid" class="nav-bar-block">
+              Este email já está em uso!
+            </h3>
+          </label>
+        </ion-item>
 
-        <label class="item item-input">
-          <input type="password" name="password" ng-model="user.password" placeholder="Senha" required />
-            <h3 ng-show="userForm.password.$invalid && userForm.password.$touched" class="nav-bar-block">
+        <ion-item class="item-input">
+          <label>
+            <input type="password" name="password" ng-model="secret.password" placeholder="Senha" required />
+            <h3 class="validation-msg" ng-show="userForm.password.$invalid && userForm.password.$touched" class="nav-bar-block">
               Entre com uma senha
             </h3>
-        </label>
+          </label>
+        </ion-item>
 
-        <label class="item item-input">
-          <input ng-click="count = 0" ng-init="count = 0" ng-keydown="count = count + 1" type="password" name="password_confirmation" ng-model="user.password_confirmation" placeholder="Confirmação da Senha" required="" confirm-pwd="user.password" />
-          <h3 ng-show="(count < 1) && userForm.password_confirmation.$touched" class="nav-bar-block">
-            Confirmação de senha requerida
-          </h3>
-
-          <h3 ng-show="(userForm.password_confirmation.$valid != userForm.password.$valid) && (count > 0)" class="nav-bar-block">
-            Senha diferente
-          </h3>
-        </label>
+        <ion-item class="item-input">
+          <label>
+            <!-- count is a variable to validate if password field is empty or have some alphanumeric character -->
+            <input ng-click="count = 0" ng-init="count = 0" ng-keydown="count = count + 1" type="password" name="password_confirmation" ng-model="secret.password_confirmation" placeholder="Confirmação da Senha" required="" confirm-pwd="secret.password" />
+            <h3 class="validation-msg" ng-show="(count < 1) && userForm.password_confirmation.$touched" class="nav-bar-block">
+              Confirmação de senha requerida
+            </h3>
+            <h3 class="validation-msg" ng-show="(userForm.password_confirmation.$valid != userForm.password.$valid) && (count > 0)" class="nav-bar-block">
+              Senha diferente
+            </h3>
+          </label>
+        </ion-item>
 
         <label class="item item-input item-select">
           <span class="input-label">Estado</span>
@@ -104,12 +113,13 @@
           <p ng-show="userForm.profile_type.$invalid && !userForm.profile_type.$pristine" class="help-block">
             Selecione seu tipo de perfil!
           </p>
-            <select ng-model="user.profile" name="profile_type" required>
-              <option ng-repeat="profile in profiles" value="{{profile.perfil}}">{{profile.perfil}}</option>
-            </select>
+          <select ng-model="user.profile" name="profile_type" required>
+            <option ng-repeat="profile in profiles" value="{{profile.perfil}}">{{profile.perfil}}</option>
+          </select>
         </label>
 
       </ion-list>
+      <!-- Button confirmation of sign up only works if all fields are filled -->
       <button type="submit" id="signup-button5" ng-disabled="userForm.$invalid" class="button button-positive button-block">Cadastrar</button>
     </form>
   </ion-content>

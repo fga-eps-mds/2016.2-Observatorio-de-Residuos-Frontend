@@ -1,0 +1,20 @@
+<!-- Page of projects that user published -->
+<ion-view title="Projetos" id="my-projects">
+    <ion-content padding="true" class="has-header padding has-tabs-top" scroll="true">
+
+        <h3>Projetos Recomendados</h3>
+        <ion-list ng-repeat="project in projects" value="{{project.id_projeto}}">
+            <ion-item ng-model="project" name="project_item" href="projects/{{project.id_projeto}}">
+                <h3 class="text-left">{{project.titulo_contribuicao}}</h3>
+                <p class="text-left">{{project.resumo_contribuicao}}</p>
+            </ion-item>
+        </ion-list>
+
+        <ion-infinite-scroll
+                ng-if="moreDataCanBeLoaded()"
+                icon="ion-loading-c"
+                on-infinite="loadMoreData()">
+        </ion-infinite-scroll>
+
+    </ion-content>
+</ion-view>

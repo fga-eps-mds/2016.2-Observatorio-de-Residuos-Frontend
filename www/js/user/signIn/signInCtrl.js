@@ -1,25 +1,37 @@
 angular.module('app.controllers')
-/* Controller responsável pelo login de usuário.
-loginAttempt: Recebe o email e senha do formulário signin.html
-              faz a tentativa de login através da factoryLogin.
+    /* Controller responsable for user login
+loginAttempt: Receive email and password form signin.html.
+              Try to make login through factoryLogin.
 
-registerSocial: Recebe a rede social desejada pelo parametro carregado no botão na signin.html.
-                Recebendo o usuário, o envia para a service de login social.
+registerSocial: Receive social media desired by the parameter on button at signin.html.
+                Receiving user sends to service of social login.
 */
 
-.controller('signinCtrl', function ($scope, $stateParams, $state, socialLoginService, firebaseService, currentUserService, factoryEmail, factoryLogin, $ionicLoading, $timeout) {
+.controller('signinCtrl', function ($scope, $stateParams, $state, 
+                                    socialLoginService, firebaseService, 
+                                    currentUserService, factoryEmail, 
+                                    factoryLogin, $ionicLoading, $timeout, 
+                                    $ionicPopup) {
+
+  $scope.secret = {};
   $scope.loginAttempt = function(user){
-      user.encripted_password = String(CryptoJS.SHA256(user.password)); //criptografia da senha
-      console.log(user);
+      user.encripted_password = String(CryptoJS.SHA256($scope.secret.password)); //criptografia da senha
       factoryLogin.save(user, function(result){
         currentUserService.setUserData(result);
         //Variavel responsavel por exibir a mensagem de email inválido ou senha na tela;
         $state.go('tabs.home')
         $scope.loginError = false;
       }, function(error){
-        //Caso receba Unauthorized do servidor, ativa o erro para ser exibido na view.
-        console.log("ERRO!")
-        $scope.loginError = true;
+        if(error.status == 403) {
+          $ionicPopup.alert({
+            template: 'Esta conta está desativada.',
+            title: 'Erro'
+          });
+        } else {
+          //Caso receba Unauthorized do servidor, ativa o erro para ser exibido na view.
+          console.log("ERRO!")
+          $scope.loginError = true;
+        } 
       })
     }
 

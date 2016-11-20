@@ -1,6 +1,7 @@
+<!-- Show all marking information that a user marked -->
 <ion-modal-view>
 	<ion-header-bar class="bar bar-header bar-balanced">
-		<h1 class="title">{{marking.name}}</h1>
+		<h1 class="title">{{marking.titulo_incidente || marking.titulo_pev}}</h1>
 		<button class="button button-clear button-primary" ng-click="modal.hide()" style="top:-3px">Voltar</button>
 	</ion-header-bar>
 		<ion-content class="padding" scroll="true">
@@ -21,7 +22,7 @@
        		Descrição
        	</div>
        	<div class="item item-text-wrap">
-					{{marking.description}}
+					{{marking.descricao_incidente || marking.descricao_pev}}
 				</div>
 				<div class="item item-divider">
        		Tipo

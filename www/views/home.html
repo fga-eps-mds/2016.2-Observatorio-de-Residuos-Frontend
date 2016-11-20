@@ -1,5 +1,7 @@
+<!-- Home page of Observatório de Resíduos -->
 <ion-view title="Observatório de Resíduos" id="home">
-    <!-- ion-content padding="true" class="has-header padding view-with-bg" scroll="true"-->
+
+    <!-- Content of page -->
     <ion-content padding="true" class="has-header padding" scroll="false">
       <div class="home-logo">
           <img src="../img/logo-transparente.png" class="displayed">
@@ -20,17 +22,19 @@
                 <i class="icon ion-location"></i><br>Criar nova marcação
             </button>
 
-            <button class="icon button-icon" ui-sref="tabs.to-contribuindo.welcome">
-                <i class="icon ion-compose"></i><br>Ver projetos do Tô Contribuindo
+            <button class="icon button-icon" ui-sref="tabs.to-contribuindo.articles">
+                <i class="icon ion-compose"></i><br>Ver artigos do Tô Contribuindo
             </button>
 
             <button class="icon button-icon" ui-sref="tabs.profile">
                 <i class="icon ion-person"></i><br>Ver meu perfil
             </button>
 
-            <button class="icon button-icon" ui-sref="signin">
-                <i class="icon ion-log-out"></i><br>Sair da aplicação
-            </button>
+            <div ng-controller="signOutCtrl">
+              <button class="icon button-icon" ng-click="signOut()">
+                  <i class="icon ion-log-out"></i><br>Sair da aplicação
+              </button>
+            </div>
           </div>
         </div>
     </ion-content>

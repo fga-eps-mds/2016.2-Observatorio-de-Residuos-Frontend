@@ -1,5 +1,5 @@
 angular.module("starter")
-//Service para passar a marcação clicada como variável de escopo
+//Service to pass clicked markings as scope variables
 .service("currentMarkingService", function(){
 	var marking = {};
 	var getMarking = function(){
@@ -7,7 +7,6 @@ angular.module("starter")
 		return this.marking;
 	}
 	var setMarking = function(paramMarking){
-		console.log(paramMarking);
 		this.marking = paramMarking;
 	}
 	return{

@@ -1,6 +1,6 @@
 angular.module('starter', ['ionic', 'ngResource','app.controllers', 'ngMap', 'ngCordova'])
 
-//Configuração inicial e inicialização do ionic.
+//Initial configuration and initialization of ionic
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
   })

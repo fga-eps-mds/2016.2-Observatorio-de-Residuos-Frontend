@@ -1,0 +1,20 @@
+<!-- Page with articles -->
+<ion-view title="Artigos" id="my-articles">
+    <ion-content padding="true" class="has-header padding has-tabs-top" scroll="true">
+
+        <h3>Artigos Recomendados</h3>
+        <ion-list ng-repeat="article in articles" value="{{article.id_artigo}}">
+            <ion-item ng-model="article" name="article_item" href="#/articles/{{article.id_artigo}}">
+                <h3 class="text-left">{{article.titulo_artigo}}</h3>
+                <p class="text-left">Por: {{article.autor_original}}</p>
+            </ion-item>
+        </ion-list>
+
+        <ion-infinite-scroll
+                ng-if="moreDataCanBeLoaded()"
+                icon="ion-loading-c"
+                on-infinite="loadMoreData()">
+        </ion-infinite-scroll>
+
+    </ion-content>
+</ion-view>

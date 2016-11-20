@@ -1,6 +1,6 @@
 angular.module("starter")
 
-//Service para passar a PEV clicada como variável de escopo.
+//Service to pass clicked PEV as scope variable
 .service("currentPEVservice", function(){
 	var PEV = {};
 	var getPEV = function(){

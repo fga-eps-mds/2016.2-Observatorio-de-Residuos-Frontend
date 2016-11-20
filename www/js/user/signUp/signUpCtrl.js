@@ -1,12 +1,10 @@
 angular.module('app.controllers')
-/* Controller responsável por realizar o cadastro de usuários.
-  registerEmail: Chamado pelo botão da signup.html, irá receber os dados do usuário e salva-los.
-                 Usuário recebido aqui já deve ter sido validado pela view.
-*/
+    /* Controller responsible to realize register of users
+  registerEmail: Called by the button of signup.html it will receive user data and save them
+                 User received here must have been vaidate by the view */
 .controller('signupCtrl', function ($scope, $rootScope, $http, URL, factoryRegister, currentUserService, $state, $ionicPopup) {
 
-  /*Caso utilizem o botão de login social sem se cadastrar os dados do
-    cadastro se preenchem sozinhos através da service de usuário atual.*/
+  /* In case social login button is used without register data of sign up are filled alone through service of actual user */
   $rootScope.profiles = [];
 
   $http.get(URL + '/profiles')
@@ -15,20 +13,22 @@ angular.module('app.controllers')
       $rootScope.profiles.push(value);
 
     })
-    console.log($rootScope.profiles);
   })
   .error(function(error){
     console.log("Error");
   })
 
-
-  $scope.user = currentUserService.getUserData();
-  console.log($scope.user);
+  currentUser = currentUserService.getUserData();
+  if(currentUser) {
+    $scope.user = currentUser;
+  } else {
+    $scope.user = {};
+  }
+  $scope.secret = {};
+  
   $scope.registerEmail= function(user){
-      user.password_digest = String(CryptoJS.SHA256(user.password));//criptografia
-      console.log(user);
+      user.password_digest = String(CryptoJS.SHA256($scope.secret.password));//encryption
       factoryRegister.save(user, function(result){
-        console.log(result);
         $scope.invalidEmail = false;
         $scope.emailAlreadyUsed = false;
             var alertPopup = $ionicPopup.alert({
@@ -36,7 +36,7 @@ angular.module('app.controllers')
               //subTitle: '',
               template: 'O Observatório de Resíduos é um aplicativo que permite que você compartilhe incidentes, locais para depositar seus resíduos e ainda permite que você encontre ou divulgue seu projeto social! Sinta-se em casa!'
             });
-        currentUserService.setUserData(user);
+        currentUserService.setUserData(result);
         $state.go('tabs.home')
       }, function(error){
             if(error.status == 401){

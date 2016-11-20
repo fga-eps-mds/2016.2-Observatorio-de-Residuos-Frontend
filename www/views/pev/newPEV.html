@@ -1,3 +1,4 @@
+<!-- New PEVs page -->
 <ion-view title="Nova PEV" id="new-pev">
   <ion-content padding="true" ng-controller="cameraCtrl" class="has-header has-tabs-top" scroll="true">
     <div>
@@ -5,9 +6,11 @@
         <form ng-submit="createPEV(pev); modal.hide()" name="PEVform">
           <div>
 
+            <!-- PEV photo -->
             <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
               <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
             </div>
+            <!-- Camera and Gallery buttons to take or get a photo -->
             <div class="button-bar">
                <button class="button icon-left ion-camera" ng-click="takePhoto('CAMERA')">Câmera</button><br>
                <button class="button icon-left ion-image" ng-click="takePhoto('PHOTOLIBRARY')">Galeria</button>
@@ -16,6 +19,7 @@
 
           </div>
 
+          <!-- Fields to put informations of pev -->
           <div class="spacer" style="height: 15px;"></div>
 
           <ion-list id="list">
@@ -25,10 +29,10 @@
             </p>
 
             <label class="item item-input">
-              <input type="text"  ng-model="pev.name" placeholder="Nome da PEV" name="name" required>
+              <input type="text"  ng-model="pev.titulo_pev" placeholder="Nome da PEV" name="name" required>
             </label>
             <label class="item item-input">
-              <textarea type="text" ng-model="pev.description" placeholder="Descrição" rows="3" ></textarea>
+              <textarea type="text" ng-model="pev.descricao_pev" placeholder="Descrição" rows="3" ></textarea>
             </label>
 
             <div class="spacer" style="height: 15px;"></div>

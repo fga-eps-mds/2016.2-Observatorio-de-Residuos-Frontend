@@ -1,8 +1,7 @@
 angular.module('starter')
-/*Service responsável por transportar o usuário atual por toda a aplicação.
-  setUserData: Utilizado nas signInControllers para definir o usuário atual
-  getUserData: Utilizado para recuperar o usuário atual onde necessario, por exemplo na tela de perfil.
-*/
+/* Service responsible to transport actual user for all application
+  setUserData: Used in signInControllers to define actual user
+  getUserData: Used to recover actual user where necessary, for example in profile screen */
 
 .service('currentUserService',function(){
   var userData = "";
