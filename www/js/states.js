@@ -97,7 +97,8 @@ angular.module('starter')
       url: '/myMarkings',
       views: {
         'markings-page': {
-          templateUrl: 'views/marking/myMarkings.html'
+          templateUrl: 'views/marking/myMarkings.html',
+          controller: 'markingsCtrl'
         }
       }
     })
