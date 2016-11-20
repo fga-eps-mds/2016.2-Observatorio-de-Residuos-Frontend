@@ -1,6 +1,5 @@
 angular.module('app.controllers', [])
-/*Arquivo de definição do modulo App.controllers
-e onde podem ser adicionadas controllers relacionadas a aplicação */
+/*Definition Archive of App.controllers module and where can be added controllers related to application */
 
-//Constante URL da aplicação utilizada nas Factories.
-.constant('URL', 'http://localhost:3000')
+//Constant URL of application used in Factories
+.constant('URL', 'https://polar-retreat-46908.herokuapp.com')
