@@ -12,6 +12,8 @@ angular.module('app.controllers')
         pev.latitude = map.lat();
         pev.longitude = map.lng();
         pev.author_email = currentUserService.getUserData().email;
+        pev.likes = 0;
+        pev.dislikes = 0;
         factoryPEV.save(pev, function (result){
           console.log(result)
           $rootScope.pevs.push({
@@ -24,7 +26,9 @@ angular.module('app.controllers')
             metal: result.metal,
             paper: result.paper,
             plastic: result.plastic,
-            glass: result.glass
+            glass: result.glass,
+            likes: pev.likes,
+            dislikes: pev.dislikes
           });
           var alertPopup = $ionicPopup.alert({
             title: 'PEV cadastrada com sucesso',

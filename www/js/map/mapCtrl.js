@@ -1,5 +1,6 @@
 angular.module('app.controllers')
 
+
 .controller('mapCtrl', function(NgMap, $scope, $ionicModal, $http, $rootScope, URL) {
 
   NgMap.getGeoLocation().then(function(map) {
@@ -24,9 +25,12 @@ angular.module('app.controllers')
               paper: value.paper,
               metal: value.metal,
               plastic: value.plastic,
-              glass: value.glass
+              glass: value.glass,
+              likes: value.total_confirmacoes_funcionando,
+              dislikes: value.total_confirmacoes_fechou
             });
           })
+          console.log($rootScope.pevs);
         })
         .error(function(data){
           console.log(data)
@@ -44,9 +48,12 @@ angular.module('app.controllers')
               titulo_incidente: value.titulo_incidente,
               descricao_incidente: value.descricao_incidente,
               author_name: value.author_name,
-              author_email: value.author_email
+              author_email: value.author_email,
+              likes: value.total_confirmacoes_existencia,
+              dislikes: value.total_confirmacoes_resolvido
             });
           })
+          console.log($rootScope.markings);
         })
         .error(function(data){
           console.log(data)

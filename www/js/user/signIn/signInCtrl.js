@@ -17,10 +17,24 @@ registerSocial: Receive social media desired by the parameter on button at signi
   $scope.loginAttempt = function(user){
       user.encripted_password = String(CryptoJS.SHA256($scope.secret.password)); //criptografia da senha
       factoryLogin.save(user, function(result){
+
         currentUserService.setUserData(result);
         //Variavel responsavel por exibir a mensagem de email inválido ou senha na tela;
         $state.go('tabs.home')
         $scope.loginError = false;
+
+        // I don't know, ask to mito
+        // console.log(result);
+        // $http.get("http://localhost:3000/user/" + result.id_usuario + "/markings")
+        // .success(function(seenMarkings){
+        //   currentUserService.setUserData(result);
+        //   currentUserService.setUserMarking(seenMarkings);
+        //   console.log(seenMarkings);
+        //   // Variavel responsavel por exibir a mensagem de email inválido ou senha na tela;
+        //   $state.go('tabs.map')
+        //   $scope.loginError = false;
+        // });
+
       }, function(error){
         if(error.status == 403) {
           $ionicPopup.alert({

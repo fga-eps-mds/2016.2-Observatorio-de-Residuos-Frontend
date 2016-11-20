@@ -4,14 +4,21 @@
 		<h1 class="title">{{marking.titulo_incidente || marking.titulo_pev}}</h1>
 		<button class="button button-clear button-primary" ng-click="modal.hide()" style="top:-3px">Voltar</button>
 	</ion-header-bar>
-		<ion-content class="padding" scroll="true">
-			<div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
-         <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-       </div>
-       <div class="card">
-				 <div class="item item-divider">
-        		Contribuinte
-        	</div>
+
+	<ion-content class="padding" scroll="true">
+		<div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
+	       	<i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+	    </div>
+
+	    <div class="button-bar">
+            <button class="button icon-center ion-eye-disabled button-clear button-assertive" style="font-size: 32px" ng-click="evaluate(marking, false)" ng-disabled="buttonClicked"> - {{marking.dislikes}}</button>
+            <button class="button icon-center ion-eye button-clear button-balanced" style="font-size: 32px" ng-click="evaluate(marking, true)" ng-disabled="buttonClicked"> + {{marking.likes}}</button>
+        </div>
+
+        <div class="card">
+			<div class="item item-divider">
+	        	Contribuinte
+	        </div>
         	<div class="item item-text-wrap">
  						{{marking.author_name}}
  					</div>
@@ -34,3 +41,4 @@
 				<button id="page-button9" ng-show="currentUserEmail==marking.author_email" class="button button-positive button-block" ng-click="editMarking(marking)">Editar</button>
 		</ion-content>
 </ion-modal-view>
+

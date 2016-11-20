@@ -1,6 +1,10 @@
 angular.module('starter')
+
 //Modal Controller thar show informations of clicked marking
-.controller('showMarkingCtrl',function($scope,$http,URL, $rootScope, currentMarkingService, $ionicModal, currentUserService, $state){
+.controller('showMarkingCtrl',function($scope,$http,URL, $rootScope, 
+										currentMarkingService, $ionicModal, 
+										currentUserService, $state, factoryEvaluateIncidents, 
+										factoryEvaluatePev){
 	var currentMarking = "";
 	//Function that places scope like informations of clicked PEV
 	$scope.showPev = function(event, pev){
@@ -44,6 +48,41 @@ angular.module('starter')
 			$scope.modalEditMarking.show();
 		}
 	};
+	
+	$scope.evaluate = function(marking, evaluation) { 
+		// trocar o "paper" quando mudar o banco
+		if (angular.isDefined(marking.paper)){		
+		    var index = $rootScope.pevs.indexOf(marking); 
+		    if (evaluation){
+		    	$rootScope.pevs[index].likes += 1;	
+		    	$scope.buttonClicked = false;
+		    } else {
+		    	$rootScope.pevs[index].dislikes += 1;	
+		    	$scope.buttonClicked = false;
+		    }
+		    console.log($rootScope.pevs[index])
+			factoryEvaluatePev.save($rootScope.pevs[index], function(result){
+				console.log(result)
+			}, function(error){
+				console.log(error)
+			});
+		} else {
+		    var index = $rootScope.markings.indexOf(marking); 
+		    if (evaluation){
+		    	$rootScope.markings[index].likes += 1;	
+		    	$scope.buttonClicked = false;
+		    } else {
+		    	$rootScope.markings[index].dislikes += 1;
+		    	$scope.buttonClicked = false;	
+		    }
+		    console.log($rootScope.markings[index])
+			factoryEvaluateIncidents.save($rootScope.markings[index], function(result){
+				console.log(result)
+			}, function(error){
+				console.log(error)
+			});
+		}
+	};
 
 	$ionicModal.fromTemplateUrl('views/marking/showMarking.html', {
 		scope: $scope
@@ -63,3 +102,4 @@ angular.module('starter')
 		$scope.modalEditPev = modal;
 	})
 });
+
