@@ -54,9 +54,10 @@ describe('showMarkingCtrl', function() {
   var event = "some random event";
   var anotherPev = {"titulo_pev": "AnotherPEV", "paper": false, "plastic": true,
                       "metal": false, "glass": true};
-  var incident = {"titulo_incidente": "incidente", "id_tipo_incidente": 1}
+  var incident = {"titulo_incidente": "incidente", "id_tipo_incidente": 1, "likes": 0, "dislikes": 0}
   var marking_type = {"tipo_incidente": "desastre"};
   var pevs = [pev];
+  var incidents = [incident];
 
   it('should set proper types of a pev', function() {
     spyOn($scope.modal, 'show');
@@ -128,6 +129,28 @@ describe('showMarkingCtrl', function() {
     $httpBackend.flush();
     expect($scope.buttonClicked).toEqual(false);
     expect($rootScope.pevs[index].dislikes).toEqual(1);
+  });
+
+  it('should evaluate incident with +1 like', function() {
+    var evaluation = true;
+    $rootScope.markings = incidents;
+    $scope.evaluate(incident, evaluation);
+    var index = $rootScope.markings.indexOf(incident);
+    $httpBackend.expectPOST(URL + '/markings/increment', $rootScope.markings[index]).respond(201);
+    $httpBackend.flush();
+    expect($scope.buttonClicked).toEqual(false);
+    expect($rootScope.markings[index].likes).toEqual(1);
+  });
+
+  it('should evaluate incident with +1 dislike', function() {
+    var evaluation = false;
+    $rootScope.markings = incidents;
+    $scope.evaluate(incident, evaluation);
+    var index = $rootScope.markings.indexOf(incident);
+    $httpBackend.expectPOST(URL + '/markings/increment', $rootScope.markings[index]).respond(201);
+    $httpBackend.flush();
+    expect($scope.buttonClicked).toEqual(false);
+    expect($rootScope.markings[index].dislikes).toEqual(1);
   });
 
 });
