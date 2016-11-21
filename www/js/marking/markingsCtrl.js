@@ -24,7 +24,7 @@ angular.module('app.controllers')
                             angular.forEach($scope.marking_types, function (value) {
                                 if (id_tipo_incidente == value.id_tipo_incidente){
                                     console.log(value.id_tipo_incidente)
-                                    return value.id_tipo_incidente;
+                                    return value.id_tipo_incidente; //teste
                                 }
 
                             })
