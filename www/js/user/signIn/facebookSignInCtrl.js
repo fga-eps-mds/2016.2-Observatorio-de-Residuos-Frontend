@@ -22,13 +22,11 @@ angular.module('starter')
       $ionicLoading.hide();
     }, function(fail){
       // Fail get profile info
-      console.log('profile info fail', fail);
     });
   };
 
   // This is the fail callback from the login method
   var fbLoginError = function(error){
-    console.log('fbLoginError', error);
     $ionicLoading.hide();
   };
 
@@ -38,11 +36,9 @@ angular.module('starter')
 
     facebookConnectPlugin.api('/me?fields=email,name&access_token=' + authResponse.accessToken, null,
       function (response) {
-        console.log(response);
         info.resolve(response);
       },
       function (response) {
-        console.log(response);
         info.reject(response);
       }
       );
@@ -53,7 +49,6 @@ angular.module('starter')
     facebookConnectPlugin.getLoginStatus(function(success){
       if(success.status === 'connected'){
 
-        console.log('getLoginStatus', success.status);
 
         getFacebookProfileInfo(success.authResponse)
         .then(function(profileInfo) {
@@ -66,12 +61,10 @@ angular.module('starter')
 
           }, function(fail){
             // Fail get profile info
-            console.log('profile info fail', fail);
           });
-        
+
       } else {
 
-        console.log('getLoginStatus', success.status);
 
         $ionicLoading.show({
           template: 'Logging in...'
