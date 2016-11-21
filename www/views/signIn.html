@@ -39,9 +39,9 @@
           </form>
 
           <!-- Login with faceboook and google+ -->
-          <div class="socialLogin">
+          <div class="socialLogin" ng-controller="facebookSignInCtrl">
             <b>Entrar com:</b><br>
-            <img src="img/facebook-button.png" class="button" ng-click="registerSocial('facebook')" style="background-color: transparent">
+            <img src="img/facebook-button.png" class="button" ng-click="facebookSignIn()" style="background-color: transparent">
             <img src="img/google-button.png" class="button" ng-click="registerSocial('google')" style="background-color: transparent">
           </div>
 
