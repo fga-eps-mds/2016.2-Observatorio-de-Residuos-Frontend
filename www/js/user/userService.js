@@ -5,17 +5,21 @@ angular.module('starter')
 
 .service('currentUserService',function(){
   var userData = "";
+  var userMarkings = [];
+
   var setUserData = function(paramUserData){
     userData = paramUserData
   }
   var getUserData = function(){
     return userData
   }
-  var setUserMarking = function(paramUserMarking ){
-    userMarking  = paramUserMarking 
+
+  var setUserMarking = function(userMarkings){
+    this.userMarkings = userMarkings;
   }
+  
   var getUserMarking = function(){
-    return userMarking
+    return this.userMarkings;
   }
   return {
     setUserData: setUserData,

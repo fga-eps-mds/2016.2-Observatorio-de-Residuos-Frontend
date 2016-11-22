@@ -29,18 +29,7 @@ angular.module('app.controllers')
       marking.dislikes = 0;
       console.log(marking)
       factoryMarking.save(marking, function (result){
-        $rootScope.markings.push({
-          author_email: marking.author_email,
-          author_name: marking.full_name,
-          id_incidente: result.id_incidente,
-          titulo_incidente: result.titulo_incidente,
-          descricao_incidente: result.descricao_incidente,
-          latitude: result.latitude,
-          longitude: result.longitude,
-          id_tipo_incidente: result.id_tipo_incidente,
-          likes: marking.likes,
-          dislikes: marking.dislikes
-        });
+        $rootScope.markings.push(result);
       var alertPopup = $ionicPopup.alert({
         title: 'Incidente cadastrado com sucesso',
         template: 'Obrigado por contribuir!'

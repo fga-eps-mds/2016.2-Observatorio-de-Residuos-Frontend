@@ -4,8 +4,11 @@ angular.module('starter')
 .controller('showMarkingCtrl',function($scope,$http,URL, $rootScope, 
 										currentMarkingService, $ionicModal, 
 										currentUserService, $state, factoryEvaluateIncidents, 
-										factoryEvaluatePev){
+										factoryEvaluatePev, $ionicLoading){
 	var currentMarking = "";
+
+  $scope.voted = false;
+
 	//Function that places scope like informations of clicked PEV
 	$scope.showPev = function(event, pev){
 		$scope.currentUserEmail = currentUserService.getUserData().email;
@@ -23,6 +26,10 @@ angular.module('starter')
 	};
 	//Function that places scope like informations of clicked marking
 	$scope.showIncident = function(event, incident){
+    var index = $rootScope.markings.indexOf(incident); 
+    console.log(index);
+
+    $scope.voted = false;
 		$scope.types = [];
 		$http.get(URL+'/marking_types/'+incident.id_tipo_incidente)
 		.success(function(marking_type){
@@ -33,6 +40,15 @@ angular.module('starter')
 		})
 		$scope.currentUserEmail = currentUserService.getUserData().email;
 		$scope.marking = incident;
+    var userMarkings = currentUserService.getUserMarking();
+    angular.forEach(userMarkings, function(value) {
+      if($scope.voted != true) {
+        if(incident.id_incidente == value.id_incidente) {
+          $scope.voted = true;
+        }
+      }
+    });
+
 		$scope.modal.show();
 	};
 
@@ -50,35 +66,37 @@ angular.module('starter')
 	};
 	
 	$scope.evaluate = function(marking, evaluation) { 
+    $ionicLoading.show('Por favor, aguarde...');
 		// trocar o "paper" quando mudar o banco
 		if (angular.isDefined(marking.paper)){		
 		    var index = $rootScope.pevs.indexOf(marking); 
 		    if (evaluation){
-		    	$rootScope.pevs[index].likes += 1;	
-		    	$scope.buttonClicked = false;
+		    	$rootScope.pevs[index].total_confirmacoes_existencia += 1;	
 		    } else {
-		    	$rootScope.pevs[index].dislikes += 1;	
-		    	$scope.buttonClicked = false;
+		    	$rootScope.pevs[index].total_confirmacoes_resolvido += 1;	
 		    }
-		    console.log($rootScope.pevs[index])
 			factoryEvaluatePev.save($rootScope.pevs[index], function(result){
-				console.log(result)
+        $scope.voted = true;
+        $ionicLoading.hide();
 			}, function(error){
+        $ionicLoading.hide();
 				console.log(error)
 			});
 		} else {
 		    var index = $rootScope.markings.indexOf(marking); 
 		    if (evaluation){
-		    	$rootScope.markings[index].likes += 1;	
-		    	$scope.buttonClicked = false;
+		    	$rootScope.markings[index].total_confirmacoes_existencia += 1;	
 		    } else {
-		    	$rootScope.markings[index].dislikes += 1;
-		    	$scope.buttonClicked = false;	
+		    	$rootScope.markings[index].total_confirmacoes_resolvido += 1;
 		    }
-		    console.log($rootScope.markings[index])
+			$rootScope.markings[index].id_usuario = currentUserService.getUserData().id_usuario;
 			factoryEvaluateIncidents.save($rootScope.markings[index], function(result){
-				console.log(result)
+        $scope.voted = true;
+        $ionicLoading.hide();
+				currentUserService.getUserMarking().push(result);
+
 			}, function(error){
+        $ionicLoading.hide();
 				console.log(error)
 			});
 		}

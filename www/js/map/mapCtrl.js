@@ -40,18 +40,7 @@ angular.module('app.controllers')
         $http.get(URL + '/markings')
         .success(function(content){
           angular.forEach(content, function(value, key) {
-            $rootScope.markings.push({
-              id_incidente: value.id_incidente,
-              latitude: value.latitude,
-              longitude: value.longitude,
-              id_tipo_incidente: value.id_tipo_incidente,
-              titulo_incidente: value.titulo_incidente,
-              descricao_incidente: value.descricao_incidente,
-              author_name: value.author_name,
-              author_email: value.author_email,
-              likes: value.total_confirmacoes_existencia,
-              dislikes: value.total_confirmacoes_resolvido
-            });
+            $rootScope.markings.push(value);
           })
           console.log($rootScope.markings);
         })
