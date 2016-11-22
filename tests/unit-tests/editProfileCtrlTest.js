@@ -105,6 +105,7 @@ describe('EditProfileCtrl', function(){
     describe('in successfull account deactivation', function() {
 
       beforeEach(function(){
+        $scope.user = {id_usuario: 1}
         $scope.deactivateAccount(user);
         $scope.validateDeactivation();
         $httpBackend.expectGET(URL + '/profiles').respond(200);
@@ -135,6 +136,7 @@ describe('EditProfileCtrl', function(){
     describe('in failed account deactivation', function() {
 
       beforeEach(function() {
+        $scope.user = {id_usuario: 1}
         $httpBackend.expectGET(URL + '/profiles').respond(200);
         $scope.deactivateAccount(user);
         $scope.validateDeactivation();
@@ -150,7 +152,7 @@ describe('EditProfileCtrl', function(){
       });
 
       it('should show a popup alert contaning wrong password message  if password\
-       was wrong', function() {
+        was wrong', function() {
         $httpBackend.expectPOST(URL + '/users/deactivate').respond(401);
         $httpBackend.flush();
         expect($ionicPopup.alert).toHaveBeenCalledWith({
