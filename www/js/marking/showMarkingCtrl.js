@@ -35,7 +35,6 @@ angular.module('starter')
 	//Function that places scope like informations of clicked marking
 	$scope.showIncident = function(event, incident){
     var index = $rootScope.markings.indexOf(incident); 
-    console.log(index);
 
     $scope.voted = false;
 		$scope.types = [];

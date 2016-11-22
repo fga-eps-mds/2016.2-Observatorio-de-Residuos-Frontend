@@ -16,7 +16,6 @@ angular.module('app.controllers')
           angular.forEach(content, function(value, key) {
             $rootScope.pevs.push(value);
           })
-          console.log($rootScope.pevs);
         })
         .error(function(data){
           console.log(data)
@@ -28,7 +27,6 @@ angular.module('app.controllers')
           angular.forEach(content, function(value, key) {
             $rootScope.markings.push(value);
           })
-          console.log($rootScope.markings);
         })
         .error(function(data){
           console.log(data)
