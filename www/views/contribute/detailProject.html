@@ -1,36 +1,13 @@
 <!-- Page with projects -->
-<ion-modal-view>
-    <ion-header-bar class="bar bar-header bar-balanced">
-        <h1 class="title">{{marking.name}}</h1>
-        <button class="button button-clear button-primary" ng-click="modal.hide()" style="top:-3px">Voltar</button>
-    </ion-header-bar>
-    <ion-content class="padding" scroll="true">
-        <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
-            <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+<ion-view title="Projetos" id="my-projects">
+    <ion-content padding="true" class="has-header padding has-tabs-top" scroll="true">
+        <a class="button icon-top ion-chevron-left button-clear button-dark" ui-sref="tabs.to-contribuindo.projects"> Voltar </a>
+
+        <div class="project_body">
+            <h3><b>{{selected_project.titulo_contribuicao}}</b></h3>
+            <h3 style="font-size: 14px; font-weight: bold;">{{selected_project.resumo_contribuicao}}</h3>
+            <body>{{selected_project.texto_contribuicao}}</body>
+            <!--<p><b>Por: {{selected_project.autor_original}}</b></p>-->
         </div>
-        <div class="card">
-            <div class="item item-divider">
-                Contribuinte
-            </div>
-            <div class="item item-text-wrap">
-                {{marking.author_name}}
-            </div>
-            <div class="item item-text-wrap">
-                {{marking.author_email}}
-            </div>
-            <div class="item item-divider">
-                Descrição
-            </div>
-            <div class="item item-text-wrap">
-                {{marking.description}}
-            </div>
-            <div class="item item-divider">
-                Tipo
-            </div>
-            <div class="item item-text-wrap" ng-repeat="type in types">
-                {{type}}
-            </div>
-        </div>
-        <button id="page-button9" ng-show="currentUserEmail==marking.author_email" class="button button-positive button-block" ng-click="editMarking(marking)">Editar</button>
     </ion-content>
-</ion-modal-view>
+</ion-view>

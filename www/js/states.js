@@ -168,6 +168,18 @@ angular.module('starter')
           }
       })
 
+  //Tô Contribuindo Articles State
+  .state('tabs.to-contribuindo.detailProject', {
+      url: '/detail_project',
+      views: {
+          'to-contribuindo-page': {
+              templateUrl: 'views/contribute/detailProject.html',
+              controller: 'selectedProjectCtrl'
+          }
+      }
+  })
+
+
   //Edit profile user state
   .state('editProfile',{
     url: '/editProfile',
