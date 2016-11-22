@@ -7,13 +7,13 @@
                 <ion-list id="list">
                     <ion-item class="item-profile">
                         <div class="item-avatar">
-                            <img src="img/usuario.jpeg" height="150px" width="150px">
+                            <img class="icon ion-image" ng-repeat="image in images" ng-src="{{urlForImage(imageName)}}" height="150px" width="150px">
                             <!--img ng-src="{{userData.imgUrl}}"-->
                         </div>
                     </ion-item>
 
                     <div class="button-bar">
-                        <button class="button icon-left ion-camera" ng-click="takePhoto('CAMERA')">Tirar nova foto de perfil</button><br>
+                        <button class="button icon-left ion-camera" ng-click="addMedia()">Tirar nova foto de perfil</button><br>
                         <button class="button icon-left ion-image" ng-click="takePhoto('PHOTOLIBRARY')">Escolher nova foto de perfil</button>
                         <!-- The camera doesn't work on browser, and a android build is necessary -->
                     </div>
