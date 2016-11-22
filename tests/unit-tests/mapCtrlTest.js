@@ -79,36 +79,13 @@ describe('mapCtrl', function() {
       "adicionado_em":"2016-11-05T10:31:15.000Z","publicado":false,"paper":true,
       "metal":false,"plastic":true,"glass":true
     }];
-    var contentMarkingFormatted = { 
-      id_incidente: contentMarkingDB[0].id_incidente,
-      titulo_incidente: contentMarkingDB[0].titulo_incidente,
-      descricao_incidente: contentMarkingDB[0].descricao_incidente,
-      latitude: contentMarkingDB[0].latitude,
-      longitude: contentMarkingDB[0].longitude,
-      id_tipo_incidente: contentMarkingDB[0].id_tipo_incidente,
-      author_name: undefined, 
-      author_email: undefined 
-    };
-    var contentPEVFormatted = { 
-      id_pev: contentPEVDB[0].id_pev,
-      titulo_pev: contentPEVDB[0].titulo_pev,
-      descricao_pev: contentPEVDB[0].descricao_pev,
-      latitude: contentPEVDB[0].latitude,
-      longitude: contentPEVDB[0].longitude,
-      paper: contentPEVDB[0].paper,
-      metal: contentPEVDB[0].metal,
-      plastic: contentPEVDB[0].plastic,
-      glass: contentPEVDB[0].glass,
-      author_name: undefined, 
-      author_email: undefined
-    };
     spyOn(NgMap, 'getMap').and.callThrough();
     $httpBackend.expectGET(URL+"/pevs").respond(200, contentPEVDB);
     $httpBackend.expectGET(URL+"/markings").respond(200, contentMarkingDB);
     NgMap.getMap();
     $httpBackend.flush();
-    expect($rootScope.pevs[0]).toEqual(contentPEVFormatted);
-    expect($rootScope.markings[0]).toEqual(contentMarkingFormatted);
+    expect($rootScope.pevs).toEqual(contentPEVDB);
+    expect($rootScope.markings).toEqual(contentMarkingDB);
     expect(NgMap.getMap).toHaveBeenCalled();
   });
 });

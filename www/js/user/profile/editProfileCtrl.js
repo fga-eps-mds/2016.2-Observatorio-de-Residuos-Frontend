@@ -15,7 +15,7 @@ angular.module('app.controllers')
     })
   })
   .error(function(error){
-    console.log("Error");
+    console.log(error);
   })
 
   //Function that send changes to backend

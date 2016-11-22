@@ -105,7 +105,7 @@ var extract = function(paramUserData){
 
 /* socialLoginService
     login: Responsible for validating received firebase data and decide which state this user have to be send */
-.service('socialLoginService', function(factoryEmail, $state ,currentUserService){
+.service('socialLoginService', function(factoryEmail, $state ,currentUserService, URL, $http){
   var login = function(user){
     factoryEmail.save({"email": user.email}, function(result) {
       user.nome_completo = user.first_name +" "+ user.last_name;
@@ -113,8 +113,22 @@ var extract = function(paramUserData){
       if(result.newUser){
         $state.go('signup');
       } else {
-        currentUserService.setUserData(result);
-        $state.go('tabs.home');
+        $http.get(URL + "/user/" + result.id_usuario + "/markings")
+        .success(function(seenMarkings) {
+          $http.get(URL + "/user/" + result.id_usuario + "/pevs")
+          .success(function(seenPevs) {
+            currentUserService.setUserData(result);
+            currentUserService.setUserMarking(seenMarkings);
+            currentUserService.setUserPevs(seenPevs);
+            $state.go('tabs.home')
+          })
+          .error(function(error) {
+            console.log(error);
+          });
+        })
+        .error(function(error) {
+          console.log(error);
+        });
       }
     }, function(error){
       console.log(error)
