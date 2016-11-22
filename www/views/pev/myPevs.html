@@ -8,8 +8,8 @@
                       value="{{pev.id_pev}}"
                       ng-model="pev"
                       name="pev_item"
-                      href="pevs/{{pev.id_pev}}"
-                      ng-show="currentUserEmail==pev.author_email">
+                      ng-show="currentUserEmail==pev.author_email"
+                      ng-click="openPev(pev)">
                 <h3 class="text-left" style="font-weight: bolder">{{pev.titulo_incidente}}</h3>
                 <p class="text-left">Descrição: {{pev.descricao_incidente}}</p>
                 <p class="text-left">
@@ -32,8 +32,8 @@
                       value="{{pev.id_pev}}"
                       ng-model="pev"
                       name="pev_item"
-                      href="pevs/{{pev.id_pev}}"
-                      ng-show="currentUserEmail==pev.author_email">
+                      ng-show="currentUserEmail==pev.author_email"
+                      ng-click="openPev(pev)">
                 <h3 class="text-left" style="font-weight: bolder">{{pev.titulo_incidente}}</h3>
                 <p class="text-left">Descrição: {{pev.descricao_incidente}}</p>
                 <p class="text-left">
