@@ -24,11 +24,11 @@ angular.module('app.controllers')
       marking.latitude = map.lat();
       marking.longitude = map.lng();
       marking.author_email = currentUserService.getUserData().email;
-      marking.full_name = currentUserService.getUserData().nome_completo;
       marking.likes = 0;
       marking.dislikes = 0;
       console.log(marking)
       factoryMarking.save(marking, function (result){
+        result.author_email = marking.author_email;
         $rootScope.markings.push(result);
       var alertPopup = $ionicPopup.alert({
         title: 'Incidente cadastrado com sucesso',

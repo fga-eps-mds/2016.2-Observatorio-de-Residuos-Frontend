@@ -15,21 +15,10 @@ angular.module('app.controllers')
         pev.likes = 0;
         pev.dislikes = 0;
         factoryPEV.save(pev, function (result){
-          console.log(result)
-          $rootScope.pevs.push({
-            author_email: pev.author_email,
-            id_pev: result.id_pev,
-            titulo_pev: result.titulo_pev,
-            descricao_pev: result.descricao_pev,
-            latitude: result.latitude,
-            longitude: result.longitude,
-            metal: result.metal,
-            paper: result.paper,
-            plastic: result.plastic,
-            glass: result.glass,
-            likes: pev.likes,
-            dislikes: pev.dislikes
-          });
+          console.log(pev);
+          result.author_email = pev.author_email;
+          result.author_name = pev.author_name;
+          $rootScope.pevs.push(result);
           var alertPopup = $ionicPopup.alert({
             title: 'PEV cadastrada com sucesso',
             template: 'Obrigado por contribuir!'
