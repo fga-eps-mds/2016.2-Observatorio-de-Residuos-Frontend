@@ -25,7 +25,10 @@ describe('signinCtrl',function(){
     var user = {name:'Amoedo', email:'amoedo@gmail.com'};
 
     it('login a valid user succesfully', function() {
-      $httpBackend.expectPOST(URL + '/sessions/login', user).respond(201);
+      var result = {id_usuario: 1, nome_completo: "Lucas Amoẽdo", usuario: "amoedo"}
+      $httpBackend.expectPOST(URL + '/sessions/login', user).respond(201, result);
+      $httpBackend.expectGET(URL + '/user/' + result.id_usuario + '/markings').respond(200);
+      $httpBackend.expectGET(URL + '/user/' + result.id_usuario + '/pevs').respond(200);
       $scope.loginAttempt(user);
       $httpBackend.flush();
       expect($state.go).toHaveBeenCalledWith("tabs.home");

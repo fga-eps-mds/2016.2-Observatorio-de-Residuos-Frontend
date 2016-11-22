@@ -8,11 +8,11 @@
 
             <!-- PEV photo -->
             <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
-              <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+              <img class="icon ion-image" ng-repeat="image in images" ng-src="{{urlForImage(imageName)}}" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></img>
             </div>
             <!-- Camera and Gallery buttons to take or get a photo -->
             <div class="button-bar">
-               <button class="button icon-left ion-camera" ng-click="takePhoto('CAMERA')">Câmera</button><br>
+               <button class="button icon-left ion-camera" ng-click="addMedia()">Câmera</button><br>
                <button class="button icon-left ion-image" ng-click="takePhoto('PHOTOLIBRARY')">Galeria</button>
                     <!-- The camera doesn't work on browser, and a android build is necessary -->
             </div>
@@ -29,10 +29,10 @@
             </p>
 
             <label class="item item-input">
-              <input type="text"  ng-model="pev.titulo_pev" placeholder="Nome da PEV" name="name" required>
+              <input type="text"  ng-model="pev.name" placeholder="Nome da PEV" name="name" required>
             </label>
             <label class="item item-input">
-              <textarea type="text" ng-model="pev.descricao_pev" placeholder="Descrição" rows="3" ></textarea>
+              <textarea type="text" ng-model="pev.description" placeholder="Descrição" rows="3" ></textarea>
             </label>
 
             <div class="spacer" style="height: 15px;"></div>
