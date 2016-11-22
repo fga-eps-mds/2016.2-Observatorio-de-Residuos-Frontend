@@ -22,11 +22,26 @@
         <!--<span class="badge badge-balanced">{{marking.total_confirmacoes_existencia}}</span>-->
 
         <!--If lower to 0 -->
-        <!--span class="badge badge-royal">-{{marking.total_confirmacoes_fechou}}</span-->
-        <p class="text-left">Por:{{marking.author_name}}</p>
+        <!--<span class="badge badge-royal">-{{marking.total_confirmacoes_fechou}}</span>-->
+        <!--<p class="text-left">Por:{{marking.author_name}}</p>-->
       </ion-item>
     </ion-list>
     <h3>Marcações Próximas</h3>
+    <ion-list>
+      <ion-item ng-repeat="marking in markings"
+                value="{{marking.id_incidente}}"
+                ng-model="marking"
+                name="marking_item"
+                href="markings/{{marking.id_incidente}}"
+                ng-show="currentUserEmail==marking.author_email">
+        <h3 class="text-left" style="font-weight: bolder">{{marking.titulo_incidente}}</h3>
+        <p class="text-left">Descrição: {{marking.descricao_incidente}}</p>
+        <p class="text-left">
+          Tipo: {{marking.tipo_incidente}}
+        </p>
+        <span class="badge badge-assertive">+{{marking.total_confirmacoes_existencia}}</span>
+      </ion-item>
+    </ion-list>
 
   </ion-content>
 </ion-view>

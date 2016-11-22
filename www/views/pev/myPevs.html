@@ -1,49 +1,47 @@
-<!-- My PEVs page -->
-<ion-view title="PEVs" id="my-pevs">
+<!-- My Markings page -->
+<ion-view title="Minhas PEVs" id="my-markings">
     <ion-content padding="true" class="has-header padding has-tabs-top" scroll="true">
-
-        <!-- List of all pevs marked by the user -->
+        <!-- List of all markings marked by the user -->
         <h3>Minhas PEVs</h3>
-        <div class="list">
-            <a class="item item-icon-left" ui-sref="/marking/"><!-- marking id -->
-                <i class="icon ion-waterdrop"></i> <!-- marking type-->
-                Entulho no Esgoto <!-- marking name -->
-                <span class="badge badge-assertive">+3</span> <!-- marking score -->
-            </a>
+        <ion-list>
+            <ion-item ng-repeat="pev in pevs"
+                      value="{{pev.id_pev}}"
+                      ng-model="pev"
+                      name="pev_item"
+                      href="pevs/{{pev.id_pev}}"
+                      ng-show="currentUserEmail==pev.author_email">
+                <h3 class="text-left" style="font-weight: bolder">{{pev.titulo_incidente}}</h3>
+                <p class="text-left">Descrição: {{pev.descricao_incidente}}</p>
+                <p class="text-left">
+                    Tipo: {{pev.tipo_incidente}}
+                </p>
+                <!--If greater than 0-->
+                <span class="badge badge-assertive">+{{pev.total_confirmacoes_existencia}}</span>
 
-            <a class="item item-icon-left" href="/marking/">
-                <i class="icon ion-soup-can"></i>
-                Lixo à ceu aberto
-                <span class="badge badge-assertive">+2</span>
-            </a>
-        </div>
+                <!--If equals to 0 -->
+                <!--<span class="badge badge-balanced">{{marking.total_confirmacoes_existencia}}</span>-->
 
-        <h3>PEVs Próximas</h3>
-        <div class="list">
-            <a class="item item-icon-left" ui-sref="/marking/"><!-- marking id -->
-                <i class="icon ion-waterdrop"></i> <!-- marking type-->
-                Derramamanto de Óleo <!-- marking name -->
-                <span class="badge badge-assertive">+3</span> <!-- marking score -->
-            </a>
-
-            <a class="item item-icon-left" href="/marking/">
-                <i class="icon ion-soup-can"></i>
-                Caçambas de lixo lotadas
-                <span class="badge badge-assertive">+2</span>
-            </a>
-
-            <a class="item item-icon-left" href="#">
-                <i class="icon ion-medkit"></i>
-                Lixo hospitalar
-                <span class="badge badge-assertive">0</span>
-            </a>
-
-            <a class="item item-icon-left" href="#">
-                <i class="icon ion-nuclear"></i>
-                Resíduos nucleares
-                <span class="badge badge-assertive">-10</span>
-            </a>
-        </div>
+                <!--If lower to 0 -->
+                <!--<span class="badge badge-royal">-{{marking.total_confirmacoes_fechou}}</span>-->
+                <!--<p class="text-left">Por:{{marking.author_name}}</p>-->
+            </ion-item>
+        </ion-list>
+        <h3>PEVs Proximas</h3>
+        <ion-list>
+            <ion-item ng-repeat="pev in pevs"
+                      value="{{pev.id_pev}}"
+                      ng-model="pev"
+                      name="pev_item"
+                      href="pevs/{{pev.id_pev}}"
+                      ng-show="currentUserEmail==pev.author_email">
+                <h3 class="text-left" style="font-weight: bolder">{{pev.titulo_incidente}}</h3>
+                <p class="text-left">Descrição: {{pev.descricao_incidente}}</p>
+                <p class="text-left">
+                    Tipo: {{pev.tipo_incidente}}
+                </p>
+                <!--If greater than 0-->
+                <span class="badge badge-assertive">+{{pev.total_confirmacoes_existencia}}</span>
+            </ion-item>
 
     </ion-content>
 </ion-view>
