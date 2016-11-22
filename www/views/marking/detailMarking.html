@@ -1,0 +1,18 @@
+<!-- Page with markings -->
+<ion-view title="Incidentes" id="my-markings">
+    <ion-content padding="true" class="has-header padding has-tabs-top" scroll="true">
+        <a class="button icon-top ion-chevron-left button-clear button-dark" ui-sref="tabs.markings.myMarkings"> Voltar </a>
+
+        <div class="marking_body">
+            <h3><b>{{selected_marking.titulo_incidente}}</b></h3>
+            <h2>{{selected_marking.imagem_incidente}}</h2>
+            <body>CEP: {{selected_marking.cep}} <br>
+                Estado: {{selected_marking.estado}} <br>
+                Cidade: {{selected_marking.cidade}} <br>
+                Bairro: {{selected_marking.bairro}} <br>
+                Logradouro: {{selected_marking.logradouro}} <br>
+            </body>
+            <p><b>Por: {{selected_marking.author_name}}</b></p>
+        </div>
+    </ion-content>
+</ion-view>

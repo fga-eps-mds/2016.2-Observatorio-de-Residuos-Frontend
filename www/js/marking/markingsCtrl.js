@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 
-//Controller responsible for articles in to contribuindo
-.controller('markingsCtrl', function($scope, $http, URL, $rootScope, currentUserService) {
+//Controller responsible for markings in to contribuindo
+.controller('markingsCtrl', function($scope, $http, URL, $rootScope, currentUserService, markingService, $state) {
   $rootScope.markings = [];
   $rootScope.marking_types = [];
   $scope.currentUserEmail = currentUserService.getUserData().email;
@@ -30,6 +30,11 @@ angular.module('app.controllers')
   .error(function(error){
     console.log("Error");
   })
+
+  $scope.openMarking = function (marking) {
+    markingService.setMarking(marking);
+    $state.go("tabs.markings.detailMarking");
+  }
 
 
 })

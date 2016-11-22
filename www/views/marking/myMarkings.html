@@ -8,9 +8,9 @@
                 value="{{marking.id_incidente}}"
                 ng-model="marking"
                 name="marking_item"
-                href="markings/{{marking.id_incidente}}"
-                ng-show="currentUserEmail==marking.author_email">
-        <h3 class="text-left" style="font-weight: bolder">{{marking.titulo_incidente}}</h3>
+                ng-show="currentUserEmail==marking.author_email"
+                ng-click="openMarking(marking)">
+        <h3 class="text-left" style="font-weight: bold">{{marking.titulo_incidente}}</h3>
         <p class="text-left">Descrição: {{marking.descricao_incidente}}</p>
         <p class="text-left">
           Tipo: {{marking.tipo_incidente}}
@@ -32,9 +32,9 @@
                 value="{{marking.id_incidente}}"
                 ng-model="marking"
                 name="marking_item"
-                href="markings/{{marking.id_incidente}}"
-                ng-show="currentUserEmail==marking.author_email">
-        <h3 class="text-left" style="font-weight: bolder">{{marking.titulo_incidente}}</h3>
+                ng-show="currentUserEmail==marking.author_email"
+                ng-click="openMarking(marking)">
+        <h3 class="text-left" style="font-weight: bold">{{marking.titulo_incidente}}</h3>
         <p class="text-left">Descrição: {{marking.descricao_incidente}}</p>
         <p class="text-left">
           Tipo: {{marking.tipo_incidente}}
