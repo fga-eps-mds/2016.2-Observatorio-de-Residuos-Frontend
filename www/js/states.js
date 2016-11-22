@@ -96,7 +96,8 @@ angular.module('starter')
       url: '/myMarkings',
       views: {
         'markings-page': {
-          templateUrl: 'views/marking/myMarkings.html'
+          templateUrl: 'views/marking/myMarkings.html',
+          controller: 'markingsCtrl'
         }
       }
     })
@@ -155,12 +156,70 @@ angular.module('starter')
       }
   })
 
+      //Detail Article State
+          .state('tabs.to-contribuindo.detailArticle', {
+              url: '/detail_article',
+              views: {
+                  'to-contribuindo-page': {
+                      templateUrl: 'views/contribute/detailArticle.html',
+                      controller: 'selectedArticleCtrl'
+                  }
+              }
+          })
+
+      //Detail Projects State
+      .state('tabs.to-contribuindo.detailProject', {
+          url: '/detail_project',
+          views: {
+              'to-contribuindo-page': {
+                  templateUrl: 'views/contribute/detailProject.html',
+                  controller: 'selectedProjectCtrl'
+              }
+          }
+      })
+
+    //Detail Marking State
+      .state('tabs.markings.detailMarking', {
+          url: '/detail_marking',
+          views: {
+              'markings-page': {
+                  templateUrl: 'views/marking/detailMarking.html',
+                  controller: 'selectedMarkingCtrl'
+              }
+          }
+      })
+
+      //Detail Pev State
+      .state('tabs.markings.detailPev', {
+          url: '/detail_pev',
+          views: {
+              'markings-page': {
+                  templateUrl: 'views/pev/detailPev.html',
+                  controller: 'selectedPevCtrl'
+              }
+          }
+      })
+
 
   //Edit profile user state
   .state('editProfile',{
     url: '/editProfile',
     templateUrl: 'views/user/editProfile.html',
     controller: 'editProfileCtrl'
+  })
+
+  //Complaint Marking state
+  .state('complaintMarking',{
+    url: '/complaintMarking',
+    controller: 'complaintMarkingCtrl',
+    templateUrl: 'views/complaint/complaintMarking.html'
+  })
+
+  //Complaint Pev state
+  .state('complaintPev',{
+    url: '/complaintPev',
+    controller: 'complaintPevCtrl',
+    templateUrl: 'views/complaint/complaintPev.html'
   })
 
   //Tutorial state

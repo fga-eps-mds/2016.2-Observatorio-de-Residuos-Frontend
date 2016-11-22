@@ -1,48 +1,47 @@
 <!-- My Markings page -->
 <ion-view title="Meus Incidentes" id="my-markings">
   <ion-content padding="true" class="has-header padding has-tabs-top" scroll="true">
-
     <!-- List of all markings marked by the user -->
     <h3>Minhas Marcações</h3>
-    <div class="list">
-      <a class="item item-icon-left" ui-sref="/marking/"><!-- marking id -->
-        <i class="icon ion-waterdrop"></i> <!-- marking type-->
-        Derramamanto de Óleo <!-- marking name -->
-        <span class="badge badge-assertive">+3</span> <!-- marking score -->
-      </a>
+    <ion-list>
+      <ion-item ng-repeat="marking in markings"
+                value="{{marking.id_incidente}}"
+                ng-model="marking"
+                name="marking_item"
+                ng-show="currentUserEmail==marking.author_email"
+                ng-click="openMarking(marking)">
+        <h3 class="text-left" style="font-weight: bold">{{marking.titulo_incidente}}</h3>
+        <p class="text-left">Descrição: {{marking.descricao_incidente}}</p>
+        <p class="text-left">
+          Tipo: {{marking.tipo_incidente}}
+        </p>
+        <!--If greater than 0-->
+        <span class="badge badge-assertive">+{{marking.total_confirmacoes_existencia}}</span>
 
-      <a class="item item-icon-left" href="/marking/">
-        <i class="icon ion-soup-can"></i>
-        Caçambas de lixo lotadas
-        <span class="badge badge-assertive">+2</span>
-      </a>
-    </div>
+        <!--If equals to 0 -->
+        <!--<span class="badge badge-balanced">{{marking.total_confirmacoes_existencia}}</span>-->
 
+        <!--If lower to 0 -->
+        <!--<span class="badge badge-royal">-{{marking.total_confirmacoes_fechou}}</span>-->
+        <!--<p class="text-left">Por:{{marking.author_name}}</p>-->
+      </ion-item>
+    </ion-list>
     <h3>Marcações Próximas</h3>
-    <div class="list">
-      <a class="item item-icon-left" ui-sref="/marking/"><!-- marking id -->
-        <i class="icon ion-waterdrop"></i> <!-- marking type-->
-        Derramamanto de Óleo <!-- marking name -->
-        <span class="badge badge-assertive">+3</span> <!-- marking score -->
-      </a>
+    <ion-list>
+      <ion-item ng-repeat="marking in markings"
+                value="{{marking.id_incidente}}"
+                ng-model="marking"
+                name="marking_item"
+                ng-show="currentUserEmail==marking.author_email"
+                ng-click="openMarking(marking)">
+        <h3 class="text-left" style="font-weight: bold">{{marking.titulo_incidente}}</h3>
+        <p class="text-left">Descrição: {{marking.descricao_incidente}}</p>
+        <p class="text-left">
+          Tipo: {{marking.tipo_incidente}}
+        </p>
+        <span class="badge badge-assertive">+{{marking.total_confirmacoes_existencia}}</span>
+      </ion-item>
+    </ion-list>
 
-      <a class="item item-icon-left" href="/marking/">
-        <i class="icon ion-soup-can"></i>
-        Caçambas de lixo lotadas
-        <span class="badge badge-assertive">+2</span>
-      </a>
-
-      <a class="item item-icon-left" href="#">
-        <i class="icon ion-medkit"></i>
-        Lixo hospitalar
-        <span class="badge badge-assertive">0</span>
-      </a>
-
-      <a class="item item-icon-left" href="#">
-        <i class="icon ion-nuclear"></i>
-        Resíduos nucleares
-        <span class="badge badge-assertive">-10</span>
-      </a>
-    </div>
   </ion-content>
 </ion-view>

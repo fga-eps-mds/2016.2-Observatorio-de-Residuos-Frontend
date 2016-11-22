@@ -3,7 +3,7 @@ angular.module('starter')
 //Modal Controller thar show informations of clicked marking
 .controller('showMarkingCtrl',function($scope,$http,URL, $rootScope, 
 										currentMarkingService, $ionicModal, 
-										currentUserService, $state, factoryEvaluateIncidents, 
+										currentUserService, currentPEVservice, $state, factoryEvaluateIncidents, 
 										factoryEvaluatePev, $ionicLoading){
 	var currentMarking = "";
 
@@ -108,6 +108,18 @@ angular.module('starter')
         $ionicLoading.hide();
 				console.log(error)
 			});
+		}
+	};
+
+	$scope.complaintMarking = function(marking){
+		$scope.modal.hide();
+		if(angular.isDefined(marking.paper)){
+			$scope.pev = marking;
+			currentPEVservice.setPEV($scope.pev);
+			$state.go('complaintPev')
+		} else {
+			currentMarkingService.setMarking(marking);
+			$state.go('complaintMarking');
 		}
 	};
 

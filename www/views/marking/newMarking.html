@@ -3,7 +3,7 @@
   <ion-content padding="true" ng-controller="cameraCtrl" class="has-header has-tabs-top" scroll="true">
     <div>
       <form ng-submit="registerMarking(marking); modal.hide()" name="Markingform">
-      <div class="image-and-buttons">
+        <div class="image-and-buttons">
 
         <!-- Marking photo -->
         <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
@@ -15,7 +15,6 @@
           <button class="button icon-left ion-camera" ng-click="addMedia()">Foto do incidente</button><br>
           <!-- The camera doesn't work on browser, and a android build is necessary -->
         </div>
-      </div>
 
         <!-- Fields to put informations of marking -->
         <div class="spacer" style="height: 15px;"></div>
@@ -24,22 +23,22 @@
             <p ng-show="Markingform.name.$invalid && !Markingform.name.$pristine" class="nav-bar-block">
               O nome do incidente é obrigatório!
             </p>
-            <input type="text"  ng-model="marking.titulo_incidente" placeholder="Nome do Incidente" name="name" required>
+            <input type="text"  ng-model="marking.name" placeholder="Nome do Incidente" name="name" required>
           </label>
 
           <ion-item id="special-select" class="item-input item-select">
-          <select ng-model="marking.id_tipo_incidente" name="marking_type" required>
-            <option value="" disabled>Selecione um Tipo de Incidente</option>
-            <option ng-repeat="marking_type in marking_types" value="{{marking_type.id_tipo_incidente}}">
-              {{marking_type.tipo_incidente}}
-            </option>
-          </select>
+            <select ng-model="marking.id_marking_type" name="marking_type" required>
+              <option value="" disabled>Selecione um Tipo de Incidente</option>
+              <option ng-repeat="marking_type in marking_types" value="{{marking_type.id_tipo_incidente}}">
+                {{marking_type.tipo_incidente}}
+              </option>
+            </select>
           </ion-item>
 
         </ion-list>
 
         <label class="item item-input">
-          <textarea type="text" ng-model="marking.descricao_incidente" placeholder="Descrição" rows="3"></textarea>
+          <textarea type="text" ng-model="marking.description" placeholder="Descrição" rows="3"></textarea>
         </label>
         <label class="item item-input hidden-input">
           <input placeholder="Latitude" ng-model="marking.latitude" disabled="true">
@@ -49,7 +48,7 @@
           <input placeholder="Longitude" ng-model="marking.longitude" disabled="true">
         </label>
         <button type="submit" id="page-button9" class="button button-full button-positive" ng-disabled="Markingform.$invalid">Cadastrar</button>
-    </form>
+      </form>
     </div>
   </ion-content>
 </ion-view>

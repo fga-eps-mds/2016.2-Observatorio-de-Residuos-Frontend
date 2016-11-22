@@ -52,4 +52,14 @@ angular.module('starter')
 //Factory for incident edition
 .factory('factoryEditMarking', function($resource, URL){
   return $resource(URL+"/markings/edit");
+})
+
+//Factory for marking complaints
+.factory('factoryComplaintMarking', function($resource, URL){
+  return $resource(URL+"/complaints/create");
+})
+
+//Factory for PEVcomplaints
+.factory('factoryComplaintPEV', function($resource, URL){
+  return $resource(URL+"/pev_complaints/create");
 });
