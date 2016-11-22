@@ -1,5 +1,6 @@
 angular.module('starter')
 
+    //Factory to get images from photolibrary and add images from camera
     .factory('FileService', function() {
         var images;
         var IMAGE_STORAGE_KEY = 'images';
@@ -25,6 +26,7 @@ angular.module('starter')
         }
     })
 
+    //Factory to save images with id
     .factory('ImageService', function($cordovaCamera, FileService, $q, $cordovaFile) {
 
         function makeid() {
