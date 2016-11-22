@@ -7,7 +7,7 @@
                 <ion-list id="list">
                     <ion-item class="item-profile">
                         <div class="item-avatar">
-                            <img class="icon ion-image" ng-repeat="image in images" ng-src="{{urlForImage(imageName)}}" height="150px" width="150px">
+                            <img class="icon ion-image" ng-repeat="image in images" ng-src="{{trustAsResourceUrl(image)}}" height="150px" width="150px">
                             <!--img ng-src="{{userData.imgUrl}}"-->
                         </div>
                     </ion-item>
