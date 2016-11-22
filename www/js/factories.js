@@ -15,6 +15,16 @@ angular.module('starter')
   return $resource(URL+"/sessions/login");
 })
 
+//Factory para incremento de avaliações de PEV
+.factory('factoryEvaluatePev', function($resource,URL){
+  return $resource(URL+"/pevs/increment");
+})
+
+//Factory para incremento de avaliações de incidentes
+.factory('factoryEvaluateIncidents', function($resource,URL){
+  return $resource(URL+"/markings/increment");
+})
+
 //Factory for PEV creation
 .factory('factoryPEV', function($resource, URL){
   return $resource(URL+"/pevs/create");

@@ -1,7 +1,6 @@
 angular.module('starter')
 /* Archive responsible to connect all controllers and respective views defining as states of application */
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider){
-
   $ionicConfigProvider.tabs.position('bottom');
   $stateProvider
 

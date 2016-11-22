@@ -3,3 +3,4 @@ angular.module('app.controllers', [])
 
 //Constant URL of application used in Factories
 .constant('URL', 'http://localhost:3000')
+// .constant('URL', 'https://polar-retreat-46908.herokuapp.com')
