@@ -7,11 +7,12 @@ angular.module('starter')
 										factoryEvaluatePev, $ionicLoading){
 	var currentMarking = "";
 
-  $scope.voted = false;
 
 	//Function that places scope like informations of clicked PEV
 	$scope.showPev = function(event, pev){
+    var seenPevs = currentUserService.getUserPevs();
 		$scope.currentUserEmail = currentUserService.getUserData().email;
+    $scope.voted = false;
 		$scope.marking = pev;
 		$scope.types = [];
 		if (pev.paper == true)
@@ -22,6 +23,13 @@ angular.module('starter')
 			$scope.types.push("Metal");
 		if (pev.plastic == true)
 			$scope.types.push("Plástico");
+    angular.forEach(seenPevs, function(value) {
+      if($scope.voted != true) {
+        if(pev.id_pev == value.id_pev) {
+          $scope.voted = true;
+        }
+      }
+    });
 		$scope.modal.show();
 	};
 	//Function that places scope like informations of clicked marking
@@ -68,16 +76,18 @@ angular.module('starter')
 	$scope.evaluate = function(marking, evaluation) { 
     $ionicLoading.show('Por favor, aguarde...');
 		// trocar o "paper" quando mudar o banco
-		if (angular.isDefined(marking.paper)){		
-		    var index = $rootScope.pevs.indexOf(marking); 
-		    if (evaluation){
-		    	$rootScope.pevs[index].total_confirmacoes_existencia += 1;	
-		    } else {
-		    	$rootScope.pevs[index].total_confirmacoes_resolvido += 1;	
-		    }
+		if(angular.isDefined(marking.paper)) {		
+		  var index = $rootScope.pevs.indexOf(marking); 
+		  if (evaluation){
+		    $rootScope.pevs[index].total_confirmacoes_funcionando += 1;	
+		  } else {
+		    $rootScope.pevs[index].total_confirmacoes_fechou += 1;	
+		  }
+      $rootScope.pevs[index].id_usuario = currentUserService.getUserData().id_usuario;
 			factoryEvaluatePev.save($rootScope.pevs[index], function(result){
         $scope.voted = true;
         $ionicLoading.hide();
+        currentUserService.getUserPevs().push(result);
 			}, function(error){
         $ionicLoading.hide();
 				console.log(error)

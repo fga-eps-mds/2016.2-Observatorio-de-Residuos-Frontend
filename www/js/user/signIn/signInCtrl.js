@@ -11,20 +11,28 @@ registerSocial: Receive social media desired by the parameter on button at signi
                                     socialLoginService, firebaseService, 
                                     currentUserService, factoryEmail, 
                                     factoryLogin, $ionicLoading, $timeout, 
-                                    $ionicPopup, $http) {
+                                    $ionicPopup, $http, URL) {
 
   $scope.secret = {};
   $scope.loginAttempt = function(user){
       user.encripted_password = String(CryptoJS.SHA256($scope.secret.password)); //criptografia da senha
       factoryLogin.save(user, function(result){
-        $http.get("http://localhost:3000/user/" + result.id_usuario + "/markings")
-        .success(function(seenMarkings){
-          currentUserService.setUserData(result);
-          currentUserService.setUserMarking(seenMarkings);
-          console.log(currentUserService.getUserMarking());
-          // Variavel responsavel por exibir a mensagem de email inválido ou senha na tela;
-          $state.go('tabs.home')
-          $scope.loginError = false;
+        $http.get(URL + "/user/" + result.id_usuario + "/markings")
+        .success(function(seenMarkings) {
+          $http.get(URL + "/user/" + result.id_usuario + "/pevs")
+          .success(function(seenPevs) {
+            currentUserService.setUserData(result);
+            currentUserService.setUserMarking(seenMarkings);
+            currentUserService.setUserPevs(seenPevs);
+            $state.go('tabs.home')
+            $scope.loginError = false;
+          })
+          .error(function(error) {
+            console.log(error);
+          });
+        })
+        .error(function(error) {
+          console.log(error);
         });
 
       }, function(error){
