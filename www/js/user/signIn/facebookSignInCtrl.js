@@ -20,16 +20,14 @@ angular.module('starter')
       
       $ionicLoading.hide();
     }, function(fail){
-      // Fail get profile info
+      console.log(fail);
     });
   };
 
-  // This is the fail callback from the login method
   var fbLoginError = function(error){
     $ionicLoading.hide();
   };
 
-  // This method is to get the user profile info from the facebook api
   var getFacebookProfileInfo = function (authResponse) {
     var info = $q.defer();
 
@@ -61,12 +59,12 @@ angular.module('starter')
               socialLoginService.login(user);
             });
           }, function(fail){
-            // Fail get profile info
+            console.log(fail);
           });
 
       } else {
 
-        facebookConnectPlugin.login(['email', 'first_name', 'last_name', 'public_profile'], fbLoginSuccess, fbLoginError);
+        facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
       }
     });
   };
