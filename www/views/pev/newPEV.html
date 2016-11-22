@@ -8,7 +8,7 @@
 
             <!-- PEV photo -->
             <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
-              <img class="icon ion-image" ng-repeat="image in images" ng-src="{{urlForImage(imageName)}}" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></img>
+              <img class="icon ion-image" ng-repeat="image in images" ng-src="{{trustAsResourceUrl(image)}}" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></img>
             </div>
             <!-- Camera and Gallery buttons to take or get a photo -->
             <div class="button-bar">
