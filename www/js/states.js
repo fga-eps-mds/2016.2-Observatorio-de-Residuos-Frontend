@@ -157,6 +157,16 @@ angular.module('starter')
       }
   })
 
+  //Tô Contribuindo Articles State
+      .state('tabs.to-contribuindo.detailArticle', {
+          url: '/detail_article',
+          views: {
+              'to-contribuindo-page': {
+                  templateUrl: 'views/contribute/detailArticle.html',
+                  controller: 'selectedArticleCtrl'
+              }
+          }
+      })
 
   //Edit profile user state
   .state('editProfile',{
