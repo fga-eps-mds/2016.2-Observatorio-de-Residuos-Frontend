@@ -6,16 +6,23 @@ describe('showMarkingCtrl', function() {
   var $state = {};
   var $httpBackend;
   var URL;
+  var $rootScope;
+  var factoryEvaluateIncidents;
+  var factoryEvaluatePev;
 
   beforeEach(module('starter'));
 
   beforeEach(inject(function(_$controller_, _$state_, _$ionicModal_, 
-                             _currentUserService_, _$httpBackend_, $injector) {
+                             _currentUserService_, _$httpBackend_, $injector, _$rootScope_,
+                             _factoryEvaluateIncidents_, _factoryEvaluatePev_) {
     $controller = _$controller_;
     $ionicModal = _$ionicModal_;
     $state = _$state_;
     currentUserService = _currentUserService_;
     $httpBackend = _$httpBackend_;
+    $rootScope = _$rootScope_;
+    factoryEvaluateIncidents = _factoryEvaluateIncidents_;
+    factoryEvaluatePev = _factoryEvaluatePev_;
     $httpBackend.when('GET', /\.html$/).respond('');
     URL = $injector.get('URL');
     spyOn($ionicModal, 'fromTemplateUrl').and.callFake(function() {
@@ -37,17 +44,20 @@ describe('showMarkingCtrl', function() {
                                   {
                                     $scope: $scope,
                                     $ionicModal: $ionicModal,
-                                    currentUserService: currentUserService
+                                    currentUserService: currentUserService,
+                                    $rootScope: $rootScope
                                   });
   });
 
   var pev = {"titulo_pev": "PEV", "paper": true, "plastic": false, "metal": true, 
-               "glass": false};
+               "glass": false, "likes": 0, "dislikes": 0};
   var event = "some random event";
   var anotherPev = {"titulo_pev": "AnotherPEV", "paper": false, "plastic": true,
                       "metal": false, "glass": true};
-  var incident = {"titulo_incidente": "incidente", "id_tipo_incidente": 1}
+  var incident = {"titulo_incidente": "incidente", "id_tipo_incidente": 1, "likes": 0, "dislikes": 0}
   var marking_type = {"tipo_incidente": "desastre"};
+  var pevs = [pev];
+  var incidents = [incident];
 
   it('should set proper types of a pev', function() {
     spyOn($scope.modal, 'show');
@@ -97,6 +107,50 @@ describe('showMarkingCtrl', function() {
     spyOn($scope.modalEditMarking, 'show');
     $scope.editMarking(incident);
     expect($scope.modalEditMarking.show).toHaveBeenCalled();
-  })
+  });
+
+  it('should evaluate pev with +1 like', function() {
+    var evaluation = true;
+    $rootScope.pevs = pevs;
+    $scope.evaluate(pev, evaluation);
+    var index = $rootScope.pevs.indexOf(pev);
+    $httpBackend.expectPOST(URL + '/pevs/increment', $rootScope.pevs[index]).respond(201);
+    $httpBackend.flush();
+    expect($scope.buttonClicked).toEqual(false);
+    expect($rootScope.pevs[index].likes).toEqual(1);
+  });
+
+  it('should evaluate pev with +1 dislike', function() {
+    var evaluation = false;
+    $rootScope.pevs = pevs;
+    $scope.evaluate(pev, evaluation);
+    var index = $rootScope.pevs.indexOf(pev);
+    $httpBackend.expectPOST(URL + '/pevs/increment', $rootScope.pevs[index]).respond(201);
+    $httpBackend.flush();
+    expect($scope.buttonClicked).toEqual(false);
+    expect($rootScope.pevs[index].dislikes).toEqual(1);
+  });
+
+  it('should evaluate incident with +1 like', function() {
+    var evaluation = true;
+    $rootScope.markings = incidents;
+    $scope.evaluate(incident, evaluation);
+    var index = $rootScope.markings.indexOf(incident);
+    $httpBackend.expectPOST(URL + '/markings/increment', $rootScope.markings[index]).respond(201);
+    $httpBackend.flush();
+    expect($scope.buttonClicked).toEqual(false);
+    expect($rootScope.markings[index].likes).toEqual(1);
+  });
+
+  it('should evaluate incident with +1 dislike', function() {
+    var evaluation = false;
+    $rootScope.markings = incidents;
+    $scope.evaluate(incident, evaluation);
+    var index = $rootScope.markings.indexOf(incident);
+    $httpBackend.expectPOST(URL + '/markings/increment', $rootScope.markings[index]).respond(201);
+    $httpBackend.flush();
+    expect($scope.buttonClicked).toEqual(false);
+    expect($rootScope.markings[index].dislikes).toEqual(1);
+  });
 
 });

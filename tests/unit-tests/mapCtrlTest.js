@@ -87,7 +87,8 @@ describe('mapCtrl', function() {
       longitude: contentMarkingDB[0].longitude,
       id_tipo_incidente: contentMarkingDB[0].id_tipo_incidente,
       author_name: undefined, 
-      author_email: undefined 
+      author_email: undefined,
+      likes: 0, dislikes: 0
     };
     var contentPEVFormatted = { 
       id_pev: contentPEVDB[0].id_pev,
@@ -100,7 +101,8 @@ describe('mapCtrl', function() {
       plastic: contentPEVDB[0].plastic,
       glass: contentPEVDB[0].glass,
       author_name: undefined, 
-      author_email: undefined
+      author_email: undefined,
+      likes: 0, dislikes: 0
     };
     spyOn(NgMap, 'getMap').and.callThrough();
     $httpBackend.expectGET(URL+"/pevs").respond(200, contentPEVDB);
