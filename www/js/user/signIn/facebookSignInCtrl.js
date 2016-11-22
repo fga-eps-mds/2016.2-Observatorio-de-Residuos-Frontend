@@ -1,6 +1,7 @@
 angular.module('starter')
 
-.controller('facebookSignInCtrl', function($scope, $state, $q, socialLoginService, $ionicLoading) {
+.controller('facebookSignInCtrl', function($scope, $state, $q, socialLoginService, 
+                                           $ionicLoading, userDataExtractorService) {
 
   var fbLoginSuccess = function(response) {
     if (!response.authResponse){
@@ -14,8 +15,6 @@ angular.module('starter')
     .then(function(profileInfo) {
 
       var user = {};
-      user.first_name = "hey";
-      user.last_name = "you";
       user.email = profileInfo.email;
       socialLoginService.login(user);
       
@@ -46,31 +45,28 @@ angular.module('starter')
   };
 
   $scope.facebookSignIn = function() {
-    facebookConnectPlugin.getLoginStatus(function(success){
-      if(success.status === 'connected'){
+   $ionicLoading.show({
+    template: 'Por favor, aguarde...'
+  });
+    facebookConnectPlugin.getLoginStatus(function(result){
+      if(result.status === 'connected'){
+        result.credential = {};
+        result.credential.accessToken = result.authResponse.accessToken;
 
-
-        getFacebookProfileInfo(success.authResponse)
+        getFacebookProfileInfo(result.authResponse)
         .then(function(profileInfo) {
-            // For the purpose of this example I will store user data on local storage
             var user = {};
-            user.first_name = "hey";
-            user.last_name = "you";
-            user.email = profileInfo.email;
-            socialLoginService.login(user);
-
+            userDataExtractorService.extract(result, 'facebook').then(function(user){
+              user.email = profileInfo.email;
+              socialLoginService.login(user);
+            });
           }, function(fail){
             // Fail get profile info
           });
 
       } else {
 
-
-        $ionicLoading.show({
-          template: 'Logging in...'
-        });
-
-        facebookConnectPlugin.login(['email', 'public_profile'], fbLoginSuccess, fbLoginError);
+        facebookConnectPlugin.login(['email', 'first_name', 'last_name', 'public_profile'], fbLoginSuccess, fbLoginError);
       }
     });
   };

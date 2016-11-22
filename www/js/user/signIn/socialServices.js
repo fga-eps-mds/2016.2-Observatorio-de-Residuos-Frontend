@@ -105,7 +105,7 @@ var extract = function(paramUserData){
 
 /* socialLoginService
     login: Responsible for validating received firebase data and decide which state this user have to be send */
-.service('socialLoginService', function(factoryEmail, $state ,currentUserService){
+.service('socialLoginService', function(factoryEmail, $state ,currentUserService, $ionicLoading){
   var login = function(user){
     factoryEmail.save({"email": user.email}, function(result) {
       user.nome_completo = user.first_name +" "+ user.last_name;
@@ -116,7 +116,10 @@ var extract = function(paramUserData){
         currentUserService.setUserData(result);
         $state.go('tabs.home');
       }
+      $ionicLoading.hide();
+
     }, function(error){
+      $ionicLoading.hide();
       console.log(error)
     })
   }
