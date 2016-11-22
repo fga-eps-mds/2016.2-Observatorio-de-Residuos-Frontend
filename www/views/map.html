@@ -1,17 +1,19 @@
 <!-- Observatório de Resíduos Map page, show your current location -->
 <ion-view title="Observatório de Resíduos" id="map">
 	<ion-content padding="true" class="has-header" scroll="false">
-		<ng-map default-style="false" class="mapa-google has-header has-tabs-top" center="current-location" zoom="18">
 
-			<info-window position="current-location">
-				<!-- <span>Loation found using HTML5.</span> -->
-			</info-window>
+		<ng-map default-style="false" class="mapa-google has-header has-tabs-top" center="{{currentLocation}}" zoom="18">
+
 			<div ng-controller="showMarkingCtrl">
 				<div ng-repeat="pev in pevs">
-					<marker position="[{{pev.latitude}}, {{pev.longitude}}]" title="{{pev.name}}" on-click="showPev(pev)"></marker>
+					<custom-marker position="[{{pev.latitude}}, {{pev.longitude}}]" title="{{pev.name}}" on-click="showPev(pev)">
+					    <img src="http://i.imgur.com/r2P8fwg.png" height="40px" width="40px"/>
+					</custom-marker>
 				</div>
 				<div ng-repeat="marking in markings">
-					<marker icon="{{customIcon}}" position="[{{marking.latitude}}, {{marking.longitude}}]" title	="{{marking.name}}" on-click="showIncident(marking)"></marker>
+					<custom-marker position="[{{marking.latitude}}, {{marking.longitude}}]" title	="{{marking.name}}" on-click="showIncident(marking)">
+					    <img src="http://i.imgur.com/aH3M6Od.png" height="40px" width="40px"/>
+					</custom-marker>
 				</div>
 			</div>
 		</ng-map>

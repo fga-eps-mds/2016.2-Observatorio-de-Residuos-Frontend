@@ -5,6 +5,7 @@ describe('newMarkingCtrl', function() {
   var $scope = {};
   var factoryMarking;
   var $ionicHistory;
+  var _currentUserService_;
 
   beforeEach(module('starter'));
   beforeEach(function () {
@@ -29,7 +30,8 @@ describe('newMarkingCtrl', function() {
     });
   });
 
-  beforeEach(inject(function (_$controller_, _$httpBackend_, $injector, _factoryMarking_, _$ionicHistory_, _$rootScope_) {
+  beforeEach(inject(function (_$controller_, _$httpBackend_, $injector, 
+    _factoryMarking_, _$ionicHistory_, _$rootScope_, _currentUserService_) {
     $controller = _$controller_;
     $httpBackend = _$httpBackend_;
     URL = $injector.get('URL');
@@ -37,10 +39,13 @@ describe('newMarkingCtrl', function() {
     factoryMarking = _factoryMarking_;
     $ionicHistory = _$ionicHistory_;
     $rootScope = _$rootScope_;
+    currentUserService = _currentUserService_;
   }))
 
   beforeEach(function () {
     var controller = $controller('newMarkingCtrl', {$scope: $scope, $ionicHistory: $ionicHistory});
+    var user = {id_usuario: 1, nome_completo: "Lucas Amoêdo", email: "lucas.advc@email.com"}
+    currentUserService.setUserData(user);
     $httpBackend.expectGET(URL + '/marking_types').respond(200);
   });
 

@@ -15,7 +15,7 @@ angular.module('app.controllers')
     })
   })
   .error(function(error){
-    console.log("Error");
+    console.log(error);
   })
 
   //Function that send changes to backend
@@ -42,7 +42,7 @@ angular.module('app.controllers')
       buttons: [
         {text: 'Cancelar'},
         {text: 'Desativar',
-         onTap: function() {
+         onTap: $scope.validateDeactivation = function() {
             
             var password = $scope.data.password;
             var encryptedPassword = String(CryptoJS.SHA256(password));

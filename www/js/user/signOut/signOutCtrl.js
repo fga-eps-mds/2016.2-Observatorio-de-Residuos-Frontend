@@ -4,6 +4,8 @@ angular.module('starter')
 
   $scope.signOut = function() {
     currentUserService.setUserData(null);
+    currentUserService.setUserMarking([]);
+    currentUserService.setUserPevs([]);
     $state.go('signin');
   };
 });

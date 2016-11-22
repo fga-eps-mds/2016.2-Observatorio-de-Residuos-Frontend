@@ -49,18 +49,27 @@ describe('signupCtrl', function() {
       spyOn($state, 'go');
       $httpBackend.flush();
       expect($scope.invalidEmail).toBeFalsy();
+      expect($scope.emailAlreadyUsed).toBeFalsy();
       expect($state.go).toHaveBeenCalledWith('tabs.home');//------
     });
 
-    it('should set invalidEmail to true when getting an error response from\
+    it('should set invalidEmail to true when getting an error response 400 from\
      server during email validation', function() {
       $httpBackend.when('GET', URL+"/profiles").respond(200);
-      $httpBackend.expectPOST(URL + '/users/create', user).respond(401);
+      $httpBackend.expectPOST(URL + '/users/create', user).respond(400);
       $scope.registerEmail(user);
       $httpBackend.flush();
       expect($scope.invalidEmail).toBeTruthy();
+      expect($scope.emailAlreadyUsed).toBeFalsy();
      });
-
+     it('should set emailAlreadyUsed to true when getting and error response 401\
+     from server durint email validation', function(){
+       $httpBackend.when('GET', URL+"/profiles").respond(200);
+       $httpBackend.expectPOST(URL + '/users/create', user).respond(401);
+       $scope.registerEmail(user);
+       $httpBackend.flush();
+       expect($scope.invalidEmail).toBeFalsy();
+       expect($scope.emailAlreadyUsed).toBeTruthy();
+     })
   });
-
 });

@@ -49,6 +49,7 @@
 
         <ion-item class="item-input">
           <label>
+            <!-- count is a variable to validate if password field is empty or have some alphanumeric character -->
             <input ng-click="count = 0" ng-init="count = 0" ng-keydown="count = count + 1" type="password" name="password_confirmation" ng-model="secret.password_confirmation" placeholder="Confirmação da Senha" required="" confirm-pwd="secret.password" />
             <h3 class="validation-msg" ng-show="(count < 1) && userForm.password_confirmation.$touched" class="nav-bar-block">
               Confirmação de senha requerida
@@ -59,74 +60,64 @@
           </label>
         </ion-item>
 
-        <ion-item class="item-input item-select">
-          <label>
-            <span class="input-label">Estado</span>
-            <select ng-model="user.city" name="estado" required>
-              <br>
-              <option value="" disabled>Selecione um Estado</option>
-              <option value="ac">Acre</option>
-              <option value="al">Alagoas</option>
-              <option value="am">Amazonas</option>
-              <option value="ap">Amapá</option>
-              <option value="ba">Bahia</option>
-              <option value="ce">Ceará</option>
-              <option value="df">Distrito Federal</option>
-              <option value="es">Espírito Santo</option>
-              <option value="go">Goiás</option>
-              <option value="ma">Maranhão</option>
-              <option value="mt">Mato Grosso</option>
-              <option value="ms">Mato Grosso do Sul</option>
-              <option value="mg">Minas Gerais</option>
-              <option value="pa">Pará</option>
-              <option value="pb">Paraíba</option>
-              <option value="pr">Paraná</option>
-              <option value="pe">Pernambuco</option>
-              <option value="pi">Piauí</option>
-              <option value="rj">Rio de Janeiro</option>
-              <option value="rn">Rio Grande do Norte</option>
-              <option value="ro">Rondônia</option>
-              <option value="rs">Rio Grande do Sul</option>
-              <option value="rr">Roraima</option>
-              <option value="sc">Santa Catarina</option>
-              <option value="se">Sergipe</option>
-              <option value="sp">São Paulo</option>
-              <option value="to">Tocantins</option>
-            </select>
-          </label>
-        </ion-item>
+        <label class="item item-input item-select">
+          <span class="input-label">Estado</span>
+          <select ng-model="user.city" name="estado" required>
+            <br>
+            <option value="ac">Acre</option>
+            <option value="al">Alagoas</option>
+            <option value="am">Amazonas</option>
+            <option value="ap">Amapá</option>
+            <option value="ba">Bahia</option>
+            <option value="ce">Ceará</option>
+            <option value="df">Distrito Federal</option>
+            <option value="es">Espírito Santo</option>
+            <option value="go">Goiás</option>
+            <option value="ma">Maranhão</option>
+            <option value="mt">Mato Grosso</option>
+            <option value="ms">Mato Grosso do Sul</option>
+            <option value="mg">Minas Gerais</option>
+            <option value="pa">Pará</option>
+            <option value="pb">Paraíba</option>
+            <option value="pr">Paraná</option>
+            <option value="pe">Pernambuco</option>
+            <option value="pi">Piauí</option>
+            <option value="rj">Rio de Janeiro</option>
+            <option value="rn">Rio Grande do Norte</option>
+            <option value="ro">Rondônia</option>
+            <option value="rs">Rio Grande do Sul</option>
+            <option value="rr">Roraima</option>
+            <option value="sc">Santa Catarina</option>
+            <option value="se">Sergipe</option>
+            <option value="sp">São Paulo</option>
+            <option value="to">Tocantins</option>
+          </select>
+        </label>
 
-        <ion-item class="item-input item-select">
-          <label>
-            <div class="input-label">
-              Gênero
-            </div>
-            <h3 class="validation-msg" ng-show="userForm.genero.$invalid && !userForm.genero.$pristine" class="help-block">
-              Selecione seu genero
-            </h3>
-            <select ng-model="user.gender" name="genero" required>
-              <br>
-              <option value="" disabled>Selecione um Sexo</option>
-              <option value="female">Feminino</option>
-              <option value="male">Masculino</option>
-            </select>
-          </label>
-        </ion-item>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Gênero
+          </div>
+          <p ng-show="userForm.genero.$invalid && !userForm.genero.$pristine" class="help-block">
+            Selecione seu genero
+          </p>
+          <select ng-model="user.gender" name="genero" required>
+            <br>
+            <option value="female">Feminino</option>
+            <option value="male">Masculino</option>
+          </select>
+        </label>
 
-        <ion-item class="item-input item-select">
-          <label>
-            <div class="input-label">
-              Tipo de Perfil
-            </div>
-            <h3 class="validation-msg" ng-show="userForm.profile_type.$invalid && !userForm.profile_type.$pristine" class="help-block">
-              Selecione seu tipo de perfil!
-            </h3>
-            <select ng-model="user.profile" name="profile_type" required>
-              <option value="" disabled>Selecione um Tipo de Perfil</option>
-              <option ng-repeat="profile in profiles" value="{{profile.perfil}}">{{profile.perfil}}</option>
-            </select>
-          </label>
-        </ion-item>
+        <label class="item item-input item-select">
+          <div class="input-label">Tipo de Perfil</div>
+          <p ng-show="userForm.profile_type.$invalid && !userForm.profile_type.$pristine" class="help-block">
+            Selecione seu tipo de perfil!
+          </p>
+          <select ng-model="user.profile" name="profile_type" required>
+            <option ng-repeat="profile in profiles" value="{{profile.perfil}}">{{profile.perfil}}</option>
+          </select>
+        </label>
+
       </ion-list>
       <!-- Button confirmation of sign up only works if all fields are filled -->
       <button type="submit" id="signup-button5" ng-disabled="userForm.$invalid" class="button button-positive button-block">Cadastrar</button>

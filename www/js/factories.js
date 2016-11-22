@@ -15,6 +15,16 @@ angular.module('starter')
   return $resource(URL+"/sessions/login");
 })
 
+//Factory para incremento de avaliações de PEV
+.factory('factoryEvaluatePev', function($resource,URL){
+  return $resource(URL+"/pevs/increment");
+})
+
+//Factory para incremento de avaliações de incidentes
+.factory('factoryEvaluateIncidents', function($resource,URL){
+  return $resource(URL+"/markings/increment");
+})
+
 //Factory for PEV creation
 .factory('factoryPEV', function($resource, URL){
   return $resource(URL+"/pevs/create");
@@ -42,4 +52,14 @@ angular.module('starter')
 //Factory for incident edition
 .factory('factoryEditMarking', function($resource, URL){
   return $resource(URL+"/markings/edit");
+})
+
+//Factory for marking complaints
+.factory('factoryComplaintMarking', function($resource, URL){
+  return $resource(URL+"/complaints/create");
+})
+
+//Factory for PEVcomplaints
+.factory('factoryComplaintPEV', function($resource, URL){
+  return $resource(URL+"/pev_complaints/create");
 });
