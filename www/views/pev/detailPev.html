@@ -1,0 +1,18 @@
+<!-- Page with pevs -->
+<ion-view title="PEVs" id="my-pevs">
+    <ion-content padding="true" class="has-header padding has-tabs-top" scroll="true">
+        <a class="button icon-top ion-chevron-left button-clear button-dark" ui-sref="tabs.to-contribuindo.pevs"> Voltar </a>
+
+        <div class="pev_body">
+            <h3><b>{{selected_pev.titulo_incidente}}</b></h3>
+            <h2>{{selected_pev.imagem_incidente}}</h2>
+            <body>CEP: {{selected_pev.cep}} <br>
+                Estado: {{selected_pev.estado}} <br>
+                Cidade: {{selected_pev.cidade}} <br>
+                Bairro: {{selected_pev.bairro}} <br>
+                Logradouro: {{selected_pev.logradouro}} <br>
+            </body>
+            <p><b>Por: {{selected_pev.author_name}}</b></p>
+        </div>
+    </ion-content>
+</ion-view>

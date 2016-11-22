@@ -3,9 +3,13 @@
     <ion-content padding="true" class="has-header padding has-tabs-top" scroll="true">
 
         <h3>Projetos Recomendados</h3>
-        <ion-list ng-repeat="project in projects" value="{{project.id_projeto}}">
-            <ion-item ng-model="project" name="project_item" href="projects/{{project.id_projeto}}">
-                <h3 class="text-left">{{project.titulo_contribuicao}}</h3>
+        <ion-list>
+            <ion-item ng-repeat="project in projects"
+                      value="{{project.id_projeto}}"
+                      ng-model="project"
+                      name="project_item"
+                      ng-click="openProject(project)">
+                <h3 class="text-left"><b>{{project.titulo_contribuicao}}</b></h3>
                 <p class="text-left">{{project.resumo_contribuicao}}</p>
             </ion-item>
         </ion-list>

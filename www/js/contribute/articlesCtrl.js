@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 
     //Controller responsible for articles in to contribuindo
-    .controller('articlesCtrl', function($scope, $http, URL, $rootScope) {
+    .controller('articlesCtrl', function($scope, $http, URL, $rootScope, articleService, $state) {
         $rootScope.articles = [];
         $http.get(URL + '/articles')
             .success(function(content){
@@ -12,4 +12,9 @@ angular.module('app.controllers')
             .error(function(error){
                 console.log("Error");
             })
+
+        $scope.openArticle = function (article) {
+            articleService.setArticle(article);
+            $state.go("tabs.to-contribuindo.detailArticle");
+        }
     })
