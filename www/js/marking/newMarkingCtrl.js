@@ -3,9 +3,7 @@ angular.module('app.controllers')
 .controller("newMarkingCtrl", function ($ionicHistory, currentUserService, NgMap, $state, $scope, $rootScope, factoryMarking, $ionicPopup, URL, $http) {
 
   var options = {enableHighAccuracy: true};
-  if(angular.isUndefined($rootScope.markings)) {
-    $rootScope.markings = [];
-  }
+  $rootScope.markings = [];
 
   $rootScope.marking_types = [];
   $http.get(URL + '/marking_types')
