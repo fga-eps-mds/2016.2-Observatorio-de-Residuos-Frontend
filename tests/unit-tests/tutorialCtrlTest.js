@@ -17,7 +17,6 @@ describe('tutorialCtrl', function() {
   });
 
   describe('startApp',function() {
-    
     it('Go to initial screen', function() {
       spyOn($state, 'go');
       $scope.startApp();
@@ -40,5 +39,4 @@ describe('tutorialCtrl', function() {
       expect($ionicSlideBoxDelegate.previous).toHaveBeenCalled();
     });
   });
-
 });

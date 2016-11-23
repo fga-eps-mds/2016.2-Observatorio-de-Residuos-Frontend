@@ -109,27 +109,27 @@ a{
 
 .ion-popover-view.fit {
     height: auto;
-  }
+}
 
-  .ion-popover-view.fit .ion-content {
+.ion-popover-view.fit .ion-content {
     position: relative;
-  }
+}
 
-  .platform-android .ion-popover-view.fit {
+.platform-android .ion-popover-view.fit {
     margin-top: 10px;
     background-color: var(--green-seven);
-  }
+}
 
-  .platform-ios .ion-popover-view.fit {
+.platform-ios .ion-popover-view.fit {
     padding-top: 10px;
     padding-bottom: 10px;
     background-color: var(--green-seven);
-  }
+}
 
-  .platform-ios .popover .scroll-content {
-      margin: 0px 0;
-  }
-  .popover.right .arrow:after {
+.platform-ios .popover .scroll-content {
+  margin: 0px 0;
+}
+.popover.right .arrow:after {
   border-right-color: red;
 }
 

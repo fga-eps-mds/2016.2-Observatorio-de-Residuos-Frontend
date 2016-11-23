@@ -13,5 +13,4 @@ describe('currentPEVservice', function() {
     PEVData = currentPEVservice.getPEV();
     expect(PEVData).toBe("PEV teste");
   });
-
 });

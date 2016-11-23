@@ -8,9 +8,10 @@ describe('SocialServices', function(){
   beforeEach(module('starter'));
 
   beforeEach(inject(function($injector, _googleExtractor_,_facebookExtractor_, 
-                             _userDataExtractorService_, _$httpBackend_, 
-                             _factoryEmail_, _$state_ ,_currentUserService_, 
-                             _socialLoginService_){
+    _userDataExtractorService_, _$httpBackend_, 
+    _factoryEmail_, _$state_ ,_currentUserService_, 
+    _socialLoginService_){
+    
     serviceGoogle = _googleExtractor_;
     serviceFacebook = _facebookExtractor_;
     factoryEmail = _factoryEmail_; 

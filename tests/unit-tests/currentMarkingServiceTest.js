@@ -13,5 +13,4 @@ describe('currentMarkingService', function() {
     MarkingData = currentMarkingService.getMarking();
     expect(MarkingData).toBe("Marking teste");
   });
-
 });

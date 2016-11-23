@@ -35,7 +35,8 @@ describe('mapCtrl', function() {
   });
 
   beforeEach(inject(function(_$controller_, _NgMap_, _$httpBackend_, $injector, 
-                             _$rootScope_) {
+    _$rootScope_) {
+    
     $controller = _$controller_;
     NgMap = _NgMap_;
     $rootScope = _$rootScope_;
@@ -46,7 +47,7 @@ describe('mapCtrl', function() {
 
   beforeEach(function(){
     var controller = $controller('mapCtrl', {$scope: $scope, NgMap: NgMap, 
-                                             $rootScope: $rootScope});
+     $rootScope: $rootScope});
   });
 
   it('Should get the map and not load any pevs or markings', function() {

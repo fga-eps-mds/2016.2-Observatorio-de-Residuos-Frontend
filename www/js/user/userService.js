@@ -1,42 +1,42 @@
 angular.module('starter')
+
 /* Service responsible to transport actual user for all application
   setUserData: Used in signInControllers to define actual user
   getUserData: Used to recover actual user where necessary, for example in profile screen */
+.service('currentUserService', function() {
+ var userData = "";
+ var userMarkings = [];
+ var userPevs = [];
+ var setUserData = function(userData) {
+  this.userData = userData;
+ }
 
-.service('currentUserService',function(){
-  var userData = "";
-  var userMarkings = [];
-  var userPevs = [];
+ var getUserData = function() {
+  return this.userData
+ }
 
-  var setUserData = function(userData) {
-    this.userData = userData;
-  }
+ var setUserMarking = function(userMarkings) {
+  this.userMarkings = userMarkings;
+ }
 
-  var getUserData = function(){
-    return this.userData
-  }
+ var getUserMarking = function() {
+  return this.userMarkings;
+ }
 
-  var setUserMarking = function(userMarkings) {
-    this.userMarkings = userMarkings;
-  }
-  
-  var getUserMarking = function() {
-    return this.userMarkings;
-  }
+ var setUserPevs = function(userPevs) {
+  this.userPevs = userPevs;
+ }
 
-  var setUserPevs = function(userPevs) {
-    this.userPevs = userPevs;
-  }
-
-  var getUserPevs = function() {
-    return this.userPevs;
-  }
-  return {
-    setUserData: setUserData,
-    getUserData: getUserData,
-    setUserMarking: setUserMarking,
-    getUserMarking: getUserMarking,
-    setUserPevs: setUserPevs,
-    getUserPevs: getUserPevs
-  }
+ var getUserPevs = function() {
+  return this.userPevs;
+ }
+ 
+ return {
+  setUserData: setUserData,
+  getUserData: getUserData,
+  setUserMarking: setUserMarking,
+  getUserMarking: getUserMarking,
+  setUserPevs: setUserPevs,
+  getUserPevs: getUserPevs
+ }
 })

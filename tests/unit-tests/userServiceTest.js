@@ -13,5 +13,4 @@ describe('currentUserService', function() {
     userData = currentUserService.getUserData();
     expect(userData).toBe("Amoêdo");
   });
-
 });

@@ -1,5 +1,4 @@
 describe('signinCtrl',function(){
-
   var $controller;
   var $httpBackend;
   var $state;
