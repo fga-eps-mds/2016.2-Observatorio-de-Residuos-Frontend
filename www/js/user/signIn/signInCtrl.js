@@ -11,7 +11,7 @@ registerSocial: Receive social media desired by the parameter on button at signi
                                     socialLoginService, firebaseService, 
                                     currentUserService, factoryEmail, 
                                     factoryLogin, $ionicLoading, $timeout, 
-                                    $ionicPopup, $http, URL) {
+                                    $ionicPopup, $http, URL, $ionicHistory) {
 
   $scope.secret = {};
   $scope.loginAttempt = function(user){
@@ -24,6 +24,7 @@ registerSocial: Receive social media desired by the parameter on button at signi
             currentUserService.setUserData(result);
             currentUserService.setUserMarking(seenMarkings);
             currentUserService.setUserPevs(seenPevs);
+            $ionicHistory.nextViewOptions({disableBack:true});
             $state.go('tabs.home')
             $scope.loginError = false;
           })
