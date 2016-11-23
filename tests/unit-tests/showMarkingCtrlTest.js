@@ -13,9 +13,8 @@ describe('showMarkingCtrl', function() {
   beforeEach(module('starter'));
 
   beforeEach(inject(function(_$controller_, _$state_, _$ionicModal_, 
-    _currentUserService_, _$httpBackend_, $injector, _$rootScope_,
-    _factoryEvaluateIncidents_, _factoryEvaluatePev_) {
-    
+                             _currentUserService_, _$httpBackend_, $injector, _$rootScope_,
+                             _factoryEvaluateIncidents_, _factoryEvaluatePev_) {
     $controller = _$controller_;
     $ionicModal = _$ionicModal_;
     $state = _$state_;
@@ -30,10 +29,10 @@ describe('showMarkingCtrl', function() {
       return {
         then: function(modal) {
           return modal(
-          {
-            show: function(){}, 
-            hide: function(){}
-          }
+            {
+              show: function(){}, 
+              hide: function(){}
+            }
           );
         }
       };
@@ -42,12 +41,12 @@ describe('showMarkingCtrl', function() {
 
   beforeEach(function() {
     var controller = $controller('showMarkingCtrl', 
-    {
-      $scope: $scope,
-      $ionicModal: $ionicModal,
-      currentUserService: currentUserService,
-      $rootScope: $rootScope
-    });
+                                  {
+                                    $scope: $scope,
+                                    $ionicModal: $ionicModal,
+                                    currentUserService: currentUserService,
+                                    $rootScope: $rootScope
+                                  });
   });
 
   var pev = {
@@ -68,10 +67,10 @@ describe('showMarkingCtrl', function() {
   };
   var incident = {
     "titulo_incidente": "incidente",
-    "id_tipo_incidente": 1,
-    "total_confirmacoes_existencia": 0,
-    "total_confirmacoes_resolvido": 0
-  }
+   "id_tipo_incidente": 1,
+   "total_confirmacoes_existencia": 0,
+   "total_confirmacoes_resolvido": 0
+ }
   var marking_type = {"tipo_incidente": "desastre"};
   var pevs = [pev];
   var incidents = [incident];
@@ -107,11 +106,11 @@ describe('showMarkingCtrl', function() {
     types', function() {
       $rootScope.markings = incidents
       $httpBackend.expectGET(URL + '/marking_types/' + incident.id_tipo_incidente)
-      .respond(400);
+    .respond(400);
       $scope.showIncident(event, incident);
       $httpBackend.flush();
       expect($scope.types).toEqual(['Não definido']);
-    })
+  })
 
   it('should show an incident or pev', function() {
     $rootScope.markings = incidents
@@ -173,4 +172,5 @@ describe('showMarkingCtrl', function() {
     $httpBackend.flush();
     expect($rootScope.markings[index].total_confirmacoes_resolvido).toEqual(1);
   });
+
 });

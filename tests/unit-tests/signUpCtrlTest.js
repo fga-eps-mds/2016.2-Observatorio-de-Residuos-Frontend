@@ -10,9 +10,8 @@ describe('signupCtrl', function() {
   beforeEach(module('starter'));
 
   beforeEach(inject(function(_$controller_, _currentUserService_,
-    _factoryRegister_, _$httpBackend_, _$state_,
-    $injector){
-    
+                             _factoryRegister_, _$httpBackend_, _$state_,
+                             $injector){
     $controller = _$controller_;
     currentUserService = _currentUserService_;
     factoryRegister = _factoryRegister_;
@@ -24,9 +23,9 @@ describe('signupCtrl', function() {
 
   beforeEach(function() {
     var controller = $controller('signupCtrl',
-      {$scope: $scope,
-        currentUserService: currentUserService
-      });
+                                  {$scope: $scope,
+                                  currentUserService: currentUserService
+                                  });
   });
 
   it('should get user data from the current user', function() {
@@ -35,7 +34,7 @@ describe('signupCtrl', function() {
 
   describe('user validation', function() {
     var user = {name: "Amoêdo", email: "amoedo@email.com",
-    password_digest: "cacofonia", password_confirmation: "cacofonia"};
+              password_digest: "cacofonia", password_confirmation: "cacofonia"};
 
     it('should encrypt an user password', function() {
       $scope.registerEmail(user);
@@ -43,7 +42,7 @@ describe('signupCtrl', function() {
     });
 
     it('should set invalidEmail to false and redirect to tabs.map when getting\
-     a successfull response from server during email validation', function() {
+       a successfull response from server during email validation', function() {
       $httpBackend.when('GET', URL+"/profiles").respond(200);
       $httpBackend.expectPOST(URL + '/users/create', user).respond(201);
       $scope.registerEmail(user);
@@ -62,8 +61,8 @@ describe('signupCtrl', function() {
       $httpBackend.flush();
       expect($scope.invalidEmail).toBeTruthy();
       expect($scope.emailAlreadyUsed).toBeFalsy();
-    });
-    it('should set emailAlreadyUsed to true when getting and error response 401\
+     });
+     it('should set emailAlreadyUsed to true when getting and error response 401\
      from server durint email validation', function(){
        $httpBackend.when('GET', URL+"/profiles").respond(200);
        $httpBackend.expectPOST(URL + '/users/create', user).respond(401);

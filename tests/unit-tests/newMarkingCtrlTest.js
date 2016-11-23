@@ -32,7 +32,6 @@ describe('newMarkingCtrl', function() {
 
   beforeEach(inject(function (_$controller_, _$httpBackend_, $injector, 
     _factoryMarking_, _$ionicHistory_, _$rootScope_, _currentUserService_) {
-    
     $controller = _$controller_;
     $httpBackend = _$httpBackend_;
     URL = $injector.get('URL');
