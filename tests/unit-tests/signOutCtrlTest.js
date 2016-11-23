@@ -1,4 +1,4 @@
-fdescribe('signOutCtrl', function() {
+describe('signOutCtrl', function() {
   var $controller;
   var $scope;
   var $state;
