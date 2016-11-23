@@ -1,5 +1,6 @@
 angular.module('starter')
 
+//Controller to make a complaint about Marking.
 .controller('complaintMarkingCtrl', function($scope, $rootScope, $http, currentMarkingService, currentUserService, factoryComplaintMarking, $ionicPopup, $state){
   $scope.confirmComplaint = function(complaint) {
 			$ionicPopup.confirm({

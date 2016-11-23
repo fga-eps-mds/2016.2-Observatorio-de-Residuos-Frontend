@@ -1,5 +1,6 @@
 angular.module('starter')
 
+//Controller to make a complaint about PEV.
 .controller('complaintPevCtrl', function($scope, $rootScope, $http, currentPEVservice, currentUserService, factoryComplaintPEV, $ionicPopup, $state){
   $scope.confirmComplaint = function(complaintPev) {
 			$ionicPopup.confirm({

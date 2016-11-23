@@ -1,5 +1,6 @@
 angular.module('starter')
 
+//Sign out controller
 .controller('signOutCtrl', function($scope, $state, currentUserService) {
 
   $scope.signOut = function() {
