@@ -1,34 +1,45 @@
 angular.module('starter')
 
-    //Camera and library controller
-    .controller('cameraCtrl', function($scope, $ionicPlatform, $sce, $ionicActionSheet, ImageService, FileService) {
+    //Camera controller responsible for take photo from camera and choose photo from galery.
+    .controller("cameraCtrl", function ($scope, $cordovaCamera) {
 
-      $ionicPlatform.ready(function() {
-        $scope.images = FileService.images();
-      });
+        $scope.takePhoto = function () {
+            var options = {
+                quality: 75,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.PictureSourceType.CAMERA,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG,
+                targetWidth: 300,
+                targetHeight: 300,
+                popoverOptions: CameraPopoverOptions,
+                saveToPhotoAlbum: true
+            };
 
-      $sce.trustAsResourceUrl = function(imageName) {
-        var trueOrigin = cordova.file.dataDirectory + imageName;
-        return trueOrigin;
-      }
+            $cordovaCamera.getPicture(options).then(function (imageData) {
+                $scope.imgURI = "data:image/jpeg;base64," + imageData;
+            }, function (err) {
+                console.log("Image câmera error");
+            });
+        }
 
-      $scope.addMedia = function() {
-        $scope.hideSheet = $ionicActionSheet.show({
-          buttons: [
-            { text: 'Tirar foto' },
-            { text: 'Pegar imagem' }
-          ],
-          titleText: 'Adicionar imagem',
-          cancelText: 'Cancelar',
-          buttonClicked: function(index) {
-            $scope.addImage(index);
-          }
-        });
-      }
+        $scope.choosePhoto = function () {
+            var options = {
+                quality: 75,
+                destinationType: Camera.DestinationType.DATA_URL,
+                sourceType: Camera.PictureSourceType.PHOTOLIBRARY,
+                allowEdit: true,
+                encodingType: Camera.EncodingType.JPEG,
+                targetWidth: 300,
+                targetHeight: 300,
+                popoverOptions: CameraPopoverOptions,
+                saveToPhotoAlbum: false
+            };
 
-      $scope.addImage = function(type) {
-        $scope.hideSheet();
-        ImageService.handleMediaDialog(type).then(function() {
-        });
-      }
+            $cordovaCamera.getPicture(options).then(function (imageData) {
+                $scope.imgURI = "data:image/jpeg;base64," + imageData;
+            }, function (err) {
+                console.log("Image library error");
+            });
+        }
     });
