@@ -24,8 +24,8 @@ angular.module('app.controllers')
       marking.latitude = map.lat();
       marking.longitude = map.lng();
       marking.author_email = currentUserService.getUserData().email;
-      marking.likes = 0;
-      marking.dislikes = 0;
+      marking.total_confirmacoes_existencia = 0;
+      marking.total_confirmacoes_resolvido = 0;
       factoryMarking.save(marking, function (result){
         result.author_email = marking.author_email;
         $rootScope.markings.push(result);
