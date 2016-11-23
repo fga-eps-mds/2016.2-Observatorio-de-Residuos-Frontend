@@ -1,7 +1,7 @@
 angular.module('starter')
 
     //Camera and library controller
-    .controller('cameraCtrl', function($scope, $cordovaDevice, $cordovaFile, $ionicPlatform, $cordovaEmailComposer, $sce, $ionicActionSheet, ImageService, FileService) {
+    .controller('cameraCtrl', function($scope, $ionicPlatform, $sce, $ionicActionSheet, ImageService, FileService) {
 
       $ionicPlatform.ready(function() {
         $scope.images = FileService.images();
