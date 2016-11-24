@@ -1,4 +1,4 @@
-fdescribe('signinCtrl',function(){
+describe('signinCtrl',function(){
 
   var $controller;
   var $httpBackend;
