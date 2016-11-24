@@ -9,29 +9,30 @@ describe('newMarkingCtrl', function() {
   var _currentUserService_;
 
   beforeEach(module('starter'));
-  beforeEach(function () {
-    module('starter');
-    module(function ($provide) {
-      $provide.value('NgMap', {
-        getGeoLocation: function () {
-          return {
-            then: function (map) {
-              return map({
-                lat: function () {
-                  return "-30"
-                },
-                lng: function () {
-                  return "-30"
-                }
+  var map = {
+      lat: function() {return "-30"},
+      lng: function() {return "-30"}
+  }
+  var sucesso = function(map) {
+      return map;
+  };
+  var error = {message:"AMOEDO LENDÁRIO"}
+  beforeEach(function() {
+      module('starter');
+      module(function($provide) {
+          $provide.value('NgMap', {
+              getGeoLocation: function() {
+                  return {
+                      then: function(sucesso,error){
+                        sucesso(map);
+                        error(error);
+                      }
+                    }
+                  }
               })
-            }
-          }
-        }
+          });
       });
-    });
-  });
-
-  beforeEach(inject(function (_$controller_, _$httpBackend_, $injector, 
+  beforeEach(inject(function (_$controller_, _$httpBackend_, $injector,
     _factoryMarking_, _$ionicHistory_, _$rootScope_, _currentUserService_,
     _$ionicPopup_) {
     $controller = _$controller_;
@@ -103,7 +104,7 @@ describe('newMarkingCtrl', function() {
       expect($rootScope.markings.push).toHaveBeenCalled();
       expect($ionicPopup.alert).toHaveBeenCalledWith({
         title: 'Incidente cadastrado com sucesso',
-        template: 'Obrigado por contribuir!' 
+        template: 'Obrigado por contribuir!'
       });
     });
 
@@ -117,7 +118,7 @@ describe('newMarkingCtrl', function() {
       expect($rootScope.markings.push).not.toHaveBeenCalled();
       expect($ionicPopup.alert).toHaveBeenCalledWith({
         title: 'Informações insuficientes',
-        template: 'Preencha as informações corretamente!' 
+        template: 'Preencha as informações corretamente!'
       });
     });
   });
