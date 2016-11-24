@@ -1,4 +1,4 @@
-fdescribe('selectedPevCtrl', function(){
+describe('selectedPevCtrl', function(){
   var $controller;
   var $scope = {};
   var pevService;
