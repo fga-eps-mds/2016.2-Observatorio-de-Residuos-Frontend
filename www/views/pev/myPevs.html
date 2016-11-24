@@ -1,10 +1,11 @@
 <!-- My Markings page -->
 <ion-view title="Minhas PEVs" id="my-pevs">
     <ion-content padding="true" class="has-header padding has-tabs-top" scroll="true">
-        <!-- List of all markings marked by the user -->
+        <!-- List of all pevs marked by the user -->
         <h3>Minhas PEVs</h3>
         <ion-list>
             <ion-item ng-repeat="pev in pevs"
+                      ng-repeat="types in pevs_types"
                       value="{{pev.id_pev}}"
                       ng-model="pev"
                       name="pev_item"
@@ -22,6 +23,7 @@
         <h3>PEVs Proximas</h3>
         <ion-list>
             <ion-item ng-repeat="pev in nearbyPevs"
+                      ng-repeat="types in pevs_types"
                       value="{{pev.id_pev}}"
                       ng-model="pev"
                       name="pev_item"
@@ -29,10 +31,11 @@
               <h3 class="text-left" style="font-weight: bolder">{{pev.titulo_pev}}</h3>
               <p class="text-left">Descrição: {{pev.descricao_pev}}</p>
               <p class="text-left">
-                    Tipo: {{pev_types}}
+                    Tipo: {{types}}
               </p>
               <span class="badge badge-assertive">+{{pev.total_confirmacoes_funcionando}}</span>
-        </ion-item>
+            </ion-item>
+        </ion-list>
 
     </ion-content>
 </ion-view>
