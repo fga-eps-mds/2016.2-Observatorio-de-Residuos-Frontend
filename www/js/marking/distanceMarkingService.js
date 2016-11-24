@@ -1,5 +1,5 @@
 angular.module("starter") 
-//Service to pass clicked pevs as scope variables 
+
 .service("distanceMarkingService", function(){ 
     var rad = function(x) { 
         return x * Math.PI / 180; 

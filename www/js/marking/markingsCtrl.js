@@ -4,7 +4,7 @@ angular.module('app.controllers')
 .controller('markingsCtrl', function($scope, $http, URL, $rootScope, currentUserService, markingService, $state, NgMap, distanceMarkingService) {
   $rootScope.markings = [];
   $rootScope.marking_types = [];
-  $rootScope.nearbyMarkings = [];
+  $scope.nearbyMarkings = [];
   $scope.currentUserEmail = currentUserService.getUserData().email;
 
   NgMap.getGeoLocation().then(function(map) {
@@ -20,15 +20,14 @@ angular.module('app.controllers')
       });
       $http.get(URL + '/markings')
       .success(function(content){
-        console.log(content)
         angular.forEach(content, function(value, key) {
           $rootScope.markings.push(value);
 
           if(distanceMarkingService.getDistance(latitudeAtual, longitudeAtual, value.latitude, value.longitude) <= raio){
-              $rootScope.nearbyMarkings.push(value);
+              $scope.nearbyMarkings.push(value);
           }
-          console.log(value.titulo_incidente);
-          console.log(distanceMarkingService.getDistance(latitudeAtual, longitudeAtual, value.latitude, value.longitude));
+          //console.log(value.titulo_incidente);
+          //console.log(distanceMarkingService.getDistance(latitudeAtual, longitudeAtual, value.latitude, value.longitude));
        
           angular.forEach($scope.marking_types, function (otherValue) {
             if (otherValue.id_tipo_incidente == value.id_tipo_incidente){
