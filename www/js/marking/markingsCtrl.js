@@ -47,4 +47,9 @@ angular.module('app.controllers')
     });
   });
 
+  $scope.openMarking = function (marking) { 
+    markingService.setMarking(marking); 
+    $state.go("tabs.markings.detailMarking"); 
+  } 
+
 });
