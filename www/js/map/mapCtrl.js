@@ -21,7 +21,7 @@ angular.module('app.controllers')
           console.log(data)
         });
 
-        //Initialize all Markings savedin database
+        //Initialize all Markings saved in database
         $http.get(URL + '/markings')
         .success(function(content){
           angular.forEach(content, function(value, key) {
