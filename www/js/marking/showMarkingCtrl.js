@@ -1,12 +1,11 @@
 angular.module('starter')
 
 //Modal Controller thar show informations of clicked marking
-.controller('showMarkingCtrl',function($scope,$http,URL, $rootScope, 
-										currentMarkingService, $ionicModal, 
-										currentUserService, currentPEVservice, $state, factoryEvaluateIncidents, 
+.controller('showMarkingCtrl',function($scope,$http,URL, $rootScope,
+										currentMarkingService, $ionicModal,
+										currentUserService, currentPEVservice, $state, factoryEvaluateIncidents,
 										factoryEvaluatePev, $ionicLoading){
-	var currentMarking = "";
-
+	var index;
 
 	//Function that places scope like informations of clicked PEV
 	$scope.showPev = function(event, pev){
@@ -15,17 +14,17 @@ angular.module('starter')
     $scope.voted = false;
 		$scope.marking = pev;
 		$scope.types = [];
-		if (pev.paper == true)
+		if (pev.paper === true)
 			$scope.types.push("Papel");
-		if (pev.glass == true)
+		if (pev.glass === true)
 			$scope.types.push("Vidro");
-		if (pev.metal == true)
+		if (pev.metal === true)
 			$scope.types.push("Metal");
-		if (pev.plastic == true)
+		if (pev.plastic === true)
 			$scope.types.push("Plástico");
     angular.forEach(seenPevs, function(value) {
-      if($scope.voted != true) {
-        if(pev.id_pev == value.id_pev) {
+      if($scope.voted !== true) {
+        if(pev.id_pev === value.id_pev) {
           $scope.voted = true;
         }
       }
@@ -34,7 +33,7 @@ angular.module('starter')
 	};
 	//Function that places scope like informations of clicked marking
 	$scope.showIncident = function(event, incident){
-    var index = $rootScope.markings.indexOf(incident); 
+     index = $rootScope.markings.indexOf(incident);
 
     $scope.voted = false;
 		$scope.types = [];
@@ -49,8 +48,8 @@ angular.module('starter')
 		$scope.marking = incident;
     var userMarkings = currentUserService.getUserMarking();
     angular.forEach(userMarkings, function(value) {
-      if($scope.voted != true) {
-        if(incident.id_incidente == value.id_incidente) {
+      if($scope.voted !== true) {
+        if(incident.id_incidente === value.id_incidente) {
           $scope.voted = true;
         }
       }
@@ -71,16 +70,16 @@ angular.module('starter')
 			$scope.modalEditMarking.show();
 		}
 	};
-	
-	$scope.evaluate = function(marking, evaluation) { 
+
+	$scope.evaluate = function(marking, evaluation) {
     $ionicLoading.show('Por favor, aguarde...');
 		// trocar o "paper" quando mudar o banco
-		if(angular.isDefined(marking.paper)) {		
-		  var index = $rootScope.pevs.indexOf(marking); 
+		if(angular.isDefined(marking.paper)) {
+		  index = $rootScope.pevs.indexOf(marking);
 		  if (evaluation){
-		    $rootScope.pevs[index].total_confirmacoes_funcionando += 1;	
+		    $rootScope.pevs[index].total_confirmacoes_funcionando += 1;
 		  } else {
-		    $rootScope.pevs[index].total_confirmacoes_fechou += 1;	
+		    $rootScope.pevs[index].total_confirmacoes_fechou += 1;
 		  }
       $rootScope.pevs[index].id_usuario = currentUserService.getUserData().id_usuario;
 			factoryEvaluatePev.save($rootScope.pevs[index], function(result){
@@ -92,9 +91,9 @@ angular.module('starter')
 				console.log(error)
 			});
 		} else {
-		    var index = $rootScope.markings.indexOf(marking); 
+		    var index = $rootScope.markings.indexOf(marking);
 		    if (evaluation){
-		    	$rootScope.markings[index].total_confirmacoes_existencia += 1;	
+		    	$rootScope.markings[index].total_confirmacoes_existencia += 1;
 		    } else {
 		    	$rootScope.markings[index].total_confirmacoes_resolvido += 1;
 		    }
@@ -141,4 +140,3 @@ angular.module('starter')
 		$scope.modalEditPev = modal;
 	})
 });
-

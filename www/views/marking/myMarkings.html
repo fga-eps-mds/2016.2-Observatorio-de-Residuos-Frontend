@@ -20,10 +20,12 @@
         <label id="nao-vi_1" class="badge badge-assertive">-{{marking.total_confirmacoes_resolvido}}</label>
 
       </ion-item>
+
     </ion-list>
+
     <h3>Marcações Próximas</h3>
     <ion-list>
-      <ion-item ng-repeat="marking in markings"
+      <ion-item ng-repeat="marking in nearbyMarkings"
                 value="{{marking.id_incidente}}"
                 ng-model="marking"
                 name="marking_item"
