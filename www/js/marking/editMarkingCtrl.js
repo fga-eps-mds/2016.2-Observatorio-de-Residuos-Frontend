@@ -1,16 +1,22 @@
 angular.module("app.controllers")
 
-.controller("editMarkingCtrl", function($scope, $rootScope, $http, URL, $state /*, $ionicModal*/ , currentMarkingService, factoryEditMarking) {
- //Function that update scope variables
- $rootScope.marking_types = [];
- $http.get(URL + '/marking_types')
-  .success(function(content) {
-   angular.forEach(content, function(value, key) {
-    $rootScope.marking_types.push(value);
-   })
+.controller("editMarkingCtrl", function($scope, $rootScope, $http, URL, $state/*, $ionicModal*/, currentMarkingService, factoryEditMarking, $ionicLoading){
+  //Function that update scope variables
+
+  $rootScope.marking_types = [];
+  $ionicLoading.show({
+    template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
+  });
+  $http.get(URL + '/marking_types')
+  .success(function(content){
+    $ionicLoading.hide();
+    angular.forEach(content, function(value, key) {
+      $rootScope.marking_types.push(value);
+    })
   })
-  .error(function(error) {
-   console.log("Error");
+  .error(function(error){
+    $ionicLoading.hide();
+    console.log("Error");
   })
 
  //Function that send changes to backend
@@ -26,4 +32,5 @@ angular.module("app.controllers")
  $scope.updatephoto = function () {
   $scope.marking.photo_link = $scope.imgURI;
  };
+
 })

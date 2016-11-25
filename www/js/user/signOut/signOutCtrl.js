@@ -1,12 +1,17 @@
 angular.module('starter')
 
 //Sign out controller
-.controller('signOutCtrl', function($scope, $state, currentUserService) {
+.controller('signOutCtrl', function($scope, $state, currentUserService, 
+  $ionicHistory) {
 
- $scope.signOut = function() {
-  currentUserService.setUserData(null);
-  currentUserService.setUserMarking([]);
-  currentUserService.setUserPevs([]);
-  $state.go('signin');
- };
+  $scope.signOut = function() {
+    $ionicHistory.clearCache().then(function() {
+      $ionicHistory.clearHistory();
+      $ionicHistory.nextViewOptions({disableBack:true, historyRoot: true});
+      currentUserService.setUserData(null);
+      currentUserService.setUserMarking([]);
+      currentUserService.setUserPevs([]);
+      $state.go('signin');
+    });
+  };
 });

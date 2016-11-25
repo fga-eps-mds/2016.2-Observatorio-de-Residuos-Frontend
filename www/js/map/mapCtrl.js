@@ -1,35 +1,45 @@
 angular.module('app.controllers')
 
-.controller('mapCtrl', function(NgMap, $scope, $ionicModal, $http, $rootScope, URL) {
 
- NgMap.getGeoLocation().then(function(map) {
-  $scope.currentLocation = "[" + map.lat() + "," + map.lng() + "]"
- });
- 
- NgMap.getMap().then(function(map) {
-  $rootScope.pevs = [];
-  $rootScope.markings = [];
+.controller('mapCtrl', function(NgMap, $scope, $ionicModal, $http, $rootScope, URL, $ionicLoading) {
 
-  //Initialize all PEVs saved in database
-  $http.get(URL + '/pevs')
-   .success(function(content) {
-    angular.forEach(content, function(value, key) {
-     $rootScope.pevs.push(value);
-    })
-   })
-   .error(function(data) {
-    console.log(data)
-   });
+  NgMap.getGeoLocation().then(function(map) {
+    $scope.currentLocation ="["+ map.lat()+","+map.lng()+"]"
+  });
+  $ionicLoading.show({
+    template: 'Carregando mapa, aguarde... <ion-spinner icon="android"></ion-spinner>'
+  });
+  NgMap.getMap().then(function(map) {
+    if(angular.isUndefined($rootScope.markings)){
+      $rootScope.markings = [];
+    }
+    if(angular.isUndefined($rootScope.pevs)){
+      $rootScope.pevs = [];
+    }
+        //Initialize all PEVs saved in database
+        $http.get(URL + '/pevs')
+        .success(function(content){
+          $ionicLoading.hide();
+          angular.forEach(content, function(value, key) {
+            $rootScope.pevs.push(value);
+          })
+        })
+        .error(function(data){
+          $ionicLoading.hide();
+          console.log(data)
+        });
 
-  //Initialize all Markings savedin database
-  $http.get(URL + '/markings')
-   .success(function(content) {
-    angular.forEach(content, function(value, key) {
-     $rootScope.markings.push(value);
-    })
-   })
-   .error(function(data) {
-    console.log(data)
-   });
- })
+        //Initialize all Markings saved in database
+        $http.get(URL + '/markings')
+        .success(function(content){
+          $ionicLoading.hide();
+          angular.forEach(content, function(value, key) {
+            $rootScope.markings.push(value);
+          })
+        })
+        .error(function(data){
+          $ionicLoading.hide();
+          console.log(data)
+        });
+      })
 })

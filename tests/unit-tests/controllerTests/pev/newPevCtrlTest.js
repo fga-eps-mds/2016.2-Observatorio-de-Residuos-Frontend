@@ -8,28 +8,32 @@ describe('newPevCtrl', function () {
     var factoryPEV;
     var URL;
     var currentUserService;
-
+    var map = {
+        lat: function() {return "-30"},
+        lng: function() {return "-30"}
+    }
+    var sucesso = function(map) {
+        return map;
+    };
+    var error = {message:"AMOEDO LENDÁRIO"}
     beforeEach(function() {
         module('starter');
         module(function($provide) {
             $provide.value('NgMap', {
                 getGeoLocation: function() {
                     return {
-                        then: function(map) {
-                            return map({
-                                lat: function() {return "-30"},
-                                lng: function() {return "-30"}
-                            })
+                        then: function(sucesso,error){
+                          sucesso(map);
+                          error(error);
                         }
+                      }
                     }
-                }
+                })
             });
         });
-    });
-    beforeEach(inject(function (_$controller_, _$httpBackend_, $injector, 
-        _factoryPEV_, _$ionicHistory_, _$rootScope_, _$ionicPopup_, 
+    beforeEach(inject(function (_$controller_, _$httpBackend_, $injector,
+        _factoryPEV_, _$ionicHistory_, _$rootScope_, _$ionicPopup_,
         _currentUserService_) {
-        
         $controller = _$controller_;
         $httpBackend = _$httpBackend_;
         URL = $injector.get('URL');

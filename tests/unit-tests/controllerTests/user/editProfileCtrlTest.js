@@ -13,9 +13,8 @@ describe('EditProfileCtrl', function(){
   beforeEach(module('starter'));
 
   beforeEach(inject(function(_$controller_, _$rootScope_, _$ionicPopup_, 
-    _$httpBackend_, _$injector_, _$ionicLoading_,
-    _$timeout_, _$state_, _currentUserService_){
-    
+   _$httpBackend_, _$injector_, _$ionicLoading_,
+   _$timeout_, _$state_, _currentUserService_) {
     $controller = _$controller_;
     $rootScope = _$rootScope_;
     $scope = _$rootScope_.$new();
@@ -51,6 +50,7 @@ describe('EditProfileCtrl', function(){
   }];
 
   describe('when initializing controller', function() {
+
     it('should get and store all profiles from database', function() {
       $rootScope.profiles = [];
       $httpBackend.expectGET(URL + '/profiles').respond(200, profiles);
@@ -63,9 +63,11 @@ describe('EditProfileCtrl', function(){
       $httpBackend.expectGET(URL + '/profiles').respond(400);
       $httpBackend.flush();
     });
+
   });
 
   describe('when editing an user', function() {
+
     beforeEach(function(){
       $httpBackend.expectGET(URL + '/profiles').respond(200);
       spyOn(currentUserService, 'setUserData');
@@ -90,6 +92,7 @@ describe('EditProfileCtrl', function(){
       expect(currentUserService.setUserData).not.toHaveBeenCalled();
       expect($state.go).not.toHaveBeenCalled();
     })
+
   });
 
   describe('when trying to deactivate an account', function() {
@@ -100,6 +103,7 @@ describe('EditProfileCtrl', function(){
     });
 
     describe('in successfull account deactivation', function() {
+
       beforeEach(function(){
         $scope.user = {id_usuario: 1}
         $scope.deactivateAccount(user);
@@ -126,9 +130,11 @@ describe('EditProfileCtrl', function(){
         expect(currentUserService.setUserData).toHaveBeenCalledWith(null);
         expect($state.go).toHaveBeenCalledWith('signin');
       });
+
     });
 
     describe('in failed account deactivation', function() {
+
       beforeEach(function() {
         $scope.user = {id_usuario: 1}
         $httpBackend.expectGET(URL + '/profiles').respond(200);
@@ -147,12 +153,15 @@ describe('EditProfileCtrl', function(){
 
       it('should show a popup alert contaning wrong password message  if password\
         was wrong', function() {
-          $httpBackend.expectPOST(URL + '/users/deactivate').respond(401);
-          $httpBackend.flush();
-          expect($ionicPopup.alert).toHaveBeenCalledWith({
-            title: 'Erro', template: 'Senha incorreta.'
-          });
+        $httpBackend.expectPOST(URL + '/users/deactivate').respond(401);
+        $httpBackend.flush();
+        expect($ionicPopup.alert).toHaveBeenCalledWith({
+          title: 'Erro', template: 'Senha incorreta.'
         });
+      });
+
     });
+
   });
+
 });

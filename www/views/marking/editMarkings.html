@@ -1,13 +1,14 @@
 <!-- Edit Marking page -->
-<ion-view title="Editar Incidente" id="edit-incidente">
-  <!-- Make this modal bar work
-  <ion-header-bar class="bar bar-header bar-balanced">
-      <h1 class="title">{{marking.name}}</h1>
-      <button class="button button-clear button-primary" ng-click="modal.hide()" style="top:-3px">Voltar</button>
-  </ion-header-bar>-->
-  <ion-content padding="true" ng-controller="cameraCtrl" class="has-header has-tabs-top" scroll="true">
+<ion-modal-view id="edit-incidente" ng-controller="editMarkingCtrl">
+
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">{{marking_title}}</h1>
+    <button class="button button-clear button-primary" ng-click="modalEditMarking.hide();modal.show()" style="top:-3px">Voltar</button>
+  </ion-header-bar>
+
+  <ion-content class="padding" ng-controller="cameraCtrl" scroll="true">
     <div>
-      <form ng-submit="confirmEditMarking(marking)" name="Markingform">
+      <form name="Markingform" ng-submit="confirmEditMarking(marking, modalEditMarking)">
         <div class="image-and-buttons">
 
           <!-- Marking photo -->
@@ -30,15 +31,15 @@
             <p ng-show="Markingform.name.$invalid && !Markingform.name.$pristine" class="nav-bar-block">
               O nome do incidente é obrigatório!
             </p>
-            <input type="text" ng-model="marking.name" placeholder="Nome do Incidente" name="name" required>
+            <input type="text" ng-model="marking.titulo_incidente" placeholder="Nome do Incidente" name="name" required>
           </label>
-          <select ng-model="marking.id_marking_type" name="marking_type" required>
+          <select ng-model="marking.id_tipo_incidente" name="marking_type" required>
             <option ng-repeat="marking_type in marking_types" value="{{marking_type.id_tipo_incidente}}">{{marking_type.tipo_incidente}}</option>
           </select>
         </ion-list>
 
         <label class="item item-input">
-          <textarea type="text" ng-model="marking.description" placeholder="Descrição" rows="3"></textarea>
+          <textarea type="text" ng-model="marking.descricao_incidente" placeholder="Descrição" rows="3"></textarea>
         </label>
         <label class="item item-input">
           <input type="hidden" placeholder="Latitude" ng-model="marking.latitude" disabled="true">
@@ -51,4 +52,4 @@
       </form>
     </div>
   </ion-content>
-</ion-view>
+</ion-modal-view>

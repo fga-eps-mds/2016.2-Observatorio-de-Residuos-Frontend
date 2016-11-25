@@ -8,8 +8,7 @@ describe('editMarkingCtrl', function(){
   beforeEach(module('starter'));
 
   beforeEach(inject(function(_$controller_, _$rootScope_, _$httpBackend_, 
-    _$injector_){
-    
+                             _$injector_) {
     $controller = _$controller_;
     $rootScope = _$rootScope_;
     $scope = _$rootScope_.$new();
@@ -82,4 +81,5 @@ describe('editMarkingCtrl', function(){
     $httpBackend.flush();
     expect(modalEditMarking.hide).not.toHaveBeenCalled(); 
   });
+
 });
