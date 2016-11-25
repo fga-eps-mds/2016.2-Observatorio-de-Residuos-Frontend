@@ -49,7 +49,7 @@ angular.module('starter')
     var userMarkings = currentUserService.getUserMarking();
     angular.forEach(userMarkings, function(value) {
       if($scope.voted !== true) {
-        if(incident.id_incidente == value.id_incidente) {
+        if(incident.id_incidente === value.id_incidente) {
           $scope.voted = true;
         }
       }
