@@ -5,7 +5,7 @@ angular.module('app.controllers')
 .controller('pevsCtrl', function($scope, $http, URL, $rootScope, currentUserService, NgMap, distanceMarkingService, pevService, $state) {
     $rootScope.pevs = [];
     $scope.nearbyPevs = [];
-    $scope.pevs_types = [];
+    $scope.types = [];
     $scope.currentUserEmail = currentUserService.getUserData().email;
 
     NgMap.getGeoLocation().then(function(map) {
@@ -17,27 +17,35 @@ angular.module('app.controllers')
         $http.get(URL + '/pevs')
         .success(function(content){
             angular.forEach(content, function(value, key) {
-                $scope.pev_types = "";
+                $scope.type = [];
                 if (value.paper == true)
-                    $scope.pev_types = "-Papel-";
+                    $scope.type.push("Papel");
                 if (value.glass == true)
-                    $scope.pev_types += "-Vidro-";
+                    $scope.type.push("Vidro");
                 if (value.metal == true)
-                    $scope.pev_types += "-Metal-";
+                    $scope.type.push("Metal");
                 if (value.plastic == true)
-                    $scope.pev_types += "-Plástico-";
-                
+                    $scope.type.push("Plástico");
+
                 $rootScope.pevs.push(value);
-                $scope.pevs_types.push($scope.pev_types);
+                $scope.types.push($scope.type);
 
                 if(distanceMarkingService.getDistance(currentLatitude, currentLongitude, value.latitude, value.longitude) <= raio){
                   $scope.nearbyPevs.push(value);
                 }
                 console.log(value.titulo_pev);
-                console.log($scope.pev_types);
+                console.log($scope.type);
                 console.log(distanceMarkingService.getDistance(currentLatitude, currentLongitude, value.latitude, value.longitude));       
             })
-            console.log($scope.pevs_types);
+
+            $scope.PEVSS = $rootScope.pevs.map(function(value, index) { //map pevs and types for ng-repeat
+                    return {
+                        data: value,
+                        type: $scope.types[index]
+                    }
+            });
+
+            console.log($scope.types);
         })
         .error(function(error){
             console.log("Error");
