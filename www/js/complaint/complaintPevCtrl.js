@@ -1,6 +1,7 @@
 angular.module('starter')
 
-.controller('complaintPevCtrl', function($scope, $rootScope, $http, currentPEVservice, currentUserService, factoryComplaintPEV, $ionicPopup, $state){
+//Controller to make a complaint about PEV.
+.controller('complaintPevCtrl', function($scope, $rootScope, $http, currentPEVservice, currentUserService, factoryComplaintPEV, $ionicPopup, $state, $ionicLoading){
   $scope.confirmComplaint = function(complaintPev) {
 			$ionicPopup.confirm({
 			title: 'Adicionar denúncia',
@@ -12,17 +13,27 @@ angular.module('starter')
         complaintPev.author = currentUserService.getUserData().email;
         complaintPev.id_pev = currentPEVservice.getPEV().id_pev;
         console.log(complaintPev.id_pev);
+			$ionicLoading.show({
+				template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
+			});
 			  factoryComplaintPEV.save(complaintPev, function(result){
 					var alertPopup = $ionicPopup.alert({
   					title: 'PEV denunciado com sucesso',
   					template: 'Obrigado por contribuir!'
 					});
+				$ionicLoading.hide();
           $state.go("tabs.map")
 				}, function(erro){
+					$ionicLoading.hide();
+					$ionicPopup.alert({
+						template: 'Erro ao realizar a denúncia.',
+						title: 'Erro'
+					});
 					console.log(erro);
 				})
 			} else {
-			console.log('não');
+				$ionicLoading.hide();
+				console.log('não');
 			}
 		});
 	};

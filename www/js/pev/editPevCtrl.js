@@ -1,6 +1,6 @@
 angular.module("app.controllers")
 
-.controller("editPevCtrl", function($scope, $http, factoryEditPEV, $state, $rootScope, $ionicPopup,findPevService, URL){
+.controller("editPevCtrl", function($scope, $http, factoryEditPEV, $state, $rootScope, $ionicPopup,findPevService, URL, $ionicLoading){
 	//Function that update scope variables
 	var index;
 	//Function that send changes to backend
@@ -11,8 +11,11 @@ angular.module("app.controllers")
 		})
 
    	.then(function(res) {
+			$ionicLoading.show({
+				template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
+			});
 			if(res) {
-			    factoryEditPEV.save(pev, function(result){
+				factoryEditPEV.save(pev, function(result){
             index = findPevService.getIndex();
             $rootScope.pevs[index] = result;
 						var alertPopup = $ionicPopup.alert({
@@ -20,10 +23,16 @@ angular.module("app.controllers")
   						template: 'Obrigado por contribuir!'
 						});
             modalEditPev.hide();
+            $ionicLoading.hide();
 					}, function(erro){
 						console.log(erro);
 					})
 			} else {
+			$ionicLoading.hide();
+			$ionicPopup.alert({
+				template: 'Não foi possível editar essa PEV, tente novamente.',
+				title: 'Erro'
+			});
 			console.log('não');
 			}
 		});

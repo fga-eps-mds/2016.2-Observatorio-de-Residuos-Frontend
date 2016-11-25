@@ -1,7 +1,7 @@
 <!-- Edit PEV page -->
 <ion-modal-view title="Nova PEV" id="new-pev" ng-controller="editPevCtrl">
 
-  <ion-header-bar class="bar bar-header bar-balanced">
+  <ion-header-bar class="bar-positive">
     <h1 class="title">{{pev.titulo_pev}}</h1>
     <button class="button button-clear button-primary" ng-click="modalEditPev.hide();modal.show()" style="top:-3px">Voltar</button>
   </ion-header-bar>
@@ -11,12 +11,12 @@
     <form ng-submit="confirmEditPEV(pev, modalEditPev)" name="PEVform">
       <!-- PEV photo -->
       <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
-        <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+        <img class="icon ion-image" ng-src="{{imgURI}}" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></img>
       </div>
       <!-- Camera and Gallery buttons to take or get a photo -->
       <div class="button-bar">
        <button class="button icon-left ion-camera" ng-click="takePhoto('CAMERA')">Câmera</button><br>
-       <button class="button icon-left ion-image" ng-click="takePhoto('PHOTOLIBRARY')">Galeria</button>
+       <button class="button icon-left ion-image" ng-click="choosePhoto()">Galeria</button>
        <!-- The camera doesn't work on browser, and a android build is necessary -->
      </div>
 

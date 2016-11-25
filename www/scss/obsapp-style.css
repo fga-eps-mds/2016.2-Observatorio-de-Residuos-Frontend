@@ -1,0 +1,415 @@
+/* This file has all necessary style for the application
+*  Obseravatorio de residuos are a Ionic 2 Open-source app for alert
+*  the population about missplaced garbage, share social projects
+*  and help at the search for recycling points. 
+
+   If you wanna know more about this project and enjoy all content
+   Go to: 
+   https://github.com/fga-gpp-mds/2016.2-Observatorio-de-Residuos-Frontend
+   and:
+   https://github.com/fga-gpp-mds/2016.2-Observatorio-de-Residuos-Backend
+*/
+
+/*Variables*/
+:root {
+  --background-color: #ffffff;
+  --black-one: #000000;
+  --blue-four: #012148;
+  --blue-one: #4b6174;
+  --blue-three: #a2adb9;
+  --blue-two: #8192a1;
+  --brown-one: #663311;
+  --brown-three: #bc9c63;
+  --brown-two: #8a5711;
+  --clickable-link-hover: #8192a1;
+  --clickable-link: #4b6174;
+  --green-five: #b6c19f;
+  --green-four: #778274;
+  --green-one: #798c54;
+  --green-seven: #5c8d23;
+  --green-six: #3c4f19;
+  --green-three: #daedb6;
+  --green-two: #8fa662;
+  --orange-one: #df7500;
+  --primary-button: #5c8d23;
+  --red-one: #973c13;
+  --secondary-button: #3c4f19;
+  --white-one: #ffffff;
+  --yellow-one: #dcca53;
+  --yellow-two: #fbe582;
+}
+
+/*Classes*/
+a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.abas {
+  font-size: 12px !important;
+}
+
+.abas_medias {
+  font-size: 18px;
+}
+
+.bar.bar-positive {
+  background-color: var(--green-seven);
+}
+
+.bar .button.button-icon .icon:before,
+.bar .button.button-icon:before,
+.bar .button.button-icon.icon-left:before,
+.bar .button.button-icon.icon-right:before,
+.bar button.button-icon .icon:before,
+.bar button.button-icon:before,
+.bar button.button-icon.icon-left:before,
+.bar button.button-icon.icon-right:before {
+  font-size: 32px;
+  line-height: 0px;
+  vertical-align: baseline;
+}
+
+.bottom-links {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 200px;
+}
+
+.button-centered {
+  left: 10%;
+  position: relative;
+}
+
+.button.button-assertive {
+  background-color: var(--green-seven);
+  color: var(--white-one);
+}
+
+.button.button-full.button-balanced {
+  background-color: var(--primary-button);
+  color: var(--white-one);
+}
+
+.button.button-positive {
+  background-color: var(--green-seven);
+  color: var(--white-one);
+}
+
+.button.button-positive.active,
+.button.button-positive.activated {
+  background-color: var(--secondary-button);
+  border-color: transparent;
+}
+
+.button.ng-hide {
+  display: none;
+}
+
+.buttons-from-img {
+  margin-top: 25px;
+  vertical-align: middle;
+}
+
+.frontal-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.home-grid .button-icon {
+  background-color: transparent;
+  border: 1px solid black;
+  float: left;
+  height: 100px;
+  margin-bottom: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  margin-top: 2px;
+  width: 100px;
+}
+
+img.displayed {
+  border-radius: 3px;
+  left: 10%;
+  max-width: 60%;
+  position: absolute;
+  top: 12%;
+}
+
+img.displayed:empty {
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  left: 50%;
+  top: 25%;
+  transform: translate(-50%, -50%);
+}
+
+
+
+input[type="text"], input[type="password"] {
+  padding-left: 3px;
+}
+
+.ion-popover-view.fit {
+  height: auto;
+}
+
+.ion-popover-view.fit .ion-content {
+  position: relative;
+}
+
+.ion-tab-font {
+  font-size: 65%;
+}
+
+.item-avatar {
+  margin-bottom: 110px;
+}
+
+.item-avatar > img:first-child {
+  height: 150px;
+  left: 30%;
+  max-height: 4000px;
+  max-width: 4000px;
+  width: 150px;
+}
+
+.item-avatar-perso {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.item-image img:first-child,
+.item-image .list-img {
+  margin-left: 0px;
+  width: 100%;
+}
+
+.item-input-wrapper {
+  background: ghostwhite;
+  margin-bottom: 22px;
+  margin-top: 16px;
+}
+
+.item-profile {
+  border: transparent;
+  margin-bottom: 25px;
+}
+
+.item-select {
+  padding: 0px;
+}
+
+.item-select select {
+  direction: ltr;
+  max-width: 100%;
+  right: auto;
+  width: 400px;
+}
+
+.hidden-input {
+  display: none;
+}
+
+.home-grid {
+  align-content: center;
+  bottom: 5%;
+  left: 8%;
+  position: absolute;
+  width: 100%;
+}
+
+.larger {
+  font-size: 30px;
+}
+
+.list .list-inline {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.list .list-inline .item {
+  flex: 1;
+  font-size: inherit;
+  left: 2%;
+}
+
+.mapWrap {
+  height: 100%;
+}
+
+.mapa-google {
+  height: 103%;
+  margin: -10px;
+  width: 106%;
+}
+
+.nav-bar-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+}
+
+.pev-modal {
+  bottom: 25%;
+  height: 50%;
+  left: 5%;
+  min-height: 0;
+  right: 5%;
+  top: 25%;
+  width: 90%;
+}
+
+.platform-android .ion-popover-view.fit {
+  background-color: var(--green-seven);
+  margin-top: 10px;
+}
+
+.platform-android .popover {
+  background-color: var(--white-one);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  margin-top: 20px;
+}
+
+.platform-ios .ion-popover-view.fit {
+  background-color: var(--green-seven);
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.platform-ios .popover .scroll-content {
+  margin: 0px 0;
+}
+
+.popover {
+  height: 120px;
+}
+
+.popover-button {
+  margin: 0px !important;
+  text-align: left !important;
+}
+
+.popover-height {
+  height: 122px;
+}
+
+.popover-height-perfil {
+  height: 178px;
+}
+
+.popover-height-pev {
+  height: 82px;
+}
+
+.popover.right .arrow:after {
+  border-right-color: red;
+}
+
+.popover.scroll-content {
+  background-color: transparent;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+.socialLogin {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: 200px;
+}
+
+.scroll {
+  height: 100%;
+}
+
+.slider {
+  height: 100%;
+}
+
+.slider-slide {
+  background-color: #fff;
+  color: #000;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+  padding-top: 20px;
+  padding: 20px;
+  text-align: left;
+}
+
+.text-format {
+  text-align: justify;
+}
+
+.validation-msg {
+  color: red;
+  font-weight: bold;
+}
+
+#logo {
+  left: 33%;
+  position: absolute;
+  top: 3%;
+  z-index: 2;
+}
+
+/*IDs*/
+#titulo {
+  height: 240px;
+  max-width: 300px;
+  position: absolute;
+  z-index: 3;
+}
+
+#slideButtons {
+  padding-top: 50px;
+}
+
+#special-select {
+  font-size: 16px;
+  height: 34px;
+}
+
+#eu-vi_1 {
+  margin-right: 4px;
+  background-color: var(--primary-button);
+}
+
+#nao-vi_1 {
+  margin-right: -27px;
+}
+
+#eu-vi_2 {
+  margin-right: 4px;
+  background-color: var(--primary-button);
+}
+
+#nao-vi_2 {
+  margin-right: -27px;
+}
+
+/*Responsive Rules*/
+@media all and (orientation:portrait) {
+  img.displayed{width:80%;}
+  .home-grid {left: 7%;}
+}
+@media all and (orientation:landscape) {
+  img.displayed{max-width:30%; margin-top: 12px}
+  #titulo{display: none;}
+  .home-grid {left: 1%;}
+
+}

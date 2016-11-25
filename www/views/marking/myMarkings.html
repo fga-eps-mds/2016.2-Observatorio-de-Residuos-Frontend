@@ -1,6 +1,6 @@
 <!-- My Markings page -->
 <ion-view title="Meus Incidentes" id="my-markings">
-  <ion-content padding="true" class="has-header padding has-tabs-top" scroll="true">
+  <ion-content padding="true" class="has-header padding has-tabs-top" scroll="true" ng-controller="showMarkingCtrl">
     <!-- List of all markings marked by the user -->
     <h3>Minhas Marcações</h3>
     <ion-list>
@@ -9,37 +9,37 @@
                 ng-model="marking"
                 name="marking_item"
                 ng-show="currentUserEmail==marking.author_email"
-                ng-click="openMarking(marking)">
+                ng-click="showIncident('random_event', marking)">
         <h3 class="text-left" style="font-weight: bold">{{marking.titulo_incidente}}</h3>
         <p class="text-left">Descrição: {{marking.descricao_incidente}}</p>
         <p class="text-left">
           Tipo: {{marking.tipo_incidente}}
         </p>
-        <!--If greater than 0-->
-        <span class="badge badge-assertive">+{{marking.total_confirmacoes_existencia}}</span>
 
-        <!--If equals to 0 -->
-        <!--<span class="badge badge-balanced">{{marking.total_confirmacoes_existencia}}</span>-->
+        <label id="eu-vi_1" class="badge badge-positive">+{{marking.total_confirmacoes_existencia}}</label>
+        <label id="nao-vi_1" class="badge badge-assertive">-{{marking.total_confirmacoes_resolvido}}</label>
 
-        <!--If lower to 0 -->
-        <!--<span class="badge badge-royal">-{{marking.total_confirmacoes_fechou}}</span>-->
-        <!--<p class="text-left">Por:{{marking.author_name}}</p>-->
       </ion-item>
+
     </ion-list>
+
     <h3>Marcações Próximas</h3>
     <ion-list>
-      <ion-item ng-repeat="marking in markings"
+      <ion-item ng-repeat="marking in nearbyMarkings"
                 value="{{marking.id_incidente}}"
                 ng-model="marking"
                 name="marking_item"
                 ng-show="currentUserEmail==marking.author_email"
-                ng-click="openMarking(marking)">
+                ng-click="showIncident('random_event', marking)">
         <h3 class="text-left" style="font-weight: bold">{{marking.titulo_incidente}}</h3>
         <p class="text-left">Descrição: {{marking.descricao_incidente}}</p>
         <p class="text-left">
           Tipo: {{marking.tipo_incidente}}
         </p>
-        <span class="badge badge-assertive">+{{marking.total_confirmacoes_existencia}}</span>
+
+        <label id="eu-vi_2" class="badge badge-positive">+{{marking.total_confirmacoes_existencia}}</label>
+        <label id="nao-vi_2" class="badge badge-assertive">-{{marking.total_confirmacoes_resolvido}}</label>
+
       </ion-item>
     </ion-list>
 

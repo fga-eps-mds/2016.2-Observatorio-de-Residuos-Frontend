@@ -11,23 +11,29 @@ registerSocial: Receive social media desired by the parameter on button at signi
                                     socialLoginService, firebaseService, 
                                     currentUserService, factoryEmail, 
                                     factoryLogin, $ionicLoading, $timeout, 
-                                    $ionicPopup, $http, URL) {
+                                    $ionicPopup, $http, URL, $ionicHistory) {
 
   $scope.secret = {};
   $scope.loginAttempt = function(user){
       user.encripted_password = String(CryptoJS.SHA256($scope.secret.password)); //criptografia da senha
       factoryLogin.save(user, function(result){
+        $ionicLoading.show({
+          template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
+        });
         $http.get(URL + "/user/" + result.id_usuario + "/markings")
         .success(function(seenMarkings) {
           $http.get(URL + "/user/" + result.id_usuario + "/pevs")
           .success(function(seenPevs) {
+            $ionicLoading.hide();
             currentUserService.setUserData(result);
             currentUserService.setUserMarking(seenMarkings);
             currentUserService.setUserPevs(seenPevs);
+            $ionicHistory.nextViewOptions({disableBack:true});
             $state.go('tabs.home')
             $scope.loginError = false;
           })
           .error(function(error) {
+            $ionicLoading.hide();
             console.log(error);
           });
         })
@@ -52,7 +58,7 @@ registerSocial: Receive social media desired by the parameter on button at signi
   $scope.registerSocial = function(socialNetwork){
           firebaseService.socialLogin(socialNetwork);
           $ionicLoading.show({
-            template: 'Recebendo suas informações... <ion-spinner icon="android"></ion-spinner>'
+            template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
           });
           //timeout para aguardar os dados serem recebidos antes de liberar a tela para o usuário.
           $timeout(function(){

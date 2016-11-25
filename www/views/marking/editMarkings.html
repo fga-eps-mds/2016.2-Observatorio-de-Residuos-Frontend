@@ -1,8 +1,8 @@
 <!-- Edit Marking page -->
 <ion-modal-view id="edit-incidente" ng-controller="editMarkingCtrl">
 
-  <ion-header-bar class="bar bar-header bar-balanced">
-    <h1 class="title">{{marking.titulo_incidente}}</h1>
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">{{marking_title}}</h1>
     <button class="button button-clear button-primary" ng-click="modalEditMarking.hide();modal.show()" style="top:-3px">Voltar</button>
   </ion-header-bar>
 
@@ -13,13 +13,13 @@
 
           <!-- Marking photo -->
           <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
-            <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+            <img class="icon ion-image" ng-src="{{imgURI}}" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></img>
           </div>
 
           <!-- Camera and Gallery buttons to take or get a photo -->
           <div class="button-bar">
-            <button class="button icon-left ion-camera" ng-click="takePhoto('CAMERA')">Câmera</button><br>
-            <button class="button icon-left ion-image" ng-click="takePhoto('PHOTOLIBRARY')">Galeria</button>
+              <button class="button icon-left ion-camera" ng-click="takePhoto('CAMERA')">Câmera</button><br>
+              <button class="button icon-left ion-image" ng-click="choosePhoto()">Galeria</button>
             <!-- The camera doesn't work on browser, and a android build is necessary -->
           </div>
         </div>

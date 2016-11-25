@@ -1,16 +1,18 @@
 angular.module('starter')
 
-.controller('signOutCtrl', function($scope, $state, currentUserService) {
+//Sign out controller
+.controller('signOutCtrl', function($scope, $state, currentUserService, 
+  $ionicHistory) {
 
   $scope.signOut = function() {
-    facebookConnectPlugin.logout(function(success){
-      console.log("logged out");
-    }, function(error){
-      console.log('an error has ocurred');
+
+    $ionicHistory.clearCache().then(function() {
+      $ionicHistory.clearHistory();
+      $ionicHistory.nextViewOptions({disableBack:true, historyRoot: true});
+      currentUserService.setUserData(null);
+      currentUserService.setUserMarking([]);
+      currentUserService.setUserPevs([]);
+      $state.go('signin');
     });
-    currentUserService.setUserData(null);
-    currentUserService.setUserMarking([]);
-    currentUserService.setUserPevs([]);
-    $state.go('signin');
   };
 });

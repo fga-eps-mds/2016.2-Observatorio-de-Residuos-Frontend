@@ -105,7 +105,8 @@ var extract = function(paramUserData){
 
 /* socialLoginService
     login: Responsible for validating received firebase data and decide which state this user have to be send */
-.service('socialLoginService', function(factoryEmail, $state, currentUserService, $ionicLoading, URL, $http){
+.service('socialLoginService', function(factoryEmail, $state ,currentUserService, URL, 
+  $http, $ionicHistory, $ionicPopup, $ionicLoading){
   var login = function(user){
     factoryEmail.save({"email": user.email}, function(result) {
       user.nome_completo = user.first_name +" "+ user.last_name;
@@ -120,9 +121,14 @@ var extract = function(paramUserData){
             currentUserService.setUserData(result);
             currentUserService.setUserMarking(seenMarkings);
             currentUserService.setUserPevs(seenPevs);
+            $ionicHistory.nextViewOptions({disableBack:true});
             $state.go('tabs.home')
           })
           .error(function(error) {
+            $ionicPopup.alert({
+              template: 'Falha na conexão.',
+              title: 'Erro'
+            });
             console.log(error);
           });
         })
@@ -133,8 +139,16 @@ var extract = function(paramUserData){
       $ionicLoading.hide();
 
     }, function(error){
-      $ionicLoading.hide();
-      console.log(error)
+          $ionicLoading.hide();
+          if(error.status == 403) {
+            $ionicPopup.alert({
+              template: 'Esta conta está desativada.',
+              title: 'Erro'
+            });
+          } else {
+            //Caso receba Unauthorized do servidor, ativa o erro para ser exibido na view.
+            console.log(error);
+          }
     })
   }
   return{
