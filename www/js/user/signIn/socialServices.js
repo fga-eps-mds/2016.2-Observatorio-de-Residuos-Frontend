@@ -106,7 +106,7 @@ var extract = function(paramUserData){
 /* socialLoginService
     login: Responsible for validating received firebase data and decide which state this user have to be send */
 .service('socialLoginService', function(factoryEmail, $state ,currentUserService, URL, 
-  $http, $ionicHistory){
+  $http, $ionicHistory, $ionicPopup){
   var login = function(user){
     factoryEmail.save({"email": user.email}, function(result) {
       user.nome_completo = user.first_name +" "+ user.last_name;
@@ -133,7 +133,15 @@ var extract = function(paramUserData){
         });
       }
     }, function(error){
-      console.log(error)
+          if(error.status == 403) {
+            $ionicPopup.alert({
+              template: 'Esta conta está desativada.',
+              title: 'Erro'
+            });
+          } else {
+            //Caso receba Unauthorized do servidor, ativa o erro para ser exibido na view.
+            console.log(error);
+          }
     })
   }
   return{
