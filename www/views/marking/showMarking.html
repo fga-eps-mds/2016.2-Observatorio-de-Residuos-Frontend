@@ -1,9 +1,11 @@
 <!-- Show all marking information that a user marked -->
-<ion-modal-view>
-	<ion-header-bar class="bar bar-header bar-balanced">
-		<h1 class="title">{{marking.titulo_incidente || marking.titulo_pev}}</h1>
-		<button class="button button-clear button-primary" ng-click="modal.hide()" style="top:-3px">Voltar</button>
-	</ion-header-bar>
+<ion-modal-view class="has-header">
+		<ion-nav-bar class="bar-positive">
+			<ion-nav-title>{{marking.titulo_incidente || marking.titulo_pev}}</ion-nav-title>
+			<ion-nav-buttons side="right">
+				<button class="button button-clear button-primary" ng-click="modal.hide()" style="top:-3px">Voltar</button>
+			</ion-nav-buttons>
+		</ion-nav-bar>
 
 	<ion-content class="padding" scroll="true">
 		<div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
@@ -30,8 +32,11 @@
 					{{type}}
 				</div>
 				</div>
-				<button id="page-button9" ng-show="currentUserEmail==marking.author_email" class="button button-positive button-block" ng-click="editMarking(marking)">Editar</button>
-				<button id="page-button9" ng-show="currentUserEmail==marking.author_email" class="button button-positive button-block" ng-click="complaintMarking(marking)">Denunciar</button>
+				<div style="text-align: center;">
+					<button id="page-button9" ng-show="currentUserEmail==marking.author_email" class="button button-positive btn-block" ng-click="editMarking(marking)">Editar</button>
+					<button id="page-button10" ng-show="currentUserEmail==marking.author_email" class="button button-positive" ng-click="complaintMarking(marking)">Denunciar</button>
+				</div>
+
 		</ion-content>
 </ion-modal-view>
 
