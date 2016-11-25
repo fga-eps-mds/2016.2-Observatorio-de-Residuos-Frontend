@@ -11,7 +11,7 @@ angular.module('app.controllers')
     latitudeAtual = map.lat();
     longitudeAtual = map.lng();
 
-    var raio = 5; //distance in meter
+    var raio = 5000; //distance in meter
 
     $http.get(URL + '/marking_types')
     .success(function(content){
@@ -26,9 +26,6 @@ angular.module('app.controllers')
           if(distanceMarkingService.getDistance(latitudeAtual, longitudeAtual, value.latitude, value.longitude) <= raio){
               $scope.nearbyMarkings.push(value);
           }
-          //console.log(value.titulo_incidente);
-          //console.log(distanceMarkingService.getDistance(latitudeAtual, longitudeAtual, value.latitude, value.longitude));
-       
           angular.forEach($scope.marking_types, function (otherValue) {
             if (otherValue.id_tipo_incidente == value.id_tipo_incidente){
               value.tipo_incidente = otherValue.tipo_incidente;
@@ -44,11 +41,13 @@ angular.module('app.controllers')
     .error(function(error){
       console.log("Error");
     });
+  },function(error){
+    console.log("Erro ao pegar localização.")
   });
 
-  $scope.openMarking = function (marking) { 
-    markingService.setMarking(marking); 
-    $state.go("tabs.markings.detailMarking"); 
-  } 
+  $scope.openMarking = function (marking) {
+    markingService.setMarking(marking);
+    $state.go("tabs.markings.detailMarking");
+  }
 
 });
