@@ -62,9 +62,16 @@ angular.module('app.controllers')
             console.log($scope.typesNearbyPevs);
         })
         .error(function(error){
+            $ionicPopup.alert({
+                template: 'Não foi possível acessar o PEV, tente novamente.',
+                title: 'Erro'
+            });
             console.log("Error");
         });
       }, function(error){
-        console.log('Erro de obtenção de localização');
+        $ionicPopup.alert({
+            template: 'Erro de obtenção de localização.',
+            title: 'Erro'
+        });
       });
 });
