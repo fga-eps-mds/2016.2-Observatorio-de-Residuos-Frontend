@@ -1,13 +1,12 @@
 <!-- Show all marking information that a user marked -->
 <ion-modal-view class="has-header">
-		<ion-nav-bar class="bar-positive">
-			<ion-nav-title>{{marking.titulo_incidente || marking.titulo_pev}}</ion-nav-title>
-			<ion-nav-buttons side="right">
-				<button class="button button-clear button-primary" ng-click="modal.hide()" style="top:-3px">Voltar</button>
-			</ion-nav-buttons>
-		</ion-nav-bar>
+		<ion-header-bar class="bar-positive">
+			<h1 class="title">{{marking_title}}</h1>
+			<button class="button button-clear button-primary" ng-click="modal.hide()" style="top:-3px">Voltar</button>
+		</ion-header-bar>
 
 	<ion-content class="padding" scroll="true">
+
 		<div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
 	       	<i class="icon ion-image" ng-src="{{imgURI}}" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
 	    </div>

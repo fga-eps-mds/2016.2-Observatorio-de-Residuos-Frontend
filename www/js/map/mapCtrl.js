@@ -10,8 +10,12 @@ angular.module('app.controllers')
     template: 'Carregando mapa, aguarde... <ion-spinner icon="android"></ion-spinner>'
   });
   NgMap.getMap().then(function(map) {
-    $rootScope.pevs = [];
-    $rootScope.markings = [];
+    if(angular.isUndefined($rootScope.markings)){
+      $rootScope.markings = [];
+    }
+    if(angular.isUndefined($rootScope.pevs)){
+      $rootScope.pevs = [];
+    }
         //Initialize all PEVs saved in database
         $http.get(URL + '/pevs')
         .success(function(content){

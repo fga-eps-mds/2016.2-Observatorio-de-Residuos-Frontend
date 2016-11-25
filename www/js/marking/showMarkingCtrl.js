@@ -9,6 +9,7 @@ angular.module('starter')
 
 	//Function that places scope like informations of clicked PEV
 	$scope.showPev = function(event, pev){
+    $scope.marking_title = angular.copy(pev.titulo_pev);
     var seenPevs = currentUserService.getUserPevs();
 		$scope.currentUserEmail = currentUserService.getUserData().email;
     $scope.voted = false;
@@ -33,6 +34,7 @@ angular.module('starter')
 	};
 	//Function that places scope like informations of clicked marking
 	$scope.showIncident = function(event, incident){
+    $scope.marking_title = angular.copy(incident.titulo_incidente);
      index = $rootScope.markings.indexOf(incident);
 
     $scope.voted = false;
