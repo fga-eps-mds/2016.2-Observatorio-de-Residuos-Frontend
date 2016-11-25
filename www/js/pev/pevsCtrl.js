@@ -17,7 +17,7 @@ angular.module('app.controllers')
         currentLatitude = map.lat();
         currentLongitude = map.lng();
 
-        var raio = 30; //distance in meter
+        var raio = 10000; //distance in meter
 
         $http.get(URL + '/pevs')
         .success(function(content){
@@ -50,19 +50,19 @@ angular.module('app.controllers')
                         type: $scope.typesMyPevs[index]
                     }
             });
-
             $scope.nearbyPevsWithTipes = $rootScope.nearbyPevs.map(function(value, index) { //map pevs and types for ng-repeat
                     return {
                         data: value,
                         type: $scope.typesNearbyPevs[index]
                     }
             });
-
             console.log($scope.typesMyPevs);
             console.log($scope.typesNearbyPevs);
         })
         .error(function(error){
             console.log("Error");
         });
+      }, function(error){
+        console.log('Erro de obtenção de localização');
       });
 });
