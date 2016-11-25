@@ -12,10 +12,9 @@ angular.module('app.controllers')
         pev.latitude = map.lat();
         pev.longitude = map.lng();
         pev.author_email = currentUserService.getUserData().email;
-        pev.likes = 0;
-        pev.dislikes = 0;
+        pev.total_confirmacoes_funcionando = 0;
+        pev.total_confirmacoes_fechou = 0;
         factoryPEV.save(pev, function (result){
-          console.log(pev);
           result.author_email = pev.author_email;
           result.author_name = pev.author_name;
           $rootScope.pevs.push(result);

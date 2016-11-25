@@ -1,6 +1,5 @@
 angular.module('app.controllers')
 
-
 //Controller responsible for pevs in to contribuindo
 .controller('pevsCtrl', function($scope, $http, URL, $rootScope, currentUserService, NgMap, distanceMarkingService, pevService, $state) {
     $rootScope.pevs = [];
@@ -8,6 +7,11 @@ angular.module('app.controllers')
     $scope.typesMyPevs = [];
     $scope.typesNearbyPevs = [];
     $scope.currentUserEmail = currentUserService.getUserData().email;
+
+    $scope.openPev = function (pev) {
+      pevService.setPev(pev);
+      $state.go("tabs.markings.detailPev");
+    }
 
     NgMap.getGeoLocation().then(function(map) {
         currentLatitude = map.lat();
@@ -37,7 +41,7 @@ angular.module('app.controllers')
                 }
                 console.log(value.titulo_pev);
                 console.log($scope.type);
-                console.log(distanceMarkingService.getDistance(currentLatitude, currentLongitude, value.latitude, value.longitude));       
+                console.log(distanceMarkingService.getDistance(currentLatitude, currentLongitude, value.latitude, value.longitude));
             })
 
             $scope.myPevsWithTipes = $rootScope.pevs.map(function(value, index) { //map pevs and types for ng-repeat
@@ -60,11 +64,5 @@ angular.module('app.controllers')
         .error(function(error){
             console.log("Error");
         });
-    });
-
-    $scope.openPev = function (pev) {
-        pevService.setPev(pev);
-        $state.go("tabs.markings.detailPev");
-    }
-
+      });
 });
