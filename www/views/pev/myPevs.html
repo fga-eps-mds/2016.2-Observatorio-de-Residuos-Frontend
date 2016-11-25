@@ -15,15 +15,10 @@
                 <p class="text-left">
                     Tipo: {{pev.tipo_incidente}}
                 </p>
-                <!--If greater than 0-->
-                <span class="badge badge-assertive">+{{pev.total_confirmacoes_existencia}}</span>
 
-                <!--If equals to 0 -->
-                <!--<span class="badge badge-balanced">{{marking.total_confirmacoes_existencia}}</span>-->
+                <label id="eu-vi_1" class="badge badge-positive">+{{marking.total_confirmacoes_existencia}}</label>
+                <label id="nao-vi_1" class="badge badge-assertive">-{{marking.total_confirmacoes_resolvido}}</label>
 
-                <!--If lower to 0 -->
-                <!--<span class="badge badge-royal">-{{marking.total_confirmacoes_fechou}}</span>-->
-                <!--<p class="text-left">Por:{{marking.author_name}}</p>-->
             </ion-item>
         </ion-list>
         <h3>PEVs Proximas</h3>
@@ -39,8 +34,10 @@
                 <p class="text-left">
                     Tipo: {{pev.tipo_incidente}}
                 </p>
-                <!--If greater than 0-->
-                <span class="badge badge-assertive">+{{pev.total_confirmacoes_existencia}}</span>
+
+                <label id="eu-vi_2" class="badge badge-positive">+{{pev.total_confirmacoes_funcionando}}</label>
+                <label id="nao-vi_2" class="badge badge-assertive">-{{pev.total_confirmacoes_fechou}}</label>
+
             </ion-item>
 
     </ion-content>

@@ -384,6 +384,24 @@ input[type="text"], input[type="password"] {
   height: 34px;
 }
 
+#eu-vi_1 {
+  margin-right: 4px;
+  background-color: var(--primary-button);
+}
+
+#nao-vi_1 {
+  margin-right: -27px;
+}
+
+#eu-vi_2 {
+  margin-right: 4px;
+  background-color: var(--primary-button);
+}
+
+#nao-vi_2 {
+  margin-right: -27px;
+}
+
 /*Responsive Rules*/
 @media all and (orientation:portrait) {
   img.displayed{width:80%;}
