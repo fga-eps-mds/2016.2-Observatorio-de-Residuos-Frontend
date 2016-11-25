@@ -13,6 +13,7 @@ angular.module("app.controllers")
 
   .then(function(res) {
    if (res) {
+    pev.photo_link = $scope.imgURI;
     factoryEditPEV.save(pev, function(result) {
      index = findPevService.getIndex();
      $rootScope.pevs[index] = result;
@@ -29,4 +30,9 @@ angular.module("app.controllers")
    }
   });
  };
+
+ $scope.updatephoto = function () {
+  $scope.pev.photo_link = $scope.imgURI;
+ };
 })
+

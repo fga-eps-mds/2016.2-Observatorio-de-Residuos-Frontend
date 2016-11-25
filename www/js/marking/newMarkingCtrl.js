@@ -1,7 +1,8 @@
 angular.module('app.controllers')
 
 .controller("newMarkingCtrl", function($ionicHistory, currentUserService, NgMap, $state, $scope, $rootScope, factoryMarking, $ionicPopup, URL, $http) {
- 
+
+ $scope.marking = {};
  var options = {
   enableHighAccuracy: true
  };
@@ -29,6 +30,7 @@ angular.module('app.controllers')
    marking.author_email = currentUserService.getUserData().email;
    marking.likes = 0;
    marking.dislikes = 0;
+   marking.photo_link = $scope.imgURI;
    factoryMarking.save(marking, function(result) {
     result.author_email = marking.author_email;
     $rootScope.markings.push(result);
@@ -52,4 +54,8 @@ angular.module('app.controllers')
    alert('Unable to get location: ' + error.message);
   }, options);
  }
+
+ $scope.updatephoto = function () {
+  $scope.marking.photo_link = $scope.imgURI;
+ };
 });

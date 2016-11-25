@@ -11,12 +11,12 @@
     <form ng-submit="confirmEditPEV(pev, modalEditPev)" name="PEVform">
       <!-- PEV photo -->
       <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
-        <img class="icon ion-image" ng-src="{{imgURI}}" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></img>
+        <img class="icon ion-image" ng-src="{{pev.photo_link}}" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></img>
       </div>
       <!-- Camera and Gallery buttons to take or get a photo -->
       <div class="button-bar">
-       <button class="button icon-left ion-camera" ng-click="takePhoto('CAMERA')">Câmera</button><br>
-       <button class="button icon-left ion-image" ng-click="choosePhoto()">Galeria</button>
+       <button class="button icon-left ion-camera" ng-click="takePhoto('CAMERA'); updatephoto()">Câmera</button><br>
+       <button class="button icon-left ion-image" ng-click="choosePhoto(); updatephoto()">Galeria</button>
        <!-- The camera doesn't work on browser, and a android build is necessary -->
      </div>
 

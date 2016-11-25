@@ -20,6 +20,7 @@ angular.module('app.controllers')
  //Function that send changes to backend
  $scope.user = currentUserService.getUserData();
  $scope.editUser = function(user) {
+  user.photo_link = $scope.imgURI;
   factoryProfile.save(user, function(result) {
    currentUserService.setUserData(user);
    $state.go('tabs.profile');
@@ -72,5 +73,9 @@ angular.module('app.controllers')
     }
    }],
   });
+ };
+
+ $scope.updatephoto = function () {
+  $scope.user.photo_link = $scope.imgURI;
  };
 });

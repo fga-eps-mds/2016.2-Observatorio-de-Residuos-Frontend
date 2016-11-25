@@ -15,10 +15,15 @@ angular.module("app.controllers")
 
  //Function that send changes to backend
  $scope.confirmEditMarking = function(marking, modalEditMarking) {
+  marking.photo_link = $scope.imgURI;
   factoryEditMarking.save(marking, function(result) {
    modalEditMarking.hide();
   }, function(error) {
    console.log(error);
   })
+ };
+
+ $scope.updatephoto = function () {
+  $scope.marking.photo_link = $scope.imgURI;
  };
 })

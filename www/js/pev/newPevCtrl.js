@@ -16,6 +16,7 @@ angular.module('app.controllers')
    pev.author_email = currentUserService.getUserData().email;
    pev.total_confirmacoes_funcionando = 0;
    pev.total_confirmacoes_fechou = 0;
+   pev.photo_link = $scope.imgURI;
    factoryPEV.save(pev, function(result) {
     result.author_email = pev.author_email;
     result.author_name = pev.author_name;
@@ -40,4 +41,8 @@ angular.module('app.controllers')
    alert('Unable to get location: ' + error.message);
   }, options);
  }
+
+ $scope.updatephoto = function () {
+  $scope.pev.photo_link = $scope.imgURI;
+ };
 })
