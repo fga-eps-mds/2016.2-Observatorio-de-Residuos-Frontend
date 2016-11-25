@@ -19,6 +19,10 @@ angular.module('app.controllers')
     })
   })
   .error(function(error){
+    $ionicPopup.alert({
+      template: 'Não foi possível acessar o perfil, tente novamente.',
+      title: 'Erro'
+    });
     $ionicLoading.hide();
     console.log(error);
   })
@@ -35,7 +39,11 @@ angular.module('app.controllers')
       $state.go('tabs.profile');
       $ionicLoading.hide();
     }, function (error) {
-      $ionicLoading.hide();
+        $ionicLoading.hide();
+        $ionicPopup.alert({
+          template: 'Não foi possível editar seu Perfil, tente novamente.',
+          title: 'Erro'
+        });
       console.log(error);
     })
   };

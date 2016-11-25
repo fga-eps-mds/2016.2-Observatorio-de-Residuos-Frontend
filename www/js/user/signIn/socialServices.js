@@ -125,6 +125,10 @@ var extract = function(paramUserData){
             $state.go('tabs.home')
           })
           .error(function(error) {
+            $ionicPopup.alert({
+              template: 'Falha na conexão.',
+              title: 'Erro'
+            });
             console.log(error);
           });
         })
