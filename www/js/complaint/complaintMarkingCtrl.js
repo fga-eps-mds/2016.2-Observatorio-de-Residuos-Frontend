@@ -24,6 +24,10 @@ angular.module('starter')
           $state.go("tabs.map")
 				}, function(erro){
 					$ionicLoading.hide();
+					$ionicPopup.alert({
+						template: 'Erro ao realizar a denúncia.',
+						title: 'Erro'
+					});
 					console.log(erro);
 				})
 			} else {
