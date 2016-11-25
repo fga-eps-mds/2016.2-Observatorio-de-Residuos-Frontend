@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 
     //Controller responsible for projects in to contribuindo
-    .controller('projectsCtrl', function($scope, $http, URL, $rootScope, projectService, $state, $ionicLoading) {
+    .controller('projectsCtrl', function($scope, $http, URL, $rootScope, projectService, $state, $ionicLoading, $ionicPopup) {
         $rootScope.projects = [];
         $ionicLoading.show({
             template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
@@ -15,6 +15,10 @@ angular.module('app.controllers')
             })
             .error(function(error){
                 $ionicLoading.hide();
+                $ionicPopup.alert({
+                    template: 'Erro ao carregar o mapa com os Projetos.',
+                    title: 'Erro'
+                });
                 console.log("Error");
             })
 

@@ -1,6 +1,6 @@
 angular.module("app.controllers")
 
-.controller("editMarkingCtrl", function($scope, $rootScope, $http, URL, $state/*, $ionicModal*/, currentMarkingService, factoryEditMarking, $ionicLoading){
+.controller("editMarkingCtrl", function($scope, $rootScope, $http, URL, $state/*, $ionicModal*/, currentMarkingService, factoryEditMarking, $ionicLoading, $ionicPopup){
   //Function that update scope variables
 
   $rootScope.marking_types = [];
@@ -17,7 +17,7 @@ angular.module("app.controllers")
   .error(function(error){
     $ionicLoading.hide();
       $ionicPopup.alert({
-        template: 'Não foi possível acessar o PEV, tente novamente.',
+        template: 'Não foi possível acessar o Incidente, tente novamente.',
         title: 'Erro'
       });
     console.log("Error");
@@ -28,6 +28,10 @@ angular.module("app.controllers")
     factoryEditMarking.save(marking, function(result) {
       modalEditMarking.hide();
     }, function(error){
+      $ionicPopup.alert({
+        template: 'Não foi possível editar o Incidente, tente novamente.',
+        title: 'Erro'
+      });
       console.log(error);
     })
   };

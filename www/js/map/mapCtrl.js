@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 
 
-.controller('mapCtrl', function(NgMap, $scope, $ionicModal, $http, $rootScope, URL, $ionicLoading) {
+.controller('mapCtrl', function(NgMap, $scope, $ionicModal, $http, $rootScope, URL, $ionicLoading, $ionicPopup) {
 
   NgMap.getGeoLocation().then(function(map) {
     $scope.currentLocation ="["+ map.lat()+","+map.lng()+"]"

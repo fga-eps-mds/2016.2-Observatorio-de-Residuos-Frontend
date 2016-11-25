@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 
 //Controller responsible for pevs in to contribuindo
-.controller('pevsCtrl', function($scope, $http, URL, $rootScope, currentUserService, NgMap, distanceMarkingService, pevService, $state, $ionicLoading) {
+.controller('pevsCtrl', function($scope, $http, URL, $rootScope, currentUserService, NgMap, distanceMarkingService, pevService, $state, $ionicLoading, $ionicPopup) {
     $rootScope.pevs = [];
     $rootScope.nearbyPevs = [];
     $scope.typesMyPevs = [];

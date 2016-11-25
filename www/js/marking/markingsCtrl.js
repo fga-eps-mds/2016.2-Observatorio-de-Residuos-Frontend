@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 
 //Controller responsible for markings in to contribuindo
-.controller('markingsCtrl', function($scope, $http, URL, $rootScope, currentUserService, markingService, $state, NgMap, distanceMarkingService, $ionicLoading) {
+.controller('markingsCtrl', function($scope, $http, URL, $rootScope, currentUserService, markingService, $state, NgMap, distanceMarkingService, $ionicLoading, $ionicPopup) {
   $rootScope.markings = [];
   $rootScope.marking_types = [];
   $scope.nearbyMarkings = [];
@@ -54,7 +54,7 @@ angular.module('app.controllers')
   },function(error){
     $ionicLoading.hide();
     $ionicPopup.alert({
-      template: 'Erro ao pegar localização.',
+      template: 'Erro ao acessar a localização da marcação.',
       title: 'Erro'
     });
   });
