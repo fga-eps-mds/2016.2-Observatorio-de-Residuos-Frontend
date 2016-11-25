@@ -8,7 +8,6 @@ describe('newMarkingCtrl', function() {
   var $ionicPopup;
   var _currentUserService_;
 
-  beforeEach(module('starter'));
   var map = {
       lat: function() {return "-30"},
       lng: function() {return "-30"}
