@@ -25,7 +25,8 @@ module.exports = function(config) {
 	     'https://maps.googleapis.com/maps/api/js?key=AIzaSyASY7L520_jRca_Ecr7Rvki2P28qvo-ZXE',
 	     'www/js/*.js',
 	     'www/js/**/*.js',
-	     'tests/unit-tests/*.js'
+	     'tests/unit-tests/*.js',
+	     'tests/unit-tests/**/*.js'
     ],
 
 

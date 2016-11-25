@@ -7,13 +7,36 @@ describe('markingsCtrl', function() {
   var markingService;
   var currentUserService;
   var URL;
+  var NgMap;
 
-  beforeEach(module('starter'));
-
+  var map = {
+      lat: function() {return "-30"},
+      lng: function() {return "-30"}
+  }
+  var sucesso = function(map) {
+      return map;
+  };
+  var error = {message:"AMOEDO LENDÁRIO"}
+  beforeEach(function() {
+      module('starter');
+      module(function($provide) {
+          $provide.value('NgMap', {
+              getGeoLocation: function() {
+                  return {
+                      then: function(sucesso,error){
+                        sucesso(map);
+                        error(error);
+                      }
+                    }
+                  }
+              })
+          });
+      });
   beforeEach(inject(function(_$controller_, _$rootScope_, _currentUserService_,
-    _$httpBackend_, _$injector_, _markingService_, _$state_) {
+    _$httpBackend_, _$injector_, _markingService_, _$state_, _NgMap_) {
     $controller = _$controller_;
     $rootScope = _$rootScope_;
+    NgMap = _NgMap_
     $scope = _$rootScope_.$new();
     $httpBackend = _$httpBackend_;
     $state = _$state_;

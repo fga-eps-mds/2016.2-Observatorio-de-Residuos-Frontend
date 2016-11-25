@@ -1,6 +1,6 @@
 angular.module('starter')
 
-.controller('complaintMarkingCtrl', function($scope, $rootScope, $http, currentMarkingService, currentUserService, factoryComplaintMarking, $ionicPopup, $state){
+.controller('complaintMarkingCtrl', function($scope, $rootScope, $http, currentMarkingService, currentUserService, factoryComplaintMarking, $ionicPopup, $state, $ionicLoading){
   $scope.confirmComplaint = function(complaint) {
 			$ionicPopup.confirm({
 			title: 'Adicionar denúncia',
@@ -8,6 +8,9 @@ angular.module('starter')
 		})
 
    	.then(function(res) {
+			$ionicLoading.show({
+				template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
+			});
 			if(res) {
         complaint.author = currentUserService.getUserData().email;
         complaint.id_marking = currentMarkingService.getMarking().id_incidente;
@@ -16,12 +19,15 @@ angular.module('starter')
   					title: 'Incidente denunciado com sucesso',
   					template: 'Obrigado por contribuir!'
 					});
+					$ionicLoading.hide();
           $state.go("tabs.map")
 				}, function(erro){
+					$ionicLoading.hide();
 					console.log(erro);
 				})
 			} else {
-			console.log('não');
+				$ionicLoading.hide();
+				console.log('não');
 			}
 		});
 	};

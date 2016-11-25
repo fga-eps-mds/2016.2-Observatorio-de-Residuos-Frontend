@@ -15,24 +15,16 @@
         <p class="text-left">
           Tipo: {{marking.tipo_incidente}}
         </p>
-        <!--If greater than 0-->
         <span class="badge badge-assertive">+{{marking.total_confirmacoes_existencia}}</span>
-
-        <!--If equals to 0 -->
-        <!--<span class="badge badge-balanced">{{marking.total_confirmacoes_existencia}}</span>-->
-
-        <!--If lower to 0 -->
-        <!--<span class="badge badge-royal">-{{marking.total_confirmacoes_fechou}}</span>-->
-        <!--<p class="text-left">Por:{{marking.author_name}}</p>-->
-      </ion-item>
+        </ion-item>
     </ion-list>
+
     <h3>Marcações Próximas</h3>
     <ion-list>
-      <ion-item ng-repeat="marking in markings"
+      <ion-item ng-repeat="marking in nearbyMarkings"
                 value="{{marking.id_incidente}}"
                 ng-model="marking"
                 name="marking_item"
-                ng-show="currentUserEmail==marking.author_email"
                 ng-click="openMarking(marking)">
         <h3 class="text-left" style="font-weight: bold">{{marking.titulo_incidente}}</h3>
         <p class="text-left">Descrição: {{marking.descricao_incidente}}</p>
