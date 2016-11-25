@@ -57,7 +57,7 @@ angular.module('app.controllers')
       });
   },function(error) {
     $ionicLoading.hide();
-    alert('Unable to get location: ' + error.message);
+    alert('Não foi possível acessar a localização: ' + error.message);
   }, options);
 }
 });

@@ -16,6 +16,10 @@ angular.module("app.controllers")
   })
   .error(function(error){
     $ionicLoading.hide();
+      $ionicPopup.alert({
+        template: 'Não foi possível acessar o PEV, tente novamente.',
+        title: 'Erro'
+      });
     console.log("Error");
   })
 
