@@ -4,8 +4,9 @@ angular.module('app.controllers')
 //Controller responsible for pevs in to contribuindo
 .controller('pevsCtrl', function($scope, $http, URL, $rootScope, currentUserService, NgMap, distanceMarkingService, pevService, $state) {
     $rootScope.pevs = [];
-    $scope.nearbyPevs = [];
-    $scope.types = [];
+    $rootScope.nearbyPevs = [];
+    $scope.typesMyPevs = [];
+    $scope.typesNearbyPevs = [];
     $scope.currentUserEmail = currentUserService.getUserData().email;
 
     NgMap.getGeoLocation().then(function(map) {
@@ -28,24 +29,33 @@ angular.module('app.controllers')
                     $scope.type.push("Plástico");
 
                 $rootScope.pevs.push(value);
-                $scope.types.push($scope.type);
+                $scope.typesMyPevs.push($scope.type);
 
                 if(distanceMarkingService.getDistance(currentLatitude, currentLongitude, value.latitude, value.longitude) <= raio){
-                  $scope.nearbyPevs.push(value);
+                  $rootScope.nearbyPevs.push(value);
+                  $scope.typesNearbyPevs.push($scope.type);
                 }
                 console.log(value.titulo_pev);
                 console.log($scope.type);
                 console.log(distanceMarkingService.getDistance(currentLatitude, currentLongitude, value.latitude, value.longitude));       
             })
 
-            $scope.PEVSS = $rootScope.pevs.map(function(value, index) { //map pevs and types for ng-repeat
+            $scope.myPevsWithTipes = $rootScope.pevs.map(function(value, index) { //map pevs and types for ng-repeat
                     return {
                         data: value,
-                        type: $scope.types[index]
+                        type: $scope.typesMyPevs[index]
                     }
             });
 
-            console.log($scope.types);
+            $scope.nearbyPevsWithTipes = $rootScope.nearbyPevs.map(function(value, index) { //map pevs and types for ng-repeat
+                    return {
+                        data: value,
+                        type: $scope.typesNearbyPevs[index]
+                    }
+            });
+
+            console.log($scope.typesMyPevs);
+            console.log($scope.typesNearbyPevs);
         })
         .error(function(error){
             console.log("Error");

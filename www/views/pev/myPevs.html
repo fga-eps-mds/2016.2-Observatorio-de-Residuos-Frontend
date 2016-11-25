@@ -4,7 +4,7 @@
         <!-- List of all pevs marked by the user -->
         <h3>Minhas PEVs</h3>
         <ion-list>
-            <ion-item ng-repeat="pev in PEVSS"
+            <ion-item ng-repeat="pev in myPevsWithTipes"
                       ng-repeat="type in types track by $index"
                       value="{{pev.data.id_pev}}"
                       ng-model="pev"
@@ -22,7 +22,7 @@
 
         <h3>PEVs Proximas</h3>
         <ion-list>
-            <ion-item ng-repeat="pev in NEARBYPEVS"
+            <ion-item ng-repeat="pev in nearbyPevsWithTipes"
                       ng-repeat="type in types track by $index"
                       value="{{pev.data.id_pev}}"
                       ng-model="pev"
@@ -31,7 +31,7 @@
               <h3 class="text-left" style="font-weight: bolder">{{pev.data.titulo_pev}}</h3>
               <p class="text-left">Descrição: {{pev.data.descricao_pev}}</p>
               <p class="text-left">
-                    Tipo: {{type}}
+                    Tipo: {{pev.type}}
               </p>
               <span class="badge badge-assertive">+{{pev.data.total_confirmacoes_funcionando}}</span>
             </ion-item>
