@@ -3,65 +3,51 @@
     <ion-content padding="true" class="has-header" scroll="true" ng-controller="cameraCtrl">
         <form id="editProfile" class="list" name="userForm" ng-submit="editUser(user)" novalidate>
             <!-- Editable user informations, but email can't be edited -->
-            <div class="list card" >
-                <ion-list id="list">
-                    <ion-item class="item-profile">
-                        <div class="item-avatar">
-                            <img class="icon ion-image" ng-src="{{imgURI}}" height="150px" width="150px">
-                        </div>
-                    </ion-item>
+<ion-list id="list">
+    <div class="item-avatar">
+        <img class="icon ion-image" ng-src="{{imgURI}}" height="150px" width="150px">
+    </div>
 
-                    <div class="button-bar">
-                        <button class="button icon-left ion-camera" ng-click="takePhoto('CAMERA')">Câmera</button><br>
-                        <button class="button icon-left ion-image" ng-click="choosePhoto()">Galeria</button>
-                        <!-- The camera doesn't work on browser, and a android build is necessary -->
-                    </div>
+    <ion-item>
+        <div class="button-bar">
+            <button class="button icon-left ion-camera" ng-click="takePhoto('CAMERA')">Câmera</button><br>
+            <button class="button icon-left ion-image" ng-click="choosePhoto()">Galeria</button>
+            <!-- The camera doesn't work on browser, and a android build is necessary -->
+        </div>
+    </ion-item>
 
-                    <ion-item>
-                        <label class="item item-input" id="complete_name">
-                            <p class="text-center">Nome:    </p>
-                            <input name="complete_name" type="text" ng-model="user.nome_completo" required>
-                        </label>
-                    </ion-item>
+    <label class="item item-input" id="complete_name">
+        <p class="text-center">Nome:    </p>
+        <input name="complete_name" type="text" ng-model="user.nome_completo" required>
+    </label>
 
-                    <ion-item>
-                        <label class="item item-input item-select" id="profile">
-                            <p class="text-center">Perfil: </p>
-                            <select ng-model="user.profile" name="profile_type" required>
-                                <option value="" disabled>Selecione um Tipo de Perfil</option>
-                                <option ng-repeat="profile in profiles" value="{{profile.perfil}}">{{profile.perfil}}</option>
-                            </select>
-                        </label>
-                    </ion-item>
+    <label class="item item-input item-select" id="special-select">
+    <p class="text-center">Perfil: </p>
+        <select ng-model="user.profile" name="profile_type" required>
+            <option value="" disabled>Selecione um Tipo de Perfil</option>
+            <option ng-repeat="profile in profiles" value="{{profile.perfil}}">{{profile.perfil}}</option>
+        </select>
+    </label>
 
-                    <ion-item>
-                        <label class="item item-input" id="email">
-                            <p class="text-center">E-mail: {{user.email}}</p>
-                        </label>
-                    </ion-item>
-                </ion-list>
+    <label class="item item-input" id="email">
+        <p class="text-center">E-mail: {{user.email}}</p>
+    </label>
 
+    <div class="item item-text-wrap">
+        <button type="submit" ng-disabled="userForm.$invalid" class="button button-positive button-full">
+            <i class="icon ion-checkmark-round"></i>
+            Confirmar
+        </button>
+        <button class="button button-positive button-full" ui-sref="tabs.profile">
+            <i class="icon ion-close-round"></i>
+            Cancelar
+        </button>
+    </div>
 
-                <!-- Buttons to confirm or cancel profile edition -->
-                <div class="item item-body">
-                    <div class="list">
-                        <button type="submit" ng-disabled="userForm.$invalid" class="button button-positive button-centered">
-                            <i class="icon ion-checkmark-round"></i>
-                            Confirmar
-                        </button>
-                        <button class="button button-positive button-centered" ui-sref="tabs.profile">
-                            <i class="icon ion-close-round"></i>
-                            Cancelar
-                        </button>
-                    </div>
-                </div>
-                
-                <div class="item item-body">
-                  <div class="list">
-                    <button class="button button-assertive button-centered" type="button" ng-click="deactivateAccount()">Desativar Conta</button>
-                  </div>
-                </div>
-            </div>
-        </form>
-    </ion-content>
-</ion-view>
+    <div class="item item-button-right" style="text-align: center;">
+        <div>
+            <button class="button button-dark button-centered" type="button" ng-click="deactivateAccount()">Desativar Conta</button>
+        </div>
+    </div>
+</ion-list>
+
