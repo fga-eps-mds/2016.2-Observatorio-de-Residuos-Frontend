@@ -3,9 +3,7 @@ angular.module('app.controllers')
 .controller("newMarkingCtrl", function ($ionicHistory, currentUserService, NgMap, $state, $scope, $rootScope, factoryMarking, $ionicPopup, URL, $http, $ionicLoading) {
 
   var options = {enableHighAccuracy: true};
-  if(angular.isUndefined($rootScope.markings)) {
-    $rootScope.markings = [];
-  }
+  $rootScope.markings = [];
 
   $ionicLoading.show({
     template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'

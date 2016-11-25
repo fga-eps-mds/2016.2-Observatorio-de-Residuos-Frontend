@@ -107,7 +107,8 @@ angular.module('starter')
         url: '/myPEVS',
         views: {
           'markings-page': {
-            templateUrl: 'views/pev/myPevs.html'
+            templateUrl: 'views/pev/myPevs.html',
+            controller: 'pevsCtrl'
           }
         }
       })

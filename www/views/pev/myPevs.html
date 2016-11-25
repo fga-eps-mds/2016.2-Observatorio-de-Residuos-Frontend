@@ -1,47 +1,41 @@
 <!-- My Markings page -->
-<ion-view title="Minhas PEVs" id="my-markings">
+<ion-view title="Minhas PEVs" id="my-pevs">
     <ion-content padding="true" class="has-header padding has-tabs-top" scroll="true">
-        <!-- List of all markings marked by the user -->
+        <!-- List of all pevs marked by the user -->
         <h3>Minhas PEVs</h3>
         <ion-list>
-            <ion-item ng-repeat="pev in pevs"
-                      value="{{pev.id_pev}}"
+            <ion-item ng-repeat="pev in myPevsWithTipes"
+                      ng-repeat="type in types track by $index"
+                      value="{{pev.data.id_pev}}"
                       ng-model="pev"
                       name="pev_item"
-                      ng-show="currentUserEmail==pev.author_email"
-                      ng-click="openPev(pev)">
-                <h3 class="text-left" style="font-weight: bolder">{{pev.titulo_incidente}}</h3>
-                <p class="text-left">Descrição: {{pev.descricao_incidente}}</p>
-                <p class="text-left">
-                    Tipo: {{pev.tipo_incidente}}
-                </p>
-                <!--If greater than 0-->
-                <span class="badge badge-assertive">+{{pev.total_confirmacoes_existencia}}</span>
-
-                <!--If equals to 0 -->
-                <!--<span class="badge badge-balanced">{{marking.total_confirmacoes_existencia}}</span>-->
-
-                <!--If lower to 0 -->
-                <!--<span class="badge badge-royal">-{{marking.total_confirmacoes_fechou}}</span>-->
-                <!--<p class="text-left">Por:{{marking.author_name}}</p>-->
+                      ng-show="currentUserEmail==pev.data.author_email"
+                      ng-click="openPev(pev.data)">
+              <h3 class="text-left" style="font-weight: bolder">{{pev.data.titulo_pev}}</h3>
+              <p class="text-left">Descrição: {{pev.data.descricao_pev}}</p>
+              <p class="text-left">
+                    Tipo: {{pev.type}}
+              </p>
+              <span class="badge badge-assertive">+{{pev.data.total_confirmacoes_funcionando}}</span>
             </ion-item>
         </ion-list>
+
         <h3>PEVs Proximas</h3>
         <ion-list>
-            <ion-item ng-repeat="pev in pevs"
-                      value="{{pev.id_pev}}"
+            <ion-item ng-repeat="pev in nearbyPevsWithTipes"
+                      ng-repeat="type in types track by $index"
+                      value="{{pev.data.id_pev}}"
                       ng-model="pev"
                       name="pev_item"
-                      ng-show="currentUserEmail==pev.author_email"
-                      ng-click="openPev(pev)">
-                <h3 class="text-left" style="font-weight: bolder">{{pev.titulo_incidente}}</h3>
-                <p class="text-left">Descrição: {{pev.descricao_incidente}}</p>
-                <p class="text-left">
-                    Tipo: {{pev.tipo_incidente}}
-                </p>
-                <!--If greater than 0-->
-                <span class="badge badge-assertive">+{{pev.total_confirmacoes_existencia}}</span>
+                      ng-click="openPev(pev.data)">
+              <h3 class="text-left" style="font-weight: bolder">{{pev.data.titulo_pev}}</h3>
+              <p class="text-left">Descrição: {{pev.data.descricao_pev}}</p>
+              <p class="text-left">
+                    Tipo: {{pev.type}}
+              </p>
+              <span class="badge badge-assertive">+{{pev.data.total_confirmacoes_funcionando}}</span>
             </ion-item>
+        </ion-list>
 
     </ion-content>
 </ion-view>
