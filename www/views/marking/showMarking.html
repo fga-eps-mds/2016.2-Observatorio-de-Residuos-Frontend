@@ -7,9 +7,9 @@
 
 	<ion-content class="padding" scroll="true">
 
-		<div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
-	       	<i class="icon ion-image" ng-src="{{imgURI}}" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
-	    </div>
+        <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
+            <img class="icon ion-image" ng-src="{{imgURI}}" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></img>
+        </div>
 
 	    <div class="button-bar">
             <button class="button icon-center ion-eye button-clear button-balanced" style="font-size: 32px" ng-click="evaluate(marking, true)" ng-disabled="voted"> + {{marking.total_confirmacoes_existencia || marking.total_confirmacoes_funcionando}}</button>

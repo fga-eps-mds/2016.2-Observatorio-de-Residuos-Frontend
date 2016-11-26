@@ -16,10 +16,10 @@ registerSocial: Receive social media desired by the parameter on button at signi
   $scope.secret = {};
   $scope.loginAttempt = function(user){
       user.encripted_password = String(CryptoJS.SHA256($scope.secret.password)); //criptografia da senha
-      factoryLogin.save(user, function(result){
-        $ionicLoading.show({
+      $ionicLoading.show({
           template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
         });
+      factoryLogin.save(user, function(result){
         $http.get(URL + "/user/" + result.id_usuario + "/markings")
         .success(function(seenMarkings) {
           $http.get(URL + "/user/" + result.id_usuario + "/pevs")

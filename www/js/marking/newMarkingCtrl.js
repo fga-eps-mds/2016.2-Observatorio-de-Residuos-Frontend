@@ -11,42 +11,51 @@ angular.module('app.controllers')
 
  if(angular.isUndefined($rootScope.markings)){
    $rootScope.markings = [];
-  }
+ }
 
-  $ionicLoading.show({
-    template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
-  });
+ $ionicLoading.show({
+  template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
+});
 
-  $rootScope.marking_types = [];
+ $rootScope.marking_types = [];
 
-  $http.get(URL + '/marking_types')
-  .success(function(content){
-    $ionicLoading.hide();
-    angular.forEach(content, function(value, key) {
-      $rootScope.marking_types.push(value);
-    })
+ $http.get(URL + '/marking_types')
+ .success(function(content){
+  $ionicLoading.hide();
+  angular.forEach(content, function(value, key) {
+    $rootScope.marking_types.push(value);
   })
-  .error(function(error){
-    $ionicLoading.hide();
-    console.log("Error");
-  })
+})
+ .error(function(error){
+  $ionicLoading.hide();
+  console.log("Error");
+})
 
   //Function to register new marking
-  $scope.registerMarking = function (marking) {
+  $scope.registerMarking = function (marking, imgURI) {
     NgMap.getGeoLocation().then(function(map) {
       marking.latitude = map.lat();
       marking.longitude = map.lng();
       marking.author_email = currentUserService.getUserData().email;
       marking.total_confirmacoes_existencia = 0;
       marking.total_confirmacoes_resolvido = 0;
-      marking.photo_link = $scope.imgURI;
 
       $ionicLoading.show({
         template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
       });
-      factoryMarking.save(marking, function (result){
-        result.author_email = marking.author_email;
-        $rootScope.markings.push(result);
+
+      var ftoptions =  new FileUploadOptions();
+      ftoptions.fileKey = "file";
+      ftoptions.chunkedMode = false;
+      ftoptions.params = marking
+
+      var ft = new FileTransfer();
+
+      ft.upload(imgURI, encodeURI(URL + '/markings/create'), function(success){
+
+        $ionicLoading.hide();
+        success.response.author_email = marking.author_email;
+        $rootScope.markings.push(success.response);
         var alertPopup = $ionicPopup.alert({
           title: 'Incidente cadastrado com sucesso',
           template: 'Obrigado por contribuir!'
@@ -58,19 +67,24 @@ angular.module('app.controllers')
         })
         $state.go('tabs.map')
         /* This state must be reset and the back button too */
-      }, function (error) {
-        $ionicLoading.hide();
-        var alertPopup = $ionicPopup.alert({
-          title: 'Informações insuficientes',
-          template: 'Preencha as informações corretamente!'
-        })
-      });
+
+      }, function(error){
+         $ionicLoading.hide();
+         var alertPopup = $ionicPopup.alert({
+           title: 'Informações insuficientes',
+           template: 'Preencha as informações corretamente!'
+         });
+
+     }, ftoptions);
+
     },function(error) {
       $ionicLoading.hide();
       alert('Unable to get location: ' + error.message);
     }, options);
   }
+  
   $scope.updatephoto = function () {
+
     $scope.marking.photo_link = $scope.imgURI;
   };
 });

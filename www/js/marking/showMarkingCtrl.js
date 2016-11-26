@@ -34,6 +34,7 @@ angular.module('starter')
 	};
 	//Function that places scope like informations of clicked marking
 	$scope.showIncident = function(event, incident){
+    $scope.imgURI = URL + '/uploads/marking/foto/' + incident.id_incidente +'/image.jpg';
     $scope.marking_title = angular.copy(incident.titulo_incidente);
      index = $rootScope.markings.indexOf(incident);
 
