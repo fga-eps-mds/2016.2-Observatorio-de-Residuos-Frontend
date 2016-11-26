@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 
 
-.controller('mapCtrl', function(NgMap, $scope, $ionicModal, $http, $rootScope, URL, $ionicLoading) {
+.controller('mapCtrl', function(NgMap, $scope, $ionicModal, $http, $rootScope, URL, $ionicLoading, $ionicPopup) {
 
   NgMap.getGeoLocation().then(function(map) {
     $scope.currentLocation ="["+ map.lat()+","+map.lng()+"]"
@@ -26,6 +26,10 @@ angular.module('app.controllers')
         })
         .error(function(data){
           $ionicLoading.hide();
+          $ionicPopup.alert({
+            template: 'Erro ao carregar o mapa com as PEVs.',
+            title: 'Erro'
+          });
           console.log(data)
         });
 
@@ -39,6 +43,10 @@ angular.module('app.controllers')
         })
         .error(function(data){
           $ionicLoading.hide();
+          $ionicPopup.alert({
+            template: 'Erro ao carregar o mapa com os Incidentes.',
+            title: 'Erro'
+          });
           console.log(data)
         });
       })

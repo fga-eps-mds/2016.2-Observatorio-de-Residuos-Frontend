@@ -5,6 +5,7 @@ angular.module('starter')
   $ionicHistory) {
 
   $scope.signOut = function() {
+
     $ionicHistory.clearCache().then(function() {
       $ionicHistory.clearHistory();
       $ionicHistory.nextViewOptions({disableBack:true, historyRoot: true});

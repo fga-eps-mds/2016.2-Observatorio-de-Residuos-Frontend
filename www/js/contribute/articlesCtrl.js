@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 
     //Controller responsible for articles in to contribuindo
-    .controller('articlesCtrl', function($scope, $http, URL, $rootScope, articleService, $state, $ionicLoading) {
+    .controller('articlesCtrl', function($scope, $http, URL, $rootScope, articleService, $state, $ionicLoading, $ionicPopup) {
         $rootScope.articles = [];
         $ionicLoading.show({
             template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
@@ -15,6 +15,10 @@ angular.module('app.controllers')
             })
             .error(function(error){
                 $ionicLoading.hide();
+                $ionicPopup.alert({
+                    template: 'Erro ao carregar os artigos',
+                    title: 'Erro'
+                });
                 console.log("Error");
             })
 

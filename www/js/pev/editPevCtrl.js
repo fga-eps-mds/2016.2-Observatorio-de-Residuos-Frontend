@@ -30,6 +30,10 @@ angular.module("app.controllers")
 					})
 			} else {
 			$ionicLoading.hide();
+			$ionicPopup.alert({
+				template: 'Não foi possível editar essa PEV, tente novamente.',
+				title: 'Erro'
+			});
 			console.log('não');
 			}
 		});

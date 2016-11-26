@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-.controller("newMarkingCtrl", function($ionicHistory, currentUserService, NgMap, $state, $scope, $rootScope, factoryMarking, $ionicPopup, URL, $http, $ionicLoading) {
+.controller("newMarkingCtrl", function ($ionicHistory, currentUserService, NgMap, $state, $scope, $rootScope, factoryMarking, $ionicPopup, URL, $http, $ionicLoading, $ionicPopup) {
 
   $scope.marking = {};
   var options = {
@@ -80,12 +80,7 @@ angular.module('app.controllers')
 
     },function(error) {
       $ionicLoading.hide();
-      alert('Unable to get location: ' + error.message);
+      alert('Não foi possível acessar a localização: ' + error.message);
     }, options);
   }
-  
-  $scope.updatephoto = function () {
-
-    $scope.marking.photo_link = $scope.imgURI;
-  };
 });

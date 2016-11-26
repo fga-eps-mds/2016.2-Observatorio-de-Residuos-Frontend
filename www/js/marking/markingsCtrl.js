@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 
 //Controller responsible for markings in to contribuindo
-.controller('markingsCtrl', function($scope, $http, URL, $rootScope, currentUserService, markingService, $state, NgMap, distanceMarkingService, $ionicLoading) {
+.controller('markingsCtrl', function($scope, $http, URL, $rootScope, currentUserService, markingService, $state, NgMap, distanceMarkingService, $ionicLoading, $ionicPopup) {
   $rootScope.markings = [];
   $rootScope.marking_types = [];
   $scope.nearbyMarkings = [];
@@ -36,11 +36,14 @@ angular.module('app.controllers')
               value.tipo_incidente = otherValue.tipo_incidente;
             }
           });
-
         });
       })
       .error(function(error){
         $ionicLoading.hide(); 
+        $ionicPopup.alert({
+          template: 'Não foi possível acessar o Incidente, tente novamente.',
+          title: 'Erro'
+        });
         console.log("Error");
       });
     })
@@ -50,7 +53,10 @@ angular.module('app.controllers')
     });
   },function(error){
     $ionicLoading.hide();
-    console.log("Erro ao pegar localização.")
+    $ionicPopup.alert({
+      template: 'Erro ao acessar a localização da marcação.',
+      title: 'Erro'
+    });
   });
 
   $scope.openMarking = function (marking) {

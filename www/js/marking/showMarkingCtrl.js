@@ -4,7 +4,7 @@ angular.module('starter')
 .controller('showMarkingCtrl',function($scope,$http,URL, $rootScope,
 										currentMarkingService, $ionicModal,
 										currentUserService, currentPEVservice, $state, factoryEvaluateIncidents,
-										factoryEvaluatePev, $ionicLoading){
+										factoryEvaluatePev, $ionicLoading, $ionicPopup){
 	var index;
 
 	//Function that places scope like informations of clicked PEV
@@ -47,6 +47,10 @@ angular.module('starter')
 		})
 		.error(function(){
 			$scope.types.push("Não definido");
+				$ionicPopup.alert({
+					template: 'Não foi possível acessar o tipo do incidente.',
+					title: 'Erro'
+				})
 		})
 		$scope.currentUserEmail = currentUserService.getUserData().email;
 		$scope.marking = incident;
@@ -58,14 +62,12 @@ angular.module('starter')
         }
       }
     });
-
 		$scope.modal.show();
 	};
 
 	//Transition function of pages. Can redirect to edition of PEV or edition of markings
 	$scope.editMarking = function(marking){
 		$scope.modal.hide();
-		// trocar o "paper" quando mudar o banco
 		if(angular.isDefined(marking.paper)){
 			$scope.pev = marking;
 			$scope.modalEditPev.show();
@@ -91,7 +93,11 @@ angular.module('starter')
         $ionicLoading.hide();
         currentUserService.getUserPevs().push(result);
 			}, function(error){
-        $ionicLoading.hide();
+				$ionicLoading.hide();
+				$ionicPopup.alert({
+					template: 'Erro ao acessar ao avaliar a marcação.',
+					title: 'Erro'
+				})
 				console.log(error)
 			});
 		} else {
@@ -108,7 +114,11 @@ angular.module('starter')
 				currentUserService.getUserMarking().push(result);
 
 			}, function(error){
-        $ionicLoading.hide();
+				$ionicLoading.hide();
+				$ionicPopup.alert({
+					template: 'Erro ao acessar ao avaliar a marcação.',
+					title: 'Erro'
+				})
 				console.log(error)
 			});
 		}

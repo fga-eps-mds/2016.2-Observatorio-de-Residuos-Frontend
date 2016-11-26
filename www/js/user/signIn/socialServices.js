@@ -106,7 +106,7 @@ var extract = function(paramUserData){
 /* socialLoginService
     login: Responsible for validating received firebase data and decide which state this user have to be send */
 .service('socialLoginService', function(factoryEmail, $state ,currentUserService, URL, 
-  $http, $ionicHistory, $ionicPopup){
+  $http, $ionicHistory, $ionicPopup, $ionicLoading){
   var login = function(user){
     factoryEmail.save({"email": user.email}, function(result) {
       user.nome_completo = user.first_name +" "+ user.last_name;
@@ -125,6 +125,10 @@ var extract = function(paramUserData){
             $state.go('tabs.home')
           })
           .error(function(error) {
+            $ionicPopup.alert({
+              template: 'Falha na conexão.',
+              title: 'Erro'
+            });
             console.log(error);
           });
         })
@@ -132,7 +136,10 @@ var extract = function(paramUserData){
           console.log(error);
         });
       }
+      $ionicLoading.hide();
+
     }, function(error){
+          $ionicLoading.hide();
           if(error.status == 403) {
             $ionicPopup.alert({
               template: 'Esta conta está desativada.',

@@ -45,6 +45,10 @@ angular.module('app.controllers')
         $state.go('tabs.home')
       }, function(error){
             if(error.status == 401){
+              $ionicPopup.alert({
+                template: 'Este email já está cadastrado no sistema.',
+                title: 'Erro'
+              });
               $scope.emailAlreadyUsed = true;
               $scope.invalidEmail = false;
             }else{

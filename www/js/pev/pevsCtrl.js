@@ -1,7 +1,7 @@
 angular.module('app.controllers')
 
 //Controller responsible for pevs in to contribuindo
-.controller('pevsCtrl', function($scope, $http, URL, $rootScope, currentUserService, NgMap, distanceMarkingService, pevService, $state, $ionicLoading) {
+.controller('pevsCtrl', function($scope, $http, URL, $rootScope, currentUserService, NgMap, distanceMarkingService, pevService, $state, $ionicLoading, $ionicPopup) {
     $rootScope.pevs = [];
     $rootScope.nearbyPevs = [];
     $scope.typesMyPevs = [];
@@ -61,12 +61,19 @@ angular.module('app.controllers')
             console.log($scope.typesMyPevs);
             console.log($scope.typesNearbyPevs);
         })
-        .error(function(error){
+        .error(function(error) {
+
             $ionicLoading.hide();
+            $ionicPopup.alert({
+                template: 'Não foi possível acessar o PEV, tente novamente.',
+                title: 'Erro'
+            });
             console.log("Error");
         });
       }, function(error){
-        $ionicLoading.hide();
-        console.log('Erro de obtenção de localização');
+        $ionicPopup.alert({
+            template: 'Erro de obtenção de localização.',
+            title: 'Erro'
+        });
       });
 });
