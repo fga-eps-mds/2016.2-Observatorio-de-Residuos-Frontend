@@ -9,6 +9,7 @@ angular.module('starter')
 
 	//Function that places scope like informations of clicked PEV
 	$scope.showPev = function(event, pev){
+    $scope.imgURI = URL + '/uploads/pev/foto/' + pev.id_pev +'/image.jpg'; 
     $scope.marking_title = angular.copy(pev.titulo_pev);
     var seenPevs = currentUserService.getUserPevs();
 		$scope.currentUserEmail = currentUserService.getUserData().email;

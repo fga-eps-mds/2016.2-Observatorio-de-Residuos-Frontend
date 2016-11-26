@@ -62,9 +62,11 @@ angular.module('app.controllers')
             console.log($scope.typesNearbyPevs);
         })
         .error(function(error){
+            $ionicLoading.hide();
             console.log("Error");
         });
       }, function(error){
+        $ionicLoading.hide();
         console.log('Erro de obtenção de localização');
       });
 });

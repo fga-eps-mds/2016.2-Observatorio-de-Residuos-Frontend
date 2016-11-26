@@ -33,16 +33,17 @@ angular.module('app.controllers')
 
   //Function to register new marking
   $scope.registerMarking = function (marking, imgURI) {
+
+     $ionicLoading.show({
+      template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
+    });
     NgMap.getGeoLocation().then(function(map) {
+      $ionicLoading.hide();
       marking.latitude = map.lat();
       marking.longitude = map.lng();
       marking.author_email = currentUserService.getUserData().email;
       marking.total_confirmacoes_existencia = 0;
       marking.total_confirmacoes_resolvido = 0;
-
-      $ionicLoading.show({
-        template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
-      });
 
       var ftoptions =  new FileUploadOptions();
       ftoptions.fileKey = "file";
@@ -61,7 +62,7 @@ angular.module('app.controllers')
           template: 'Obrigado por contribuir!'
         })
         console.log("Success!")
-        $ionicLoading.hide();
+        
         $ionicHistory.nextViewOptions({
           disableBack: true
         })

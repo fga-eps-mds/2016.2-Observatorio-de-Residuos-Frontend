@@ -38,10 +38,12 @@ registerSocial: Receive social media desired by the parameter on button at signi
           });
         })
         .error(function(error) {
+          $ionicLoading.hide();
           console.log(error);
         });
 
       }, function(error){
+        $ionicLoading.hide();
         if(error.status == 403) {
           $ionicPopup.alert({
             template: 'Esta conta está desativada.',
@@ -50,6 +52,7 @@ registerSocial: Receive social media desired by the parameter on button at signi
         } else {
           //Caso receba Unauthorized do servidor, ativa o erro para ser exibido na view.
           console.log("ERRO!")
+          $ionicLoading.hide();
           $scope.loginError = true;
         } 
       })
