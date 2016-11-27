@@ -1,8 +1,8 @@
 angular.module('starter')
 
 .controller("cameraCtrl", function ($scope, $cordovaCamera, $ionicPlatform, URL) {
-  
-  $ionicPlatform.ready(function() {
+
+  document.addEventListener('deviceready', function(){
     
     $scope.takePhoto = function () {
       var options = {
@@ -43,8 +43,6 @@ angular.module('starter')
         console.log("Image library error");
       });
     };
-
   });
-
 
 });
