@@ -27,9 +27,10 @@ angular.module('app.controllers')
       var ft = new FileTransfer();
 
       ft.upload(imgURI, encodeURI(URL + '/pevs/create'), function(success){
-        success.response.author_email = pev.author_email;
-        success.response.author_name = pev.author_name;
-        $rootScope.pevs.push(success.response);
+        var createdPEV = JSON.parse(success.response);
+        createdPEV.author_email = pev.author_email;
+        createdPEV.author_name = pev.author_name;
+        $rootScope.pevs.push(createdPEV);
         $ionicLoading.hide();
         var alertPopup = $ionicPopup.alert({
           title: 'PEV cadastrada com sucesso',

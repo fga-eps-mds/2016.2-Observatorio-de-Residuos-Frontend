@@ -38,7 +38,6 @@ angular.module('app.controllers')
       template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
     });
     NgMap.getGeoLocation().then(function(map) {
-      $ionicLoading.hide();
       marking.latitude = map.lat();
       marking.longitude = map.lng();
       marking.author_email = currentUserService.getUserData().email;
@@ -55,18 +54,18 @@ angular.module('app.controllers')
       ft.upload(imgURI, encodeURI(URL + '/markings/create'), function(success){
 
         $ionicLoading.hide();
-        success.response.author_email = marking.author_email;
-        $rootScope.markings.push(success.response);
+        var createdMarking = JSON.parse(success.response);
+        createdMarking.author_email = marking.author_email;
+        $rootScope.markings.push(createdMarking);
         var alertPopup = $ionicPopup.alert({
           title: 'Incidente cadastrado com sucesso',
           template: 'Obrigado por contribuir!'
         })
-        console.log("Success!")
         
         $ionicHistory.nextViewOptions({
           disableBack: true
         })
-        $state.go('tabs.map')
+        $state.go('tabs.map', {reload: true})
         /* This state must be reset and the back button too */
 
       }, function(error){
