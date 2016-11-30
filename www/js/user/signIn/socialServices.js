@@ -45,7 +45,6 @@ var extract = function(paramUserData){
       var fields = 'first_name, last_name, gender, email';
       $http.get('https://graph.facebook.com/me?fields=' +fields + '&access_token=' + result.credential.accessToken)
       .success(function(userData){
-        console.log(facebookExtractor.extract(userData));
         deferred.resolve(facebookExtractor.extract(userData));
        })
        .error(function(error) {
@@ -112,6 +111,7 @@ var extract = function(paramUserData){
       user.nome_completo = user.first_name +" "+ user.last_name;
       currentUserService.setUserData(user)
       if(result.newUser){
+        $ionicLoading.hide();
         $state.go('signup');
       } else {
         $http.get(URL + "/user/" + result.id_usuario + "/markings")
@@ -122,9 +122,11 @@ var extract = function(paramUserData){
             currentUserService.setUserMarking(seenMarkings);
             currentUserService.setUserPevs(seenPevs);
             $ionicHistory.nextViewOptions({disableBack:true});
+            $ionicLoading.hide();
             $state.go('tabs.home')
           })
           .error(function(error) {
+            $ionicLoading.hide();
             $ionicPopup.alert({
               template: 'Falha na conexão.',
               title: 'Erro'
@@ -136,8 +138,6 @@ var extract = function(paramUserData){
           console.log(error);
         });
       }
-      $ionicLoading.hide();
-
     }, function(error){
           $ionicLoading.hide();
           if(error.status == 403) {

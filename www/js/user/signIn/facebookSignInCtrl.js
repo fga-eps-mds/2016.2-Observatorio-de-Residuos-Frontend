@@ -18,7 +18,6 @@ angular.module('starter')
       user.email = profileInfo.email;
       socialLoginService.login(user);
       
-      $ionicLoading.hide();
     }, function(fail){
       console.log(fail);
     });
@@ -56,6 +55,9 @@ angular.module('starter')
             var user = {};
             userDataExtractorService.extract(result, 'facebook').then(function(user){
               user.email = profileInfo.email;
+              user.first_name = profileInfo.first_name;
+              user.last_name = profileInfo.last_name;
+              user.gender = profileInfo.gender;
               socialLoginService.login(user);
             });
           }, function(fail){
