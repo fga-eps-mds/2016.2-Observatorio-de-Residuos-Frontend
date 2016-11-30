@@ -1,6 +1,6 @@
 <!-- Sign Up page -->
-<ion-view cache-view="false" title="Cadastro" hide-nav-bar="true">
-  <ion-content padding="true" class="item-content" scroll="true">
+<ion-view title="Cadastro" hide-nav-bar="true" cache-view="false">
+  <ion-content padding="true" scroll="true">
     <a class="button icon-top ion-chevron-left button-clear button-dark" ui-sref="signin">Voltar</a>
 
     <form id="cadastro" class="list" name="userForm" ng-submit="registerEmail(user)" novalidate>
@@ -62,9 +62,9 @@
 
         <label class="item item-input item-select">
           <span class="input-label">Estado</span>
-          <select ng-model="user.city" name="estado" required>
-            <br>
-            <option value="ac">Acre</option>
+          <select id="selectEstado" ng-model="user.city" name="estado" ng-change="changeColor('selectEstado')" style="color:#aaa;" required>
+            <option value="" disabled selected>Estado</option>
+            <option value="ac" style="color: blue!important">Acre</option>
             <option value="al">Alagoas</option>
             <option value="am">Amazonas</option>
             <option value="ap">Amapá</option>
@@ -101,8 +101,8 @@
           <p ng-show="userForm.genero.$invalid && !userForm.genero.$pristine" class="help-block">
             Selecione seu genero
           </p>
-          <select ng-model="user.gender" name="genero" required>
-            <br>
+          <select id="selectGenero" ng-model="user.gender" name="genero" ng-change="changeColor('selectGenero')" style="color:#aaa;" required>
+          <option value="" selected disabled>Gênero</option>
             <option value="female">Feminino</option>
             <option value="male">Masculino</option>
           </select>
@@ -113,7 +113,8 @@
           <p ng-show="userForm.profile_type.$invalid && !userForm.profile_type.$pristine" class="help-block">
             Selecione seu tipo de perfil!
           </p>
-          <select ng-model="user.profile" name="profile_type" required>
+          <select id="selectTipoPerfil" ng-model="user.profile" name="profile_type" ng-change="changeColor('selectTipoPerfil')" style="color:#aaa" required>
+            <option value="" selected disabled>Tipo de Perfil </option>
             <option ng-repeat="profile in profiles" value="{{profile.perfil}}">{{profile.perfil}}</option>
           </select>
         </label>

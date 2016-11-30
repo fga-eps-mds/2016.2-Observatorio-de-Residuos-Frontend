@@ -8,6 +8,11 @@ angular.module('app.controllers')
   /* In case social login button is used without register data of sign up are filled alone through service of actual user */
   $rootScope.profiles = [];
 
+  $scope.changeColor = function(id) {
+    var select = document.getElementById(id);
+    select.style.color = 'black';
+  }
+
   $http.get(URL + '/profiles')
   .success(function(content){
     angular.forEach(content, function(value, key) {
