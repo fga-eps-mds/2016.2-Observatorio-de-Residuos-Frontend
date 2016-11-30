@@ -3,7 +3,7 @@ angular.module('app.controllers')
   registerEmail: Called by the button of signup.html it will receive user data and save them
                  User received here must have been vaidate by the view */
 .controller('signupCtrl', function ($scope, $rootScope, $http, URL, factoryRegister, 
-                                    currentUserService, $state, $ionicPopup, $ionicLoading) {
+                                    currentUserService, $state, $ionicPopup, $ionicLoading, $ionicHistory) {
 
   /* In case social login button is used without register data of sign up are filled alone through service of actual user */
   $rootScope.profiles = [];
@@ -34,10 +34,10 @@ angular.module('app.controllers')
   
   $scope.registerEmail= function(user){
       user.password_digest = String(CryptoJS.SHA256($scope.secret.password));//encryption
+      $ionicLoading.show({
+        template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
+      });
       factoryRegister.save(user, function(result){
-        $ionicLoading.show({
-          template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
-        });
         $scope.invalidEmail = false;
         $scope.emailAlreadyUsed = false;
             var alertPopup = $ionicPopup.alert({
@@ -47,8 +47,10 @@ angular.module('app.controllers')
             });
         currentUserService.setUserData(result);
         $ionicLoading.hide();
+        $ionicHistory.nextViewOptions({disableBack:true});
         $state.go('tabs.home')
       }, function(error){
+            $ionicLoading.hide();
             if(error.status == 401){
               $ionicPopup.alert({
                 template: 'Este email já está cadastrado no sistema.',
