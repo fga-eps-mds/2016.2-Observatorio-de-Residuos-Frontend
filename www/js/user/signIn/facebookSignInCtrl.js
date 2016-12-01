@@ -43,7 +43,7 @@ angular.module('starter')
 
   $scope.facebookSignIn = function() {
    $ionicLoading.show({
-    template: 'Por favor, aguarde...'
+    template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
   });
     facebookConnectPlugin.getLoginStatus(function(result){
       if(result.status === 'connected'){
