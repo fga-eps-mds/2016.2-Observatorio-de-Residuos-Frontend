@@ -1,8 +1,6 @@
 angular.module('starter')
 
-//Sign out controller
-.controller('signOutCtrl', function($scope, $state, currentUserService, 
-  $ionicHistory) {
+.controller('signOutCtrl', function($scope, $state, currentUserService,  $ionicHistory) {
 
   $scope.signOut = function() {
 
@@ -12,6 +10,7 @@ angular.module('starter')
       currentUserService.setUserData(null);
       currentUserService.setUserMarking([]);
       currentUserService.setUserPevs([]);
+      window.localStorage.removeItem('autoLoginUser');
       $state.go('signin');
     });
   };
