@@ -1,6 +1,6 @@
 angular.module('app.controllers')
 
-.controller('signinCtrl', function ($scope, firebaseService,  factoryLogin, $ionicLoading, $timeout, loginService) {
+.controller('signinCtrl', function ($scope,   factoryLogin, $ionicLoading, $timeout, loginService) {
 
   $scope.secret = {};
   $scope.options = {};
@@ -31,16 +31,5 @@ angular.module('app.controllers')
     }, function(error){
       $scope.loginError = true;
     })
-  };
-
-  $scope.registerSocial = function(socialNetwork) {
-    firebaseService.socialLogin(socialNetwork);
-
-    $ionicLoading.show({
-      template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
-    });
-    $timeout(function() {
-      $ionicLoading.hide();
-    },3000);
   };
 });

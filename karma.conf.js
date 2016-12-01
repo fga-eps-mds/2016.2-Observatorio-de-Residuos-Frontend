@@ -15,8 +15,6 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [ 'www/lib/ionic/js/ionic.bundle.js',
-	     'https://www.gstatic.com/firebasejs/3.5.0/firebase.js',
-	     'www/lib/firebase/firebaseInitialConfigurator.js', 
 	     'www/lib/angular-resource/angular-resource.js',
              'www/lib/ng-cordova/ng-cordova.min.js',
 	     'www/lib/angular-resource/angular-mocks.js',
