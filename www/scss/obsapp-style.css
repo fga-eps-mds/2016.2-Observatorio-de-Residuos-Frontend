@@ -169,25 +169,6 @@ input[type="text"], input[type="password"] {
   font-size: 65%;
 }
 
-.item-avatar {
-  margin-bottom: 110px;
-}
-
-.item-avatar > img:first-child {
-  height: 150px;
-  left: 30%;
-  max-height: 4000px;
-  max-width: 4000px;
-  width: 150px;
-}
-
-.item-avatar-perso {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-}
-
 .item-image img:first-child,
 .item-image .list-img {
   margin-left: 0px;
@@ -411,5 +392,15 @@ input[type="text"], input[type="password"] {
   img.displayed{max-width:30%; margin-top: 12px}
   #titulo{display: none;}
   .home-grid {left: 1%;}
+
+}
+
+.edit-profile-photo {
+  position: relative;
+  left: 25%;  
+  right: 25%;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
 
 }

@@ -1,26 +1,28 @@
-<!-- User profile page -->
-<ion-view title="Observatório de Resíduos" id="profile">
-  <ion-content padding="true" class="has-header padding" scroll="false">
-    <!-- Some user informations -->
-    <ion-item class="item-profile">
-      <div class="item-avatar">
-        <img ng-src="{{imgURI}}" height="150px" width="150px">
-      </div>
-    </ion-item>
+<ion-view title="Observatório de Resíduos">
+  <ion-content padding="true" class="has-header" scroll="true">
+    <div class="list card">
 
-    <div class="users-params" align="center">
-        <h3 class="text-center">Nome: {{user.nome_completo}}</h3>
-        <h3 class="text-center">Perfil: {{user.profile}}</h3>
-        <h3 class="text-center">E-mail: {{user.email}}</h3>
-      </div>
-
-    <!-- Buttons to edit profile and go back to Observatório de Resíduos map -->
-    <div class="profile-button" align="center">
-      <button class="button button-positive button-block" ui-sref="editProfile">
-        <i class="icon ion-edit"></i>
-          Editar Perfil
-      </button>
+    <div class="item item-divider">
+      Informações básicas
     </div>
+
+    <div class="item item-avatar">
+      <img src="img/usuario.jpeg">
+        <h2>{{user.nome_completo}}</h2>
+        <p>{{user.email}}</p>
+    </div>
+
+    <div class="item item-divider">
+      {{user.perfil}}
+    </div>
+
+    <div id="profile-description" class="item item-body">
+    </div>
+
+    </div>
+    <button class="button button-positive button-block" ui-sref="editProfile">
+      <i class="icon ion-edit"></i>
+      Editar Perfil
+    </button>
   </ion-content>
-  <ui-view name="profile-page"></ui-view>
 </ion-view>
