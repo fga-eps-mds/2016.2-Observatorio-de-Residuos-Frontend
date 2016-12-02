@@ -61,7 +61,7 @@ angular.module('starter')
 })
 
 .service('socialLoginService', function(factoryEmail, $state ,currentUserService, URL, 
-  $http, $ionicHistory, $ionicPopup, $ionicLoading) {
+  $http, $ionicHistory, $ionicPopup, $ionicLoading, loginService) {
   var login = function(user) {
     factoryEmail.save({"email": user.email}, function(result) {
       user.nome_completo = user.first_name +" "+ user.last_name;
@@ -70,29 +70,7 @@ angular.module('starter')
         $ionicLoading.hide();
         $state.go('signup');
       } else {
-        $http.get(URL + "/user/" + result.id_usuario + "/markings")
-        .success(function(seenMarkings) {
-          $http.get(URL + "/user/" + result.id_usuario + "/pevs")
-          .success(function(seenPevs) {
-            currentUserService.setUserData(result);
-            currentUserService.setUserMarking(seenMarkings);
-            currentUserService.setUserPevs(seenPevs);
-            $ionicHistory.nextViewOptions({disableBack:true});
-            $ionicLoading.hide();
-            $state.go('tabs.home');
-          })
-          .error(function(error) {
-            $ionicLoading.hide();
-            $ionicPopup.alert({
-              template: 'Falha na conexão.',
-              title: 'Erro'
-            });
-            console.log(error);
-          });
-        })
-        .error(function(error) {
-          console.log(error);
-        });
+        loginService.successfulLogin(result);
       }
     }, function(error) {
       $ionicLoading.hide();
