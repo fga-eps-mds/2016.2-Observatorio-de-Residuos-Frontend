@@ -404,3 +404,7 @@ input[type="text"], input[type="password"] {
   border-radius: 50%;
 
 }
+.profile-popover {
+  height: 100px;
+  background: var(--green-two) !important;
+}
