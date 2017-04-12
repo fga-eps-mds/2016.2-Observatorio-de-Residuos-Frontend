@@ -42,6 +42,7 @@ angular.module('starter')
   })
 
   .state('tabs.profile', {
+    cache: false,
     url: '/profile',
     views: {
       'profile-page': {

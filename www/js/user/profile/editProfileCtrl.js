@@ -4,13 +4,13 @@ angular.module('app.controllers')
                                         currentUserService, factoryProfile, 
                                         $state, $ionicPopup, $timeout,
                                         factoryDeactivation, $ionicLoading) {
-  //Function that update scope variables
   
   $rootScope.profiles = [];
 
   $ionicLoading.show({
     template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
   });
+
   $http.get(URL + '/profiles')
   .success(function(content){
     $ionicLoading.hide();
@@ -24,28 +24,27 @@ angular.module('app.controllers')
       title: 'Erro'
     });
     $ionicLoading.hide();
-    console.log(error);
   })
 
-  //Function that send changes to backend
   $scope.user = currentUserService.getUserData();
 
   $scope.editUser = function(user) {
-    user.photo_link = $scope.imgURI;
-    factoryProfile.save(user, function (result) {
-      $ionicLoading.show({
+    $ionicLoading.show({
         template: 'Por favor, aguarde... <ion-spinner icon="android"></ion-spinner>'
-      });
-      currentUserService.setUserData(user);
-      $state.go('tabs.profile');
+    });
+
+    user.photo_link = $scope.imgURI;
+    
+    factoryProfile.save(user, function (result) {
+      currentUserService.setUserData(result);
       $ionicLoading.hide();
+      $state.go('tabs.profile');
     }, function (error) {
         $ionicLoading.hide();
         $ionicPopup.alert({
           template: 'Não foi possível editar seu Perfil, tente novamente.',
           title: 'Erro'
         });
-      console.log(error);
     })
   };
 

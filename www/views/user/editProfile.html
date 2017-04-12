@@ -21,7 +21,7 @@
           <p class="text-center">Perfil: </p>
           <select ng-model="user.profile" name="profile_type" required>
             <option value="" disabled>Selecione um Tipo de Perfil</option>
-            <option ng-repeat="profile in profiles" value="{{profile.perfil}}">{{profile.perfil}}</option>
+            <option ng-repeat="profile in profiles" value="{{profile.id_perfil}}">{{profile.perfil}}</option>
           </select>
         </label>
 
