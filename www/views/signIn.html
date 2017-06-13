@@ -1,4 +1,3 @@
-<!-- App initial page/Sign In page -->
 <ion-view cache-view="false" title="Observatório de Resíduos" id="signin" hide-nav-bar="true">
   <ion-content padding="true" scroll="true">
 
@@ -6,7 +5,6 @@
       <img src="img/logo-2.png" height="150">
     </div>
 
-    <!-- Email and password fields -->
     <div class="container">
       <form name="loginForm" id="loginForm" class="list" ng-submit="loginAttempt(user)">
 
@@ -34,16 +32,13 @@
         <ion-checkbox ng-model="options.rememberMe" style="border-style: none;">Lembre-se de mim</ion-checkbox>
         <ion-checkbox ng-model="options.autoLogin" style="border-style: none;">Entrar automaticamente</ion-checkbox>
 
-        <!-- Only enter if email and password are correct -->
         <button type="submit" ng-disabled="loginForm.$invalid" class="button button-block button-positive" >Entrar</button>
 
-        <!-- Create an account -->
         <div class="bottom-links">
           Sem conta ainda? <a href="#" class="link" ui-sref="signup">Crie uma!</a>
         </div>
       </form>
 
-      <!-- Login with faceboook and google+ -->
       <div class="socialLogin" ng-controller="facebookSignInCtrl">
         <b>Entrar com:</b><br>
         <img src="img/facebook-button.png" class="button" ng-click="facebookSignIn()" style="background-color: transparent">
