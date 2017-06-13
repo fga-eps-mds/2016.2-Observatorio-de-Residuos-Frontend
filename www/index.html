@@ -77,7 +77,7 @@
   </head>
 
   <!-- Observatório de Resíduos bar and profile icon with options in popover -->
-  <body ng-app="starter" animation="slide-left-right-ios7">
+  <body ng-app="starter" animation="slide-left-right-ios7" style="opacity: 0">
     <ion-nav-bar class="bar-positive">
         <ion-nav-title>Observatório de Resíduos</ion-nav-title>
             <ion-nav-buttons side="right">
@@ -89,6 +89,13 @@
     </ion-nav-bar>
     <ion-nav-view>
     </ion-nav-view>
-    </div>
+    
+    <script>
+      setTimeout(function() {
+        var body = document.getElementsByTagName('body')[0];
+        body.style.opacity = 1;
+      }, 3000);
+      
+    </script>
   </body>
 </html>
