@@ -15,7 +15,17 @@
     "shelljs": "^0.3.0"
   },
   "cordovaPlugins": [
-    "cordova-plugin-whitelist"
+    "cordova-plugin-camera",
+    "cordova-plugin-compat",
+    "cordova-plugin-file",
+    "cordova-plugin-file-transfer",
+    "cordova-plugin-geolocation",
+    "cordova-plugin-inappbrowser",
+    "cordova-plugin-splashscreen",
+    "cordova-plugin-whitelist",
+    "cordova-plugin-x-toast",
+    "ionic-plugin-keyboard",
+    "phonegap-facebook-plugin"
   ],
   "cordovaPlatforms": [
     "android"
