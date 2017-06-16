@@ -24,8 +24,7 @@
     "cordova-plugin-splashscreen",
     "cordova-plugin-whitelist",
     "cordova-plugin-x-toast",
-    "ionic-plugin-keyboard",
-    "phonegap-facebook-plugin"
+    "ionic-plugin-keyboard"
   ],
   "cordovaPlatforms": [
     "android"
