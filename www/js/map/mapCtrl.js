@@ -18,8 +18,9 @@ angular.module('app.controllers')
       
       }, function(error) {
 
+        console.log(error);
         $ionicLoading.hide( );
-        $ionicPopup.alert({template: "Não foi possível encontrar o GPS."})
+        $ionicPopup.alert({template: "Não foi possível obter sua localização."})
         .then(function() {
           $state.go('tabs.home');
         });

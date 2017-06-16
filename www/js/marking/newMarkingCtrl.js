@@ -6,11 +6,12 @@ angular.module('app.controllers')
 
     $scope.marking = {};
 
- var options = {enableHighAccuracy: true};
+    var takenPicture = window.localStorage.getItem('takenPicture');
+    window.localStorage.removeItem('takenPicture');
 
- if(angular.isUndefined($rootScope.markings)){
-   $rootScope.markings = [];
- }
+    if (takenPicture && takenPicture != 'Camera cancelled.') {
+      $scope.imgURI = "data:image/jpeg;base64," + takenPicture;
+    }
 
     var options = {
       enableHighAccuracy: true

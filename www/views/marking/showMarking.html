@@ -1,41 +1,41 @@
-<!-- Show all marking information that a user marked -->
 <ion-modal-view class="has-header">
-		<ion-header-bar class="bar-positive">
-			<h1 class="title">{{marking_title}}</h1>
-			<button class="button button-clear button-primary" ng-click="modal.hide()" style="top:-3px">Voltar</button>
-		</ion-header-bar>
+	<ion-header-bar class="bar-positive">
+		<h1 class="title">{{marking_title}}</h1>
+		<button class="button button-clear button-primary" ng-click="modal.hide()" style="top:-3px">Voltar</button>
+	</ion-header-bar>
 
 	<ion-content class="padding" scroll="true">
 
-        <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
-            <img class="icon ion-image" ng-src="{{imgURI}}" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></img>
-        </div>
+		<div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
+			<img class="icon ion-image" ng-src="{{imgURI}}" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></img>
+		</div>
 
-	    <div class="button-bar">
-            <button class="button icon-center ion-eye button-clear button-balanced" style="font-size: 32px" ng-click="evaluate(marking, true)" ng-disabled="voted"> + {{marking.total_confirmacoes_existencia || marking.total_confirmacoes_funcionando}}</button>
-            <button class="button icon-center ion-eye-disabled button-clear button-assertive" style="font-size: 32px" ng-click="evaluate(marking, false)" ng-disabled="voted"> - {{marking.total_confirmacoes_resolvido || marking.total_confirmacoes_fechou}}</button>
-        </div>
+		<div class="button-bar">
+			<button class="button icon-center ion-eye button-clear button-balanced" style="font-size: 32px" ng-click="evaluate(marking, true)"
+			    ng-disabled="voted"> + {{marking.total_confirmacoes_existencia || marking.total_confirmacoes_funcionando}}</button>
+			<button class="button icon-center ion-eye-disabled button-clear button-assertive" style="font-size: 32px" ng-click="evaluate(marking, false)"
+			    ng-disabled="voted"> - {{marking.total_confirmacoes_resolvido || marking.total_confirmacoes_fechou}}</button>
+		</div>
 
-        <div class="card">
-			
-       	<div class="item item-divider">
-       		Descrição
-       	</div>
-       	<div class="item item-text-wrap">
-					{{marking.descricao_incidente || marking.descricao_pev}}
-				</div>
-				<div class="item item-divider">
-       		Tipo
-       	</div>
-       	<div class="item item-text-wrap" ng-repeat="type in types">
-					{{type}}
-				</div>
-				</div>
-				<div style="text-align: center;">
-					<button id="page-button9" ng-show="currentUserEmail==marking.author_email" class="button button-positive btn-block" ng-click="editMarking(marking)">Editar</button>
-					<button id="page-button10" class="button button-positive" ng-click="complaintMarking(marking)">Denunciar</button>
-				</div>
+		<div class="card">
 
-		</ion-content>
+			<div class="item item-divider">
+				Descrição
+			</div>
+			<div class="item item-text-wrap">
+				{{marking.descricao_incidente || marking.descricao_pev}}
+			</div>
+			<div class="item item-divider">
+				Tipo
+			</div>
+			<div class="item item-text-wrap" ng-repeat="type in types">
+				{{type}}
+			</div>
+		</div>
+		<div style="text-align: center;">
+			<button id="page-button9" ng-show="currentUserEmail==marking.author_email" class="button button-positive btn-block" ng-click="editMarking(marking)">Editar</button>
+			<button id="page-button10" class="button button-positive" ng-click="complaintMarking(marking)">Denunciar</button>
+		</div>
+
+	</ion-content>
 </ion-modal-view>
-

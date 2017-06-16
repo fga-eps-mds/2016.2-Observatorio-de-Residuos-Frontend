@@ -76,9 +76,8 @@
     <script src="lib/crypto-js/sha256.js"></script>
   </head>
 
-  <!-- Observatório de Resíduos bar and profile icon with options in popover -->
-  <body ng-app="starter" animation="slide-left-right-ios7" style="opacity: 0">
-    <ion-nav-bar class="bar-positive">
+  <body ng-app="starter" animation="slide-left-right-ios7">
+    <ion-nav-bar class="bar-positive" id="navbar">
         <ion-nav-title>Observatório de Resíduos</ion-nav-title>
             <ion-nav-buttons side="right">
                 <button class="button button-clear icon ion-more tabs-color-active-positive"
@@ -89,13 +88,5 @@
     </ion-nav-bar>
     <ion-nav-view>
     </ion-nav-view>
-    
-    <script>
-      setTimeout(function() {
-        var body = document.getElementsByTagName('body')[0];
-        body.style.opacity = 1;
-      }, 3000);
-      
-    </script>
   </body>
 </html>
