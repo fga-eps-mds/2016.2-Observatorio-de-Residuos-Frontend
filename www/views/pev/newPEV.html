@@ -1,25 +1,20 @@
-<!-- New PEVs page -->
 <ion-view title="Nova PEV" id="new-pev">
-  <ion-content padding="true" ng-controller="cameraCtrl" class="has-header has-tabs-top" scroll="true">
+  <ion-content padding="true" class="has-header has-tabs-top" scroll="true">
     <div>
       <div>
         <form ng-submit="createPEV(pev, imgURI); modal.hide()" name="PEVform">
           <div>
 
-            <!-- PEV photo -->
-            <div style="margin: 0px; line-height: 250px; background-color: rgb(232, 235, 239); text-align: center;">
-              <img class="icon ion-image" ng-src="{{imgURI}}" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></img>
+            <div class="image-box">
+              <img class="image-in-box" ng-src="{{imgURI}}"></img>
             </div>
-            <!-- Camera and Gallery buttons to take or get a photo -->
             <div class="button-bar">
-              <button class="button icon-left ion-camera" ng-click="takePhoto();">Câmera</button><br>
+              <button class="button icon-left ion-camera" ng-click="getPicture();">Câmera</button><br>
               <button class="button icon-left ion-image" ng-click="choosePhoto();">Galeria</button>
-                    <!-- The camera doesn't work on browser, and a android build is necessary -->
             </div>
 
           </div>
 
-          <!-- Fields to put informations of pev -->
           <div class="spacer" style="height: 15px;"></div>
 
           <ion-list id="list">

@@ -408,3 +408,15 @@ input[type="text"], input[type="password"] {
   height: 100px;
   background: var(--green-two) !important;
 }
+.image-box {
+  margin: 0px; 
+  min-height: 250px;
+  max-height: 500px;
+  background-color: rgb(232, 235, 239); 
+  text-align: center;
+  overflow: hidden;
+}
+.image-in-box {
+  width: 100%;
+  
+}
