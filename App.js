@@ -1,11 +1,11 @@
 import React from 'react';
 import { Text, View, Image } from 'react-native';
-import { HomeScreen } from './src/components/HomeScreen';
+import { StackNavigator } from './src/navigation/StackNavigator';
 
 export default class Observatory extends React.Component {
   render() {
     return (
-      <HomeScreen />
+      <StackNavigator />
     );
   }
 };
