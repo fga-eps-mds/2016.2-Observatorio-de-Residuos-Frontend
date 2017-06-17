@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Image } from 'react-native';
-import { styles } from './styles';
+import { homeStyles } from './styles';
+import { NavButton } from '../NavButton';
 
 export class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -8,11 +9,12 @@ export class HomeScreen extends React.Component {
   }
   render() {
     return (
-      <View>
+      <View style={ homeStyles.container }>
         <Image
           source={require('../../images/logo.png')}
-          style={ styles.logo }
+          style={ homeStyles.logo }
          />
+         <NavButton />
       </View>
     )
   }

@@ -1,6 +1,9 @@
-export const styles = {
-    logo: {
-        width: 250,
-        height: 250
-    }
+export const homeStyles = {
+  container: {
+    alignItems: 'center'
+  },
+  logo: {
+    width: 250,
+    height: 250
+  }
 };
