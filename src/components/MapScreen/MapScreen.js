@@ -1,7 +1,8 @@
 import React from 'react';
 import  Expo  from 'expo';
-import { Text } from 'react-native';
+import { Image } from 'react-native';
 import { markers } from './mockMarkers';
+
 
 export class MapScreen extends React.Component {
   constructor(props) {
@@ -40,9 +41,13 @@ export class MapScreen extends React.Component {
         <Expo.MapView.Marker
           key={marker.id_incidente}
           coordinate={{latitude: parseFloat(marker.latitude), longitude: parseFloat(marker.longitude)}}
-          title={marker.titulo_incidente}
-          description={marker.descricao_incidente}
-        />
+        >
+          <Image
+           source={require('../../images/garbage.png')}
+           style={{width: 40, height: 40}}
+          />
+        </Expo.MapView.Marker>
+
       ))}
       </Expo.MapView>
     );
