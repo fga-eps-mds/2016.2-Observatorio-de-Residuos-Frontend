@@ -14,7 +14,15 @@ export class HomeScreen extends React.Component {
           source={require('../../images/logo.png')}
           style={ homeStyles.logo }
          />
-         <NavButton />
+        <View style={ homeStyles.buttonContainer }>
+          <NavButton text="Mostrar mapa"/>
+          <NavButton text="Criar marcação"/>
+          <NavButton text="Mostrar mapa"/>
+          <NavButton text="Mostrar mapa"/>
+          <NavButton text="Criar marcação"/>
+          <NavButton text="Mostrar mapa"/>
+        </View>
+        
       </View>
     )
   }
