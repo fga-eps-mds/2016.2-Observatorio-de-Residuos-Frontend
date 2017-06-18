@@ -11,7 +11,7 @@ export class NavButton extends React.Component {
   render() {
     return(
       <TouchableHighlight
-        onPress={() => {Alert.alert('Button touched!')}}
+        onPress={() => {this.props.navigate('Map')}}
         style={ navButtonStyles.button }
       >
         <Text>{this.props.text}</Text>

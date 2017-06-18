@@ -15,7 +15,7 @@ export class HomeScreen extends React.Component {
           style={ homeStyles.logo }
          />
         <View style={ homeStyles.buttonContainer }>
-          <NavButton text="Mostrar mapa"/>
+          <NavButton text="Mostrar mapa" navigate={this.props.navigation.navigate} />
           <NavButton text="Criar marcação"/>
           <NavButton text="Mostrar mapa"/>
           <NavButton text="Mostrar mapa"/>
