@@ -1,6 +1,7 @@
 import React from 'react';
 import  Expo  from 'expo';
 import { Text } from 'react-native';
+import { markers } from './mockMarkers';
 
 export class MapScreen extends React.Component {
   constructor(props) {
@@ -11,7 +12,8 @@ export class MapScreen extends React.Component {
         longitude: -122.4324,
         latitudeDelta: 0.0922,
         longitudeDelta: 0.0421
-      }
+      },
+      markers: markers
     }
   }
   static navigationOptions = {
@@ -23,7 +25,6 @@ export class MapScreen extends React.Component {
     }).then(success => {
       success.coords.latitudeDelta  = 0.0041;
       success.coords.longitudeDelta = 0.0058;
-      console.log(success.coords)
       this.setState({region: success.coords});
     }, error => {
       console.log(error);
@@ -34,7 +35,16 @@ export class MapScreen extends React.Component {
       <Expo.MapView 
         style={{flex: 1}}
         region={this.state.region}
-      />
+      >
+      {this.state.markers.map(marker => (
+        <Expo.MapView.Marker
+          key={marker.id_incidente}
+          coordinate={{latitude: parseFloat(marker.latitude), longitude: parseFloat(marker.longitude)}}
+          title={marker.titulo_incidente}
+          description={marker.descricao_incidente}
+        />
+      ))}
+      </Expo.MapView>
     );
   }
 }
